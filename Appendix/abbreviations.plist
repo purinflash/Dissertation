@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NCEP</key>
+	<string>National Center for Environmental Prediction</string>
+	<key>GFS</key>
+	<string>Global Forecast System</string>
+	<key>WRF</key>
+	<string>Weather Research and Forecasting model</string>
+	<key>NAM</key>
+	<string>North American Monsoon</string>
+	<key>LNOx</key>
+	<string>Lightning-generated nitrogen oxides</string>
+	<key>ANOx</key>
+	<string>Anthropogenic nitrogen oxides</string>
+	<key>NOx</key>
+	<string>nitrogen oxides ($\equiv$\chem{NO}+\chem{NO_2})</string>
+	<key>VOCs</key>
+	<string>volatile organic compounds</string>
+	<key>EPA</key>
+	<string>Environmental Protection Agency</string>
+	<key>NEI</key>
+	<string>National Emission Inventory</string>
+	<key>GOME</key>
+	<string>Global Ozone Monitoring Experiment</string>
+	<key>ERS-2</key>
+	<string>European Remote-Sensing satellite</string>
+	<key>BVOCs</key>
+	<string>biogenic volatile organic compounds</string>
+	<key>SCIAMACHY</key>
+	<string>SCanning Imaging Absorption SpectroMeter for Atmospheric CHartographY</string>
+	<key>ENVISAT</key>
+	<string>Environmental Satellite</string>
+	<key>NASA</key>
+	<string>National Aeronautics and Space Administration</string>
+	<key>JPL</key>
+	<string>Jet Propulsion Laboratory</string>
+	<key>EOS</key>
+	<string>Earth Observing System</string>
+	<key>OMI</key>
+	<string>Ozone Monitoring Instrument satellite</string>
+	<key>CFCs</key>
+	<string>Chlorofluorocarbons</string>
+	<key>HCFCs</key>
+	<string>Hydrochlorofluorocarbons</string>
+	<key>HFCs</key>
+	<string>Hydrofluorocarbons</string>
+	<key>MEGAN</key>
+	<string>Model of Emissions of Gases and Aerosols from Nature</string>
+	<key>CONUS</key>
+	<string>Contiguous United States</string>
+	<key>IPCC</key>
+	<string>Intergovernmental Panel on Climate Change</string>
+	<key>PR92</key>
+	<string>\citet{Price:1992wb}</string>
+	<key>PR93</key>
+	<string>\citet{Price:1993fk}</string>
+	<key>PR94</key>
+	<string>\citet{Price:1994fk}</string>
+	<key>CCN</key>
+	<string>cloud condensation nuclei</string>
+	<key>LNB</key>
+	<string>level of neutral buoyancy</string>
+	<key>IC:CG</key>
+	<string>Intro-cloud:Cloud-to-ground</string>
+	<key>CAPE</key>
+	<string>convective available potential energy</string>
+	<key>ISCCP</key>
+	<string>International Satellite Cloud Climatology Project</string>
+	<key>TRMM</key>
+	<string>Tropical Rainfall Measuring Mission</string>
+	<key>IWP</key>
+	<string>ice water path</string>
+	<key>NCAR</key>
+	<string>National Center for Atmospheric Research</string>
+	<key>PBL</key>
+	<string>planetary boundary layer</string>
+	<key>RADM2</key>
+	<string>second-generation Regional Acid Deposition Model</string>
+	<key>KPP</key>
+	<string>Kinetic Pre-processor</string>
+	<key>FTUV</key>
+	<string>fast Tropospheric Ultraviolet-Visible</string>
+	<key>NOAA</key>
+	<string>National Oceanic and Atmospheric Administration</string>
+	<key>ESRL</key>
+	<string>Earth System Research Laboratory</string>
+	<key>WPS</key>
+	<string>WRF Preprocessing System</string>
+	<key>PM2.5</key>
+	<string>particulate matter $&lt; 2.5$ microns in diameter</string>
+	<key>LAI</key>
+	<string>leaf area index</string>
+	<key>PPFD</key>
+	<string>photosynthetic photon flux density</string>
+	<key>PCEEA</key>
+	<string>parameterized canopy enviornmet emission activity</string>
+	<key>PCA</key>
+	<string>principal component analysis</string>
+	<key>FLEXPART</key>
+	<string>a Lagrangian particle dispersion model</string>
+	<key>NWS</key>
+	<string>National Weather Service</string>
+	<key>AHPS</key>
+	<string>Advanced Hydrological Prediction Service</string>
+	<key>RFC</key>
+	<string>River Forecast Center</string>
+	<key>TES</key>
+	<string>Tropospheric Emission Spectrometer</string>
+	<key>INTEX-B</key>
+	<string>Intercontinental Chemical Transport Experiment - phase B</string>
+	<key>IONS-06</key>
+	<string>INTEX-B Ozonesonde Network Study of 2006</string>
+	<key>ECC</key>
+	<string>electrochemical concentration cell</string>
+	<key>MOPITT</key>
+	<string>Measurements Of Pollution In The Troposphere</string>
+	<key>MAP</key>
+	<string>maximum a posteriori</string>
+	<key>KNMI</key>
+	<string>Royal Netherlands Meteorological Institute \newline (Koninklijk Nederlands Meteorologisch Instituut)</string>
+	<key>TEMIS</key>
+	<string>Tropospheric Emission Monitoring Internet Service</string>
+	<key>DOAS</key>
+	<string>Differential Optical Absoption Spectroscopy</string>
+	<key>CTM</key>
+	<string>chemical-transport model</string>
+	<key>ECMWF</key>
+	<string>European Centre for Medium-Range Weather Forecasts model</string>
+	<key>AMF</key>
+	<string>air mass factor</string>
+	<key>VCD</key>
+	<string>vertical column density</string>
+	<key>NLDN</key>
+	<string>National Lightning Detection Network</string>
+	<key>NALDN</key>
+	<string>North American Lightning Detection Network</string>
+	<key>CLDN</key>
+	<string>Canadian Lightning Detection Network</string>
+	<key>IMPACT</key>
+	<string>Improved Accuracy through Combined Technology (lightning detection)</string>
+	<key>DF</key>
+	<string>direction finding (lightning detection)</string>
+	<key>TOA</key>
+	<string>time-of-arrival</string>
+	<key>LPATS</key>
+	<string>Lightning Position and Tracking System</string>
+	<key>ENTLN</key>
+	<string>Earth Networks Total Lightning Network</string>
+	<key>WLS</key>
+	<string>Weatherbug Lightning Sensor</string>
+	<key>LIS</key>
+	<string>Lightning Imaging Sensor</string>
+	<key>DE</key>
+	<string>detection efficiency</string>
+	<key>MPE</key>
+	<string>Multi-sensor Precipitation Estimator</string>
+	<key>NDSC</key>
+	<string>Network for the Detection of Stratospheric Change</string>
+	<key>DFS</key>
+	<string>degrees of freedom of signal</string>
+</dict>
+</plist>

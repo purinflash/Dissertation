@@ -1,0 +1,39 @@
+\documentclass[modernstyle,11pt]{Classes/thesis}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{blindtext}
+\usepackage{longtable}
+\usepackage{rotating}
+
+%draft watermark
+\usepackage{draftwatermark}
+\SetWatermarkScale{5.0}
+\SetWatermarkText{DRAFT}
+\SetWatermarkLightness{0.95}
+
+\input macros.tex
+\input frontmatter.tex
+
+\begin{document}
+
+\input Chapter_introduction/introduction.tex
+\input Chapter_technical/technical.tex
+\input Chapter_2006/2006.tex
+\input Chapter_summary/summary.tex
+
+\bibliographystyle{Classes/agu08}
+\bibliography{Journal}
+
+\appendix
+
+\input Appendix/abbreviations.tex
+\input Appendix/namelist.tex
+\input Appendix/lnox-doc.tex
+\input Appendix/bugfixes.tex
+
+
+\end{document}

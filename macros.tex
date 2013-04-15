@@ -1,0 +1,134 @@
+\newcommand{\sect}[1]{Section~\ref{sec:#1}}
+\newcommand{\ssect}[1]{Section~\ref{ssec:#1}}
+\newcommand{\fig}[1]{Figure~\ref{fig:#1}}
+
+\newcommand{\diff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\diffr}[1]{\diff{#1}{r}}
+\newcommand{\diffth}[1]{\diff{#1}{\theta}}
+\newcommand{\diffz}[1]{\diff{#1}{z}}
+
+\newcommand{\vth}{V_{\theta}}
+
+\newcommand{\twochoices}[2]{\left\{ \begin{array}{lcc}
+        \displaystyle #1 \\ \vspace{-10pt} \\
+        \displaystyle #2 \end{array} \right. } %}
+
+\newcommand{\threechoices}[3]{\left\{ \begin{array}{lcc}
+        #1 \\ #2 \\ #3 \end{array} \right. }    %}
+
+\newcommand{\fourchoices}[4]{\left\{ \begin{array}{lcc}
+        #1 \\ #2 \\ #3 \\ #4 \end{array} \right. }      %}
+
+\newcommand{\twovec}[2]{\left(\begin{array}{c} #1 \\ #2 \end{array}\right)}
+\newcommand{\threevec}[3]{\left(\begin{array}{c} #1 \\ #2 \\ #3 \end{array}\right)}
+\newcommand{\twomatrix}[4]{\left(\begin{array}{cc} #1 & #2 \\ #3 & #4 \end{array}\right)}
+
+% From Copernicus class file
+
+\newcommand{\tophline}{\hline\noalign{\vspace{1mm}}}
+\newcommand{\middlehline}{\noalign{\vspace{1mm}}\hline\noalign{\vspace{1mm}}}
+\newcommand{\bottomhline}{\noalign{\vspace{1mm}}\hline}
+%% \hhline is obsolete and only kept for compatibility:
+\newcommand{\hhline}{\noalign{\vspace{1mm}}\hline\noalign{\vspace{1mm}}}
+%%
+%% definition of \vec
+%%
+\DeclareRobustCommand*{\vec}[1]{\ensuremath{%
+\mathchoice{\mbox{\boldmath$\displaystyle#1$}}
+           {\mbox{\boldmath$\textstyle#1$}}
+           {\mbox{\boldmath$\scriptstyle#1$}}
+           {\mbox{\boldmath$\scriptscriptstyle#1$}}}}
+\def\testbx{bx}
+%%
+%% definition of \chem and \unit
+%%
+\if@hvmath
+   \DeclareRobustCommand*{\chem}[1]{\ensuremath{%
+   \mathcode`\-="0200\mathcode`\=="003D% no space around "-" and "="
+   \ifx\testbx\f@series\mathbf{#1}\else\mathrm{#1}\fi}}
+   \DeclareRobustCommand*{\unit}[1]{\ensuremath{\def\mu{\mbox{\textmu}}\def~{\,}%
+   \ifx\testbx\f@series\mathbf{#1}\else\mathrm{#1}\fi}}
+\else
+   \let\mathrm\mathsf \let\rm\sf
+   \DeclareRobustCommand*{\chem}[1]{\ensuremath{%
+   \mathcode`\-="0200\mathcode`\=="003D% no space around "-" and "="
+   \ifx\testbx\f@series\mbox{\boldmath$\mathsf{#1}$}\else\mathsf{#1}\fi}}
+   \DeclareRobustCommand*{\unit}[1]{\ensuremath{\def\mu{\mbox{\textmu}}\def~{\,}%
+   \ifx\testbx\f@series\mbox{\boldmath$\mathsf{#1}$}\else\mathsf{#1}\fi}}
+\fi   
+
+% Other macros
+
+\newcommand{\nox}{\chem{NO_x}}
+\newcommand{\hox}{\chem{HO_x}}
+
+\widowpenalty10000
+\clubpenalty10000
+
+
+% insert a centered figure with caption and description
+% parameters 1:filename, 2:title, 3:description and label
+\newcommand{\figuremacro}[3]{
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=1\textwidth]{#1}
+		\caption[#2]{\textbf{#2} --- #3}
+		\label{#1}
+	\end{figure}
+}
+
+% insert a centered figure with caption and description AND WIDTH
+% parameters 1:filename, 2:title, 3:description and label, 4: textwidth
+% textwidth 1 means as text, 0.5 means half the width of the text
+\newcommand{\figuremacroW}[4]{
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=#4\textwidth]{#1}
+		\caption[#2]{\textbf{#2} --- #3}
+		\label{#1}
+	\end{figure}
+}
+
+% inserts a figure with wrapped around text; only suitable for NARROW figs
+% o is for outside on a double paged document; others: l, r, i(inside)
+% text and figure will each be half of the document width
+% note: long captions often crash with adjacent content; take care
+% in general: above 2 macro produce more reliable layout
+\newcommand{\figuremacroN}[3]{
+	\begin{wrapfigure}{o}{0.5\textwidth}
+		\centering
+		\begin{singlespacing}
+		\includegraphics[width=0.48\textwidth]{#1}
+		\caption[#2]{{\small\textbf{#2} --- #3}}
+		\label{#1}
+		\end{singlespacing}
+	\end{wrapfigure}
+}
+
+% predefined commands by Harish
+\newcommand{\PdfPsText}[2]{
+  \ifpdf
+     #1
+  \else
+     #2
+  \fi
+}
+
+\newcommand{\IncludeGraphicsH}[3]{
+  \PdfPsText{\includegraphics[height=#2]{#1}}{\includegraphics[bb = #3, height=#2]{#1}}
+}
+
+\newcommand{\IncludeGraphicsW}[3]{
+  \PdfPsText{\includegraphics[width=#2]{#1}}{\includegraphics[bb = #3, width=#2]{#1}}
+}
+
+\newcommand{\InsertFig}[3]{
+  \begin{figure}[!htbp]
+    \begin{center}
+      \leavevmode
+      #1
+      \caption{#2}
+      \label{#3}
+    \end{center}
+  \end{figure}
+}

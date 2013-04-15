@@ -1,0 +1,71 @@
+\chapter{User documentation for \chem{LNO_x} in WRF-Chem 3.5} \label{apdx:lnox-doc}
+
+\ifpdf
+    \graphicspath{{Appendix/figures/PNG/}{Appendix/figures/PDF/}{Appendix/figures/}}
+\else
+    \graphicspath{{Appendix/figures/EPS/}{Appendix/figures/}}
+\fi
+
+This is a short guide for using the lightning flash rate and lightning-generated nitrogen oxides (\chem{LNO_x}) parameterizations in WRF and WRF-Chem after version 3.5.0. Significant changes have been made since 3.4.1, primarily in refactoring the model to allow flash rate predictions without chemistry. Currently, only implementations for the  \citet[][hereafter PR92]{Price:1992wb} schemes are released with modifications based on \citet{Barth:2012qf} and \citet{Wong:2012fk}.
+
+To turn on lightning flash rate parameterization in WRF, set the {\tt physics} namelist option {\tt lightning\_option} to one of the following values:
+\begin{center}
+\begin{tabular}{cp{4.5in}}
+	{\bf lightning\_option} & {\bf Description} \\
+	1$^\dagger$ & PR92 based on maximum $w$, redistributes flashes within dBZ $>$ 20 \\
+	2$^\dagger$ & PR92 based on 20 dBZ top, redistributes flashes within dBZ $>$ 20  \\
+	11$^*$ & PR92 based on level of neutral buoyancy from convective parameterization
+\end{tabular} 
+\end{center}
+{\footnotesize
+	$^\dagger$ For convection-resolved resolutions with microphysics turned on for reflectivity calculations. \\
+	$^*$ For convection-parameterized resolution using either GD or G3 {\tt cu\_physics} options. Adjusted by areal ratio relative to {\tt dx}=36 km \citep{Wong:2012fk}, intended for use at 10 $<$ {\tt dx} $<$ 50 km.
+}
+\vspace{.4in}
+
+\noindent Setting {\tt lightning\_option} will produce four new 2D arrays: {\tt (ic|cg)\_flash(count|rate)} with units number (per seconds), where {\tt ic} and {\tt cg} represent intra-cloud and cloud-to-ground respectively. Set the {\tt physics} namelist option {\tt iccg\_method} to control the IC:CG ratio:
+\begin{center}
+\begin{tabular}{cp{4.5in}}
+	{\bf iccg\_method} & {\bf Description} \\
+	0 & Default method depending on {\tt lightning\_option} , currently all options use {\tt iccg\_method}=2 by default. \\
+	1 & Constant everywhere, set with namelist options {\tt iccg\_prescribed\_(num|den)}$^\dagger$, default is $0./1.$ (all CG). \\
+	2 & Coarsely prescribed 1995--1999 NLDN/OTD climatology based on \citet{Boccippio:2001ys}. \\
+	3 & Parameterization by \citet{Price:1993fk} based on cold-cloud depth. \\
+	4 & Gridded input via arrays {\tt iccg\_in\_(num|den)} from wrfinput for monthly mapped ratios. Points with 0/0 values use ratio defined by {\tt iccg\_prescribed\_(num|den)}.
+\end{tabular}
+\end{center}
+{\footnotesize
+$^\dagger$ This is a shorthand for ``{\tt iccg\_prescribed\_num} and {\tt iccg\_prescribed\_den}.'' Similar notation is used throughout this guide when namelist options or arrays have long but similar names.
+}
+\vspace{.4in}
+
+\noindent To emit \chem{LNO_x}, in the form of nitrogen oxide (\chem{NO}), set the {\tt chem} namelist option {\tt lnox\_opt} to one of the following values:
+\begin{center}
+\begin{tabular}{cp{4.5in}}
+	{\bf lnox\_opt} & {\bf Description} \\
+	1	& Combined IC+CG single-mode vertical distributions \citep{Ott:2010lo}. Outputs passive tracer array {\tt lnox\_total}. \\
+	2	& Separate IC, CG distributions after \citet{Decaria:2000kl}. Outputs two passive tracer arrays {\tt lnox\_(ic|cg)}.
+\end{tabular}
+\end{center}
+\vspace{.4in}
+
+\noindent Additional namelist settings are available for more detailed controls of the parameterizations:
+\begin{center}
+\begin{tabular}{p{2.1in}p{3.9in}}
+	{\bf Namelist option} 		& {\bf Description} \\
+	{\tt \&physics} & \\
+	{\tt lightning\_dt} 			& Time interval (seconds) for calling lightning parameterization. Default uses model time step. \\
+	{\tt lightning\_start\_seconds} 	& Start time for calling lightning parameterization. Recommends at least 10 minutes for spin-up.\\
+	{\tt flashrate\_factor} 			& Factor to adjust the predicted number of flashes. Recommends 1.0 for {\tt lightning\_option}=11 between {\tt dx}$=$10 and 50 km. Manual tuning recommended for all other options independently for each nest. \\
+	{\tt cellcount\_method} 		& Method for counting storm cells. Used by CRM options ({\tt lightning\_option}s=1,2). \textbf{!!} Note that this option used to take values 1, 2, and 3 in version 3.4.1. \newline 
+							0 = model determines method used. \newline
+							1 = tile-wide, appropriate for large domains \newline
+							2 = domain-wide, appropriate for single-storm domains \\
+	{\tt cldtop\_adjustment} 		& Adjustment from LNB in km. Used by {\tt lightning\_option} =11. Default is 0, but recommends $-2$~km.\\ 
+	{\tt iccg\_prescribed\_(num|den)} & User prescribed {\tt\underline{num}}erator and {\tt\underline{den}}ominator for IC:CG ratio. Used by {\tt iccg\_method}=1,4. Defaults are $0.0/1.0$ \\ \\
+	{\tt \&chem} & \\
+	{\tt N\_(IC|CG)} 				& Moles of \chem{NO} emitted per IC and CG flashes. For total \chem{LNO_x} option ({\tt lnox\_opt}=1), a weighted average based on the calculated IC:CG ratio is used. Default is 500 moles. Recommends 300--500 moles. \\
+	{\tt lnox\_passive} 			& Set to {\tt .true.} to emit passive tracers only. \\
+	{\tt ltng\_temp\_(upper|lower)} 	& Temperatures ($^\circ$C) of {\tt upper} and {\tt lower} peaks of \chem{LNO_x} vertical distributions (used by {\tt lnox\_opt}=2). \\
+\end{tabular}
+\end{center}

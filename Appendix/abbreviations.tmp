@@ -1,0 +1,12 @@
+\chapter{Acronyms and Abbreviations} \label{apdx:abbrev}
+
+\ifpdf
+    \graphicspath{{Appendix/figures/PNG/}{Appendix/figures/PDF/}{Appendix/figures/}}
+\else
+    \graphicspath{{Appendix/figures/EPS/}{Appendix/figures/}}
+\fi
+
+\begin{longtable}{p{1.5in}p{5.5in}}
+%%
+\end{longtable}
+
