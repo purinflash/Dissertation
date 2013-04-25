@@ -10,6 +10,44 @@ Due to recent compiler switch, numerous bugs surfaced and caused the model to cr
 
 \section{Fast TUV}\label{a-sec:bug/ftuv}
 
+The fast Tropospheric Ultraviolet-Visible (fast TUV, or FTUV) photolysis scheme is a simplified version of the widely used TUV scheme by \citet{Madronich:1987uq}. Details of FTUV parameterization of TUV can be found in \citet{Tie:2003ve}. Since the use of MOZART chemistry options triggers an alternative method for computing model top ozone column, this bug only concerns WRF-Chem simulations using non-MOZART chemistry options.
 
+\subsection{Bug description}\label{a-ssec:bug/ftuv/bug}
+To simulate the radiative transfer of the full atmosphere, model column ozone is supplemented with exo-model ozone column density, or ``exocolden.'' This is done during the call to the subroutine \textbb{photo\_inti} within \textbb{ftuv\_init}. One of the intended functions of \textbb{photo\_inti} is to add exocolden data every 2\,\unit{km} on top of the model top up to 50\,\unit{km} using reference data (\textbb{o3ref}). However, the model top input for this function has been hard-coded to 20\,\unit{km} regardless of the actual model top level height. The model set-up used in this study has a model top of 10\,\unit{hPa}, or $\sim30\,\unit{km}$. Therefore, the effect height profile becomes $0,\ldots,30,22,24,26,\ldots,48,50\,\unit{km}$ plus $2.9745\times10^{16}\,\unit{molecules\,cm^{-2}}$ above 50\,\unit{km}. Furthermore, before the calculation of slant column density, the total column ozone is also scaled to a fixed value (265\,\unit{DU}). However, this value is grossly under-representing the standard ozone column for the United States, which has a recommended value of 349\,\unit{DU} instead (\textit{S. Madronich}, personal communication, 2013). These bugs effectively have two primary consequences\footnote{The expected low bias caused by the 265\,\unit{DU} is largely offset by the larger distribution of ozone above the model top due to the extra 20--30\,\unit{km} layer.}:
+\begin{enumerate}
+	\item Since ozone is typically highest between 20--30\.\unit{km}, two ozone maxima are introduced, one located outside the model physical levels. Because of an extra ozone maximum above model top, older simulations with a similar model top (30\,\unit{km}) may see significantly lower photolysis rates above 20\,\unit{km}.
+	\item When calculating the slant column density, the logarithm of \textbb{o2col} (depends on \textbb{dz}) is calculated in the subroutine \textbb{schu}. This effectively produces a \textbb{NaN} (Not-a-Number) at the model top when the heights drop from 30\,\unit{km} back down to 20\,\unit{km}. The is later used to index a look-up table. Since no index is initialized for the model top due to NaN value, it may either crash the model or produce unpredictable result depending on what the pre-existing value in the corresponding memory location was. Older runs may see missing photolysis rates at their model tops as a result.
+\end{enumerate}
+
+\subsection{Changes made}\label{a-ssec:bug/ftuv/fix}
+	\begin{wraptable}{o}{0.5\textwidth}
+	\vspace{-.5in}
+		\begin{singlespacing}
+		\caption{Compaison of photolysis rates from FTUV and TUV.}
+		\centering
+		\begin{tabular}{p{0.1\textwidth}|p{0.16\textwidth}p{0.16\textwidth}} \hline
+		$z$ (\unit{km}) & \multicolumn{2}{c}{(FTUV-TUV)/TUV} \\ 
+		 & \multicolumn{1}{c}{$J(\chem{O_3})$} & \multicolumn{1}{c}{$J(\chem{NO_2})$} \\ \hline\hline
+		0	& +2.74\% & -11.8\% \\
+		2	& +4.51\% & -9.88\% \\
+		5	& +10.5\% & -9.63\% \\
+		7	& +13.7\% & -5.47\% \\
+		10	& +14.9\% & -3.00\% \\
+		20	& -8.64\% & -1.39\% \\
+		29	& -7.68\% & -1.90\% \\ \hline
+		\end{tabular}
+		\label{tab:bug/ftuv}
+		\end{singlespacing}
+	\vspace{-.3in}
+	\end{wraptable}
+
+The model top input for \textbb{photo\_inti} has now been changed to 30\,\unit{km}, the mean cloud top for the model set-up used in this study. The ozone column scaling has also been changed to 349\,\unit{DU}. Due to an overall low bias in stratospheric ozone in WRF-Chem, the ozone profile between 20--30\,\unit{km} (model levels) internal of FTUV has also been replaced by that from \textbb{o3ref}. With these changes, the FTUV-TUV comparison\footnote{The TUV code used here is an independent utility developed and implemented by Dr. Sasha Madronich at NCAR-ACD.} is shown in Table \ref{tab:bug/ftuv} for clear-sky condition with a solar zenith angle of $8.428^\circ$ with a surface albedo of 10\%. The remaining biases may be attributed to differences in actual ozone profiles used between WRF-Chem FTUV and the TUV code. It should also be noted that $J(\chem{NO_2})$ has slightly different cross-section int the two implementations, so differences are expected.
+
+\subsection{Miscellaneous problems}\label{a-ssec:bug/ftuv/misc}
+\begin{enumerate}
+	\item Diagnostic outputs recently added (v3.4.0+) for photolysis spectral and rate information (\textbb{radfld}, \textbb{adjcoe}, \textbb{prate}) are copied through \textbb{nz}, which is the number of FTUV model levels including exocolden levels (59 in this study). However, these variables were only defined for \textbb{nref}($:=51$) levels. Thus for simulations where \textbb{nz}$>51$, this statement is a guaranteed crash or out-of-bound access. This problem is patched for this study by removing the respective copy statements since the diagnostics are not used.
+	\item The surface albedo over sea water uses different data sets for MOZART and non-MOZART options. The concerning factor here is that the prescribed albedos is about an order of magnitude apart (e.g. 0.0747 for MOZART and 0.8228 for non-MOZART for the first spectral bin). No fix has been performed for this particular inconsistency due to lack of knowledge for the true value.
+	\item Photolysis cross sections and top-of-atmosphere solar flux have not been updated to more recent recommendations since FTUV's initial implementation in 2003. No direct changes have been made to these values, but constant scaling factors ($\alpha$) have been applied to several photolysis reactions that displayed significant biases during CALNEX 2010 flight measurements (\textit{C. Knote}, personal communication, 2013). These reactions include $\alpha(\chem{HNO_4})=0.35$, $\alpha(\chem{MGLY})=0.2$, and $\alpha(\chem{GLY})=0.14$, and $\alpha(\chem{H_2O_2})=1.4$.
+\end{enumerate}
 
 \section{Passive tracer-convective transport}\label{a-sec:bug/tracer}
