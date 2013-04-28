@@ -1,9 +1,128 @@
-\chapter{Namelist} \label{apdx:namelist}
+\chapter{WRF-Chem v3.4.1 Namelist} \label{apdx:namelist}
 
 \ifpdf
     \graphicspath{{Appendix/figures/PNG/}{Appendix/figures/PDF/}{Appendix/figures/}}
 \else
     \graphicspath{{Appendix/figures/EPS/}{Appendix/figures/}}
 \fi
-
-Namelist goes here.
+\begin{singlespacing}
+\begin{longtable}{p{2.0in}p{1.1in}p{3.0in}}
+{\bf Option(s)} & {\bf Value(s)} & {\bf Comment} \\ \hline  \\
+\hspace{-.2in}{\tt \&time\_control} \\
+{\tt (start|end)\_year} & 2006 \\
+{\tt (start|end)\_month} & (07{\tt|}08) \\
+{\tt (start|end)\_day} & (01--31) & {\tt end\_day} = {\tt start\_day} + 1 \\
+{\tt (start|end)\_hour} & 06 & Always start at 6\,\unit{UTC} \\
+{\tt interval\_seconds} & 21600 & Boundary condition input intervals (6 hours) \\
+{\tt history\_interval} & 180 & History output interval (3 hours) \\
+{\tt frame\_per\_outfile} & 1 \\
+{\tt restart} & {\tt .true.} & Only {\tt .false.} for July 1 \\
+{\tt restart\_interval} & 1440 & Daily restart \\
+\\
+\hspace{-.2in}{\tt \&domains} \\
+{\tt time\_step} & 90 + 0/1 & Time-step in seconds \\
+{\tt e\_we} & 180 & West-east domain dimension \\
+{\tt e\_sn} & 120 & South-north domain dimension \\
+{\tt e\_vert} & 51 & Vertical domain dimension \\
+{\tt dx,dy} & 36000 & Grid size (\unit{m}) \\
+{\tt p\_top\_requested} & 1000 & Model top pressure (\unit{Pa}) \\
+{\tt num\_metgrid\_levels} & 27 \\
+{\tt num\_metgrid\_soil\_levels} & 4 \\
+{\tt grid\_id} & 1 & No nesting \\
+{\tt eta\_levels} & $1.00000, 0.99381, \newline \vdots \newline 0.00560, 0.00000$ & 51 non-uniform fixed vertical resolution \\
+\\
+\hspace{-.2in}{\tt \&physics} \\
+{\tt mp\_physics} & 8 & ``New'' Thompson microphysics scheme \\
+{\tt progn} & 0 & No prognostic cloud droplet number \\
+{\tt ra\_lw\_physics} & 1 & Rapid Radiative Transfer Model (RRTM)\\
+{\tt ra\_sw\_physics} & 2 & Goddard two-stream shortwave scheme \\
+{\tt radt} & 30 & Minutes between radiative physics call \\
+{\tt sf\_sfclay\_physics} & 1 & Surface layer physics \\
+{\tt sf\_surface\_physics} & 2 & Noah Land Surface Model \\
+{\tt bl\_pbl\_physics} & 1 & Yonsei University (YSU) scheme \\
+{\tt cu\_physics} & 5 & Grell-3D (G3) cumulus scheme \\
+{\tt cudt} & 0 & Call convection every time step\\
+{\tt prec\_acc\_dt} & 180 & Bucket for precipitation (\unit{min}) \\
+{\tt isfflx} & 1 & Turn on sensible and latent surface heat flux \\
+{\tt ifsnow} & 0 & Turn off snow effect on optical depth \\
+{\tt icloud} & 1 & Turn on cloud \\
+{\tt surface\_input\_source} & 1 & WPS/geogrid default surface category \\
+{\tt num\_soil\_layers} & 4 \\
+{\tt sf\_urban\_physics} & 0 & Turn off urban physics \\
+{\tt maxiens} & 1 & (not used?) \\
+{\tt maxens, maxens2, maxens3 } & 3, 3, 16 & G3 ensemble dimensions\\
+{\tt ensdim} & 144 & G3 ensemble dimension \\
+{\tt cu\_rad\_feedback} & {\tt .true.} & Cumulus radiative feedback \\
+{\tt ishallow} & 1 & Turn on shallow convection \\
+{\tt cu\_diag} & 1 & Turn on cumulus diagnostics \\
+\\
+\hspace{-.2in}{\tt \&fdda} \\
+{\tt grid\_fdda} & 1 & Turn on grid 4D data assimilation (GFDDA) \\
+{\tt gfdda\_inname} & {\tt "wrffdda\_d<domain>"} \\
+{\tt gfdda\_end\_h} & 10000 & End hour (``never'') \\
+{\tt gfdda\_interval\_m} & 360 & Interval of grid \\
+{\tt fgdt} & 0 & Nudge every time step \\
+{\tt if\_no\_pbl\_nuding\_(uv,t,q)} & 0,1,1 & Only do nudging for wind in PBL. \\
+{\tt (if,k)\_zfac\_uv} & 1,10 & Limit nudging to above level 10 \\
+{\tt if\_zfac\_(t|q)} & 0 \\
+{\tt guv, gt} & 0.0024 & Nudging coefficients (\unit{s^{-1}}) \\
+{\tt gq} & 0.0012 & Nudging coefficient (\unit{s^{-1}}) \\
+{\tt if\_ramping} & 1 & Ramp down nudging at the end of period \\
+{\tt dtramp\_min} & 60.0 & Ramp down time (\unit{min}) \\
+{\tt io\_form\_gfdda} & 2 & NetCDF format for GFDDA data \\
+\\
+\hspace{-.2in}{\tt \&dynamics} \\
+{\tt rk\_ord} & 3 & Runge-Kutta 3rd order \\
+{\tt w\_damping} & 1 & Damping for vertical velocity \\
+{\tt diff\_opt} & 1 & Evaluates 2nd order diffusion term on coordinate surfaces \\
+{\tt km\_opt} & 4 & Horizontal Smagorinsky first order closure \\
+{\tt base\_temp} & 290 & Base-state temperature (\unit{K}) \\
+{\tt zdamp} & 5000 & Damping depth (\unit{m}) from model top \\
+{\tt damp\_opt} & 3 & Rayleigh damping \\
+{\tt dampcoef} & 0.2 & Rayleigh damping coefficient (\unit{s^{-1}}) \\
+{\tt non\_hydrostatic} & {\tt .true.} \\
+{\tt *\_adv\_opt} & 2 & Positive definite and monotonic advection for {\tt moist}, {\tt scalar}, {\tt chem}, and {\tt tracer} \\
+{\tt time\_step\_sound} & 4 & Number of sound steps per time step \\
+{\tt (h,v)\_(mon|sca)\_adv\_order} & 5, 3 & Horizontal and vertical advection orders for momentum and scalar \\
+{\tt tracer\_opt} & 4 & 8 twin tracers + 2 lightning tracers \\
+\\
+\hspace{-.2in}{\tt \&bdy\_control} \\
+{\tt spec\_bdy\_width} & 5 & Number of rows for specified boundary value nudging \\
+{\tt spec\_zone} & 1 & Specified zone \\
+{\tt relax\_zone} & 4 & Relaxation zone \\
+{\tt specified} & {\tt .true.} & Specified boundary condition \\
+{\tt nested} & {\tt .false.} \\
+\\
+\hspace{-.2in}{\tt \&chem} \\
+{\tt kemit} & 19 & Number of levels in emission files \\
+{\tt chem\_opt} & 101 & RADM2-KPP option, no aerosol \\
+{\tt bioemdt} & 1.5 & Update time (\unit{min}) for biogenic emissions \\
+{\tt chemdt} & 1.5 & Update time (\unit{min}) for chemistry \\
+{\tt io\_style\_emissions} & 1 & Two 12-hr emission files \\
+{\tt emiss\_inpt\_opt} & 1 & Speciate emission for RADM2/SORGAM \\
+{\tt emiss\_opt} & 2 & RADM2-speciated anthropogenic emission \\
+{\tt chem\_in\_opt} & 0 & Use chemistry from \texttt{wrfinput\_d*} \\
+{\tt phot\_opt} & 3 & FTUV photolysis (see Appendix\,\ref{a-sec:bug/ftuv})\\
+{\tt photdt} & 30 & Update time (\unit{min}) for photolysis \\
+{\tt (gas|aer)\_drydep\_opt} & 1 & Include dry deposition \\
+{\tt bio\_emiss\_opt} & 3 & MEGAN2 biogenic emission \\
+{\tt (dust|dmsemis|seas)\_opt} & 0 & Turn off dust, DMS, and sea salt options \\
+{\tt gas\_(bc|ic)\_opt} & 1 & Use BC and IC for gas species \\
+{\tt aer\_(bc|ic)\_opt} & 0 & No BC and IC for aerosols \\
+{\tt gaschem\_onoff} & 1 & Turn on gas-phase chemistry \\
+{\tt (aer|cld)chem)\_onoff} & 0 & Turn off aerosol and cloud chemistry \\
+{\tt wetscav\_onoff} & 0 & Turn off wet scavenging \\
+{\tt vertmix\_onoff} & 1 & Turn on vertical mixing \\
+{\tt chem\_conv\_tr} & 1 & Turn on convective transport for chemical species \\
+{\tt biomass\_burn\_opt} & 0 & No biomass burning \\
+{\tt aer\_ra\_feedback} & 0 & No aerosol radiative feedback  \\
+{\tt have\_bcs\_chem} & {\tt .true.} \\
+{\tt lightning\_opt} & 101 & Cloud-parameterized PR92. \\
+{\tt lightning\_start\_seconds} & 900 \\
+{\tt lightning\_time\_step} & 90 & In seconds, i.e. every time step \\
+{\tt N\_IC} & 350 & Moles \chem{NO}  per flash (independent of IC or CG) \\
+{\tt flash\_factor} & 1.0 & Linear flash rate tuning factor \\
+{\tt passive\_ltng} & 1 & Emit passive L\chem{NO_x} tracer \\
+{\tt chem\_diag} & 1 & Produce tendency diagnostics \\
+\end{longtable}
+\end{singlespacing}
