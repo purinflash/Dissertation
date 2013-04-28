@@ -152,9 +152,8 @@ that there is no dependence of $c$ on latitude, longitude, or season. For the
 grid sizes used in this study, the values of $c$ are 0.9774 for
 36\,\unit{km}, 0.973 for 12\,\unit{km}, and 0.9725 for 4\,\unit{km}.
 
-
 \begin{table}[t]
-\caption{WRF simulations performed in this study.}
+\caption{WRF simulations performed for lightning parameterization study.}
 \begin{tabular}{ccccc} \tophline
 Case \# & d$x$ (km) & d$t$ (\unit{s}) & Output &
 Duration \\
@@ -197,7 +196,7 @@ the convective parameterization, readers are encouraged to refer to
 
 \begin{figure}[t]
       \includegraphics[width=8.3cm]{gmd-2012-94-f01.pdf}
-      \caption{Non-nested domains for WRF simulations and region for analysis.}
+      \caption[Domain for lightning simulations]{Non-nested domains for WRF simulations and region for analysis.}
       \label{fig:lightning/domain}
 \end{figure}
 
@@ -283,7 +282,8 @@ and statistical comparisons.
 
 \begin{figure*}[t]
 \includegraphics[width=120mm]{gmd-2012-94-f02-new.pdf}
-\caption{Spatial distribution of 2006 and 2011 JJA total precipitation in
+\caption[Spatial distribution of JJA total precipitation in 2006 and 2011]
+{Spatial distribution of 2006 and 2011 JJA total precipitation in
 millimeters. \textbf{(a)} and \textbf{(c)}~are NWS precipitation degraded to
 12\,\unit{km} resolution. \textbf{(b)} and \textbf{(d)} are 36\,\unit{km}
 WRF-simulated total precipitation over the same periods with data above water
@@ -340,7 +340,8 @@ generate flash statistics.
 
 \begin{figure*}[t]
       \includegraphics[width=120mm]{gmd-2012-94-f03-new.pdf}
-      \caption{Time series and frequency distributions for JJA 2006
+      \caption[Time series and frequency distribution for 2006 and 2011 daily precipitation]
+{Time series and frequency distributions for JJA 2006
           and 2011 area-averaged daily precipitation within the
           analysis region (see Fig.~\ref{fig:lightning/domain}). Distributions
           for NWS are scaled by the ratios between total grid counts in
@@ -384,7 +385,7 @@ distribution where limits of model grid resolution induces significant noise.
 
 \begin{figure*}[t]
       \includegraphics[width=120mm]{gmd-2012-94-f04.pdf}
-      \caption{Total CG flashes in number per \unit{km^2} per
+      \caption[Spatial distribution of NLDN and WRF-predicted CG flash counts]{Total CG flashes in number per \unit{km^2} per
           full-year during JJA 2006 (first row) and 2011 (second
           row). First column (\textbf{a}~and \textbf{c}) shows the NLDN observed
           density gridded to WRF 36 model grid, and second column
@@ -429,7 +430,7 @@ defects.
 
 \begin{figure*}[t]
 \includegraphics[width=120mm]{gmd-2012-94-f05.pdf}
-\caption{Comparisons of time series and frequency distributions between NLDN
+\caption[NLDN and WRF CG flash counts]{Comparisons of time series and frequency distributions between NLDN
 CG flash counts (black) and WRF predicted CG flash counts (red) at
 36\,\unit{km} within the analysis domain defined in Fig.~\ref{fig:lightning/domain}.
 Total flash counts predicted by WRF are shown as dotted red lines.}
@@ -438,7 +439,7 @@ Total flash counts predicted by WRF are shown as dotted red lines.}
 
 \begin{figure}[t]
 \includegraphics[width=80mm]{gmd-2012-94-f06.pdf}
-\caption{Total CG flashes (\#) versus area-mean daily precipitation
+\caption[CG flashes vs. precipitation]{Total CG flashes (\#) versus area-mean daily precipitation
 (\unit{mm}) within the analysis domain (Fig.~\ref{fig:lightning/domain}). Solid line is
 the least-square linear fit and dashed lines are $\pm1\sigma$ for both the
 constant terms and first-order coefficients. WRF is simualted at
@@ -494,14 +495,15 @@ precipitation.
 
 \begin{figure}[t]
 \includegraphics[width=80mm]{gmd-2012-94-f07.pdf}
-\caption{Total lightning and CG flash rates computed using PR92 and PR93 for
+\caption[PR92-predicted total lightning as a function of cloud-top]
+{Total lightning and CG flash rates computed using PR92 and PR93 for
 various cloud-top heights and freezing levels, demonstrating the source of
 spectral cut-off in Fig.~\ref{fig:lightning/cgslope}.} \label{fig:lightning/pr9293}
 \end{figure}
 
 \begin{figure}[t]
 \includegraphics[width=80mm]{gmd-2012-94-f08.pdf}
-\caption{IC\,:\,CG bulk ratios for JJA 2011 as \textbf{(a)} observed by
+\caption[ENTLN and predicted IC:CG bulk ratios]{IC\,:\,CG bulk ratios for JJA 2011 as \textbf{(a)} observed by
  ENTLN and \textbf{(b)} predicted by WRF at 36\,\unit{km} grid spacing
  using PR93. The ENTLN detection efficiency used here is
  0.65 for IC and 0.95 for CG. }
@@ -576,7 +578,7 @@ Sect.~\ref{ssec:lightning/flashrate}.
 
 \begin{figure*}[t]
 \includegraphics[width=140mm]{gmd-2012-94-f09.pdf}
-\caption{Comparison of WRF predicted lightning flash counts generated online
+\caption[ENTLN and predicted total lightning]{Comparison of WRF predicted lightning flash counts generated online
 and offline with and without $-2$\,\unit{km} cloud-top height adjustments
 against ENTLN CG and total flash counts. Thicknesses of the ENTLN bands in
 the time series are computed using the minimum and maximum theoretical IC and
@@ -591,7 +593,8 @@ distribution.}
 
 \begin{figure}[t]
       \includegraphics[width=80mm]{gmd-2012-94-f10.pdf}
-      \caption{Time series and frequency distributions of 3-hourly CG flash counts compared to NLDN at gridded to 12\,\unit{km}.
+      \caption[Resolution-dependency of lightning prediction]
+	{Time series and frequency distributions of 3-hourly CG flash counts compared to NLDN at gridded to 12\,\unit{km}.
       The WRF 36\,\unit{km} distribution is adjusted by $\times9$ to account for the grid per area difference. The choice of
       computing the distributions for flash rate per grid as opposed to flash density is to demonstrate the consistency of
       the spectral drop-off at different resolutions.}
@@ -600,7 +603,8 @@ distribution.}
 
 \begin{figure}[t]
       \includegraphics[width=80mm]{gmd-2012-94-f11.pdf}
-      \caption{Time series and frequency distributions of hourly CG flash counts within
+      \caption[Formulation dependency of lightning prediction]
+	{Time series and frequency distributions of hourly CG flash counts within
       the analysis domain as observed by NLDN and simulated by WRF at 4\,\unit{km} grid spacing.}
       \label{fig:lightning/4kmseries}
 \end{figure}
