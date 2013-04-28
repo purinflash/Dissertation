@@ -5,3 +5,861 @@
 \else
     \graphicspath{{Chapter_lightning/figures/EPS/}{Chapter_lightning/figures/}}
 \fi
+
+Over the last decade, predictions of lightning flash statistics in numerical
+weather and climate models have garnered increasing interests. One of the
+likely drivers is the advances in online chemistry models, wherein chemistry
+is simulated alongside of physics \citep[e.g.,][]{Grell:2005fv}.
+Lightning-generated nitrogen oxides (\lnox) are predicted to be very
+efficient in accelerating the production of tropospheric ozone, which is
+identified as a significant greenhouse gas in the upper troposphere
+\citep{Lacis:1990fk,Kiehl:1999uq}. \citet{Cooper:2007cr}, showing that during
+the summertime North American Monsoon, lightning can contribute 25--30\,ppbv
+of upper tropospheric ozone. \citet{Choi:2009bh} has remarked on the increasing
+importance of \chem{LNO_x} in tropospheric ozone production as anthropogenic
+sources of \chem{NO_x} are being reduced in the United States. Furthermore,
+the inherent nonlinearity between \chem{NO_x} emission and commonly validated
+quantities such as radiative balances and ozone concentration makes it
+challenging to quantify the skill of a {\lnox} parameterization through
+proxy or total \chem{NO_x} measurements. Therefore, it is important to
+evaluate existing lightning parameterizations by directly validating flash
+rate predictions in order to more accurately interpret results from models
+that incorporate {\lnox} emission.
+
+
+The most commonly used method for parameterizing lightning flash rate is
+perhaps that by \citet{Price:1992wb,Price:1993fk,Price:1994fk}. It has been
+used by chemistry transport modeling studies such as GEOS-Chem
+\citep{Hudman:2007fu}, MOZART-4 \citep{Emmons:2010fk}, and CAM-Chem
+\citep{Lamarque:2012fk}. Continental flash rates are related to the
+fifth-power of cloud-top height by \citet{Williams:1985fk} and
+\citet[][hereafter PR92]{Price:1992wb} through empirical evidences that are
+consistent with the theoretical scaling arguments of \citet{Vonnegut:1963aa}.
+The partitioning between intracloud and cloud-to-ground flashes, or IC\,:\,CG
+ratio, is estimated with a fourth-order polynomial of cold cloud-depth, i.e.,
+distance between freezing level and cloud-top, in \citet[][hereafter
+PR93]{Price:1993fk}. Finally, the parameterization is generalized for
+different grid sizes with an extrapolated ``calibration factor'' in
+\citet[][hereafter PR94]{Price:1994fk}.
+
+The goals of this study are to evaluate the cloud-top height based
+parameterization (PR92, PR93, and PR94) across the bridging resolutions
+between those commonly used by global chemistry models ($\Delta x\sim
+\mathrm{O}(1\degree)$) and cloud-resolving models ($\Delta x <
+5\,\unit{km}$), and report on statistics over time periods useful for
+studying upper tropospheric chemistry (O(\unit{month}))
+\citep{Stevenson:2006fk}. It is, however, not the goal of this study to
+invalidate previous studies, but to draw attention to the need for careful
+implementation and validation of the use of these parameterizations. Here we
+report on experiments using PR92, PR93, and PR94 implemented into the Weather
+Research and Forecasting model \citep[WRF;][]{Skamarock:2008xx}, focusing on
+results from simulations performed at 36\,\unit{km} and 12\,\unit{km}
+grid-spacing. A simulation at 4\,\unit{km} grid spacing for 2\,weeks in July
+and August 2006 is also analyzed to demonstrate how PR92 behaves
+transitioning from cloud-parameterized to cloud-permitting resolutions and
+provide insights on how or whether such transition can be done.
+
+ Similar studies have been performed for global models \citep[e.g.,][]{Tost:2007rw},
+ but previous regional-scale modeling studies utilizing PR92 at comparable horizontal
+ grid spacings have not provided evaluations of the lightning parameterization. Thus,
+ there has been insufficient information to understand the behavior of PR92 in this regime.
+ Even though these formulations were derived using near-instantaneous data at a cloud-permitting
+ resolution (5\,\unit{km}), past applications often utilize temporally and spatially averaged cloud-top
+ height outputs or proxy parameters. While the effects of spatial averaging is addressed by the PR94
+ scaling factor, effects of temporally averaging cloud-top heights are rarely addressed and may lead
+ to significant underestimation due to the fifth-power sensitivity \citep{Allen:2002fk}. Addressing
+ the potential issue of temporal averaging, instantaneous cloud-top heights and updraft velocities
+ at each time step are leveraged. Comparisons are then performed for temporal, spatial, and spectral features.
+
+The next section (Sect.~\ref{sec:method}) outlines the methods used in this
+study, which includes the formulation and overview of the parameterization
+(Sect.~\ref{ssec:param}), relevant aspects of the model setup, practical
+considerations of implementing PR92 (Sect.~\ref{ssec:model}), and the data
+used for validation (Sect.~\ref{ssec:data}). Section~\ref{sec:results}
+describes the model results and discusses the implications of various
+statistics from validation against observations of precipitation, flash rate,
+and IC\,:\,CG ratios. Section~\ref{sec:resolution} discusses how the
+performance of PR92 transitions between different resolutions
+(Sect.~\ref{ssec:gridsens}) and between theoretically similar formulations
+(Sect.~\ref{ssec:formsens}). Finally, Sect.~\ref{sec:conclusions} provides
+a summary of key results and cautionary remarks on specific aspects of the
+utilization of PR92, PR93, and PR94.
+
+\section{Methods}\label{sec:method}
+\subsection{Parameterization overview}\label{ssec:param}
+
+In PR92, a fifth-power relation between continental lightning flash rate
+($f_\textrm{c}$) and cloud-top height ($z_{\mathrm{top}}$) is established with
+observational data following the theoretical and empirical frameworks of
+\citet{Vonnegut:1963aa} and \cite{Williams:1985fk}. Assuming a dipole
+structure with two equal but opposite charge volumes and a cloud aspect ratio
+of approximately one, it is first formulated, based on scaling arguments of
+\citet{Vonnegut:1963aa}, that the flash rate would be proportional to maximum
+vertical updraft velocity ($w_{\max}$) and fourth-power of cloud dimension.
+Imposing a linear relation between $w_{\max}$ and cloud dimension, the flash
+rate relationship can be reduced to fifth power of $z_{\mathrm{top}}$
+\citep{Williams:1985fk}. It is empirically fit to radar and flash rate data
+from several measurements between 1960--1981 to give the continental
+equation \citep{Price:1992wb}:
+\begin{equation}\label{eq:f_c(z)}
+f_{\mathrm{c}}(z_{\mathrm{top}}) = 3.44\times10^{-5}z_{\mathrm{top}}^{4.9}.
+\end{equation}
+PR92 also estimated that $w_{\max}=1.49z_{\mathrm{top}}^{1.09}$ for
+continental clouds, thus allowing a second formulation based on maximum
+convective updraft:
+\begin{equation}\label{eq:f_c(w)}
+ f_{\mathrm{c}}(w_{\max}) = 5\times10^{-6}w_{\max}^{4.54}.
+ \end{equation}
+A separate formulation of second-order, instead of fifth-order, is also
+derived by \cite{Price:1992wb} for marine clouds, for which updraft velocity
+is observed to be significantly slower:
+\begin{equation}\label{eq:f_mPR92}
+f_{\mathrm{m
+(PR92)}}(z_{\mathrm{top}})=6.2\times10^{-4}z_{\mathrm{top}}^{1.73}.
+ \end{equation}
+Taking into account effects from cloud condensation nuclei,
+\cite{Michalon:1999fk} modified the marine equation to fifth-order:
+\begin{equation}\label{eq:f_mM99}
+ f_{\mathrm{m (M99)}}(z_{\mathrm{top}}) =
+ 6.57\times10^{-6}z_{\mathrm{top}}^{4.9}.
+ \end{equation}
+The practical viability of the continental relation was proven by
+\citet{Ushio:2001kx} and \cite{Yoshida:2009vn} through several case studies.
+However, \cite{Boccippio:2002uq} showed that the marine equations are
+formally inconsistent with \citet{Vonnegut:1963aa}, and that the marine
+equations cannot be inverted to produce cloud tops within the range of
+cloud-top observations.
+
+\citet{Price:1993fk} used the flash data from eleven states in the western
+United States, detected by wide-band magnetic direction finders, in
+combination with thunderstorm radar and radiosondes data to find a relation
+for the IC\,:\,CG ratio ($Z$) from cold-cloud depth ($d$), defined as the
+distance from freezing level to cloud-top.
+\begin{equation}\label{eq:Z}
+Z = 0.021d^4-0.648d^3+7.49d^2-36.54d + 63.09
+\end{equation}
+
+In \citet{Price:1994fk}, a ``calibration factor'' ($c$) for the resolution
+dependency of PR92 is introduced by regridding 5\,\unit{km} data between 1983
+and 1990 from the International Satellite Cloud Climatology Project dataset
+\citep[ISCCP;][]{Rossow:1991aa} to different horizontal grid sizes. The
+resulting equation is as follows:
+      \begin{equation}\label{eq:calib}
+            c = 0.97241\exp(0.048203R)
+      \end{equation}
+where $R$ is the grid area in squared degrees. \citet{Price:1994fk} claim
+that there is no dependence of $c$ on latitude, longitude, or season. For the
+grid sizes used in this study, the values of $c$ are 0.9774 for
+36\,\unit{km}, 0.973 for 12\,\unit{km}, and 0.9725 for 4\,\unit{km}.
+
+
+\begin{table}[t]
+\caption{WRF simulations performed in this study.}
+\begin{tabular}{ccccc} \tophline
+Case \# & d$x$ (km) & d$t$ (\unit{s}) & Output &
+Duration \\
+\middlehline
+1 & 36 & 90 & hourly & JJA 2006 \\
+2 & 36 & 90 & hourly & JJA 2011 \\
+3 & 12 & 36 & 3-hourly &Jul 2011 \\
+4 & 4 & 12 & hourly &25 Jul--7 Aug 2006 \\
+\bottomhline
+\end{tabular}
+\label{tab:setup}
+\end{table}
+
+\subsection{Model setup and implementation}\label{ssec:model}
+
+Simulations in this study are performed using the Weather Research and
+Forecasting (WRF) model version 3.2.1 \citep{Skamarock:2008xx} over the
+contiguous United States (CONUS), including part of Mexico and Canada
+(Fig.~\ref{fig:domain}). The simulations have slightly different model
+domains because the simulations were developed and performed for objectives
+independent of validating the lightning parameterization. Meteorology is
+initialized and continuously nudged (horizontal winds, temperature, water
+vapor) with the National Center for Environmental Prediction (NCEP) Global
+Forecasting System (GFS) final (FNL) gridded analysis at 6\,h intervals
+(00:00~UTC, 06:00~UTC, 12:00~UTC, 18:00~UTC). Four simulations are performed~(Table~\ref{tab:setup}),
+two at 36\,\unit{km} grid spacing, one at 12\,\unit{km} grid spacing, and one
+at 4\,\unit{km} grid spacing. All cases use the same vertical coordinates
+with 51 sigma levels up to 10\,\unit{hPa}. The Grell--Devenyi ensemble
+convective parameterization \citep{Grell:2002bs} with \citet{Thompson:2008vn}
+microphysics is used for the simulations where grid-spacing $\Delta x >
+10$\,km, for which a convective parameterization is needed. The
+implementation of the GD scheme employed in this study consists of $3 \times
+3 \times 16=144$ ensemble members comprising of interactions between
+different dynamic control and static control/feedback closures. The maximum
+moist static energy (MSE) is then used as input with entrainment to calculate
+the level neutral buoyancy (LNB), or cloud top. For further information about
+the convective parameterization, readers are encouraged to refer to
+\citet{Grell:1993dz}.
+
+
+
+
+
+\begin{figure}[t]
+      \includegraphics[width=8.3cm]{gmd-2012-94-f01.pdf}
+      \caption{Non-nested domains for WRF simulations and region for analysis.}
+      \label{fig:domain}
+\end{figure}
+
+Since the simulations were designed independently, some physics options used
+are not consistent. The planetary \mbox{boundary} layer (PBL) parameterization is
+handled by the Yonsei University scheme \citep{Hong:2006fk} at 36\,\unit{km}
+and Mellon--Yamada--Janjic (MYJ) scheme \citep{Janjic:1994fk} at 12\,\unit{km}
+and 4\,\unit{km}. At 36\,\unit{km}, the surface layer physics option used is
+based on Monin--Obukhov similarity theory. The surface layer option used at
+12\,\unit{km} and 4\,\unit{km} is also based on Monin-Obukhov theory but
+includes Zilitinkevich thermal roughness length.
+
+While theoretically the scaling argument of \citet{Vonnegut:1963aa} does not
+distinguish between definitions of cloud-top height, the data used to derive
+the PR92 relation are radar reflectivity cloud-top heights at a certain
+reflectivity threshold. In the WRF implementation of Grell--Devenyi convective
+parameterization, the level of neutral buoyancy (LNB) is computed, with
+convective entrainment and detrainment accounted for within the calculation
+of cloud moist static energy, and readily available as a proxy for sub-grid
+cloud-top height. Thus, instead of 20\,\unit{dBZ} reflectivity cloud top,
+$z_{\mathrm{top}}$ is approximated by reducing LNB by 2\,\unit{km}, which
+will be shown to produce results within the range of the observed values. The
+choice of 2\,\unit{km} reduction is made independent of, but supported by, a
+recent study comparing different definitions of LNB and found the traditional
+``parcel'' method definition of LNB over estimates the level of maximum
+detrainment by 3\,\unit{km} \citep{Takahashi:2012uq}. Appendix~\ref{apdx:ktop} contains detailed discussions of the choice of 2\,\unit{km}
+cloud-top reduction and how it compares to offline computations of
+20\,\unit{dBZ} cloud tops. Alternative methods for estimating the difference
+between the two heights can be formulated by directly taking into account
+their respective definitions. However, echoing \cite{Barthe:2010uq}, such
+addition of complexity increases the number of sources for uncertainty,
+especially in the context of parameterized convection. Similarly, using
+modeled cloud particle variables would also add an additional level of
+sensitivity due to sub-grid variability in hydrometeor mixing ratios.
+Therefore, reflectivity calculations are only performed in the 4\,\unit{km}
+simulation and only for the purpose of redistributing lightning flashes
+horizontally as described below.
+
+For case 4 (Table~\ref{tab:setup}), convection is explicitly simulated with a
+modified \citet{Lin:1983zr} microphysics scheme. Since no convective
+parameterization is used, the resolved maximum vertical velocities
+($w_{\max}$) within the convective core are utilized \citep{Barth:2012qf},
+and Eq.~(\ref{eq:f_c(w)}) is used instead of Eq.~(\ref{eq:f_c(z)}) for
+estimating flash rate. In addition, since a single storm may often cover
+multiple model grids, flashes are redistributed to within regions with a
+minimum reflectivity of 20\,\unit{dBZ} calculated using hydrometeor (rain,
+snow, graupel) information that is now better constrained at 4\,\unit{km}.
+The IC\,:\,CG ratio is prescribed using a coarse version of the
+\cite{Boccippio:2001ys} 1995--1999 climatological mean, which was computed
+using data from the Optical Transient Detector
+\citep[OTD;][]{Christian:1996aa} and the National Lightning Detection Network
+\citep[NLDN;][]{5173582}. Because PR92 developed Eq.~(\ref{eq:f_c(w)}) based
+on data at 5\,\unit{km} resolution, no resolution scaling is done to this
+simulation. Because this particular simulation was driven by the meteorology
+of its own WRF outer domains, it is restarted ``cold'' on 2~August to be
+consistent with the outer domain meteorology.
+
+Most of the implementations used in these simulations are arguably
+``untuned'' and not scaled to climatology or observations by any additional
+tuning factors, with the exceptions of the 2\,\unit{km} cloud-top height
+reduction used in the cases with parameterized convection and the prescribed
+climatological IC\,:\,CG ratios in case 4. Therefore, the correctness and
+predictiveness of the flash rate parameterization are not guaranteed at the
+time of the simulation given the lack of supporting validations of PR92 at
+the tested grid spacings. However, without feedback to the meteorology
+(except in case 4) and providing sufficient linearity in the biases of flash
+prediction, offline comparisons should reveal any tuning requirements for
+operational and research uses.
+
+\subsection{Data description}\label{ssec:data}
+
+While desirable, event-by-event analysis would be technically challenging
+because the simulation may not produce the same strength, timing, and
+location of each convective event. Furthermore, an event-by-event analysis is
+unnecessary in the context of a mesoscale upper tropospheric chemistry study,
+of which the meaningful timescales often average biases from many individual
+events. Therefore, a large area where thunderstorms commonly occur is
+selected. The ``analysis domain,'' defined as 30\degree -- 45\degree N,
+80\degree -- 105\degree W (Fig.~\ref{fig:domain}), is used for time series
+and statistical comparisons.
+
+
+\begin{figure*}[t]
+\includegraphics[width=120mm]{gmd-2012-94-f02-new.pdf}
+\caption{Spatial distribution of 2006 and 2011 JJA total precipitation in
+millimeters. \textbf{(a)} and \textbf{(c)}~are NWS precipitation degraded to
+12\,\unit{km} resolution. \textbf{(b)} and \textbf{(d)} are 36\,\unit{km}
+WRF-simulated total precipitation over the same periods with data above water
+surfaces masked out.} \label{fig:precipmap}
+\end{figure*}
+
+
+
+The predicted lightning properties depend strongly on how the model simulates
+convection. Thus, in Sect.~\ref{ssec:precip}, WRF simulated precipitation
+is compared against National Weather Service (NWS) precipitation products to
+evaluate the model's skill in representing convective strengths. The data are
+collected from radars and rain gauges and \mbox{improved} upon using a Multi-sensor
+Precipitation Estimator (MPE). Manual post-analyses are then performed by
+forecasters to identify systematic errors
+(\url{http://www.srh.noaa.gov/abrfc/?n=pcpn\_methods}). The final data products
+used here are mosaic CONUS precipitation maps from 12\,River Forecast Centers
+(RFCs) during JJA 2006 and 2011. The data are gridded into 4\,\unit{km}
+resolution and are available as 24\,h totals over a hydrological day
+beginning and ending at 12:00~UTC.
+
+The simulated CG flash counts, computed online as predicted total flashes
+$\times$ predicted CG fraction, are compared against data from the Vaisala
+US National Lightning Detection Network \citep[NLDN;][]{5173582}. The
+network provides continuous multiyear CONUS and Canada coverage of
+$>90\,{\%}$ of all CG flashes with ongoing network-wide upgrades
+\citep{Orville:2002uq,Orville:2010uq}. The median location accuracy is
+250\,\unit{m}, which is well within the resolutions employed in this study.
+Multiple strokes are aggregated into a single flash if they are within 1\,s and no more than 10\,\unit{km} apart. Weak positive flashes with
+$<15\,\unit{kA}$ have been filtered from all data. Finally, the flash data
+are binned into hourly flash counts for each model grid cell for comparison
+against model output.
+
+Data from Earth Networks Total Lightning Network (ENTLN), previously
+WeatherBug Total Lightning Network (WTLN), are used to validate the
+model-produced IC\,:\,CG ratios. ENTLN employs a wide-band system that
+operates between 1\,\unit{Hz} to 12\,\unit{MHz} \citep{Liu:2011vn}. The
+theoretical detection efficiency (DE) for CG flashes across CONUS is
+90--99\,{\%}, while the IC DE falls between 50--95\,{\%} (50--85\,{\%} within
+the analysis domain). Since the mappings of the corresponding DEs are not
+available with the data, 95\,{\%} and 65\,{\%} are used for CG and IC DEs,
+respectively, in analyses for which a prescribed DE is required. To address
+the concern of the impact of this simplification, the range of possible flash
+counts, IC\,:\,CG ratios, and biases will be provided when appropriate within
+the discussion in Sect.~\ref{sec:results} to place bounds on the
+uncertainty. Due to the limited deployment duration of the network, only the
+IC\,:\,CG ratios during JJA 2011 within the analysis domain (see
+Fig.~\ref{fig:domain}) are estimated and compared. For consistency with the
+comparisons against NLDN CG flash counts, the stroke aggregation criteria
+used here are 10\,\unit{km} and 1\,s as done by NLDN, instead of the
+10\,\unit{km} and 700\,\unit{ms} window typically used by Earth Networks to
+generate flash statistics.
+
+\begin{figure*}[t]
+      \includegraphics[width=120mm]{gmd-2012-94-f03-new.pdf}
+      \caption{Time series and frequency distributions for JJA 2006
+          and 2011 area-averaged daily precipitation within the
+          analysis region (see Fig.~\ref{fig:domain}). Distributions
+          for NWS are scaled by the ratios between total grid counts in
+          WRF at 36\,\unit{km} and total grid counts in NWS within the
+          analysis boundaries ($\sim1/78$). WRF subgrid is the portion
+          of precipitation from subgrid cumulus parameterization. Only
+          grid points with more than 1 mm of precipitation are
+          included.}
+      \label{fig:precipseries}
+      \label{fig:precipseries}
+\end{figure*}
+
+
+
+\section{Results and discussions}\label{sec:results}
+
+\subsection{Precipitation}\label{ssec:precip}
+
+While lightning does not directly depend on precipitation, they are both the
+results of the same processes that promote ice--graupel collisions. Further,
+precipitation is observed robustly and continuously, thus giving us a high
+quality measurement for validating model results. On the other hand, while
+convective mass flux may produce a more consistent correlation with
+lightning, the lack of well-controlled direct observations and the large
+uncertainty in model calculations make it an inferior proxy for convective
+strength in this context.
+
+Figure~\ref{fig:precipmap} shows the total precipitation during JJA 2006 and
+2011 over the CONUS as simulated at 36\,\unit{km} grid spacings by WRF and
+observed by NWS. The gradients across the CONUS for both years are well
+captured by the model, but WRF has a high bias for 2006. WRF also simulates
+up to an order of magnitude more precipitation for coastal regions for both
+years but primarily for 2006. The time series for mean daily area-averaged
+precipitation and frequency distributions for JJA 2006 within the analysis
+domain (Fig.~\ref{fig:precipseries}a and c) also reveal a median model bias
+of 37\,{\%}. In particular, WRF predicted more than twice the precipitation
+between late-June and mid-July in 2006. In contrast, the median bias for 2011
+is 4.9\,{\%} with almost equal occurrence of over- and under-predictions. The
+model frequency distribution for both years also closely track those observed
+(Fig.~\ref{fig:precipseries}c and d) except at the high end of the
+distribution where limits of model grid resolution induces significant noise.
+
+\begin{figure*}[t]
+      \includegraphics[width=120mm]{gmd-2012-94-f04.pdf}
+      \caption{Total CG flashes in number per \unit{km^2} per
+          full-year during JJA 2006 (first row) and 2011 (second
+          row). First column (\textbf{a}~and \textbf{c}) shows the NLDN observed
+          density gridded to WRF 36 model grid, and second column
+          (\textbf{b} and \textbf{d}) shows the modeled flash density output by
+          WRF at 36\,\unit{km}.}
+      \label{fig:cgmap}
+\end{figure*}
+
+
+The simulated daily precipitation at 12\,\unit{km} is higher than the NWS
+observed precipitation by 24\,{\%} during July 2011. However, an anomalously
+strong diurnal cycle is simulated at 12\,\unit{km} grid spacing that is not
+present in the 36\,\unit{km} simulation. Comparing the area-averaged
+12\,\unit{km} nocturnal precipitation over the entire analysis domain to that
+of 36\,\unit{km} output, nocturnal precipitation at 12\,\unit{km} is too low
+but the daytime precipitation is too high. One-day simulations were
+performed to evaluate the impact from the differences in model physics, but
+there remained significant unidentified discrepancies between the
+precipitation amount in the two runs that cannot be explained by horizontal
+resolution differences alone; thus, it is concluded that there is no value in
+redoing the entire simulation. The identified causes for the differences
+between the two simulations are, in decreasing order for magnitude of
+influence, initial conditions for soil temperature and soil moisture,
+differences in planetary boundary layer scheme (Sect.~\ref{ssec:model}), and
+the land surface model option. Such difference in diurnal behavior in the
+simulations is expected to have significant impact on how the lightning
+parameterization is evaluated, but the full impact can be minimized through
+incorporation of precipitation into the analysis.
+
+Large scale meteorology and moisture inputs are unlikely the causes for the
+these biases due to nudging. In 2006, biases mostly occurred in the
+low-to-mid end of the distribution (i.e., light precipitation events,
+Fig.~\ref{fig:precipseries}c), indicating that the problem lies in
+parameterizing subgrid events. Despite the differences in the eastern United
+States, convection over the central United States is reasonably represented.
+Finally, the goal of this study is not to evaluate the convective
+parameterization nor specific model setup, but rather to evaluate the
+performance characteristics of the lightning parameterization when
+implemented into a regional model with all the expected (and unexpected)
+defects.
+
+
+\begin{figure*}[t]
+\includegraphics[width=120mm]{gmd-2012-94-f05.pdf}
+\caption{Comparisons of time series and frequency distributions between NLDN
+CG flash counts (black) and WRF predicted CG flash counts (red) at
+36\,\unit{km} within the analysis domain defined in Fig.~\ref{fig:domain}.
+Total flash counts predicted by WRF are shown as dotted red lines.}
+      \label{fig:cgseries}
+\end{figure*}
+
+\begin{figure}[t]
+\includegraphics[width=80mm]{gmd-2012-94-f06.pdf}
+\caption{Total CG flashes (\#) versus area-mean daily precipitation
+(\unit{mm}) within the analysis domain (Fig.~\ref{fig:domain}). Solid line is
+the least-square linear fit and dashed lines are $\pm1\sigma$ for both the
+constant terms and first-order coefficients. WRF is simualted at
+36\,\unit{km}.}
+      \label{fig:cgslope}
+\end{figure}
+
+\subsection{CG flash rate}\label{ssec:flashrate}
+
+Figure~\ref{fig:cgmap} shows the CONUS CG flash density (units in number per
+\unit{km^2} per year). WRF is consistently higher along the East Coast for
+2006 where positive bias is also observed in the modeled precipitation, which
+is used as a proxy for quantifying the comparison of simulated convective
+strength against observations. Similarly, both flash rate and precipitation
+are over-predicted in the Colorado and New Mexico region for 2006. On the
+other hand, the low precipitation bias in Arizona simulated by WRF for 2011
+is coincident with a severe low bias in the same region for the CG flash
+density. Otherwise, flash densities are within the order of magnitude of
+those observed for regions where simulated precipitation is consistent with
+NWS observations.
+
+The over-prediction of CG flash density along the East Coast in 2006
+dominates the regional mean and produces significantly high biases compared
+to 2011. Figure~\ref{fig:cgseries}a and \ref{fig:cgseries}b show the time
+series of the total number of ground flashes predicted by WRF and observed by
+NLDN within the analysis region (Fig.~\ref{fig:domain}). The median daily CG
+bias is 140\,{\%} for 2006 and only 13\,{\%} for 2011. It should be noted
+that these values were obtained by sampling all 3\,months. Sampling one month
+would produce varying results. For instance, while JJA 2011 produces an
+overall median bias of 13\,{\%}, July 2011 alone produces about twice as much
+lightning as observed but is offset by under-predictions in June and August.
+Because the lightning detection efficiency of NLDN varies spatially, the CG
+bias can vary over ranges of 116--154\,{\%} for 2006 and 1.7--20\,{\%} for 2011. The differences between the median biases for the two
+summers can be attributed largely to the differences in the total
+precipitation biases, as illustrated in the previous section
+(Sect.~\ref{ssec:precip}), for which 2006 is 37\,{\%} too high while 2011 is
+only 5\,{\%} higher than observations.
+
+To take into account the bias in the simulated convective strength,
+area-averaged daily precipitation is correlated with total CG flash count.
+While the relation is likely nonlinear, the area averages over the analysis
+domain are roughly linear in both WRF-simulated and observed data
+(Fig.~\ref{fig:cgslope}). The slopes for the 2006 data are statistically the
+same, there is a constant positive bias for model produced flash counts over
+observed values. In contrast, 2011 results are close for small values but
+modeled and observed values diverge for more intense events. Such
+inconsistency between years demonstrates the potential for strong
+inter-annual variability in the correlation between flash rate and
+precipitation.
+
+
+
+\begin{figure}[t]
+\includegraphics[width=80mm]{gmd-2012-94-f07.pdf}
+\caption{Total lightning and CG flash rates computed using PR92 and PR93 for
+various cloud-top heights and freezing levels, demonstrating the source of
+spectral cut-off in Fig.~\ref{fig:cgslope}.} \label{fig:pr9293}
+\end{figure}
+
+\begin{figure}[t]
+\includegraphics[width=80mm]{gmd-2012-94-f08.pdf}
+\caption{IC\,:\,CG bulk ratios for JJA 2011 as \textbf{(a)} observed by
+ ENTLN and \textbf{(b)} predicted by WRF at 36\,\unit{km} grid spacing
+ using PR93. The ENTLN detection efficiency used here is
+ 0.65 for IC and 0.95 for CG. }
+ \label{fig:iccgmap}
+\end{figure}
+
+
+
+
+
+
+Figure~\ref{fig:cgseries}c and d show the frequency
+distributions of the hourly grid flash density. From the spectra, it is
+apparent that the over-prediction observed in the time series occurs between
+flash densities of 0.003 to 0.1\,\unit{CG\,flashes\,km^{-2}\,h^{-1}}.
+However, the abrupt cutoff beyond $\sim0.11$ in both 2006 and 2011 modeled
+distribution indicates that PR92 fails to replicate the observed
+distribution. The occurrence of this cutoff can be explained by the local
+maximum when combining the PR92 total flash rate parameterization and PR93
+IC\,:\,CG ratio parameterization (Fig.~\ref{fig:pr9293}). Together, the
+predicted CG flash rate is capped at a certain limit, depending on the
+freezing level regardless of the cloud-top height. In addition, the total
+flash rate is also under-predicted for high flash rate events (dotted red
+lines in the figures), thus contributing to the truncated model frequency
+distribution.
+
+An initial comparison of the model results against the Lightning Imaging
+Sensor (LIS) total flash data also shows a high bias ($\sim2.3\times$) in
+overall flash count but an underestimation of the high flash count events,
+similar to the results demonstrated by the NLDN comparison. However,
+comparisons against the LIS data for this study have a low confidence level
+because of the relatively short time period simulated and the many
+uncertainties, such as variable detection efficiency and shifting diurnal
+sampling bias of LIS data, associated with the analysis.
+
+\subsection{IC\,:\,CG ratio}\label{ssec:ratio}
+
+The JJA 2011 IC\,:\,CG bulk ratios (\,$\equiv\sum_t \textrm{IC}(\vec{x},t)/\sum_t
+\textrm{CG}(\vec{x},t)$\,) are calculated within the analysis domain
+(Fig.~\ref{fig:iccgmap}a) using constant detection efficiencies of 95\,{\%}
+and 65\,{\%} for CG and IC flashes, respectively. While WRF produced a median
+IC\,:\,CG ratio of 1.74 within the region, ENTLN observed a median of 5.24
+with a possible range of 3.80 to 7.17 due to the spatial variability in both
+IC and CG DEs. Considering the ambiguity in the choice of cloud-top
+definition described in Sect.~\ref{ssec:model}, a possible solution to
+increase the IC\,:\,CG ratio computed using Eq.~(\ref{eq:Z}), thus achieving
+better comparison against observations, is by eliminating the cloud-top
+height reduction, an option that maintains the conceptual interpretation of
+the parameterization but has the potential of offsetting the bias. For
+consistency, the cloud-top height used in the total lightning
+parameterization needs to be un-adjusted as well.
+
+To learn whether reasonable lightning flash rates and IC\,:\,CG ratios can be
+estimated by using just the level of neutral buoyancy (LNB), an offline
+calculation is made of the daily flash counts with the cloud-top height
+adjustment eliminated. The offline calculation is performed using
+instantaneous, hourly model output of LNBs and temperatures (for determining
+freezing levels). While the offline calculation is able to replicate almost
+precisely the online flash count prediction, which causes both time series to
+appear overlapping in Fig.~\ref{fig:offcompare}, the CG flash rate
+frequency distribution is severely degraded because of vertical
+discretization of cloud tops to model levels and lowered temporal resolution
+to hourly outputs. When LNB is used for the cloud-top height (with no
+adjustment), the prediction of both CG and total lightning flash rates
+increase, as expected. The CG median bias over ENTLN increases from 44 --
+51\,{\%} to 158 -- 172\,{\%}, and the total lightning median negative bias of
+53 -- 25\,{\%} becomes a positive bias of 23 -- 95\,{\%} for the
+aforementioned range of DEs. Furthermore, even though the frequency
+distribution of total lightning is closer to the observed distribution, the
+CG distribution still experiences the truncation as described in
+Sect.~\ref{ssec:flashrate}.
+
+\begin{figure*}[t]
+\includegraphics[width=140mm]{gmd-2012-94-f09.pdf}
+\caption{Comparison of WRF predicted lightning flash counts generated online
+and offline with and without $-2$\,\unit{km} cloud-top height adjustments
+against ENTLN CG and total flash counts. Thicknesses of the ENTLN bands in
+the time series are computed using the minimum and maximum theoretical IC and
+CG detection efficiencies within the analysis domain. Noisiness of offline
+calculated distributions are associated with using hourly outputs only rather
+than accumulating flashes at every model time step. It should be noted that
+online (black) and offline (blue) WRF outputs with adjusted top appear
+coincident in the time series, but are evidently different from the frequency
+distribution.}
+      \label{fig:offcompare}
+\end{figure*}
+
+\begin{figure}[t]
+      \includegraphics[width=80mm]{gmd-2012-94-f10.pdf}
+      \caption{Time series and frequency distributions of 3-hourly CG flash counts compared to NLDN at gridded to 12\,\unit{km}.
+      The WRF 36\,\unit{km} distribution is adjusted by $\times9$ to account for the grid per area difference. The choice of
+      computing the distributions for flash rate per grid as opposed to flash density is to demonstrate the consistency of
+      the spectral drop-off at different resolutions.}
+      \label{fig:gabiseries}
+\end{figure}
+
+\begin{figure}[t]
+      \includegraphics[width=80mm]{gmd-2012-94-f11.pdf}
+      \caption{Time series and frequency distributions of hourly CG flash counts within
+      the analysis domain as observed by NLDN and simulated by WRF at 4\,\unit{km} grid spacing.}
+      \label{fig:4kmseries}
+\end{figure}
+
+\section{Resolution dependency}\label{sec:resolution}
+
+A goal of this study is to evaluate the applicability of the PR92
+parameterization to resolutions between fully parameterized and partially
+resolved convection. Thus, it is useful to evaluate how the parameterization
+behaves as the grid size changes. To test the behavior of the PR94
+calibration factor, a 12\,\unit{km} simulation for July 2011 is used. As grid
+sizes are reduced to allow convective parameterization to be turned off, the
+transition to $w_{\max}$ based formulation of PR92 (Eq.~\ref{eq:f_c(w)}) is
+tested with a 4\,\unit{km} simulation between 25~July--7~August~2006. The
+domains for these simulations are shown in Fig.~\ref{fig:domain}. Together,
+the results from these simulations will provide insights and recommendations
+on how to achieve resolution-awareness or independence while using PR92.
+
+\subsection{Sensitivity to grid size}\label{ssec:gridsens}
+
+At 12\,\unit{km}, the resolution dependency factor or ``calibration factor''
+($c$) from \cite{Price:1994fk} is 0.56\,{\%} smaller than that applied to
+36\,\unit{km}. However, comparison against the 36\,\unit{km} simulation and
+observations shows that there is a factor of $\sim10$ high bias. While there
+are differences in the statistics of convective strengths between the two
+simulations, as quantified by precipitation in Sect.~\ref{ssec:precip},
+they are too minor to fully reconcile the large bias at 12\,\unit{km}.
+Therefore, an areal ratio scaling factor ($1/9 = 12^2/36^2$) is applied
+offline to partially reconcile the differences on top of $c$($\sim1$), which
+was applied online.
+
+There are two reasons why the use of areal scaling instead of PR94 is
+justified in this study. The first reason pertains to why PR94 failed while
+it has been shown to work in GCMs. The PR94 calibration factor was derived
+from area-averaged cloud-top heights for progressively larger grid sizes from
+the original ISCCP 5\,km resolution to $8\degree\times10\degree$. On the
+contrary, the LNBs from the convective parameterization are expected to
+change only slightly with grid resolution as long as the environmental
+parameters such as buoyancy remain similar.
+
+The second reason addresses why the areal ratio is expected to work for
+regional scales. PR92 produces flash counts in unit of number of flashes per
+storm; thus, when approaching almost convection-resolving resolutions, where
+major storm size is comparable to grid size, the appropriate scaling should
+be done according to the expected number of convective cores per grid. Since
+$\Delta x=36$\,\unit{km} gives a reasonable flash rate compared to
+observations over 3\,months, we assumed one storm per grid at this resolution
+and scaled the flash counts from $\Delta x=12$\,\unit{km} as an areal ratio.
+However, the base case resolution may spatially vary because of the dynamics
+controlling the minimum-permitted distance between convective cores. At
+coarse grid sizes, the area covered by the convective storm systems may only
+be a fraction of the grid cell area. Thus, the area scaling ratio may not be
+applicable when changing from base-case grid spacing (with approximately one
+storm per grid) to much coarser grid sizes. A possible solution is to include
+a cloud fraction estimate as part of the scaling factor between grid sizes.
+
+After scaling by $1/9$, WRF at 12\,\unit{km} predicts a median of 40\,{\%}
+more 3-hourly lightning flashes than observed by NLDN
+(Fig.~\ref{fig:gabiseries}). This is to be compared with 36\,\unit{km}, which
+predicted double the 3-hourly lightning for the same period. Simulating an
+anomalously strong diurnal cycle in precipitation, the 12\,\unit{km} flash
+count also shows a much more prevalent diurnal variation, associated with the
+poor simulation of the diurnal cycle of precipitation as previously noted.
+Much of the over-prediction is compensated by the negative biases in the
+nocturnal flash rates in the final statistics. Despite the differences in
+diurnal skill, the parameterization was able to produce the same drop-off in
+grid frequency distribution beyond 200 flashes per grid per 3\,h, for which
+the primary cause is discussed in Sect.~\ref{ssec:flashrate}.
+
+\subsection{Sensitivity to formulation}\label{ssec:formsens}
+
+Comparing the 36\,\unit{km} simulation to the 4\,\unit{km} simulation
+provides insight into how the predicted flash density changes between
+resolutions using $f(z_{\mathrm{top}})$ for parameterized convection and
+$f(w_{\max})$ for resolved convective systems. This is an important factor to
+be considered if flash rate predictions are to be included in nested
+simulations or models permitting non-uniform grid-spacings such as Model for
+Prediction Across Scales-Atmosphere \citep[MPAS-A;][]{Skamarock:2012fk}.
+
+The area-averaged daily precipitation predicted by the 4\,\unit{km} WRF-Chem
+simulation is 70\,{\%} too high prior to 2~August~2006 and only 7.5\,{\%} too high
+after 2~August. On 2~August, the 4\,\unit{km} WRF simulation was
+re-initialized (with no clouds) to be consistent with the re-initializations
+of the outer domain WRF simulations that drove this 4\,\unit{km} simulation
+described in \cite{Barth:2012qf}. The flash rate predicted by the
+4\,\unit{km} simulation follows the precipitation trend. A 26\,{\%} decrease
+in flash rate occurs between the period before 2~August and the period
+afterwards.
+
+While the 36\,\unit{km} simulation over-predicted lightning flash rate for
+this period~(25~July--7~August~2006), the 4\,\unit{km} simulation
+under-predicted the flash rate, exhibiting a $-83\,{\%}$ bias relative to the
+NLDN flash counts prior to the cold-start and a $-95\,{\%}$ bias after
+(Fig.~\ref{fig:4kmseries}). Similar underestimation of the $w_{\max}$
+formulation has been noted for both tropical (Hector storm near Darwin,
+Australia) and US continental storms \citep{Cummings:2012ly}. These results
+indicate that it is important to evaluate the flash rate parameterizations
+with observations. It is insufficient to use high resolution model results as
+``truth'' for coarse resolution simulations.
+
+Despite the low bias in flash rate prediction, the 4\,\unit{km} WRF-Chem
+simulation matches the observed distribution of flashes for high flash rate
+events and placed the burden of underestimation on the low-end of the
+distribution, which causes the distribution to appear flatter than observed.
+Since we are using a constant IC\,:\,CG ratio based on
+\citet{Boccippio:2001ys} climatology instead of the PR93 parameterization,
+the erroneous drop-off in the CG flash rate distribution found in the other
+cases using PR93 is not present. Such improvement in spectral characteristics
+suggests that constant climatological IC\,:\,CG ratios may be a reasonable if
+not superior alternative to PR93.
+
+\conclusions\label{sec:conclusions}
+
+We have implemented the WRF-Chem model parameterizations for lightning
+flash rate using prescribed IC\,:\,CG ratios and the associated resolution dependency by
+\citet{Price:1992wb,Price:1993fk,Price:1994fk}, which are based on cloud-top
+height. In our implementation, the cloud-top height is estimated by the level
+of neutral buoyancy (LNB), adjusted by $-2\,\unit{km}$ to reconcile the
+difference between LNB and radar reflectivity cloud top. No additional
+tunings and changes to the parameterizations are done. The modeled
+precipitation and \mbox{lightning} flash rate are evaluated for the simulations with
+36\,\unit{km}, 12\,\unit{km}, and 4\,\unit{km} grid spacings over CONUS for
+JJA 2006 and 2011.
+
+The first result is that, after a 2\,\unit{km} reduction, the use of LNB as a
+proxy for cloud-top simulated at 36\,\unit{km} grid spacing produces CG flash
+rates at the same order of magnitude as NLDN observations. For models using
+other convective parameterizations, alternative choices of cloud-top proxies
+may be available and thus the appropriate methods of cloud-top adjustment
+should be determined on a case-by-case basis. Taking into account model
+biases in convection, as quantified by precipitation, the
+precipitation--lightning relation from the model and observations are
+statistically indistinguishable. While there is up to a factor of $2.4$
+median bias in the flash counts from the 2006 36\,\unit{km} simulation, it is
+accompanied by a 37\,{\%} over-prediction in precipitation. In contrast, the
+2011 36\,\unit{km} simulation has a precipitation bias of 5\,{\%}, which
+leads to a 13\,{\%} over-prediction in flash counts. For the 12\,\unit{km}
+simulation the lightning flash rate bias is linked to the anomalously strong
+diurnal cycle simulated for convection, indicated by precipitation. Such bias
+in the simulated convection may be caused by a number of other model
+components.
+
+Second, despite the correct CG count, it is shown that PR92 is incapable of
+producing the correct frequency distribution flash CG flashes, which are
+truncated at a much lower flash density than observed. The most likely cause
+is the function form of combining the PR92 total flash rate parameterization
+and the PR93 IC\,:\,CG ratio parameterization, which produces an upper-limit
+in the permitted maximum CG flash rate. This brings into question the
+validity of PR93 in contexts where spectra characteristics are a concern. It
+is recommended that using constant bulk ratios such as the climatology
+presented in \citet{Boccippio:2001ys} or one derived from total lightning
+measurements may produce equal, if not better, spectra. Considering that the
+observed JJA 2011 IC\,:\,CG ratio also displays significant departure from
+the \citet{Boccippio:2001ys} climatology for certain areas, it would be
+useful to revisit the subject of IC\,:\,CG climatology in future studies,
+taking
+advantage of the advances in continuous wide-area lightning detections over
+the past two decades.
+
+Third, due to the use of LNB from the convective parameterization instead of
+area-averaged cloud-top heights, using the PR94 factor to adjust for different
+horizontal resolutions is not applicable and an areal ratio factor should be
+used instead to reconcile the resolution dependencies. Since the 36\,\unit{km} base
+cases produced relatively satisfying results, the 12\,\unit{km} simulation is
+scaled with an areal ratio relative to 36\,\unit{km}. However, it may be
+argued that the outcome from the 36\,\unit{km} simulations is only a
+corollary of the probability of having exactly one convective core within a
+single model grid. Therefore, other choices of ``base case'' grid spacings
+near 36\,\unit{km} may also produce similar results for CONUS, specifically
+within the analysis domain (Fig.~\ref{fig:domain}), and other areas with
+different storm density may require a different base-case resolution for
+scaling. On the other hand, area ratios may not be appropriate at coarser
+resolution as convective core number density is highly non-uniform.
+
+Finally, at 4\,\unit{km}, we used a theoretically similar formulation of PR92
+based on $w_{\max}$ within convective cores identified as regions with
+20\,\unit{dBZ} or greater radar reflectivity. While the parameterization
+includes the high flash rate storms, thereby giving a frequency distribution
+shaped similar to that observed without the erroneous drop-off, the flash
+count is under-predicted by up to a factor of 10. From this experiment, we
+see the need to evaluate flash rate parameterizations with observations for
+the locations and periods specific to the simulations. It is insufficient to
+use high resolution model results as ``truth'' for coarse resolution
+simulations. Hence, validation and tuning prior to further usage of
+$f(w_{\max})$ from Eq.~(\ref{eq:f_c(w)}) is encouraged. Furthermore,
+parameterizing flash rate in cloud-resolving models based on other storm
+parameters \citep{Barthe:2010uq} should also be tested.
+
+To summarize, we recommend the following when applying the Prince and Rind
+parameterizations for lightning flash rates:
+\begin{enumerate}
+\item Proper adjustment to cloud top should be made to match the expected 20~\unit{dBZ} radar reflectivity top when applying PR92;
+ \item PR93 for IC\,:\,CG partitioning should be used only if it is unnecessary to get information on the frequency distribution of flashes;
+  \item Scaling for resolution dependency may be performed by areal ratio against a base-case resolution, defined as that producing 1 storm per grid within the domain of interest (36\,\unit{km} grid spacing in this study).
+  \end{enumerate}
+
+To further the confidence of the lightning flash rate parameterizations and
+IC\,:\,CG partitioning, long-term wide-area total lightning detection and
+data archiving should be accompanied by coincident observations of cloud-top
+or other convective properties with well-defined error characteristics in
+observations and quantifiable predictability in numerical models.
+
+\appendix
+
+\section{Comments on cloud-top height reduction} \label{apdx:ktop}
+
+In this study, we used the level of neutral buoyancy (LNB) from the WRF
+implementation of the Grell--Devenyi convective parameterization
+\citep{Grell:2002bs} as a proxy for sub-grid cloud-top heights for the
+purpose of testing a flash rate parameterization by
+\citet{Price:1992wb,Price:1993fk,Price:1994fk}. A reduction of 2\,\unit{km}
+is used to reconcile the differences between LNB and the cloud top that would
+be obtained if defined at a 20\,\unit{dBZ} reflectivity threshold.
+While this method produces an integrated flash count consistent with that
+observed after taking into account model biases in convective precipitation,
+we acknowledge that storm-to-storm variability cannot be captured by such a
+simple \mbox{approach}. Presented in this section are offline calculations of both
+20\,\unit{dBZ} cloud tops and LNB cloud tops from a 13-day simulation at
+4\,\unit{km} grid spacing to understand the margin of potential errors.
+
+Radar reflectivity is estimated by using rain, snow, and graupel particle
+information from hourly outputs. For consistency, the offline calculation of
+reflectivity uses the same modified equations from \citet{Smith:1975fk} and
+criteria as those used in the 4\,\unit{km} simulation. The highest model
+level with more than 20\,\unit{dBZ} is then defined as the 20\,\unit{dBZ}
+top.
+
+LNB is estimated by a simple ``parcel method,'' rather than emulating the
+full algorithm in the parameterization as implemented in WRF. Therefore, the
+result may differ from what would be produced within the model. First, the
+dew point depression at the surface model level is determined, which is then
+used to seek the lifting condensation level (LCL) assuming adiabatic ascent.
+From the LCL, the moist adiabatic lapse rate ($\Gamma_\textrm{m}$) is calculated and
+the level of free convection (LFC) is determined by linearly extrapolating
+the moist adiabat using the lower level's $\Gamma_\textrm{m}$ to the model level
+immediately above. From the LFC, a search is performed at incremental model
+levels until the LNB is exceeded. Grid points with LFCs $< 500\,\unit{m}$ or
+above-freezing temperature at LNBs are discarded.
+
+In total, $1.34\times10^6$ columns with sufficient reflectivity and cloud-top
+heights greater than 5\,\unit{km} AGL are found. The distribution of the
+difference $\langle h_\textrm{LNB}-h_\textrm{dBZ}\rangle$ indicates that LNB is higher than
+the 20\,\unit{dBZ} top 62\,{\%} of the time with a mean of $1.1$\,\unit{km}
+and a standard deviation of $2.3$\,\unit{km}. Other metrics for defining the
+required offsets between the two heights can produce different results. For
+example, to minimize the bias after applying PR92 with
+$\left|\langle(h_\textrm{LNB}-\delta h)^5/h_\textrm{dBZ}^5\rangle-1\right|$, the reduction
+$\delta h$ evaluates to 3.27\,\unit{km}. While the 2\,\unit{km} reduction
+used in this study differs from the two computed here, it is within the
+calculated range and thus can still be considered a median representation,
+especially when the uncertainties in the methods used for the offline LNB and
+radar reflectivity computations are taken into account.
+
+Finally, it is essential to re-emphasize that the choice of cloud-top
+reduction is specific to the use of the Grell--Devenyi convective
+parameterization in WRF or other models producing LNB as the best-available
+proxy for sub-grid cloud-tops. In other models, cloud-top proxies other than
+LNB may be present. In those cases, an adjustment specific to those proxies
+should be used if PR92 is the preferred method for parameterization. An
+alternative would be to reformulate PR92 to be based on LNB, which lies
+beyond the scope of this paper and may be attempted in the future as needed.
