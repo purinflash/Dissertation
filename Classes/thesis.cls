@@ -334,7 +334,7 @@
 		\begin{th@OldBib}{#1}
 		\ULforem%  set \em to underline
 		\begin{singlespace}
-		\addcontentsline{toc}{part}{\bibnameToC}
+		\addcontentsline{toc}{part}{\bibnameToC}{\protect\relax}
 	}{
 		\end{singlespace}
 		\EmphReset% set \em back to the user-specified default.
@@ -399,11 +399,11 @@
 % Adds the appropriate label to the ToC/LoF/LoT
 
 \addtocontents{lof}{\protect\contentsline {part}
-	{\protect\figurenameToC}{\protect\relax}}
+	{\protect\figurenameToC}{\protect\relax}{\protect\relax}}
 \addtocontents{lot}{\protect\contentsline {part}
-	{\protect\tablenameToC}{\protect\relax}}
+	{\protect\tablenameToC}{\protect\relax}{\protect\relax}}
 \addtocontents{toc}{\protect\contentsline {part}
-	{\protect\chapternameToC}{\protect\relax}}
+	{\protect\chapternameToC}{\protect\relax}{\protect\relax}}
 
 % NUMBERING STYLES, DEFAULT VALUES
 
@@ -558,7 +558,7 @@
 		\setcounter{section}{\value{th@SectionSave}}
 	\fi
 	\addtocontents{toc}{\protect\contentsline {part}
-		{\protect\appendixnameToC}{\protect\relax}}
+		{\protect\appendixnameToC}{\protect\relax}{\protect\relax}}
 	\renewcommand*{\th@DefTheChapter}{\Alph{chapter}}
 	}
 
