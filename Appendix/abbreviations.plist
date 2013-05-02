@@ -160,5 +160,7 @@
 	<string>Network for the Detection of Stratospheric Change</string>
 	<key>DFS</key>
 	<string>degrees of freedom of signal</string>
+	<key>OTD</key>
+	<string>Optical Transient Detector</string>
 </dict>
 </plist>
