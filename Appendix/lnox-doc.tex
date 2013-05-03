@@ -6,7 +6,7 @@
     \graphicspath{{Appendix/figures/EPS/}{Appendix/figures/}}
 \fi
 
-This is a short guide for using the lightning flash rate and lightning-generated nitrogen oxides (\chem{LNO_x}) parameterizations in WRF and WRF-Chem after version 3.5.0. Significant changes have been made since 3.4.1, primarily in refactoring the model to allow flash rate predictions without chemistry. Currently, only implementations for the  \citet[][hereafter PR92]{Price:1992wb} schemes are released with modifications based on \citet{Barth:2012qf} and \citet{Wong:2012fk}.
+This is a short guide for using the lightning flash rate and lightning-generated nitrogen oxides (\chem{LNO_x}) parameterizations in WRF and WRF-Chem after version 3.5.0. Significant changes have been made since 3.4.1, primarily in refactoring the model to allow flash rate predictions without chemistry. Currently, only implementations for the  \citet[][hereafter PR92]{Price:1992wb} schemes are released with modifications based on \citet{Barth:2012qf} and \citet{Wong:2013vn}.
 
 To turn on lightning flash rate parameterization in WRF, set the {\tt physics} namelist option {\tt lightning\_option} to one of the following values:
 \begin{center}
@@ -19,7 +19,7 @@ To turn on lightning flash rate parameterization in WRF, set the {\tt physics} n
 \end{center}
 {\footnotesize
 	$^\dagger$ For convection-resolved resolutions with microphysics turned on for reflectivity calculations. \\
-	$^*$ For convection-parameterized resolution using either GD or G3 {\tt cu\_physics} options. Adjusted by areal ratio relative to {\tt dx}=36 km \citep{Wong:2012fk}, intended for use at 10 $<$ {\tt dx} $<$ 50 km.
+	$^*$ For convection-parameterized resolution using either GD or G3 {\tt cu\_physics} options. Adjusted by areal ratio relative to {\tt dx}=36 km \citep{Wong:2013vn}, intended for use at 10 $<$ {\tt dx} $<$ 50 km.
 }
 \vspace{.4in}
 
