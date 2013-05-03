@@ -12,13 +12,119 @@ The outputs of the base case simulation is compared to several independent data 
 
 The first section of this chapter describes the methods used in this study (\sect{2006/method}). Then a general description of the model outputs is given (\sect{2006/general}) to provide context. The model is then validated in detail against multiple data sets in Section \ref{sec:2006/validation}, with which the details of the data sets are also given. Once the model's performance has been identified, Section \ref{sec:2006/discussion} describes the core results derived from the base case simulation. Finally, this chapter is concluded with sets of sensitivity tests for determining ozone's variability with respect to anthropogenic emissions (\ssect{2006/sens/anthrop}), biogenic emissions (\ssect{2006/sens/bio}), and lightning-generated \chem{NO_x} (\lnox) emissions (\ssect{2006/sens/lnox}).
 
-\section{Method}\label{sec:2006/method}
+\section{Model description}\label{sec:2006/method}
 
-\subsection{Model setup}\label{ssec:2006/method/setup}
+\figuremacroN{domain}{2006 case study model domain}{\label{fig:2006/domain}WRF-Chem model domain (red). Marked inner region (blue) is the primary area used for various analysis in Section \ref{sec:2006/discussion}.\vspace{-.2in}}
 
-\subsection{Passive tracers}\label{ssec:2006/method/tracers}
+Simulations are formed with Weather Research and Forecasting model \citep{Skamarock:2008xx} with Chemistry \citep[WRF-Chem;][]{Grell:2005fv} version 3.4.1 over July and August, 2006. The model is configured with a horizontal grid spacing of 36\,\unit{km} with a lambert conformal projection centered over the contiguous United States (CONUS) as shown in Figure \ref{fig:2006/domain}. Vertical levels are gridded into 51 eta levels with variable heights up to a fixed top at 10\,\unit{hPa}.
 
-\subsection{Tendency diagnostics}\label{ssec:2006/method/tendency}
+Meteorology is initialized and assimilated with data from National Center for Environmental Prediction (NCEP) Global Forecasting System (GFS) final (FNL) gridded analysis at 6-hr intervals (00, 06, 12, 18\,\unit{UTC}). Nudging is performed for temperature and water vapor above the planetary boundary layer (PBL). Nudging for horizontal winds is performed above model level 10. Advection of moistures, scalars, chemicals, and tracers are performed with positive-definite and monotonic limiters described in \citet{Skamarock:2006wm}.
+
+The rest of this chapter describes specific model settings in details. The full namelist template for the base case simulation is also provided as Appendix \ref{apdx:namelist}.
+
+\subsection{Model options}\label{ssec:2006/method/settings}
+
+	Convective parameterization is facilitated with the Grell-3 (G-3) scheme, a modified version of the \citet{Grell:2002bs} ensemble scheme. It uses a $144(=3\times3\times16)$ dynamic control and static control/feedback closures with varying parameters. In addition, shallow convection is also enabled to simulate less severe convective activities. For microphysics, the \citet{Thompson:2008vn} scheme is used, which allows a generalized gamma distribution for graupel.
+
+	Shortwave radiative transfer uses the Goaddard two-stream method described by \citet{Chou:1998kx} with 11 bands using a $\delta$-Eddington approximation for scattering and transmission. It also takes into account third-order effects from molecular absoprtions. Longwave radiative transfer uses the Rapid Radiative Transfer Model \citep[RRTM;][]{Mlawer:1997vn}. The NOAH Land Surface Model \citep{Chen:2001ys} is used for the land surface and the Yonsei University (YSU) scheme  \citep{Hong:2006fk} is used for boundary layer physics.
+
+\subsection{Chemistry}\label{ssec:2006/method/chem}
+
+	The chemical mechanism used in this study is the Regional Acid Deposition Model version 2 \citep[RADM2;][]{Stockwell:1990ez} compiled with a ``WRF-conformed'' version of the Kinetic Preprocessor \citep[KPP;][]{Sandu:2006jl}. KPP uses a Rosenbrock approach, a iterative predictor-corrector method described by \citep{Hairer:1993zr}, to solve the highly nonlinear stiff system of differential equations consisting of 63 species, 21 photolysis, and 136 gas-phase reactions. No aerosol is included in any of the simulations. Photolysis is calculated using the fast Tropospheric Ultraviolet-VIsible \citep[FTUV;][]{Tie:2003ve} scheme. However, several implementation errors, which have largely been identified and patched after substantial efforts (see Appendix \ref{a-sec:bug/ftuv}).
+
+	Chemical initial and boundary conditions are obtained from the Model for OZone and Related chemical Tracers (MOZART-4) global chemistry model \citep{Emmons:2010fk}, which includes 85 gas-phase species, 39 photolysis, and 157 gas-phase reactions. Therefore, species mapping is performed especially for some of the bulk species (e.g. \chem{OLT}\,\texttt{:=}\,\chem{C_3H_6}+\chem{MVK}+0.5\chem{BIGENE}\footnote{\chem{OLT}=terminal alkenes in RADM2; \chem{MVK}=methyl vinyl ketone, \chem{BIGENE}=\chem{C_4H_8} in MOZART-4}). {\lnox} emission uses a modified \citet{Price:1992wb} method described and evaluated in detail in Chapter~\ref{ch:lightning} as well as \citet{Wong:2013vn}. Base case simulation uses an emission factor of 350\,\unit{moles\,\chem{NO}/flash} and vertical distributions described in \citet{Ott:2010lo}. Further improvements have also been implemented for WRF-Chem version 3.5, to be released in mid-2013 (Appendix~\ref{apdx:lnox-doc}).
+	
+	% yellowstone:/glade/p/work/johnwong/final_inputs/emiss
+	\figuremacroW{anthrop}{EPA NEI05 \chem{NO} emission}{\label{fig:2006/anthrop} (a) NEI05  \chem{NO} emission during weekdays at 12Z after mapping to WRF grid. (b)  \chem{NO} emission at Houston,TX between 12Z--23Z as an example for demonstrating the differences between emissions for different days of the week.\vspace{-.2in}}{1.0}
+	
+	\subsubsection{Anthropogenic emissions}\label{sssec:2006/method/emiss/anthrop}
+
+	The 2005 National Emission Inventory (NEI05) from the Environmental Protection Agency (EPA) is used to define the anthropogenic emission over CONUS. Three sets of data are separately available for weekdays (Monday -- Friday), Saturdays, and Sundays respectively and are swapped in accordingly at 06Z on each simulated day. Figure \ref{fig:2006/anthrop} uses \chem{NO} as an example to demonstrate a typical national emission distribution and differences between days of the week. The utility ``emiss\_v03'' provided by NOAA/ESRL is used with the lambert conformal mapping function rewritten to be consistent with that of WRF's Preprocessing System (WPS) version 3.4.1. The NEI05 source data includes \chem{CO}, \chem{NO_x}, \chem{SO_2}, \chem{NH_3}, 40 hydrocarbon aggregated species, 5 PM2.5 groups, and PM10. Each species is then mapped into its corresponding counterpart in RADM2. Table \ref{table:2006/emiss_v03} shows a few examples of how the species mapping is done. Since the case study is performed without aerosols, the aerosol products produced by the utility are not used.
+	
+	\begin{table}[htb]
+	\caption[Examples of NEI-RADM2 speciation mapping]{Examples of how species are mapped from EPA NEI to RADM2 for anthropogenic emission in the case study.}
+	\begin{center}
+	\begin{tabular}{cccc}\tophline 
+		{\bf NEI species} & {\bf RADM2 species} & {\bf Weight factor} & {\bf Description}  \\ \middlehline
+		CO & co & 1.00 & Carbon monoxide\\  
+		NOX & no & 1.00 & nitrogen oxides \\  
+		SO2 & so2 & 1.00 & Sulfur dioxide \\ 
+		HC02 & eth & 1.00 & Ethane kOH $<$ 500 \unit{ppm^{-1}~min^{-1}}\\  
+		HC03 & hc3 & 1.00 & Alkane 500 $<$ kOH $<$ 2500 ${}^a$\\  
+		HC04 & hc3 & 1.11 & Alkane 2500 $<$ kOH $<$ 5000 ${}^b$\\  
+		HC05 & hc5 & 0.97 & Alkane 5000 $<$ kOH $<$ 1e4 ${}^c$\\  
+		HC06 & hc8 & 1.00 & Alkane kOH $>$ 1e4 \\  
+		HC07 & ol2 & 1.00 & Ethylene\\  
+		$\cdots$ &  &  & \\  
+		HC18 & ket & 0.33 & Acetone\\  
+		HC19 & ket & 1.61 & Methylethyl ketone\\  
+		HC20 & ket & 1.61 & PRD2 SAPRAC species (ketone)\\  
+		$\cdots$ &  &  & \\  
+		PM01 & pm25i & 0.20 & Unspeciated nuclei mode PM2.5\\  
+		PM01 & pm25j & 0.80 & Unspeciated accumulation mode PM2.5\\  
+		$\cdots$ &  &  & \\ \bottomhline 
+	\end{tabular} \label{table:2006/emiss_v03}
+	\end{center}{
+	\footnotesize
+	${}^a$ Excluding \chem{C_3H_8}, \chem{C_2H_2}, organic acids.
+	\\ ${}^b$ Excluding butanes.
+	\\ ${}^c$ Excluding pentanes.
+	}
+	\end{table}
+
+	\subsubsection{Biogenic emissions}\label{sssec:2006/method/emiss/bio}
+
+	Unlike anthropogenic emission, Model for Emissions of Gases and Aerosols from Nature \citep[MEGAN2;][]{Guenther:2006kl} is used to drive a biogenic emission parameterization within WRF-Chem. MEGAN2 uses a combination of climatological leaf area index (LAI), vegetation speciation, model temperature, and model solar radiation to compute BVOC emissions consistent with model meteorological states, with isoprene being the primary species of interest (see \ssect{intro/ozone/voc}).
+	
+	The general formulation of BVOC emissions is as follow \citep[after][]{Guenther:2006kl}:
+	\begin{equation}\label{eqn:MEGAN-E}
+		\mathrm{Emission} =\varepsilon\cdot\gamma\cdot\rho
+	\end{equation}
+	where $\varepsilon$ is the emission of a compound under standard climatological conditions and is spatially varying,  $\gamma$ is the emission activity factor that accounts for deviation from climatology, and $\rho$ is a factor that accounts for production and loss within the plant canopy, which is assigned as 1.0 in WRF-Chem.
+	
+	The emission activity factor $\gamma$ is the product of multiple factors accounting for the canopy environment (CE), age of the vegetations, and soil moisture (SM):
+	\begin{equation}\label{eqn:MEGAN-gamma}
+		\gamma = \underbrace{\gamma_{LAI}~\cdot~\gamma_P~\cdot~\gamma_T}_{\gamma_{CE}}~\cdot~\gamma_{age}~\cdot~\gamma_{SM}
+	\end{equation}
+	Like the production/loss factor, $\gamma_{SM}$ is set to 1.0 in WRF-Chem. The age factor $\gamma_{age}$ classifies foliage into 4 types: new, growing, mature, and old, of which the respective weighing is computed using the changes in leaf area indices.
+	
+	Instead of a detailed canopy model, $\gamma_{CE}$ is represented as three factors controlled by leaf area, photosynthetic photon flux density (PPFD), and temperature. Such approach is referred to as the parameterized canopy environment emission activity (PCEEA) algorithm, which produces annual global isoprene emissions within $\sim 5\%$ of standard canopy model but may exceed 25\% for specific times and locations \citep{Guenther:2006kl}. The temperature factor is highly nonlinear and depends on current and past averages of the leaf temperature:
+	\begin{eqnarray}
+		\gamma_T &=& E_{opt}\frac{C_{T2}\exp(C_{T1}\cdot x)}{C_{T2}-C_{T1}(1-\exp(C_{T2}\cdot x))} \label{eqn:MEGAN-gammaT}  \\
+		x &=& \left[1/T_{opt}-1/T\right]\large/0.00831 \\
+		T_{opt} &=& 313 + 0.6 \cdot (T_{240}-297) \\
+		E_{opt} &=& 2.034 \exp[0.05(T_{24}-297)]\exp[0.05\cdot(T_{240}-297)]
+	\end{eqnarray}
+	where $T$ is the leaf temperature in Kelvin, $C_{T1}=95$ and $C_{T2}=230$ are empirical coefficients, $T_{24}$ and $T_{240}$ are average leaf temperature over the past 24 and 240 hours respectively. On the other hand, the LAI factor is sublinear:
+	\begin{equation}\label{eqn:MEGAN-gammaLAI}
+		\gamma_{\mathrm{LAI}} = \frac{0.49~\mathrm{LAI}}{\sqrt{1 + 0.2~(\mathrm{LAI})^2}}
+	\end{equation}
+	Therefore, LAI factor is the most sensitive to changes at low LAI  and evaluates to 1.0 at LAI=5.0.
+
+\subsection{Tendency diagnostics and Passive tracers}\label{ssec:2006/method/diagnostics}
+
+	Budgeting the tendencies, or attributing changes, of a chemical or aerosol species has been the primary goal of many studies. For air quality studies using limited ground stations, such task has been performed using decomposition methods such as Principal Component Analysis (PCA) \citep[][and references therein]{Langford:2009mb}. However, PCA is unable to properly decompose correlated tendencies and thus the apportionment may be incorrect.
+	
+	Presented here is a simple method implemented into WRF-Chem since version 3.3. It leverages the deterministic nature of a numerical weather-chemistry model and extracts the relevant tendencies prior to coupling without loss of information. Conceptualize the tendency calculation of a scalar $S$ from time step $t$ to $t+1$ as follow:
+	\begin{equation}\label{eqn:tendency}
+		S^{t+1}-S^t = (\Delta_{chem}+\Delta_{conv}+\Delta_{vmix}+\mathbf{v}\cdot\nabla + w\delta_z)S^t\delta t + E_S^t + LS^t
+	\end{equation}
+	where $\Delta$'s are the time-stepping operators for chemistry, convection, and vertical mixing, $\mathbf{v}$ is the horizontal wind vector, and $w$ is the vertical wind. $E_S^t$ and $LS^t$ are the emission and loss terms. Then, we may accumulate at every single time step for a specific process $p$ to obtain the total tendency $T$ for a scalar $S$ due to the said process up to time $t$ from initialization :
+	\begin{equation}\label{eqn:tendency-accul}
+		T_{p}^t = \sum_{\tau=0}^t\Delta_{p} S^\tau\delta\tau
+	\end{equation}
+	While Equation \ref{eqn:tendency-accul} appears first-order, the tendency obtained from each time step is calculated with the accuracy of the respective method used. For example, advection in the simulations employed in this study use a method that has a lower order term and a monotonic limiter described in \citet{Skamarock:2006wm}. To compute the two advective tendencies, both terms are included into the accumulated diagnostic outputs. Therefore,  under circumstances where $\langle E_S^\tau+LS^\tau\rangle_{\tau<t}=0$, the following is expected to hold with the processes $\mathcal{P}$ from Equation \ref{eqn:tendency}:
+	\begin{equation}\label{eqn:tendency-good}
+		\sum_{p\in\mathcal{P}}T_{p}^t \equiv S^t-S^0
+	\end{equation}
+	
+	Currently, the default implementation includes 5 processes: chemistry, convection, vertical mixing, horizontal advection, and vertical advection. $T_{p}^t$ for 8 species are included in the output by default: \chem{O_3}, \chem{CO}, \chem{NO}, \chem{NO_2}, \chem{HNO_3}, \chem{HO}, \chem{HO_2}, and \chem{C_5H_8} (isoprene). Diagnostics for isoprene and \chem{HNO_3} have been replaced with \chem{MGLY}\footnote{Methyl glyoxal.} and \chem{HC5}\footnote{Bulk species for alkane with moderate \chem{HO} rate constants.} respectively. These diagnostic outputs are used extensively throughout this study.
+	
+	Another subject of frequent interest is the source and age of an air mass. It is often achieved by including online point-sourced tracers or computing Lagrangian trajectories offline with tools such as FLEXPART \citep{Stohl:2005vn}. Of interest in this study are air masses from the boundary layer, stratosphere, lateral domain boundaries, and those affected by {\lnox} emission. Values of the lateral boundaries, boundary layer, and stratospheric tracers are held at 1.0 at their sources and allowed to be freely transported through advection, convection\footnote{By sharing convective transport method with chemical species, an implementation error was introduced. See \mbox{Appendix}~\ref{a-sec:bug/ctrans} for more details.}, and vertical mixing. Similarly, lightning tracers are also emitted at the same rate and locations as those determined by the {\lnox} parameterization described in Chapter \ref{ch:lightning}, in both passive and decaying form. All decaying twins of these tracers decay with an $e$-folding time of one day. An equivalent mean tracer age within a volume $V$ may be defined as
+	\begin{equation}\label{eqn:tracer-age}
+		a_e = (\mbox {1 day})\times\ln\left(\int_V{\phi_0}dV/\int_V\phi_1dV\right)
+	\end{equation}
+	where $\phi_0$ is the passive non-decaying tracer, and $\phi_1$ is the decaying twin. Such definition is chosen over $\int_V\phi_0/\phi_1dV$ to avoid cases where $\phi_0\sim\phi_1\sim0$.
 
 \section{General results}\label{sec:2006/general}
 
