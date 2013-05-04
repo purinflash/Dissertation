@@ -6,11 +6,11 @@
     \graphicspath{{Chapter_2006/figures/EPS/}{Chapter_2006/figures/}}
 \fi
 
-The recurring upper tropospheric ozone enhancements during North American Monsoon (NAM) seasons have been extensively studied by \citet{Li:2005ss}, \citet{Cooper:2006dq,Cooper:2007cr,Cooper:2009nx}, and \citet{Barth:2012qf}. Other studies have also recognized the importance of this feature \citep[e.g.][]{Hudman:2007fu,Jourdain:2010tw}. While previous studies produced results that has been used to infer climatological impact of the upper tropospheric ozone enhancement, a closer look at model outputs reveals substantial variabilities. To further the understanding of a chemistry model's capability in capturing the necessary details, this study intends to perform simulations using WRF-Chem \citet{Grell:2005fv} over July and August of 2006. The period covered by this study is chosen to capture substantial anticyclonic recirculation in the upper-air, which has been shown to enhance ozone production \citet{Cooper:2007cr}.
+The recurring upper tropospheric ozone enhancements during North American Monsoon (NAM) seasons have been extensively studied by \citet{Li:2005ss}, \citet{Cooper:2006dq,Cooper:2007cr,Cooper:2009nx}, and \citet{Barth:2012qf}. Other studies have also highlighted the relevance of this feature \citep[e.g.][]{Hudman:2007fu,Choi:2009bh,Jourdain:2010tw}. While previous studies produced results that has been used to infer climatological impact of the upper tropospheric ozone enhancement, a closer look at model outputs reveals substantial variabilities. To further the understanding of a chemistry model's capability in capturing the necessary details, this study intends to perform simulations using WRF-Chem \citet{Grell:2005fv} over July and August of 2006. The period covered by this study is chosen to capture substantial anticyclonic recirculation in the upper-air, which has been shown to enhance ozone production \citet{Cooper:2007cr}.
 
 The outputs of the base case simulation is compared to several independent data sets to identify any biases or deficiencies in the model that have implications on the modeled ozone budget. In addition, sensitivity simulations are also performed to evaluate the relative sensitivity of the simulated ozone distributions to emission scenarios of anthropogenic, biogenic, and lightning sources. The results from these simulations are used to bound the range of uncertainty as well as to address the impact from potential changes in emission scenarios in the future.
 
-The first section of this chapter describes the methods used in this study (\sect{2006/method}). Then a general description of the model outputs is given (\sect{2006/general}) to provide context. The model is then validated in detail against multiple data sets in Section \ref{sec:2006/validation}, with which the details of the data sets are also given. Once the model's performance has been identified, Section \ref{sec:2006/discussion} describes the core results derived from the base case simulation. Finally, this chapter is concluded with sets of sensitivity tests for determining ozone's variability with respect to anthropogenic emissions (\ssect{2006/sens/anthrop}), biogenic emissions (\ssect{2006/sens/bio}), and lightning-generated \chem{NO_x} (\lnox) emissions (\ssect{2006/sens/lnox}).
+The first section of this chapter describes the methods used in this study (\sect{2006/method}). Then, a general description of the model outputs and corresponding validation against various empirical data sets are given in Section \ref{sec:2006/general}. Once the model's performance has been identified, Section \ref{sec:2006/discussion} describes the core results derived from the base case simulation. Finally, this chapter is concluded with sets of sensitivity tests for determining ozone's variability with respect to anthropogenic emissions (\ssect{2006/sens/anthrop}), biogenic emissions (\ssect{2006/sens/bio}), and lightning-generated \chem{NO_x} (\lnox) emissions (\ssect{2006/sens/lnox}).
 
 \section{Model description}\label{sec:2006/method}
 
@@ -28,11 +28,11 @@ The rest of this chapter describes specific model settings in details. The full 
 
 	Shortwave radiative transfer uses the Goaddard two-stream method described by \citet{Chou:1998kx} with 11 bands using a $\delta$-Eddington approximation for scattering and transmission. It also takes into account third-order effects from molecular absoprtions. Longwave radiative transfer uses the Rapid Radiative Transfer Model \citep[RRTM;][]{Mlawer:1997vn}. The NOAH Land Surface Model \citep{Chen:2001ys} is used for the land surface and the Yonsei University (YSU) scheme  \citep{Hong:2006fk} is used for boundary layer physics.
 
-\subsection{Chemistry}\label{ssec:2006/method/chem}
+\subsection{Chemistry and emissions}\label{ssec:2006/method/chem}
 
 	The chemical mechanism used in this study is the Regional Acid Deposition Model version 2 \citep[RADM2;][]{Stockwell:1990ez} compiled with a ``WRF-conformed'' version of the Kinetic Preprocessor \citep[KPP;][]{Sandu:2006jl}. KPP uses a Rosenbrock approach, a iterative predictor-corrector method described by \citep{Hairer:1993zr}, to solve the highly nonlinear stiff system of differential equations consisting of 63 species, 21 photolysis, and 136 gas-phase reactions. No aerosol is included in any of the simulations. Photolysis is calculated using the fast Tropospheric Ultraviolet-VIsible \citep[FTUV;][]{Tie:2003ve} scheme. However, several implementation errors, which have largely been identified and patched after substantial efforts (see Appendix \ref{a-sec:bug/ftuv}).
 
-	Chemical initial and boundary conditions are obtained from the Model for OZone and Related chemical Tracers (MOZART-4) global chemistry model \citep{Emmons:2010fk}, which includes 85 gas-phase species, 39 photolysis, and 157 gas-phase reactions. Therefore, species mapping is performed especially for some of the bulk species (e.g. \chem{OLT}\,\texttt{:=}\,\chem{C_3H_6}+\chem{MVK}+0.5\chem{BIGENE}\footnote{\chem{OLT}=terminal alkenes in RADM2; \chem{MVK}=methyl vinyl ketone, \chem{BIGENE}=\chem{C_4H_8} in MOZART-4}). {\lnox} emission uses a modified \citet{Price:1992wb} method described and evaluated in detail in Chapter~\ref{ch:lightning} as well as \citet{Wong:2013vn}. Base case simulation uses an emission factor of 350\,\unit{moles\,\chem{NO}/flash} and vertical distributions described in \citet{Ott:2010lo}. Further improvements have also been implemented for WRF-Chem version 3.5, to be released in mid-2013 (Appendix~\ref{apdx:lnox-doc}).
+	Chemical initial and boundary conditions are obtained from the Model for OZone and Related chemical Tracers (MOZART-4) global chemistry model \citep{Emmons:2010fk}, which includes 85 gas-phase species, 39 photolysis, and 157 gas-phase reactions. Therefore, species mapping is performed especially for some of the bulk species (e.g. \chem{OLT}\,\texttt{:=}\,\chem{C_3H_6}+\chem{MVK}+0.5\chem{BIGENE}\footnote{\chem{OLT}=terminal alkenes in RADM2; \chem{MVK}=methyl vinyl ketone, \chem{BIGENE}=\chem{C_{4+}H_8} in MOZART-4}). {\lnox} emission uses a modified \citet{Price:1992wb} method described and evaluated in detail in Chapter~\ref{ch:lightning} as well as \citet{Wong:2013vn}. Base case simulation uses an emission factor of 350\,\unit{moles\,\chem{NO}/flash} and vertical distributions described in \citet{Ott:2010lo}. Further improvements have also been implemented for WRF-Chem version 3.5, to be released in mid-2013 (Appendix~\ref{apdx:lnox-doc}).
 	
 	% yellowstone:/glade/p/work/johnwong/final_inputs/emiss
 	\figuremacroW{anthrop}{EPA NEI05 \chem{NO} emission}{\label{fig:2006/anthrop} (a) NEI05  \chem{NO} emission during weekdays at 12Z after mapping to WRF grid. (b)  \chem{NO} emission at Houston,TX between 12Z--23Z as an example for demonstrating the differences between emissions for different days of the week.\vspace{-.2in}}{1.0}
@@ -107,18 +107,18 @@ The rest of this chapter describes specific model settings in details. The full 
 	
 	Presented here is a simple method implemented into WRF-Chem since version 3.3. It leverages the deterministic nature of a numerical weather-chemistry model and extracts the relevant tendencies prior to coupling without loss of information. Conceptualize the tendency calculation of a scalar $S$ from time step $t$ to $t+1$ as follow:
 	\begin{equation}\label{eqn:tendency}
-		S^{t+1}-S^t = (\Delta_{chem}+\Delta_{conv}+\Delta_{vmix}+\mathbf{v}\cdot\nabla + w\delta_z)S^t\delta t + E_S^t + LS^t
+		S^{(t+1)}-S^{(t)} = (\Delta_{chem}+\Delta_{conv}+\Delta_{vmix}+\mathbf{v}\cdot\nabla + w\delta_z)S^{(t)}\delta t + E_S^{(t)} + LS^{(t)}
 	\end{equation}
-	where $\Delta$'s are the time-stepping operators for chemistry, convection, and vertical mixing, $\mathbf{v}$ is the horizontal wind vector, and $w$ is the vertical wind. $E_S^t$ and $LS^t$ are the emission and loss terms. Then, we may accumulate at every single time step for a specific process $p$ to obtain the total tendency $T$ for a scalar $S$ due to the said process up to time $t$ from initialization :
+	where $\Delta$'s are the time-stepping operators for chemistry, convection, and vertical mixing, $\mathbf{v}$ is the horizontal wind vector, and $w$ is the vertical wind. $E_S^{(t)}$ and $LS^{(t)}$ are the emission and loss terms. Then, we may accumulate at every single time step for a specific process $p$ to obtain the total tendency $T$ for a scalar $S$ due to the said process up to time $t$ from initialization :
 	\begin{equation}\label{eqn:tendency-accul}
-		T_{p}^t = \sum_{\tau=0}^t\Delta_{p} S^\tau\delta\tau
+		T_{p}^{(t)} = \sum_{\tau=0}^t\Delta_{p} S^{(\tau)}\delta\tau
 	\end{equation}
-	While Equation \ref{eqn:tendency-accul} appears first-order, the tendency obtained from each time step is calculated with the accuracy of the respective method used. For example, advection in the simulations employed in this study use a method that has a lower order term and a monotonic limiter described in \citet{Skamarock:2006wm}. To compute the two advective tendencies, both terms are included into the accumulated diagnostic outputs. Therefore,  under circumstances where $\langle E_S^\tau+LS^\tau\rangle_{\tau<t}=0$, the following is expected to hold with the processes $\mathcal{P}$ from Equation \ref{eqn:tendency}:
+	While Equation \ref{eqn:tendency-accul} appears first-order, the tendencies obtained from each time step is calculated with the accuracy of the respective method used. For example, advection in the simulations employed in this study use a method that has a lower order term and a monotonic limiter described in \citet{Skamarock:2006wm}. To compute the two advective tendencies, both terms are included into the accumulated diagnostic outputs. Therefore,  if $\langle E_S^{(\tau)}+LS^{(\tau)}\rangle_{\tau<t}=0$, the following is expected to hold with the processes $\mathcal{P}$ from Equation \ref{eqn:tendency}:
 	\begin{equation}\label{eqn:tendency-good}
-		\sum_{p\in\mathcal{P}}T_{p}^t \equiv S^t-S^0
+		\sum_{p\in\mathcal{P}}T_{p}^{(t)} \equiv S^{(t)}-S^{(0)}
 	\end{equation}
 	
-	Currently, the default implementation includes 5 processes: chemistry, convection, vertical mixing, horizontal advection, and vertical advection. $T_{p}^t$ for 8 species are included in the output by default: \chem{O_3}, \chem{CO}, \chem{NO}, \chem{NO_2}, \chem{HNO_3}, \chem{HO}, \chem{HO_2}, and \chem{C_5H_8} (isoprene). Diagnostics for isoprene and \chem{HNO_3} have been replaced with \chem{MGLY}\footnote{Methyl glyoxal.} and \chem{HC5}\footnote{Bulk species for alkane with moderate \chem{HO} rate constants.} respectively. These diagnostic outputs are used extensively throughout this study.
+	Currently, the default implementation includes 5 processes: chemistry, convection, vertical mixing, horizontal advection, and vertical advection. $T_{p}^{(t)}$ for 8 species are computed for this study: \chem{O_3}, \chem{CO}, \chem{NO}, \chem{NO_2}, \chem{HO}, \chem{HO_2}, \chem{CH5}\footnote{Bulk species for alkane with moderate \chem{HO} rate constants.}, and \chem{MGLY}\footnote{Methyl glyoxal.}. These diagnostic outputs are used extensively throughout this study.
 	
 	Another subject of frequent interest is the source and age of an air mass. It is often achieved by including online point-sourced tracers or computing Lagrangian trajectories offline with tools such as FLEXPART \citep{Stohl:2005vn}. Of interest in this study are air masses from the boundary layer, stratosphere, lateral domain boundaries, and those affected by {\lnox} emission. Values of the lateral boundaries, boundary layer, and stratospheric tracers are held at 1.0 at their sources and allowed to be freely transported through advection, convection\footnote{By sharing convective transport method with chemical species, an implementation error was introduced. See \mbox{Appendix}~\ref{a-sec:bug/ctrans} for more details.}, and vertical mixing. Similarly, lightning tracers are also emitted at the same rate and locations as those determined by the {\lnox} parameterization described in Chapter \ref{ch:lightning}, in both passive and decaying form. All decaying twins of these tracers decay with an $e$-folding time of one day. An equivalent mean tracer age within a volume $V$ may be defined as
 	\begin{equation}\label{eqn:tracer-age}
@@ -126,9 +126,29 @@ The rest of this chapter describes specific model settings in details. The full 
 	\end{equation}
 	where $\phi_0$ is the passive non-decaying tracer, and $\phi_1$ is the decaying twin. Such definition is chosen over $\int_V\phi_0/\phi_1dV$ to avoid cases where $\phi_0\sim\phi_1\sim0$.
 
-\section{General results}\label{sec:2006/general}
+\section{General results and validation}\label{sec:2006/general}
 
-\section{Validation}\label{sec:2006/validation}
+This section describes various aspects of the simulation results and compares them against
+corresponding observational data sets. The primary goal of this section is to provide context
+and bounds for uncertainty for further discussions in Section \ref{sec:2006/discussion}.
+
+\subsection{Meteorology}\label{ssec:2006/gen/met}
+
+The influence of meteorology on chemistry is of significant importance for the formation of the NAM
+ozone enhancement \citep{Li:2005ss,Cooper:2007cr,Barth:2012qf}. In particular, convection has
+been shown to detrain boundary layer air, rich in ozone precursors, into the upper troposphere and
+thus perturbing ozone distributions \citep{Dickerson:1987hc,Kar:2004jl,Weinstock:2007yj}. Moreover,
+intense convective activities also generate thunderstorms responsible for {\lnox} emissions, which
+further amplifies the impact of convective activities on tropospheric ozone chemistry. On the synoptic
+scale, anticyclonic circulation in the upper troposphere has been attributed to retain detrained ozone
+precursors, allowing prolonged ozone production over the southern United States
+\citep{Li:2005ss,Cooper:2007cr}.
+
+
+\subsection{Ozone}\label{ssec:2006/gen/ozone}
+\subsection{Carbon monoxide}\label{ssec:2006/gen/co}
+\subsection{Formaldehyde}\label{ssec:2006/gen/form}
+\subsection{Nitrogen Oxides}\label{ssec:2006/gen/nox}
 
 \section{Discussion}\label{sec:2006/discussion}
 
