@@ -154,6 +154,8 @@ precursors, allowing prolonged ozone production over the southern United States
 \textbf{(c)} total NWS AHPS precipitation in \unit{mm/day}.
 \textbf{(d)} Parameterized fraction (\%) of model simulated precipitation.}{.9}
 
+\subsubsection{Precipitation/convection}
+
 The primary meteorological feature of interest in this study is convection, which is validated via precipitation
 as the proxy. While precipitation is not a good measurement of the immediate convective strength, the
 accuracy and availability of information from the National Weather Service (NWS) Advanced Hydrological
@@ -185,17 +187,62 @@ During the 28-day period shown in Figure~\ref{fig:2006/precipmap}(a), WRF predic
 precipitation within the analysis domain while NWS observed 82.29\,\unit{mm}. This -14\% bias in precipitation
 is caused by under-prediction in the frequency of heavy precipitation events above 15\,\unit{mm/day}. A likely
 cause is that weak/smaller-scale convective events have been over-predicted while stronger/grid-scale convective
-events are under-predicted. An attempt to improve precipitation prediction by reducing the timescale for nudging
+events are under-predicted.  Considering the model bias in the mean area prediction for individual day, 12 out of
+28 days has less than 10\% absolute bias in the area mean against NWS and 8 out of 28 days are closer than
+2\% absolute bias. An attempt to improve precipitation prediction by reducing the timescale for nudging
 water vapor to 1\,\unit{hr} instead of 3\,\unit{hr} has instead shown to increase the negative bias to -61\% instead.
-Considering the model bias in the mean area prediction for individual day, 12 out of 28 days has less than
-10\% absolute bias in the area mean against NWS and 8 out of 28 days are closer than 2\% absolute bias.
+Since this behavior is contrary to that shown in the lightning validation in Chapter~\ref{ch:lightning}, it maybe expected
 
-There are several reasons why skill score and threat score calculations, both common and appropriate methods for
+There are several reasons why measures such as skill scores and threat scores, both common and appropriate methods for
 model precipitation evaluations, are not used here. The primary reason is that the requirement of this study is not to predict
 the exact locations of storms, but rather to predict an overall area-integrated convective strength consistent with that
 observed. The second reason is that the differences in resolution. A small sub-gridsized storm are represented as
 a single activity within a {\resolution{36}} grid whereas it may only generated precipitation within one {\resolution{4}} grid
 in the NWS data set.
+
+\subsubsection{Lightning}
+
+Since {\lnox} is a primary upper tropospheric ozone precursor, it is important to understand the model's behavior in
+terms of lightning prediction. Since total lightning monitoring from ENTLN is not available during 2006, and that LIS/OTD
+only covers up to subtropical latitudes with variable shifting diurnal-sampling biases, NLDN is to evaluate flash rate predictions.
+Even though Chapter~\ref{ch:lightning} evaluated the lightning parameterization in detail, the change in precipitation
+prediction with respect to nudging parameter as well as convective fraction demands a separate validation since
+the statistics of cloud top/level of neutral buoyancy is expected as a corollary of the results presented earlier in this section.
+
+% scratch/Dissertation/ltngcheck.pro
+\figuremacroN{ltng_dist}{NLDN and WRF CG daily flash count and distribution}{\label{fig:2006/ltngdist}
+\textbf{(a)} NLDN CG daily flash count ($\times10^4$) within the analysis domain, with WRF-simulated
+total daily flash count $\times1/4$ to account for CG fraction and $\times0.1$ to account for systematic bias.
+\textbf{(b)} Daily grid flash count frequency distributions from NLDN and WRF with scaling factors.\vspace{-.2in}}
+
+Vaisala\footnote{Vaisala acquired NLDN from GeoMat between 2002 and 2003.}U.S. National Lightning Detection Network
+\citep[NLDN;][]{Cummins:2009aa} provides continuous multiyear CONUS coverage of $>90\%$ of all CG flashes with ongoing
+network-wide upgrades since 1984 \citep{Orville:2002uq,Orville:2010uq}. It is also part of the North American Lightning
+Detection Network (NALDN), which also includes the Canadian Lightning Detection Network (CLDN). Data from NALDN
+also comprises a part of Vaisala's GLD360 global lightning product, which is not used in this study. The network employs
+the ``Improved Accuracy through Combined Technology'' (IMPACT) algorithm, which combines direction finding (DF)
+and time-of-arrival (TOA) information from lightning position and tracking system (LPATS) sensors and IMPACT sensors.
+The frequency range at which the sensors operate at allows detection of primarily CG flashes and a small number of IC
+flashes. Low peak current strokes $<$~15~\unit{kA} are eliminated from the data set due to potentials of misclassification. The
+median location accuracy is 250\,\unit{m}, which is well within the resolutions employed in this study. Multiple strokes are
+aggregated into a single flash if they are within 1 second and no more than 10\,\unit{km} apart.
+
+Since NLDN detects only CG flashes and WRF-Chem produces total flash counts\footnote{The version used in this study is 3.4.1,
+which produces an aggreated IC+CG flash count. Estimation of IC:CG ratio is implemented into 3.5, described in
+Appendix~\ref{apdx:lnox-doc}.}, flash count output from WRF is scaled by $1/4$, or an IC:CG ratio of $3:1$, to account
+for a rough estimate of the CG fraction in the area according to \citet{Boccippio:2001ys}. However, despite precipitation being
+underestimated, CG flash count is approximately 10 times higher than observed by NLDN, which has close to 100\% DE within
+the analysis region, which is inconsistent with the result from Chapter~\ref{ch:lightning}. This inconsistency is likely a consequence
+of precipitation diagnostics behaving differently than when it was used in the previous chapter, which may be related to one of
+the bugs recently discovered within the convective transport module described in Appendix~\ref{a-sec:bug/ctrans}.
+
+Figure~\ref{fig:2006/ltngdist}a shows the comparison of the daily flash count from NLDN and WRF-Chem after scaling for the
+systematic bias. However, even though scaling by $\alpha=0.1$ allows the integrated flash count to be consistent with observation,
+the distribution truncates prematurely at $\sim200$\,\unit{flashes/grid/day} and compensates with overestimation
+below 100 (Fig.~\ref{fig:2006/ltngdist}b). Due to the nonlinear response of ozone chemistry to {\lnox}, such adjustment is
+expected to have unrealistic impacts on the result. Sensitivity tests designed to address these uncertainties are described in
+Section~\ref{sec:2006/sens}. For the base case scenario, the default setup ($\alpha=1.0$) is used even though excess {\lnox}
+is expected. This decision is made because the suggested alternatives have no more or no less merits than the default setting.
 
 \subsection{Ozone}\label{ssec:2006/gen/ozone}
 \subsection{Carbon monoxide}\label{ssec:2006/gen/co}
