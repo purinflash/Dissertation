@@ -169,8 +169,8 @@ errors. The resulting data are gridded onto Hydrologic Rainfall Analysis Project
 (\url{http://www.srh.noaa.gov/abrfc/?n=pcpn\_methods}).
 
 \figuremacroN{precip_ts}{WRF and NWS precipitation time series}{\label{fig:2006/precipts}
-\textbf{(a)} WRF and NWS daily area mean precipitation within the inner analysis domain shown in
-Figure~\ref{fig:2006/precipmap} during August 2006. \textbf{(b)} Frequency distribution within analysis domain
+\textbf{(a)} WRF and NWS daily area mean precipitation within the inner analysis region shown in
+Figure~\ref{fig:2006/precipmap} during August 2006. \textbf{(b)} Frequency distribution within analysis region
 with bin size 0.2\,\unit{mm/day}.\vspace{-.2in}}
 
 Figure~\ref{fig:2006/precipmap} shows a comparison of the spatial distribution of the simulated precipitation
@@ -184,7 +184,9 @@ Simulated coastal rainfall north of the Gulf Mexico is also generally lower than
 near Houston, TX.
 
 During the 28-day period shown in Figure~\ref{fig:2006/precipmap}(a), WRF predicted 70.74\,\unit{mm} area mean
-precipitation within the analysis domain while NWS observed 82.29\,\unit{mm}. This -14\% bias in precipitation
+precipitation within the analysis region\footnote{Isotropic region defined as 30--40$^\circ$N, 80--105$^\circ$W, designed
+to maximize area coverage without including marine surfaces (minimal NWS data), and the Rocky Mountains (complicated
+model behavior due to terrain).}. while NWS observed 82.29\,\unit{mm}. This -14\% bias in precipitation
 is caused by under-prediction in the frequency of heavy precipitation events above 15\,\unit{mm/day}. A likely
 cause is that weak/smaller-scale convective events have been over-predicted while stronger/grid-scale convective
 events are under-predicted.  Considering the model bias in the mean area prediction for individual day, 12 out of
@@ -211,7 +213,7 @@ the statistics of cloud top/level of neutral buoyancy is expected as a corollary
 
 % scratch/Dissertation/ltngcheck.pro
 \figuremacroN{ltng_dist}{NLDN and WRF CG daily flash count and distribution}{\label{fig:2006/ltngdist}
-\textbf{(a)} NLDN CG daily flash count ($\times10^4$) within the analysis domain, with WRF-simulated
+\textbf{(a)} NLDN CG daily flash count ($\times10^4$) within the analysis region, with WRF-simulated
 total daily flash count $\times1/4$ to account for CG fraction and $\times0.1$ to account for systematic bias.
 \textbf{(b)} Daily grid flash count frequency distributions from NLDN and WRF with scaling factors.\vspace{-.2in}}
 
@@ -230,21 +232,34 @@ aggregated into a single flash if they are within 1 second and no more than 10\,
 Since NLDN detects only CG flashes and WRF-Chem produces total flash counts\footnote{The version used in this study is 3.4.1,
 which produces an aggreated IC+CG flash count. Estimation of IC:CG ratio is implemented into 3.5, described in
 Appendix~\ref{apdx:lnox-doc}.}, flash count output from WRF is scaled by $1/4$, or an IC:CG ratio of $3:1$, to account
-for a rough estimate of the CG fraction in the area according to \citet{Boccippio:2001ys}. However, despite precipitation being
-underestimated, CG flash count is approximately 10 times higher than observed by NLDN, which has close to 100\% DE within
-the analysis region, which is inconsistent with the result from Chapter~\ref{ch:lightning}. This inconsistency is likely a consequence
-of precipitation diagnostics behaving differently than when it was used in the previous chapter, which may be related to one of
-the bugs recently discovered within the convective transport module described in Appendix~\ref{a-sec:bug/ctrans}.
+for a rough estimate of the CG fraction in the area according to \citet{Boccippio:2001ys} and consistent with IC:CG ratio from ENTLN
+shown in Figure~\ref{fig08_iccgmap}. Despite precipitation being underestimated, the simulated CG flash count is approximately
+10 times higher than observed by NLDN, which is inconsistent with the result from Chapter~\ref{ch:lightning}. This
+inconsistency is likely a consequence of precipitation diagnostics behaving differently than when it was used in the
+previous chapter, which may be related to one of the bugs recently discovered within the convective transport module
+described in Appendix~\ref{a-sec:bug/ctrans}.
 
 Figure~\ref{fig:2006/ltngdist}a shows the comparison of the daily flash count from NLDN and WRF-Chem after scaling for the
 systematic bias. However, even though scaling by $\alpha=0.1$ allows the integrated flash count to be consistent with observation,
-the distribution truncates prematurely at $\sim200$\,\unit{flashes/grid/day} and compensates with overestimation
-below 100 (Fig.~\ref{fig:2006/ltngdist}b). Due to the nonlinear response of ozone chemistry to {\lnox}, such adjustment is
+the distribution truncates prematurely at $\sim200$\,\unit{flashes/grid/day} and compensates the deficit with overestimations
+below 100\,\unit{flashes/grid/day} (Fig.~\ref{fig:2006/ltngdist}b). Due to the nonlinear response of ozone chemistry to {\lnox}, such adjustment is
 expected to have unrealistic impacts on the result. Sensitivity tests designed to address these uncertainties are described in
 Section~\ref{sec:2006/sens}. For the base case scenario, the default setup ($\alpha=1.0$) is used even though excess {\lnox}
-is expected. This decision is made because the suggested alternatives have no more or no less merits than the default setting.
+is expected. This decision is made because there are no clear evidences to support that the suggested alternatives can
+produce significantly better results after accounting for ozone sensitivity.
 
 \subsection{Ozone}\label{ssec:2006/gen/ozone}
+
+Given the result from the previous section (Sec.~\ref{ssec:2006/gen/met}), we can expect to see excess ozone chemistry provided
+\chem{NO_x}-titration does not precede ozone production. Since the ozone enhancement occurs primarily above the southern
+United States, it is useful to define a region of focus different from that used in Section~\ref{ssec:2006/gen/met}. Consider the
+August mean geopotential height ($Z_{300}$) at 300\,\unit{hPa} simulated by the model, we define the ``anticyclone region'' as
+columns with $Z_{300}>9730\,\unit{m}$. While the anticyclonic circulation is not stationary, using the mean circulation maximizes
+the duration during which characteristics of the ozone enhancement is expected to be captured.
+
+Both the August mean 300\,\unit{hPa} ozone and geopotential heights are shown in Figure %%% <<< insert figure.
+While the location of the enhancement is consistent with that by previous studies.
+
 \subsection{Carbon monoxide}\label{ssec:2006/gen/co}
 \subsection{Formaldehyde}\label{ssec:2006/gen/form}
 \subsection{Nitrogen Oxides}\label{ssec:2006/gen/nox}
