@@ -184,7 +184,7 @@ Simulated coastal rainfall north of the Gulf Mexico is also generally lower than
 near Houston, TX.
 
 During the 28-day period shown in Figure~\ref{fig:2006/precipmap}(a), WRF predicted 70.74\,\unit{mm} area mean
-precipitation within the analysis region\footnote{Isotropic region defined as 30--40$^\circ$N, 80--105$^\circ$W, designed
+precipitation within the analysis region\footnote{Isotropic boundaries defined as 30--40$^\circ$N, 80--105$^\circ$W, designed
 to maximize area coverage without including marine surfaces (minimal NWS data), and the Rocky Mountains (complicated
 model behavior due to terrain).}. while NWS observed 82.29\,\unit{mm}. This -14\% bias in precipitation
 is caused by under-prediction in the frequency of heavy precipitation events above 15\,\unit{mm/day}. A likely
@@ -257,9 +257,84 @@ August mean geopotential height ($Z_{300}$) at 300\,\unit{hPa} simulated by the 
 columns with $Z_{300}>9730\,\unit{m}$. While the anticyclonic circulation is not stationary, using the mean circulation maximizes
 the duration during which characteristics of the ozone enhancement is expected to be captured.
 
-Both the August mean 300\,\unit{hPa} ozone and geopotential heights are shown in Figure %%% <<< insert figure.
-While the location of the enhancement is consistent with that by previous studies.
+	\begin{wrapfigure}{o}{0.5\textwidth}
+		\centering
+		\begin{singlespacing}
+		\vspace{-.35in}
+		\includegraphics[width=0.48\textwidth]{o3/o308_300hPa}
+		\includegraphics[width=0.48\textwidth]{o3/o3_colorbar}
+		\caption[Simulated August ozone at 300\,\unit{hPa}]{{\small\textbf{Simulated upper tropospheric ozone} --- Simulated ozone
+		(\unit{ppbv}) and geopotential height (\unit{m}) at 300\,\unit{hPa} during August 2006. The blue 9730\,\unit{m} geopotential
+		height contour indicates the ``anticylone region'' that is used throughout Chapter~\ref{ch:2006}.}}
+		\label{fig:2006/o3_300}
+		\end{singlespacing}
+	\end{wrapfigure}
 
+Both the August mean 300\,\unit{hPa} ozone and geopotential heights are shown in Figure~\ref{fig:2006/o3_300}.
+The location of ozone enhancement is consistent with that observed by \citet{Cooper:2007cr}. The ability to position the enhancement
+only requires the correct dynamical features such as the anticyclone formation, which is controlled by data assimilation with NCEP
+GFS inputs. North of the jet stream, stratospheric ozone appears as consistent high ozone. Some of ozone is observed to mix across
+the jet stream in the outflow region (northeast corner of model domain) and circulates into the anticyclone. The finger-shaped low-ozone
+structure separating the ozone enhancement core and northern stratospheric ozone is formed by repeated low-ozone transport from
+the equatorial Pacific via the southwest corner boundary condition provided by MOZART GCM. However, compared to other studies,
+the magnitude of the ozone enhancement is higher and slightly more widespread especially over the Gulf of Mexico. This is likely
+due to the order of magnitude over-prediction of lightning flash rate and thus {\lnox} (see Sect.~\ref{ssec:2006/gen/met}).
+
+	\begin{sidewaysfigure}[htbp]
+		\begin{center}% yellowstone:/glade/scratch/johnwong/Dissertation
+		\includegraphics[width=1.6in]{o3/o3_4534_ftuv}
+		\includegraphics[width=1.6in]{o3/o3_4594_ftuv}
+		\includegraphics[width=1.6in]{o3/o3_4797_ftuv}
+		\includegraphics[width=1.6in]{o3/o3_4837_ftuv}
+		\includegraphics[width=1.6in]{o3/o3_4840_ftuv}
+		
+		\includegraphics[width=1.6in]{o3/o3_4857_ftuv}
+		\includegraphics[width=1.6in]{o3/o3_4860_ftuv}
+		\includegraphics[width=1.6in]{o3/o3_4880_ftuv}
+		\includegraphics[width=1.6in]{o3/o3_4900_ftuv}
+		\includegraphics[width=1.6in]{o3/o3_4911_ftuv}
+		
+		\includegraphics[width=4in]{o3/o3_colorbar}
+		\end{center}
+	    	\caption[TES/WRF-Chem Ozone comparisons]{\textbf{TES/WRF Ozone comparisons} --- First row for each panel is the WRF-Chem
+		ozone profiles in ppbv mapped onto TES pressure coordinates after applying Equation \ref{eqn:TES-AK}. Second row is the
+		TES profile. Horizontal dashed line indicates the 300~hPa level. Thrid row shows the TES transect and the  9730\,\unit{m}
+		geopotential contour at 300\,\unit{hPa} from WRF. Time indicated is the 30$^\circ$N-crossing time.} \label{fig:2006/o3tes}
+	\end{sidewaysfigure}
+
+\subsubsection{Validation with TES}
+
+To quantify the bias in the simulated ozone, retrievals from the satellite-borne Tropospheric Emission Spectrometer (TES) are used
+to provide spatial snapshots along selected transects. TES is a high resolution infrared Fourier-transform spectrometer with a spectral
+resolution of 0.06\,\unit{cm^{-1}} \citep{Beer:2006fk}. The data products used are of V004, all of which are special observations in
+step-and-stare mode with footprints of 5.3\,\unit{km}$\times$8.3\,\unit{km} and 35\,\unit{km} gaps between stares. Through comparisons
+with ozonesondes, a validation with V002 showed that TES ozone has a 3--10\,\unit{ppbv} high bias in the troposphere, but it is still
+able to pick up the general variability \citep{Nassar:2008mw}. TES products have been used in numerous studies on tropospheric
+chemistry \citep[e.g.][]{Hegarty:2010vn,Voulgarakis:2011fk}, studies on convection and water budget \citep[e.g.][]{Brown:2008zr,Risi:2010ys},
+and air quality studies \citep[e.g.][]{Mcmillan:2010kx, Wang:2011uq}.
+
+Using TES, we first compare the ozone curtain profiles. Between July 15 and August 23, 10 TES transects are selected and compared to
+the WRF-Chem output of the corresponding date at 18\,UTC or 21\,UTC, whichever is closer to the 30$^\circ$N-crossing time (Fig.~\ref{fig:2006/o3tes}).
+These transects are selected because they either (a) show signals of upper tropospheric ozone enhancement, or (b) intersect regions
+with 300\,\unit{hPa} geopotential height greater than 9730\,\unit{m} while passing over the United States. Of the ten transects, only transect 4594
+does not satisfy criteria (b), but the TES retrieval does show a prominent upper tropospheric ozone enhancement just south of 30$^\circ$N. In
+addition, to compare model outputs against TES profiles, proper transformation of the model profile is required. Let $\mathbf{x}_{\mathrm{WRF}}$
+be the $\log$ of ozone column extracted from the WRF-Chem interpolated onto TES pressure levels, then the averaging kernel is applied to take
+into account the retrieval process:
+	\begin{equation}\label{eqn:TES-AK}
+		\mathbf{x}_{\mathrm{WRF}}^{\mathrm{TES}} = \mathbf{x_a} + \mathbf{A}\left(\mathbf{x}_{\mathrm{WRF}}-\mathbf{x_a}\right)
+	\end{equation}
+where $\mathbf{x_a}$ is the {\it a priori} constraint, $\mathbf{A}$ is the averaging kernel, and $\mathbf{x}_{\mathrm{WRF}}^{\mathrm{TES}}$
+is how TES would observe the WRF ozone column. Furthermore, columns with potential problems are filtered out using the master quality
+assurance flag, the C-curve flag, and the criteria\footnote{$trace(\mathbf{A})$ is sometimes known as the degrees of freedom for signal.}that
+$trace(\mathbf{A})>4.0$.
+
+	
+	% yellowstone:/glade/scratch/johnwong/Dissertation
+	\figuremacroN{o3/o3_teswrfhist_ftuv}{WRF-Chem and TES ozone frequency distributions}{\label{fig:2006/o3tesdistr}
+	Normalized frequency distributions (\unit{\%/ppmv}) of TES and WRF-Chem ozone mixing ratios between (a)
+	150--300~\unit{hPa} and (b) 300--450~\unit{hPa}.}
+	
 \subsection{Carbon monoxide}\label{ssec:2006/gen/co}
 \subsection{Formaldehyde}\label{ssec:2006/gen/form}
 \subsection{Nitrogen Oxides}\label{ssec:2006/gen/nox}
