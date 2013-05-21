@@ -298,7 +298,7 @@ due to the order of magnitude over-prediction of lightning flash rate and thus {
 		\end{center}
 	    	\caption[TES/WRF-Chem Ozone comparisons]{\textbf{TES/WRF Ozone comparisons} --- First row for each panel is the WRF-Chem
 		ozone profiles in ppbv mapped onto TES pressure coordinates after applying Equation \ref{eqn:TES-AK}. Second row is the
-		TES profile. Horizontal dashed line indicates the 300~hPa level. Thrid row shows the TES transect and the  9730\,\unit{m}
+		TES profile. Horizontal dashed line indicates the 300\,\unit{hPa} level. Thrid row shows the TES transect and the  9730\,\unit{m}
 		geopotential contour at 300\,\unit{hPa} from WRF. Time indicated is the 30$^\circ$N-crossing time.} \label{fig:2006/o3tes}
 	\end{sidewaysfigure}
 
@@ -315,8 +315,8 @@ and air quality studies \citep[e.g.][]{Mcmillan:2010kx, Wang:2011uq}.
 
 	% yellowstone:/glade/scratch/johnwong/Dissertation
 	\figuremacroN{o3/o3_teswrfhist_ftuv}{WRF-Chem and TES ozone frequency distributions}{\label{fig:2006/o3tesdistr}
-	Normalized frequency distributions (\unit{\%/ppmv}) of TES and WRF-Chem ozone mixing ratios between (a)
-	150--300~\unit{hPa} and (b) 300--450~\unit{hPa}. Only columns between 25--40$^\circ$N are used.}
+	Normalized frequency distributions (\unit{\%/ppmv}) of TES and WRF-Chem ozone mixing ratios between {\bf (a)}
+	150--300~\unit{hPa} and {\bf (b)} 300--450~\unit{hPa}. Only columns between 25--40$^\circ$N are used.}
 
 Using TES, we first compare the ozone curtain profiles. Between July 15 and August 23, 10 TES transects are selected and compared to
 the WRF-Chem output of the corresponding date at 18\,UTC or 21\,UTC, whichever is closer to the 30$^\circ$N-crossing time (Fig.~\ref{fig:2006/o3tes}).
@@ -419,11 +419,89 @@ is seen in both WRF-Chem output and ozonesonde profile. Similarly, the ``termina
 events are likely caused by the synoptic movement of the enhancement, controlled by dynamical features. Except for Kelowna, British Columbia, the simulated
 ozone VMR above 200\,\unit{hPa} is a factor of 2--3 or higher at all North American ozonesonde sites within the model domain.
 
-In conclusion, WRF-Chem overestimates the ozone concentration throughout the troposphere. However, spatial and temporal variability caused by large-scale
-dynamics are observed at individual locations affected by the ozone enhancement. The high bias within the mid-to-upper troposphere is largely constrained
-but increases substantially above 200\,\unit{hPa}.
+In conclusion, WRF-Chem is able to simulate an upper tropospheric ozone enhancement that coincides with the ``anticyclone region'' defined earlier, but the
+overall ozone VMR is consistently overestimated throughout the tropospheric column. Despite the high bias spatial and temporal variabilities controlled by
+large-scale dynamics are observed at individual locations affected by the ozone enhancement. Except for the three North America West Coast locations and
+surface model levels, tropospheric high bias rarely exceeds 100\% ($\times2$). The over-prediction increases substantially above 200\,\unit{hPa}.
 
 \subsection{Carbon monoxide}\label{ssec:2006/gen/co}
+
+	\begin{wrapfigure}{o}{0.5\textwidth}
+		\centering
+		\begin{singlespacing}
+		\vspace{-.15in}
+		\includegraphics[width=0.48\textwidth]{co/co08_300hPa}
+		\includegraphics[width=0.48\textwidth]{o3/o3_colorbar}
+		\caption[Simulated August \chem{CO} at 300\,\unit{hPa}]{{\small\textbf{Simulated upper tropospheric \chem{CO}} --- Carbon monoxide
+		(\unit{ppbv}) and geopotential height (\unit{m}) at 300\,\unit{hPa} during August 2006.}}
+		\label{fig:2006/co_300}
+		\end{singlespacing}
+	\end{wrapfigure}
+	
+To understand the ozone distribution, it is useful to look at its chemical precursors. Carbon monoxide (\chem{CO}) is one of such species widely used for
+tracking boundary layer air and pollution \citep[e.g.][]{Pan:2007sw,Weinstock:2007yj,Mcmillan:2010kx}. Emitted through incomplete
+combustion, \chem{CO} is an excellent indicator for anthropogenic emission sources and biomass burning. It is also produced chemically through oxidations
+of a wide range of VOCs. Its lifetime in the troposphere also allows \chem{CO} to be an effective long-ranged tracer without being well-mixed.
+
+Figure \ref{fig:2006/co_300} shows the August average \chem{CO} mixing ratio at 300\,\unit{hPa}. At the center of the NAM circulation is a distinct \chem{CO}
+maximum over northeastern Texas. This feature is contributed by both tracer retainment via synoptic advection and local convective detrainment of boundary layer
+air. Considering the comparison performed for precipitation in Section~\ref{ssec:2006/gen/met}, this feature may be weaker if not absent due to the high bias in
+convective activity in that region. On the other hand, the high \chem{CO} simulated over Georgia and neighboring states may have been underestimated because
+of the under-prediction in convective activities along the Blue Ridge Mountains. North of the jet stream, anomalously high \chem{CO} is observed near the
+tropopause transported from the western boundary condition defined by MOZART. This influx of \chem{CO} in the upper air can be linked to intercontinental transport
+of widespread wild fire across the Siberian plateau during July.% (Fig.~\ref{fig:2006/russia}).
+%\figuremacroN{co/Russia}{Wildfire over Siberian Plateau}{\label{fig:2006/russia}Wildfire over the Siberian Plateau on July 24, 2006 that contributed to upper air
+%\chem{CO} enhancement in northern latitudes over North America. Image captured by the MODIS instrument on NASA's Aura satellite.}
+Consistent with the transport pattern of northern high ozone, which is occasionally seen splitting off across the jet stream and transported southwards along the
+Atlantic coast and eventually merged into the ``anticyclone,'' high \chem{CO} from north of the jet stream is also observed to follow the same pattern.
+Finally, air mass with low \chem{CO} and low ozone are transported intermittently into the domain via the southwestern boundary and into inner CONUS
+between the 9600--9700\,\unit{m} geopotential height contours.
+
+\subsubsection{Validation against TES}
+
+To evaluate the validity of the model's \chem{CO} output, we may do transect comparison against TES \chem{CO} products. Instrument characteristics of TES are
+already described in Section~\ref{ssec:2006/gen/ozone}. The TES \chem{CO} product has been validated against MOPITT\footnote{Measurements of Pollution in
+the Troposphere.} satellite retrievals \citep{Luo:2007ly,Ho:2009lh} and aircraft measurements \citep{Luo:2007vn,Lopez:2008ys}.
+
+	\begin{sidewaysfigure}[htbp]
+		\begin{center}% yellowstone:/glade/scratch/johnwong/Dissertation
+		\includegraphics[width=1.6in]{co/co_4534_ftuv}
+		\includegraphics[width=1.6in]{co/co_4594_ftuv}
+		\includegraphics[width=1.6in]{co/co_4797_ftuv}
+		\includegraphics[width=1.6in]{co/co_4837_ftuv}
+		\includegraphics[width=1.6in]{co/co_4840_ftuv}
+		
+		\includegraphics[width=1.6in]{co/co_4857_ftuv}
+		\includegraphics[width=1.6in]{co/co_4860_ftuv}
+		\includegraphics[width=1.6in]{co/co_4880_ftuv}
+		\includegraphics[width=1.6in]{co/co_4900_ftuv}
+		\includegraphics[width=1.6in]{co/co_4911_ftuv}
+		
+		\includegraphics[width=4in]{co/co_colorbar}
+		\end{center}
+	    	\caption[TES/WRF-Chem \chem{CO} comparisons]{\textbf{TES/WRF \chem{CO} comparisons} --- First row for each panel is the WRF-Chem
+		\chem{CO} profiles in ppbv mapped onto TES pressure coordinates after applying Equation \ref{eqn:TES-AK}. Second row is the
+		TES profile. Horizontal dashed line indicates the 300\,\unit{hPa} level. Thrid row shows the TES transect and the  9730\,\unit{m}
+		geopotential contour at 300\,\unit{hPa} from WRF. Time indicated is the 30$^\circ$N-crossing time.} \label{fig:2006/cotes}
+	\end{sidewaysfigure}
+
+The TES \chem{CO} product is often utilized in tandem with the TES \chem{O_3} product. \citet{Logan:2008uq} used these two products to investigate the impact
+of El Ni\~no on tropospheric composition. Similarly, \citet{Voulgarakis:2011fk} used them to investigate the global \chem{O_3}-\chem{CO} correlation. Attempts
+have also been made to the two TES products to characterize urban pollution outflow but was criticized for low sensitivity near the boundary layer as indicated
+through its averaging kernel \citep{Shim:2007kx}. In the following validation exercise, we are simply going to compare WRF-Chem's output to the TES \chem{CO}
+product using the procedure outlined in Equation~\ref{eqn:TES-AK} to mirror the comparison done with ozone.  Analysis of \chem{O_3}-\chem{CO} correlation
+will be revisited in Section~\ref{sec:2006/discussion}.
+	
+Figure~\ref{fig:2006/cotes} shows the transect-by-transect comparison of WRF-Chem \chem{CO} mapped onto TES transects against TES \chem{CO}
+products. 
+
+
+	% yellowstone:/glade/scratch/johnwong/Dissertation
+	\figuremacroN{co/co_teswrfhist_ftuv}{WRF-Chem and TES \chem{CO} frequency distributions}{\label{fig:2006/cotesdistr}
+	Normalized frequency distributions (\unit{\%/ppmv}) of TES and WRF-Chem ozone mixing ratios between {\bf (a)}
+	150--300~\unit{hPa} and {\bf (b)} 300--450~\unit{hPa}. Only columns between 25--40$^\circ$N are used.}
+	
+
 \subsection{Formaldehyde}\label{ssec:2006/gen/form}
 \subsection{Nitrogen Oxides}\label{ssec:2006/gen/nox}
 
