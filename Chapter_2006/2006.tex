@@ -299,7 +299,7 @@ due to the order of magnitude over-prediction of lightning flash rate and thus {
 	    	\caption[TES/WRF-Chem Ozone comparisons]{\textbf{TES/WRF Ozone comparisons} --- First row for each panel is the WRF-Chem
 		ozone profiles in ppbv mapped onto TES pressure coordinates after applying Equation \ref{eqn:TES-AK}. Second row is the
 		TES profile. Horizontal dashed line indicates the 300\,\unit{hPa} level. Thrid row shows the TES transect and the  9730\,\unit{m}
-		geopotential contour at 300\,\unit{hPa} from WRF. Time indicated is the 30$^\circ$N-crossing time.} \label{fig:2006/o3tes}
+		geopotential contour at 300\,\unit{hPa} from WRF. Time indicated is the 30$^\circ$N-crossing time in \unit{UTC}.} \label{fig:2006/o3tes}
 	\end{sidewaysfigure}
 
 \subsubsection{Validation against TES}
@@ -461,7 +461,11 @@ between the 9600--9700\,\unit{m} geopotential height contours.
 
 To evaluate the validity of the model's \chem{CO} output, we may do transect comparison against TES \chem{CO} products. Instrument characteristics of TES are
 already described in Section~\ref{ssec:2006/gen/ozone}. The TES \chem{CO} product has been validated against MOPITT\footnote{Measurements of Pollution in
-the Troposphere.} satellite retrievals \citep{Luo:2007ly,Ho:2009lh} and aircraft measurements \citep{Luo:2007vn,Lopez:2008ys}.
+the Troposphere.} satellite retrievals \citep{Luo:2007ly,Ho:2009lh} and aircraft measurements \citep{Luo:2007vn,Lopez:2008ys}. To summarize, TES \chem{CO}
+products show slightly lower column \chem{CO} values compared to MOPITT and a $\pm10\%$ bias relative to in-situ measurements with
+the primary contribution being smoothing errors and dependency on the a priori used. Except for instances of poor spatiotemporal coincidences, correlation
+coefficients between in-situ measurements and TES retrievals are between 0.61 and 0.92. Therefore, while retrieval values may be biased, the relative variabilities
+of  \chem{CO} are expected to be realistic.
 
 	\begin{sidewaysfigure}[htbp]
 		\begin{center}% yellowstone:/glade/scratch/johnwong/Dissertation
@@ -479,28 +483,82 @@ the Troposphere.} satellite retrievals \citep{Luo:2007ly,Ho:2009lh} and aircraft
 		
 		\includegraphics[width=4in]{co/co_colorbar}
 		\end{center}
-	    	\caption[TES/WRF-Chem \chem{CO} comparisons]{\textbf{TES/WRF \chem{CO} comparisons} --- First row for each panel is the WRF-Chem
-		\chem{CO} profiles in ppbv mapped onto TES pressure coordinates after applying Equation \ref{eqn:TES-AK}. Second row is the
-		TES profile. Horizontal dashed line indicates the 300\,\unit{hPa} level. Thrid row shows the TES transect and the  9730\,\unit{m}
-		geopotential contour at 300\,\unit{hPa} from WRF. Time indicated is the 30$^\circ$N-crossing time.} \label{fig:2006/cotes}
+	    	\caption[TES/WRF-Chem \chem{CO} comparisons]{\textbf{TES/WRF \chem{CO} comparisons} --- Same as Figure~\ref{fig:2006/o3tes} except for carbon
+		monoxide.} \label{fig:2006/cotes}
 	\end{sidewaysfigure}
 
 The TES \chem{CO} product is often utilized in tandem with the TES \chem{O_3} product. \citet{Logan:2008uq} used these two products to investigate the impact
 of El Ni\~no on tropospheric composition. Similarly, \citet{Voulgarakis:2011fk} used them to investigate the global \chem{O_3}-\chem{CO} correlation. Attempts
 have also been made to the two TES products to characterize urban pollution outflow but was criticized for low sensitivity near the boundary layer as indicated
-through its averaging kernel \citep{Shim:2007kx}. In the following validation exercise, we are simply going to compare WRF-Chem's output to the TES \chem{CO}
-product using the procedure outlined in Equation~\ref{eqn:TES-AK} to mirror the comparison done with ozone.  Analysis of \chem{O_3}-\chem{CO} correlation
-will be revisited in Section~\ref{sec:2006/discussion}.
-	
-Figure~\ref{fig:2006/cotes} shows the transect-by-transect comparison of WRF-Chem \chem{CO} mapped onto TES transects against TES \chem{CO}
-products. 
-
+through its averaging kernel \citep{Shim:2007kx}. In the following validation exercise, we are only going to compare WRF-Chem's output to the TES \chem{CO}
+product using the procedure outlined in Equation~\ref{eqn:TES-AK} to mirror the comparison done with ozone in Section~\ref{ssec:2006/gen/ozone}.  Further
+analysis pertaining to \chem{O_3}-\chem{CO} correlations will be revisited in Section~\ref{sec:2006/discussion}.
 
 	% yellowstone:/glade/scratch/johnwong/Dissertation
 	\figuremacroN{co/co_teswrfhist_ftuv}{WRF-Chem and TES \chem{CO} frequency distributions}{\label{fig:2006/cotesdistr}
-	Normalized frequency distributions (\unit{\%/ppmv}) of TES and WRF-Chem ozone mixing ratios between {\bf (a)}
-	150--300~\unit{hPa} and {\bf (b)} 300--450~\unit{hPa}. Only columns between 25--40$^\circ$N are used.}
+	Same as Figure~\ref{fig:2006/o3tesdistr} except for carbon monoxide.}
 	
+Figure~\ref{fig:2006/cotes} shows the transect-by-transect comparison of WRF-Chem \chem{CO} mapped onto TES transects against TES \chem{CO}
+products. WRF-Chem is obviously biased high in the mid-to-upper troposphere. There are two possible causes for a high bias in \chem{CO}. The first being an
+underestimation of the loss rate, governed by wet deposition and chemical losses via $\chem{CO}+\chem{OH}$. Since $\chem{OH}$ is primarily controlled by
+the photolysis rate $J(\chem{O_3})$. The second possible cause is an overestimation of boundary layer air detrainment. Even though precipitation has been shown to be
+under-predicted (Sect.~\ref{ssec:2006/gen/met}), there is substantial over-prediction in the frequencies of light events $<15\,\unit{mm/day}$ (Fig.~\ref{fig:2006/precipts}).
+
+A source for isolated low bias is the lack of biomass burning emission via wildfire events and thus the related plume-rise vertical transport. Using the fire products from
+the Moderate Resolution Imaging Spectroradiometer \citep[MODIS;][]{Justice:2002zr}, several enhanced \chem{CO} plume in the TES transects can be identified as fire
+related. On July 16, transect 4534 (Fig.~\ref{fig:2006/cotes}{\bf a}) captured a wildfire at Soda Creek, WY (43.5$^\circ$N, 110.2$^\circ$W). On August 15 and 17, multiple
+transects (Fig.~\ref{fig:2006/cotes}{\bf e--g}) captured the downwind plumes of widespread fires from Oregon as heightened \chem{CO} signature between 46--53$^\circ$N.
+Finally, transect 4911 captured the plume from the Idaho fires on August 23 (Fig.~\ref{fig:2006/cotes}{\bf j}). Therefore, by excluding the influence of wildfire emission,
+WRF-Chem is almost always biased high.
+
+Considering only data between 25--40$^\circ$N, the frequency distribution between WRF-Chem and TES retrievals are shown in Figure~\ref{fig:2006/cotesdistr}. The
+computed mean values for the upper tropospheric distributions are 81.7\,\unit{ppbv} and 67.7\,\unit{ppbv} for WRF-Chem and TES respectively, and thus WRF-Chem is
+20.7\% too high. In addition, the standard deviations of the distributions are significantly different with 11.7\,\unit{ppbv} for WRF-Chem and 14.3\,\unit{ppbv} for TES. Therefore,
+WRF-Chem is more well-mixed than TES. In the mid-troposphere, the mean VMRs are 94.6\,\unit{ppbv} and 81.3\,\unit{ppbv}, thus WRF-Chem is 16.3\% higher. Similar
+to the upper troposphere, the standard deviations also show that WRF-Chem is more well-mixed. It is worth noting that the disparity in \chem{CO} well-mixed-ness between
+WRF-Chem and TES is surprisingly consistent with the validation done by \citep{Barth:2012qf} despite the differences in mean VMR bias and targeted pressure level.
+
+There are at least three possible causes for these biases. The first being wildfire plumes, which intermittently introduce outliers in the TES distribution but not in WRF-Chem's.
+The second cause is debatable, but the high bias and relative well-mixed-ness point to a longer residence time for \chem{CO} in WRF-Chem than the actual value. Given
+the excessive $J(\chem{O_3})$ (Apdx.~\ref{a-sec:bug/ftuv}), a hypothesis that \chem{OH} is underestimated is that the excess {\lnox} is responsible for consuming the excess
+\chem{HO_x} to form various reservoir nitrogen species such as \chem{HNO_3} and \chem{HONO}. This topic will be revisited in Section~\ref{ssec:2006/gen/nox}. Finally,
+TES transect has a 7.5\,\unit{mrad} or 5.3\,\unit{km} cross-track Field of View (FoV), which is to be compared with the 36\,\unit{km} grid spacing in WRF-Chem. Therefore, TES
+observation is highly susceptible to localized variabilities and outliers.
+
+%WRF_UT:      81.6672      138.012      1.40809      3.88935
+%TES_UT:      67.6742      205.599     0.593247      1.44802
+%WRF_MT:      94.5807      129.222      1.57465      4.29820
+%TES_MT:      81.3291      187.742     0.365582     0.886847
+
+\subsubsection{Validation against MOPITT}
+
+Measurements of Pollution in the Troposphere (MOPITT) is a satellite-borne instrument with the primary mission of measuring tropospheric \chem{CO}. MOPITT is a
+multi-channel gas correlation radiometer \citep{Drummond:1996ve}. It uses a maximum a posteriori (MAP) algorithm for retrieval \citep{Deeter:2003bh}. It has a
+horizontal resolution of 22 km $\times$ 22 km and 7 pressure levels. Improvements to the forward model such as consideration of variability in modulation cell pressure
+are incorporated in version 4 \citep{Deeter:2010dq}. This study uses version 5, which has been validated by \citet{Deeter:2013fk}. After accounting for the different
+retrieval methods, and consequently different a priori and averaging kernels, MOPITT produces roughly the same CO volume mixing ratio and column density as TES
+within $\pm15\%$ \citep{Luo:2007ly}. Though having lower spatial resolution, MOPITT offers slightly higher sensitivity than TES close to the boundary layer and a larger
+FoV, which complements the \chem{CO} products from TES with valuable cross-track information.
+
+\figuremacroW{co/mopitt_compare}{WRF and MOPITT \chem{CO} comparisons}{
+\label{fig:2006/mopitt}Comparison of WRF-Chem \chem{CO} $\log_{10}$VMR ($y$) against MOPITT $\log_{10}$ retrievals ($x$) for the indicated dates and pressure
+levels. Pre-logarithm units are \unit{ppbv}. Red asterisks are the centers of mass calculated using the geometric means of the two parameters. Diagonal blue lines indicate
+the unit slope. Only data between 12--18\,\unit{UTC} are used.}{.9}
+
+Figure~\ref{fig:2006/mopitt} shows the WRF-Chem \chem{CO} outputs ($y$), after applying the MOPITT equivalent of Equation~\ref{eqn:TES-AK}, plotted against MOPITT
+retrievals ($x$) at 4 different pressure levels and 3 dates. To minimize diurnal biases due to photolysis, only daytime (12--18\,\unit{UTC}) data are used. The total number
+of columns that lie within the model domain during the day are 3168, 3693, and 4983. It is clear that WRF-Chem is performing very poorly in the upper troposphere in relation
+to MOPITT. There is practically no correlation above mid-troposphere. The distributions are, nonetheless, consistent with prior validations against TES, wherein WRF-Chem
+\chem{CO} has been found to be more well-mixed (vertically) than observed. With this comparison, WRF-Chem is shown to be biased too much mixing horizontally as well.
+Now consider the the geometric means of the parameters. Contrary to previous results, WRF-Chem is shown to slightly under-estimate \chem{CO} at 300\,\unit{hPa}, albeit
+only by 4.4\%, 1.7\%, and 3.2\% for the three days validated. At lower levels, the positive bias in WRF-Chem increases, but so are the correlations with MOPITT. On the
+surface, the mean biases are 17.7\%, 19.6\%, and 27.8\%.
+
+\,
+
+In conclusion, WRF-Chem \chem{CO} is almost uniformly biased high compared to satellite retrievals except in the presence of wild fire emission plumes. Comparisons against
+TES and MOPITT show that \chem{CO} is predicted to be more well-mixed than realistic horizontally and vertically. Despite higher correlation in the boundary layer, which is
+well-controlled by primary emission sources and coastal boundaries, correlation drops off significantly at higher level albeit a lower absolute bias.
 
 \subsection{Formaldehyde}\label{ssec:2006/gen/form}
 \subsection{Nitrogen Oxides}\label{ssec:2006/gen/nox}
