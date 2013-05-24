@@ -561,6 +561,88 @@ TES and MOPITT show that \chem{CO} is predicted to be more well-mixed than reali
 well-controlled by primary emission sources and coastal boundaries, correlation drops off significantly at higher level albeit a lower absolute bias.
 
 \subsection{Formaldehyde}\label{ssec:2006/gen/form}
+
+Unlike \chem{CO}, formaldehyde (\chem{HCHO}, or \chem{CH_2O}) has a much short residence time in the atmosphere. The primary source for \chem{HCHO} is isoprene, which
+is emitted by plants, thus \chem{HCHO} has been used as a proxy for constraining spatial distributions of biogenic emissions. \citep[e.g.][]{Palmer:2006qf,Millet:2008oq,Marais:2012kl}.
+In addition, \chem{HCHO} may also be emitted through industrial combustion and construction processes. Additional description of anthropogenic and biogenic VOCs are given
+in Section~\ref{ssec:intro/ozone/voc}.
+
+Formaldehyde is monitored from space using the Scanning Imaging Absorption Spectrometer for Atmospheric Chartography (SCIAMACHY) instrument is an imaging
+spectrometer on board of the Environmental Satellite (ENVISAT) with an emphasis of monitoring regions with intense biomass burning or anthropogenic pollution
+\citep{Burrows:1995fk,Bovensmann:1999uq}. It measures scattered and reflected sunlight in the thermal IR spectral range, providing sensitivity to trace gases in the
+troposphere such as \chem{HCHO} and \chem{NO_2}. The retrieval for the data used in this study is developed at the Royal Netherlands Meteorological Institute (KNMI)
+and provided by the Tropospheric Emission Monitoring Internet Service (TEMIS) project (\url{http://www.temis.nl}). Using near-UV radiance measurements and global
+CTM outputs to provide a priori, \chem{HCHO} tropospheric vertical column densities (VCDs) are retrieved and constrained using a Differential Optical Absorption
+Spectroscopy (DOAS) technique \citep{De-Smedt:2008uq}. SCIAMACHY CH$_2$O products have been used for determining long time trends \citep{De-Smedt:2010kx} as
+well as assimilated to constrain model isoprene \citep{Dufour:2009fk}.
+
+Using the Ozone Monitoring Instrument \citep[OMI;][]{Levelt:2006kl}, \citet{Millet:2008oq} found that most of the high \chem{HCHO} VCDs are found in approximately east of
+96$^\circ$W and south of 40$^\circ$N for July--August 2006. Therefore, we focus on SCIAMACHY scans overpassing this region. In particular, we use two overpasses
+on August 18 (track ID 23355) and August 24 (23441) at approximately 16\,\unit{UTC} as examples due to timing and location coincidence of features of interest
+to this study. The averaging kernels show a mean peak sensitivity between 200--300\,\unit{hPa} with moderate sensitivity close to the surface ($\sim50\%$ at 700\,\unit{hPa}).
+To calculate the simulated retrieval error in the VCD, the following equation is used \citep[after][]{Boersma:2004uq,De-Smedt:2008uq}:
+\begin{equation}\label{eqn:hcho_vcde}
+	\sigma^2_{N_v} = \frac1{M^2}\frac{\sigma^2_{N_s,r}}{n}+\frac{1}{M^2}\sigma^2_{N_s,s}+\left(\frac{\Delta N_s}{M^2}\right)^2\sigma^2_M+\sigma^2_{CTM}
+\end{equation}
+where $\sigma_{N_s,r}$ and $\sigma_{N_s,s}$ are the random and systematic slant column errors, $M$ is the air mass factor, $N_v$ and $N_s$ are the VCD and slant column
+density (SCD), $n$ is the number of satellite pixels used, and $\sigma_{CTM}$ is the error in the reference background from using a CTM during retrieval.
+
+	% yellowstone:/glade/scratch/johnwong/Dissertation
+	\begin{wrapfigure}{o}{0.5\textwidth}
+		\centering
+		\vspace{-.3in}
+		\begin{singlespacing}
+		\includegraphics[width=0.48\textwidth]{scia_ch2o_compare_0818}
+		\caption[SCIAMACHY and WRF-Chem formaldehyde on 8/18]{{\small\textbf{SCIAMACHY and WRF-Chem formaldehyde on 8/18} --- \textbf{(a)} SCIAMACHY and
+		\textbf{(b)} WRF-Chem \chem{HCHO} tropospheric VCDs in $10^{15}\,$\unit{molecules\,cm^{-2}} for August 18. \textbf{(c)} Both VCDs plotted against each other.
+		Red data points represent anthropogenic sources on the surface. Green data points represent biogenic sources. Blue lines are $y=x$, best-fit, and $y=0$.}}
+		\label{fig:2006/scia_hcho_0818}
+		\end{singlespacing}
+		\vspace{-.2in}
+	\end{wrapfigure}
+
+Figure \ref{fig:2006/scia_hcho_0818} shows pixel-by-pixel comparison of the SCIAMACHY \chem{HCHO} tropospheric VCD and the simulated (averaging kernel used) WRF-Chem
+\chem{HCHO} VCD. All model data points captured by each pixel's bounding polygon are selected and the SCIAMACHY averaging kernel is applied to the geometric mean. Data
+points are highlighted as green if the corresponding model grid-box has a MEGAN isoprene emission factor $>75\,\unit{mol/km^2/h}$, i.e. substantial biogenic emission. Those
+highlighted as red correspond to columns with surface anthropogenic \chem{HCHO} emission at the 95-percentile from the weekday EPA NEI-08 (see
+Sect.~\ref{ssec:intro/ozone/voc} and Sect.~\ref{ssec:2006/method/chem} for more details). Due to MEGAN's parameterization of , biogenic and anthropogenic sources are not
+mutually exclusive. In cases where both criteria are satisfied, the data point is colored green because of the higher molar emission rate. Furthermore, this categorization of data points
+are not absolute. Due to transport, non-anthropogenic grids can also see heavy anthropogenic influences. On the other hand, due to the high altitude of SCIAMACHY's maximal
+sensitivity, pixels expecting high sources of surface emission may not display high VCD when the model is not simulating convection.
+
+	% yellowstone:/glade/scratch/johnwong/Dissertation
+	\begin{wrapfigure}{o}{0.5\textwidth}
+		\centering
+		\vspace{-.4in}
+		\begin{singlespacing}
+		\includegraphics[width=0.48\textwidth]{scia_ch2o_compare_0824}
+		\caption[SCIAMACHY and WRF-Chem formaldehyde on 8/24]{{\small\textbf{SCIAMACHY and WRF-Chem formaldehyde on 8/24} --- Same as
+		Figure~\ref{fig:2006/scia_hcho_0824} except for August 24.}}
+		\label{fig:2006/scia_hcho_0824}
+		\end{singlespacing}
+		\vspace{-.3in}
+	\end{wrapfigure}
+
+Similar to the results from the \chem{CO} validation in Section~\ref{ssec:2006/gen/co}, WRF-Chem also over-predicts \chem{HCHO}. However, due to $\sigma_{N_v}$ being large
+for most data points, 391/550 (71\%) of the pixels\footnote{Error bars for these data points are removed from Fig.~\ref{fig:2006/scia_hcho_0818} to avoid overcrowding the panel.}
+shown in Figure~\ref{fig:2006/scia_hcho_0818} satisfied $|N_{v,WRF}-N_{v,SCIA}|<\sigma_{N_v}$. The minimized-$\chi^2$ fit to the data set gives a slope of 0.297, which loosely
+implies WRF-Chem predicting three times more \chem{HCHO} in the atmosphere than observed by SCIAMACHY. Despite the over-estimation, this snapshot sample shows
+a background value of $10^{16}$\,\unit{molecules\,cm^{-2}} and a mean of $2.06\times10^{16}$\,\unit{molecules\,cm^{-2}}, which are consistent with OMI and GEOS-Chem
+\citep{Millet:2008oq}.
+
+More specific features can also be extracted. For instance, a \chem{HCHO} local VCD high corresponding to Memphis, Tennessee can be found in the model output but not in the
+SCIAMACHY retrieval. On the contrary, two single-pixel maxima in the SCIAMACHY retrievals associated with Little Rock, Arkansas and Springfield, Missouri cannot be identified
+in the model output. This is primarily due to lowering the resolution of EPA NEI-08 data as an input for emission, which subsequently dilutes relatively small urban sources while
+leaving metropolis-sized sources intact. However, considering the relative impact of the larger biogenic sources versus small urban sources of formaldehyde, such bias is not expected
+to have any noticeable influence in the long-term simulated chemistry.
+
+On August 24, shown in Figure~\ref{fig:2006/scia_hcho_0824}, two stationary fronts lingered between the two southern footprints and between the two northern footprints. They generated
+some convective systems, which caused the missing pixels, but otherwise did not affect the remaining views. Of the 767 pixels available on this day, 612 (79.8\%) are within $\pm1\sigma_{N_v}$
+to the identity line. The minimized-$\chi^2$ fit gives a slope of 0.53, which loosely means that WRF-Chem is over-predicting by a factor of 2, compared to the factor of 3 on August 18.
+Among the large patch of low VCD pixels to the north, the background value is roughly $3\times10^{15}$\,\unit{molecules\,cm^{-2}}. This is low compared to the \citet{Millet:2008oq}
+seasonal average, but still reasonable compared to SCIAMACHY's retrieval. Otherwise, the rest of the data points are well within the seasonal averages in this area. Similar to 8/18,
+Memphis is again an isolated formaldehyde source that appears as an outlier in the WRF-Chem distribution but not the SCIAMACHY distribution.
+
 \subsection{Nitrogen Oxides}\label{ssec:2006/gen/nox}
 
 \section{Discussion}\label{sec:2006/discussion}

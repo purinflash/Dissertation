@@ -132,6 +132,8 @@
 	<string>air mass factor</string>
 	<key>VCD</key>
 	<string>vertical column density</string>
+	<key>SCD</key>
+	<string>slant column density</string>
 	<key>NLDN</key>
 	<string>National Lightning Detection Network</string>
 	<key>NALDN</key>
