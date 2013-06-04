@@ -467,26 +467,6 @@ the primary contribution being smoothing errors and dependency on the a priori u
 coefficients between in-situ measurements and TES retrievals are between 0.61 and 0.92. Therefore, while retrieval values may be biased, the relative variabilities
 of  \chem{CO} are expected to be realistic.
 
-	\begin{sidewaysfigure}[htbp]
-		\begin{center}% yellowstone:/glade/scratch/johnwong/Dissertation
-		\includegraphics[width=1.6in]{co/co_4534_ftuv}
-		\includegraphics[width=1.6in]{co/co_4594_ftuv}
-		\includegraphics[width=1.6in]{co/co_4797_ftuv}
-		\includegraphics[width=1.6in]{co/co_4837_ftuv}
-		\includegraphics[width=1.6in]{co/co_4840_ftuv}
-		
-		\includegraphics[width=1.6in]{co/co_4857_ftuv}
-		\includegraphics[width=1.6in]{co/co_4860_ftuv}
-		\includegraphics[width=1.6in]{co/co_4880_ftuv}
-		\includegraphics[width=1.6in]{co/co_4900_ftuv}
-		\includegraphics[width=1.6in]{co/co_4911_ftuv}
-		
-		\includegraphics[width=4in]{co/co_colorbar}
-		\end{center}
-	    	\caption[TES/WRF-Chem \chem{CO} comparisons]{\textbf{TES/WRF \chem{CO} comparisons} --- Same as Figure~\ref{fig:2006/o3tes} except for carbon
-		monoxide.} \label{fig:2006/cotes}
-	\end{sidewaysfigure}
-
 The TES \chem{CO} product is often utilized in tandem with the TES \chem{O_3} product. \citet{Logan:2008uq} used these two products to investigate the impact
 of El Ni\~no on tropospheric composition. Similarly, \citet{Voulgarakis:2011fk} used them to investigate the global \chem{O_3}-\chem{CO} correlation. Attempts
 have also been made to the two TES products to characterize urban pollution outflow but was criticized for low sensitivity near the boundary layer as indicated
@@ -510,6 +490,26 @@ related. On July 16, transect 4534 (Fig.~\ref{fig:2006/cotes}{\bf a}) captured a
 transects (Fig.~\ref{fig:2006/cotes}{\bf e--g}) captured the downwind plumes of widespread fires from Oregon as heightened \chem{CO} signature between 46--53$^\circ$N.
 Finally, transect 4911 captured the plume from the Idaho fires on August 23 (Fig.~\ref{fig:2006/cotes}{\bf j}). Therefore, by excluding the influence of wildfire emission,
 WRF-Chem is almost always biased high.
+
+	\begin{sidewaysfigure}[htbp]
+		\begin{center}% yellowstone:/glade/scratch/johnwong/Dissertation
+		\includegraphics[width=1.6in]{co/co_4534_ftuv}
+		\includegraphics[width=1.6in]{co/co_4594_ftuv}
+		\includegraphics[width=1.6in]{co/co_4797_ftuv}
+		\includegraphics[width=1.6in]{co/co_4837_ftuv}
+		\includegraphics[width=1.6in]{co/co_4840_ftuv}
+		
+		\includegraphics[width=1.6in]{co/co_4857_ftuv}
+		\includegraphics[width=1.6in]{co/co_4860_ftuv}
+		\includegraphics[width=1.6in]{co/co_4880_ftuv}
+		\includegraphics[width=1.6in]{co/co_4900_ftuv}
+		\includegraphics[width=1.6in]{co/co_4911_ftuv}
+		
+		\includegraphics[width=4in]{co/co_colorbar}
+		\end{center}
+	    	\caption[TES/WRF-Chem \chem{CO} comparisons]{\textbf{TES/WRF \chem{CO} comparisons} --- Same as Figure~\ref{fig:2006/o3tes} except for carbon
+		monoxide.} \label{fig:2006/cotes}
+	\end{sidewaysfigure}
 
 Considering only data between 25--40$^\circ$N, the frequency distribution between WRF-Chem and TES retrievals are shown in Figure~\ref{fig:2006/cotesdistr}. The
 computed mean values for the upper tropospheric distributions are 81.7\,\unit{ppbv} and 67.7\,\unit{ppbv} for WRF-Chem and TES respectively, and thus WRF-Chem is
@@ -543,7 +543,7 @@ FoV, which complements the \chem{CO} products from TES with valuable cross-track
 \figuremacroW{co/mopitt_compare}{WRF and MOPITT \chem{CO} comparisons}{
 \label{fig:2006/mopitt}Comparison of WRF-Chem \chem{CO} $\log_{10}$VMR ($y$) against MOPITT $\log_{10}$ retrievals ($x$) for the indicated dates and pressure
 levels. Pre-logarithm units are \unit{ppbv}. Red asterisks are the centers of mass calculated using the geometric means of the two parameters. Diagonal blue lines indicate
-the unit slope. Only data between 12--18\,\unit{UTC} are used.}{.9}
+the identity line. Only data between 12--18\,\unit{UTC} are used.}{.9}
 
 Figure~\ref{fig:2006/mopitt} shows the WRF-Chem \chem{CO} outputs ($y$), after applying the MOPITT equivalent of Equation~\ref{eqn:TES-AK}, plotted against MOPITT
 retrievals ($x$) at 4 different pressure levels and 3 dates. To minimize diurnal biases due to photolysis, only daytime (12--18\,\unit{UTC}) data are used. The total number
@@ -645,11 +645,90 @@ Memphis is again an isolated formaldehyde source that appears as an outlier in t
 
 \subsection{Nitrogen Oxides}\label{ssec:2006/gen/nox}
 
+Considering that CG flash rate is over-predicted by a factor of 10 (see Sect.~\ref{ssec:2006/gen/met}), it is expected that \chem{NO_x} is also substantially over-predicted. Indeed, when examining
+within the anticyclone region,  the \chem{NO_x} VMR is increased by an order of magnitude  within the first few days of the simulation (Fig.~\ref{fig:2006/nox}). While the initial condition from
+MOZART provides an average of 300\,\unit{pptv} of \chem{NO_x}, it is increased to 2\,\unit{ppbv} by July 5. Since this increase in \chem{NO_x} is likely due to tropospheric {\lnox} emission, it is only
+observed within the troposphere below $\sim100\,\unit{hPa}$ but peaks near 200\,\unit{hPa} where maximal convective detrainments are observed for larger systems.
+
+To evaluate the model's output, we compare tropospheric \chem{NO_2} VCDs against SCIAMACHY's retrieval from KNMI TEMIS. Similar to the formaldehyde retrieval, the algorithm employs the
+Differential Optical Absorption Spectroscopy (DOAS) method and a data-assimilation technique, which utilizes a chemistry-transport model (CTM) with ECMWF operational analyses meteorology to
+estimate the stratospheric portion of the retrieved column \citep{Boersma:2004uq}. Validation of the TEMIS \chem{NO_2} product has been performed by \citet{Lambert:2004aa} against NDSC data,
+showing bias up to $3.5\times10^{15}$ molec cm$^{-2}$. The differences between retrievals have been attributed mostly to the tropospheric air mass factor (AMF$_{trop}$) used \citep{vanderA:2010aa},
+which has a sensitivity to cloud fractions of up to 20\% \citep{Boersma:2004uq}.
+
+\figuremacroN{noxcol}{WRF-Chem \chem{NO_x} VMR}{\label{fig:2006/nox}{\bf (a)} Average \chem{NO_x} VMR within the anticyclone region during July 2006 showing sharp increase
+towards a higher steady state within the first few days of the simulation. {\bf (b)} VMR time-series at 300\,\unit{hPa} showing a sample of the temporal variability within the anticyclone.}
+
+Considering the transient nature of storms and model's skill in predicting the exact locations and magnitudes of individual convective core over the 2-month simulation at a relatively low resolution, this
+comparison will be performed over a large number of orbits as opposed to individual retrieval as done in the previous section for formaldehyde (Sect.~\ref{ssec:2006/gen/form}). However, since the
+pixel size is relatively small and almost always contained within a model grid, each pixel is only associated with a single model column determined using direct mapping via a WRF-compliant lambert
+conformal projection. Corresponding WRF-Chem output is determined by rounding the time of measurement to the nearest 3-hour. Due to ENVISAT's orbit, all measurements are taken between
+15--21\,\unit{UTC} after rounding. Matched WRF-Chem \chem{NO_2} partial columns are then accumulated using the tropospheric VCD averaging kernel defined as $A_{trop} = A\cdot AMF/AMF_{trop}$,
+where $A$ is the total column VCD averaging kernel, for levels below the provided tropopause index computed using the WMO tropopause definition. These VCDs, together with the associated
+retrieval biases and SCIAMACHY VCDs,  are then accumulated back onto the WRF model grid. Over 61 days, 51.6k pixels were accumulated, accounting for $\sim1\%$ of all pixels globally. Individual
+model grid receives anywhere between 0 to 15 pixels, which is less than 20 ($\approx$61 days/3 days per global survey) due to the number of rejected measurements.
+
+	\begin{table}
+		\begin{center}
+		\begin{singlespacing}
+		\caption[Linear regression on $NO_2$ VCDs]{Using $VCD=4.39\times10^{15}$\,\unit{molec.\,cm^{-2}} as a threshold, the following statistics summarize the two parititons.}
+		\begin{tabular}{cccccc} \tophline
+		Partition&  $n(\%)$ & Regression & $r^2$ & $\chi_{reduced}^2$ & $P(>\chi_{reduced}^2)^\dagger$ \\
+		\middlehline
+		$VCD>4.39$ & 29997 (58.1\%) & $y=2.76+2.21x$ & $0.09$ & $51.76$ & $\sim0$ \\
+		$VCD<4.39$ & 21641 (41.9\%)  & $y=0.49+0.42x$ & $0.332$ & $0.911$ & $\sim1$ \\
+		\bottomhline
+		\end{tabular}
+		\label{tab:2006/no2reg}
+		\end{singlespacing}
+		\end{center}
+		{\footnotesize ${}^\dagger$ Probability that a fit has a reduced-$\chi^2$ higher than the given fit. High $P$'s correspond to ``good'' fits.}
+	\end{table}
+
+Using this procedure, the frequency distributions of WRF-Chem and SCIAMACHY KNMI \chem{NO_2} tropospheric VCDs are calculated (Fig.~\ref{fig:2006/no2vcd}{\bf a}). While the WRF-Chem distribution
+is lognormal with a background  close to $0.1\times10^{15}$\,\unit{molec.\,cm^{-2}}, the SCIAMACHY distribution is closer to a normal distribution skewing towards the left with a negative tail. Negative values
+in tropospheric column is permitted because of the retrieval process, which involves estimating and subtracting the \chem{NO_2} stratospheric column. Despite the differences in distribution, the modes for
+both distributions are close to $0.5\times10^{15}$\,\unit{molec.\,cm^{-2}}, consisting mostly of data points from the Pacific marine columns, Idaho/Montana, and Canada. These regions have low
+contributions from \chem{NO_x} of anthropogenic or lightning sources, thus making them less susceptible to biases in emission inventory and lightning parameterization. On the contrary, but as expected,
+the WRF-Chem distribution heavily over-estimates the $>2\times10^{15}$\,\unit{molec.\,cm^{-2}} range, which corresponds to levels typically observed only at locations with persistent anthropogenic
+sources. Because of the high bias in lightning emission, \chem{NO_2} VCDs over the southeastern United States and Mexico are severely over-estimated (Fig.~\ref{fig:2006/no2vcd}{\bf c\&d}).
+
+Using the passive decaying {\lnox} tracer, described in Section~\ref{ssec:2006/method/diagnostics}, each tropospheric VCD data point can be classified as below or above the half of the median {\lnox} tracer
+tropospheric VCD ($\approx4.39\times10^{15}$\,\unit{molec.\,cm^{-2}}) computed using the SCIAMACHY averaging kernel (Fig.~\ref{fig:2006/no2vcd}{\bf b}). The results from attempting to perform linear
+regressions on the data points are summarized in Table~\ref{tab:2006/no2reg}. The upper partition ($VCD>4.39$), which corresponds to high level of {\lnox} tracer in the model, correlates poorly with
+SCIAMACHY retrievals with a reduced-$\chi^2=52$. Mean ratio of WRF-Chem VCD to SCIAMACHY VCD is 4.9, i.e. $\chem{NO_2}$ level is 5 times higher than observed when the region is heavily influenced
+by {\lnox} emission. On the contrary, the lower partition ($VCD<4.39$) shows good correlation between the model and observation with $\chi_{reduced}^2=0.911$. Since the center of mass is comparable to
+the zeroth-order term of the regression ($x_{SCIA}=0.79,y_{WRF}=0.88$ vs. 0.49), the mean ratio of VCDs is 1.17, so WRF-Chem is over-predicting by 17\% when lightning is not involved.
+
+It should be noted that the above validation should be interpreted with cautions as there are numerous factors that prevent literal interpretations. One most obvious factor is the frequency distribution of VCDs.
+While the model shows a lognormal-like distribution, SCIAMACHY's retrieval introduces a negative tail. Since negative values in tropospheric VCD is meaningful and represents a crucial property of the retrieval
+process, they cannot be filtered out and must be included in the overall statistics. However, the of exact interpretation of these non-realistic negative VCDs remain ambiguous. A second factor worth elaborating is
+that since the comparison is only performed on \chem{NO_2}, it is important to emphasize that the total nitrogen content is not represented especially if the equilibrium $\chem{NO}:\chem{NO_2}$ ratio differs
+significantly from the true state.
+
+\figuremacroW{scia_no2}{WRF-Chem and SCIAMACHY \chem{NO_2} VCDs}{\label{fig:2006/no2vcd}
+{\bf(a)} Frequency distributions of WRF-Chem and SCIAMACHY \chem{NO_2} tropospheric VCDs in $10^{15}$\,\unit{molecules\,cm^{-2}} during July and August 2006.
+{\bf(b)} A log-log plot of the two tropospheric VCDs partitioned into halves by median passive lightning tracer tropospheric VCDs and their corresponding linear minimized-$\chi^2$ fits and correlation
+coefficient $r^2$.
+{\bf(c)} Spatial distribution of mean WRF-Chem tropospheric VCDs in $10^{15}$\,\unit{molecules\,cm^{-2}}. With pixel density indicating the number of samples used to compute
+the mean (up to $n=15$ but saturates at $n=10$) at each model grid point.
+{\bf(d)} Same as {\bf c}, but for SCIAMACHY.}{0.9}
+
+\vspace{1.2in}
+
+\noindent Ozone level is sensitive to the balance between VOC and \chem{NO_x} (Sect.~\ref{ssec:intro/ozone/nox}). In Section~\ref{ssec:intro/ozone/nox}, it is shown that (CG) lightning is
+over-predicted by a factor of 10 under the assumption of a constant CG fraction of $1/4$. Together with the validation results from the previous sections (Sect.~\ref{ssec:2006/gen/co} \&
+\ref{ssec:2006/gen/form}), the model is expected to simulate an both excess VOCs and excess \chem{NO_x} relative to observation, thereby explaining the over-estimation of ozone shown in
+Section~\ref{ssec:2006/gen/ozone}. By comparing model \chem{CO} (Sect.~\ref{ssec:2006/gen/co}), formaldehyde (Sect.~\ref{ssec:2006/gen/form}), and \chem{NO_2} (Sect.~\ref{ssec:2006/gen/nox})
+against remote sensing profiles, it is indeed shown that both VOCs and \chem{NO_x} are definitively over-estimated, though due to intricacy of the validation methods, the numerical results
+from the comparisons may not be construed with absolute certainty. Nonetheless,  by accounting for these biases, the analyses done in Section~\ref{sec:2006/discussion} will proceed with caution
+and will frequently reference individual result from this section when appropriate.
+
 \section{Discussion}\label{sec:2006/discussion}
 
 \section{Sensitivity study}\label{sec:2006/sens}
 \subsection{Anthropogenic emission}\label{ssec:2006/sens/anthrop}
 \subsection{Biogenic emission}\label{ssec:2006/sens/bio}
-\subsection{{\lnox} emission}\label{ssec:2006/sens/lnox}
+\subsection{Lightning emission}\label{ssec:2006/sens/lnox}
 
 \section{Conclusions}\label{sec:2006/conslusion}
