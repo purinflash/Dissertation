@@ -8,7 +8,7 @@
 
 \figuremacroN{Cooper-FTO3}{Filtered upper tropospheric ozone from \citet{Cooper:2007cr}}{\label{fig:cooper-fto3} Interpolated ozonesonde measurements between 10 and 11\,\unit{km} less stratospheric influence estimated using back trajectory \citep[after][Figure 2c]{Cooper:2007cr}.}
 
-Upper tropospheric ozone has significant impacts on the radiative and chemical budgets of the atmosphere \citep{Kiehl:1999uq}. The global tropospheric ozone burden has seen an increase of 71--130\,\unit{Tg} since the preindustrial period, with much of the uncertainties coming from the estimation of preindustrial emission scenarios for anthropogenic, biomass burning, and lightning sources \citep[][and references therein]{Lamarque:2005gb}. The radiative forcing resulting from this increase depends strongly on the vertical distribution and is the most sensitive near the tropopause \citep{Lacis:1990fk}. \citet{Gauss:2006zr} calculated that the global net radiative forcing resulting from a 7.9--13.8\,\unit{DU} increase in tropospheric ozone (ignoring stratospheric changes) varies between 0.25 and 0.45\,\unit{W\,m^{-2}}. In particular, several models cited by \citet{Gauss:2006zr} as well as \citet{Stevenson:1998fk} estimated up to 0.5--1.1\,\unit{W \,m^{-2}} increase over parts of northern mid-latitude regions such as the United States and the Mediterranean region. The ozone increases over these areas are also verified by ozonesonde records spanning periods between 1970's and 2004 \citep{Oltmans:2006kc}.
+Upper tropospheric ozone has significant impacts on the radiative and chemical budgets of the atmosphere \citep{Kiehl:1999uq}. The global tropospheric ozone burden has seen an increase of 71--130\,\unit{Tg} since the preindustrial period, with much of the uncertainties coming from the estimation of preindustrial emission scenarios for anthropogenic, biomass burning, and lightning sources \citep[][and references therein]{Lamarque:2005gb}. The radiative forcing resulting from this increase depends strongly on the vertical distribution and is the most sensitive near the tropopause \citep{Lacis:1990fk}. \citet{Gauss:2006zr} calculated that the global net radiative forcing resulting from a 7.9--13.8\,\unit{DU} increase in tropospheric ozone (ignoring stratospheric changes) varies between 0.25 and 0.45\,\unit{W\,m^{-2}}. In particular, several models cited by \citet{Gauss:2006zr} as well as \citet{Stevenson:1998fk} estimated up to 0.5--1.1\,\unit{W \,m^{-2}} increase over parts of northern mid-latitude regions such as the United States and the Mediterranean region. The ozone increases over these areas are also observed by ozonesonde records spanning periods between 1970's and 2004 \citep{Oltmans:2006kc}.
 
 % Lamarque:2005 - trop ozone evolution since pre-industrial. Summary of other studies. 77 -- 130 Tg
 % Stevenson:1998 - radiative forcing due to trop ozone increase. max 30 ppbv
@@ -167,8 +167,37 @@ The global emission rate of {\lnox} is highly uncertain and largely unconstraine
 	
 	After the total emission of a flash is estimated, one may want to assign a spatial distribution to the molecules. In models that are capable of resolving explicit electrification, flash path, and stroke tortuosity \citep[e.g.][]{Mansell:2002kx}, those details may be leveraged in combination of Equation \ref{eqn:wang-n(p)} to compute the vertical distribution \citep{Barthe:2007fk}. In regional models, a fixed column profile based on cloud extent or observations are often used instead.  \citet{Decaria:2000kl} prescribes a Gaussian-like distribution for emissions from CG flashes and a bimodal distribution for IC flashes. Horizontal distribution based on 20\,\unit{dBZ} reflectivity is also proposed by \citet{DeCaria:2005tg} based on \citet{MacGorman:1998fk}. \citet{Pickering:1998sh} derived total {\lnox} profiles with a peak at the detrainment level and a maximum in the boundary layer by using measurements from multiple campaigns and 2D models. \citet{Ott:2010lo} corrected these profiles by using a 3D model, and found that convective updraft removes the boundary layer maximum and places a single maximum at 6--9 \,\unit{km} for midlatitude storms. \citet{Hansen:2010fk} also investigated the vertical distribution of flash segments for four storms and found that profiles can exhibit large variabilities.
 	
-	Several modeling studies have approached {\lnox} parameterization using scaling/assimilation techniques. For example, \citet{Hudman:2007fu} used the 500\,\unit{moles}\,\chem{NO} per flash from \citet{Ott:2010lo} in combination of NLDN CG flash counts adjusted by IC:CG ratio suggested by \citet{Boccippio:2001ys}. \citet{Jourdain:2010tw} scaled flash rates regionally to Optical Transient Detector/Lightning Imaging Sensor \citep[OTD/LIS][]{Boccippio:2000mi} monthly and 44\,\unit{flashes/s} globally annually to be consistent with climatology from \citet{Christian:2003kx}. The scaled {\lnox} strength is further constrained using observation of \chem{O_3} by Tropospheric Emission Spectrometer \citep[TES][]{Beer:2006fk}. \citet[][Table 24]{Schumann:2007fk} also curated a list of 78 studies since 1981 assessing {\lnox} production rate in global atmospheric models.
+	Several modeling studies have approached {\lnox} parameterization using scaling/assimilation techniques. For example, \citet{Hudman:2007fu} used the 500\,\unit{moles}\,\chem{NO} per flash from \citet{Ott:2010lo} in combination of NLDN CG flash counts adjusted by IC:CG ratio suggested by \citet{Boccippio:2001ys}. \citet{Jourdain:2010tw} scaled flash rates regionally to Optical Transient Detector/Lightning Imaging Sensor \citep[OTD/LIS][]{Boccippio:2000mi} monthly and 44\,\unit{flashes/s} globally annually to be consistent with climatology from \citet{Christian:2003kx}. The scaled {\lnox} strength is further constrained using observation of \chem{O_3} by Tropospheric Emission Spectrometer \citep[TES][]{Beer:2006fk}. \citet[][Table 24]{Schumann:2007fk} also compiled a list of 78 studies since 1981 assessing {\lnox} production rate in global atmospheric models.
 	
 \quad
 
 \noindent In conclusion, lightning parameterization remains a major uncertainty in tropospheric ozone modeling. Many methods have been proposed with varying degrees of generality and complexity. This study has elected to use the simplest method available for flash rate parameterization, {\ie} \citet{Price:1992wb}, which is evaluated in depth in Chapter \ref{ch:lightning}.
+
+\section{Summary} \label{sect:intro/summary}
+
+This chapter summarized various aspects of ozone chemistry relevant to the upper tropospheric ozone
+enhancement studied by \citet{Li:2005ss} and \citet{Cooper:2009nx}. While residing in the upper
+troposphere, due to the nonlinearity of the \chem{O_3}-VOC-\chem{NO_x} chemistry, the ability to
+simulate and analyze the ozone enhancement depend heavily on the model's skill in simulating
+vertical transport (convective or advective), chemistry, as well as prescribing or parameterizing emissions.
+Of the three primary emission sources (anthropogenic, biogenic, and lightning), lightning \chem{NO_x}
+is the least constraint because of its transient nature and its sensitivity to cloud parameters, which originates
+a parameterized convective scheme in this study. Therefore, substantial effort has been put into understanding
+the parameterization of lightning in Chapter \ref{ch:lightning} prior to the modeling study in Chapter
+\ref{ch:2006} and onwards, which comprise the core of this thesis.
+
+Even though previous studies have already investigated the enhancement phenomenon and shown
+with confidence the contributions from dynamics and emissions to the inter-annual variability, little
+research has been done in understanding the spatiotemporal structure of the chemistry at higher granularity.
+Using a single high-resolution model, \citet{Barth:2012qf} showed substantial daily variability during the
+2006 North American Monsoon. By trading off resolution and accuracy especially in convection, this
+study mimics \citet{Barth:2012qf} and supplements its results with additional diagnostics and sensitivity
+simulations. Reiterating the goals stated at the beginning of this chapter, and given the additional
+background information on the intricacy of studying upper tropospheric ozone, this thesis intends to
+answer the following questions:
+\begin{enumerate}
+\item{} Trading off model resolution and parameterizing convection, how well can the model simulate the ozone enhancement?
+\item{} Considering the various factors controlling ozone, what is the relative importance of each component to the overall ozone level?
+\item{} Focusing on each emission source, how sensitivity is the ozone enhancement to various scenarios?
+\item{} Given that the extent of the ozone enhancement is controlled by dynamics, how will it respond to climate change?
+\end{enumerate}
