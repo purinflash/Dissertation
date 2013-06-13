@@ -175,16 +175,17 @@ The global emission rate of {\lnox} is highly uncertain and largely unconstraine
 
 \section{Summary} \label{sect:intro/summary}
 
-This chapter summarized various aspects of ozone chemistry relevant to the upper tropospheric ozone
-enhancement studied by \citet{Li:2005ss} and \citet{Cooper:2009nx}. While residing in the upper
+This chapter has summarized various aspects of ozone chemistry relevant to the upper tropospheric ozone
+enhancement studied by \citet{Li:2005ss} and \citet{Cooper:2007cr}. While residing in the upper
 troposphere, due to the nonlinearity of the \chem{O_3}-VOC-\chem{NO_x} chemistry, the ability to
 simulate and analyze the ozone enhancement depend heavily on the model's skill in simulating
 vertical transport (convective or advective), chemistry, as well as prescribing or parameterizing emissions.
 Of the three primary emission sources (anthropogenic, biogenic, and lightning), lightning \chem{NO_x}
 is the least constraint because of its transient nature and its sensitivity to cloud parameters, which originates
-a parameterized convective scheme in this study. Therefore, substantial effort has been put into understanding
-the parameterization of lightning in Chapter \ref{ch:lightning} prior to the modeling study in Chapter
-\ref{ch:2006} and onwards, which comprise the core of this thesis.
+a parameterized convective scheme in this study. Furthermore, \citet{Cooper:2009nx} found that the ozone
+enhancement depends strongly on lightning emission. Therefore, substantial effort has been put into
+understanding the parameterization of lightning in Chapter \ref{ch:lightning} prior to the modeling study in
+Chapter \ref{ch:2006} and onwards, which comprise the core of this thesis.
 
 Even though previous studies have already investigated the enhancement phenomenon and shown
 with confidence the contributions from dynamics and emissions to the inter-annual variability, little
@@ -196,8 +197,19 @@ simulations. Reiterating the goals stated at the beginning of this chapter, and 
 background information on the intricacy of studying upper tropospheric ozone, this thesis intends to
 answer the following questions:
 \begin{enumerate}
-\item{} Trading off model resolution and parameterizing convection, how well can the model simulate the ozone enhancement?
-\item{} Considering the various factors controlling ozone, what is the relative importance of each component to the overall ozone level?
+\item{} Trading off model resolution and parameterizing convection, how well can the model simulate the
+ozone enhancement? This will be addressed through detailed validation exercises against various
+observations in Chapter 3.2.
+\item{} Considering the various factors controlling ozone, what is the relative importance of each component
+to the overall ozone level? By using various diagnostics and techniques, this question will be addressed
+in Chapter 3.3. \footnote{{\bf Editing note:} Later drafts may separate 3.3, 3.4 into Chapter 4, thus moving
+Chapter 4 to Chapter 5 resulting in 4 core chapters.}
 \item{} Focusing on each emission source, how sensitivity is the ozone enhancement to various scenarios?
-\item{} Given that the extent of the ozone enhancement is controlled by dynamics, how will it respond to climate change?
+Separate simulations are performed by varying emission parameters, this is evaluated in Chapter 3.4.
+\item{} Finally, given that the extent of the ozone enhancement is controlled by dynamics, how will it respond
+to climate change? This will be addressed in Chapter 4 by repurposing a multiyear simulation performed over
+a similar domain for the Nested Regional Climate Model (NRCM) project.
 \end{enumerate}
+
+%%% Chapter numbers in enumerate list above need to be replaced with dynamic references after Chapter 3,4
+%%% are merged with the current branch
