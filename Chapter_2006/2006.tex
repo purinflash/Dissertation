@@ -8,7 +8,11 @@
 
 The recurring upper tropospheric ozone enhancements during North American Monsoon (NAM) seasons have been extensively studied by \citet{Li:2005ss}, \citet{Cooper:2006dq,Cooper:2007cr,Cooper:2009nx}, and \citet{Barth:2012qf}. Other studies have also highlighted the relevance of this feature \citep[e.g.][]{Hudman:2007fu,Choi:2009bh,Jourdain:2010tw}. While previous studies produced results that has been used to infer the climatological impact of the upper tropospheric ozone enhancement on the radiative balance, a closer look at model outputs reveals substantial variabilities. To further the understanding of a chemistry model's capability in capturing the necessary details, this study intends to perform simulations using WRF-Chem \citep{Grell:2005fv} over July and August of 2006. The period covered by this study is chosen to capture substantial anticyclonic recirculation in the upper-air, which has been shown to enhance ozone production \citep{Cooper:2007cr}.
 
-The outputs of the a case simulation is compared to several independent data sets to identify any biases or deficiencies in the model that have implications on the modeled ozone budget. In addition, sensitivity simulations are also performed to evaluate the relative sensitivity of the simulated ozone distributions to emission scenarios of anthropogenic, biogenic, and lightning sources. The results from these simulations are used to bound the range of uncertainty as well as to address the impact from potential changes in emission scenarios in the future.
+The simulation results from a case study are compared against several independent data sets to identify any biases or deficiencies in the
+model that have implications on the modeled ozone budget. In addition, sensitivity simulations are also performed to evaluate the relative
+sensitivity of the simulated ozone distributions to emission scenarios of anthropogenic, biogenic, and lightning sources. The results from
+these simulations are used to bound the range of uncertainty as well as to address the impact from potential changes in emission scenarios
+in the future.
 
 The first section of this chapter describes the model settings used in this study (\sect{2006/method}). Then, a general description of the model outputs and corresponding validation against various empirical data sets are given in Section \ref{sec:2006/general}. Once the model's performance has been evaluated, Section \ref{sec:2006/discussion} describes the core results derived from the base case simulation. Finally, this chapter is concluded with sets of sensitivity tests for determining ozone's variability with respect to anthropogenic emissions (\ssect{2006/sens/anthrop}), biogenic emissions (\ssect{2006/sens/bio}), and lightning-generated \chem{NO_x} (\lnox) emissions (\ssect{2006/sens/lnox}).
 
@@ -16,17 +20,31 @@ The first section of this chapter describes the model settings used in this stud
 
 \figuremacroN{domain}{2006 case study model domain}{\label{fig:2006/domain}WRF-Chem model domain (red). Marked inner region (blue) is the primary area used for various analysis in Section \ref{sec:2006/discussion}.\vspace{-.2in}}
 
-Simulations are performed with the Weather Research and Forecasting model \citep{Skamarock:2008xx} with Chemistry \citep[WRF-Chem;][]{Grell:2005fv} version 3.4.1 over July and August, 2006. The model is configured with a horizontal grid spacing of 36\,\unit{km} on a lambert conformal projection centered over the contiguous United States (CONUS) as shown in Figure \ref{fig:2006/domain}. Vertical levels are gridded into 51 eta levels with variable heights up to a fixed top at 10\,\unit{hPa}.
+Simulations are performed with the Weather Research and Forecasting model \citep{Skamarock:2008xx} with Chemistry
+\citep[WRF-Chem;][]{Grell:2005fv} version 3.4.1 over July and August, 2006. The model is configured with a horizontal grid
+spacing of 36\,\unit{km} on a lambert conformal projection centered over the contiguous United States (CONUS) as shown
+in Figure \ref{fig:2006/domain}. Vertical levels are discretized on a eta coordinate with a terrain-following surface and a fixed
+top at 10\,\unit{hPa}.
 
-Meteorology is initialized and assimilated with data from National Center for Environmental Prediction (NCEP) Global Forecasting System (GFS) final (FNL) gridded analysis at 6-hr intervals (00, 06, 12, 18\,\unit{UTC}). Nudging is performed for temperature and water vapor above the planetary boundary layer (PBL). Nudging for horizontal winds is performed above model level 10. Advection of moistures, scalars, chemicals, and tracers are performed with positive-definite and monotonic limiters described in \citet{Skamarock:2006wm}.
+Meteorology is initialized and assimilated with data from National Center for Environmental Prediction (NCEP) Global Forecasting
+System (GFS) final (FNL) gridded analysis at 6-hr intervals (00, 06, 12, 18\,\unit{UTC}). Nudging is performed for temperature and
+water vapor above the planetary boundary layer (PBL). Nudging for horizontal winds is performed above model level 10.\footnote{At
+this model level, mean and standard deviation of pressure and height are $843\pm55\,\unit{hPa}$ and $1.6\pm0.6\,\unit{km}$.}
+Advection of moistures, scalars, chemicals, and tracers are performed with positive-definite and monotonic limiters described in
+\citet{Skamarock:2006wm}.
 
-The rest of this chapter describes specific model settings in details. The full namelist template for the base case simulation is also provided as Appendix \ref{apdx:namelist}.
+Descriptions of some of the particularly pertinent model settings and options are given in the following section. The full namelist
+template for the base case simulation is also provided as Appendix \ref{apdx:namelist}.
 
 \subsection{Model options}\label{ssec:2006/method/settings}
 
 	For convective parameterization, we use the Grell-3 (G-3) scheme, a modified version of the \citet{Grell:2002bs} ensemble scheme. It uses a $144(=3\times3\times16)$ dynamic control and static control/feedback closures with varying parameters. In addition, shallow convection is also enabled to permit less severe convective activities. For microphysics, the \citet{Thompson:2008vn} scheme is used, which allows a generalized gamma distribution for graupel.
 
-	Shortwave radiative transfer uses the Goaddard two-stream method described by \citet{Chou:1998kx} with 11 bands using a $\delta$-Eddington approximation for scattering and transmission. It also takes into account third-order effects from molecular absoprtions. Longwave radiative transfer uses the Rapid Radiative Transfer Model \citep[RRTM;][]{Mlawer:1997vn}. The NOAH Land Surface Model \citep{Chen:2001ys} is used for the land surface and the Yonsei University (YSU) scheme  \citep{Hong:2006fk} is used for boundary layer physics.
+	Shortwave radiative transfer uses the Goddard two-stream method described by \citet{Chou:1998kx} with 11 bands using
+	a $\delta$-Eddington approximation for scattering and transmission. It also takes into account third-order effects from
+	molecular absorptions. Longwave radiative transfer uses the Rapid Radiative Transfer Model \citep[RRTM;][]{Mlawer:1997vn}.
+	The NOAH Land Surface Model \citep{Chen:2001ys} is used for the land surface and the Yonsei University (YSU) scheme
+	\citep{Hong:2006fk} is used for boundary layer physics.
 
 \subsection{Chemistry and emissions}\label{ssec:2006/method/chem}
 
@@ -74,7 +92,10 @@ The rest of this chapter describes specific model settings in details. The full 
 
 	\subsubsection{Biogenic emissions}\label{sssec:2006/method/emiss/bio}
 
-	Unlike anthropogenic emission, Model for Emissions of Gases and Aerosols from Nature \citep[MEGAN2;][]{Guenther:2006kl} is used to drive a biogenic emission parameterization within WRF-Chem. MEGAN2 uses a combination of climatological leaf area index (LAI), vegetation speciation, model temperature, and model solar radiation to compute BVOC emissions consistent with the model meteorological state, of which isoprene being the primary species of interest (see \ssect{intro/ozone/voc}).
+	Unlike anthropogenic emission, Model for Emissions of Gases and Aerosols from Nature \citep[MEGAN2;][]{Guenther:2006kl}
+	is used to drive a biogenic emission parameterization within WRF-Chem. MEGAN2 uses a combination of climatological leaf
+	area index (LAI), vegetation speciation, model temperature, and model solar radiation to compute BVOC emissions consistent
+	with the model meteorological state, of which isoprene is the primary species of interest (see \ssect{intro/ozone/voc}).
 	
 	The general formulation of BVOC emissions is as follow \citep[after][]{Guenther:2006kl}:
 	\begin{equation}\label{eqn:MEGAN-E}
@@ -101,7 +122,7 @@ The rest of this chapter describes specific model settings in details. The full 
 	\end{equation}
 	Therefore, LAI factor is the most sensitive to changes at low LAI  and evaluates to 1.0 at LAI=5.0.
 
-\subsection{Tendency diagnostics and Passive tracers}\label{ssec:2006/method/diagnostics}
+\subsection{Tendency diagnostics and passive tracers}\label{ssec:2006/method/diagnostics}
 
 	Budgeting the tendencies, or attributing changes, of a chemical or aerosol species has been the primary goal of many studies. For air quality studies using limited ground stations, such task has been performed using decomposition methods such as Principal Component Analysis (PCA) a.k.a. Singular Value Decomposition (SVD) \citep[][and references therein]{Langford:2009mb}. However, PCA relies on the assumption of orthogonality and thus is unable to properly decompose correlated tendencies.
 	
@@ -143,9 +164,9 @@ been shown to detrain boundary layer air, rich in ozone precursors, into the upp
 thus perturbing ozone distributions \citep{Dickerson:1987hc,Kar:2004jl,Weinstock:2007yj}. Moreover,
 intense convective activities also generate thunderstorms responsible for {\lnox} emissions, which
 further amplifies the impact of convective activities on tropospheric ozone chemistry. On the synoptic
-scale, anticyclonic circulation in the upper troposphere has been attributed to retain detrained ozone
-precursors, allowing  ozone production over the southern United States over an extended period of time
-\citep{Li:2005ss,Cooper:2007cr}.
+scale, anticyclonic circulation in the upper troposphere has been attributed to retaining ozone
+precursors detrained from by convections, allowing ozone production above the southern United
+States over an extended period of time \citep{Li:2005ss,Cooper:2007cr}.
 
 \figuremacroW{qv_fdda-3hr}{WRF and NWS July and August precipitation}{
 \label{fig:2006/precipmap}
@@ -156,8 +177,8 @@ precursors, allowing  ozone production over the southern United States over an e
 
 \subsubsection{Precipitation/convection}
 
-The primary meteorological feature of interest in this study is convection, which is validated via precipitation
-as the proxy. While precipitation is not a good measurement of the immediate convective strength, the
+The primary meteorological feature of interest in this study is convection.
+While precipitation is not a good measurement of the immediate convective strength, the
 accuracy and availability of information from the National Weather Service (NWS) Advanced Hydrological
 Prediction Service (AHPS) allows continuous validation of model's prediction. The data product used here is the
 daily precipitation product from NWS AHPS, a national mosaic product using the combined data from 12 River Forecast
@@ -183,26 +204,30 @@ Tennessee and Kentucky. Another low bias is located in North Carolina east of th
 The simulated coastal rainfall north of the Gulf Mexico is also generally lower than observed except for regions
 near Houston, TX.
 
-During the 28-day period shown in Figure~\ref{fig:2006/precipmap}(a), WRF predicted 70.74\,\unit{mm} area mean
+% scratch/Dissertation/ltngcheck.pro
+\figuremacroN{ltng_dist}{NLDN and WRF CG daily flash count and distribution}{\label{fig:2006/ltngdist}
+\textbf{(a)} NLDN CG daily flash count ($\times10^4$) within the analysis region, with WRF-simulated
+total daily flash count $\times1/4$ to account for CG fraction and $\times0.1$ to account for systematic bias.
+\textbf{(b)} Daily grid flash count frequency distributions from NLDN and WRF with scaling factors.\vspace{-.2in}}
+During the 28-day period shown in Figure~\ref{fig:2006/precipmap}(a), WRF predicted 71\,\unit{mm} area mean
 precipitation within the analysis region\footnote{Isotropic boundaries defined as 30--40$^\circ$N, 80--105$^\circ$W, designed
 to maximize area coverage without including marine surfaces (minimal NWS data), and the Rocky Mountains (complicated
-model behavior due to terrain).} while NWS observed 82.29\,\unit{mm}. This -14\% bias in precipitation
+model behavior due to terrain).} while NWS observed 82\,\unit{mm}. This -14\% error in precipitation
 is caused by under-prediction in the frequency of heavy precipitation events above 15\,\unit{mm/day}. A possible
 cause is that weak convective events have been over-predicted while stronger/grid-scale convective
-events are under-predicted.  Considering the model bias in the mean area prediction for individual day, 12 out of
-28 days has less than 10\% absolute bias in the area mean against NWS and 8 out of 28 days are closer than
-2\% absolute bias. An attempt to improve precipitation prediction by reducing the timescale for nudging
+events are under-predicted.  Considering the model error in the mean area prediction for individual day, 12 out of
+28 days has less than 10\% absolute error in the area mean against NWS and 8 out of 28 days are closer than
+2\% absolute error. An attempt to improve precipitation prediction by reducing the timescale for nudging
 water vapor to 1\,\unit{hr} instead of 3\,\unit{hr} has instead shown to increase the negative bias to -61\% instead.
-Since this behavior is contrary to that shown in the lightning validation in Chapter~\ref{ch:lightning}, it maybe expected
 Since the precipitation statistics differ significantly from those in Chapter~\ref{ch:lightning}, a separate validation
 for lightning flash count is performed below.
 
-There are several reasons why measures such as skill scores and threat scores, both common and appropriate methods for
-model precipitation evaluations, are not used here. The primary reason is that the requirement of this study is not to predict
-the exact locations of storms, but rather to predict an overall area-integrated convective strength consistent with that
-observed. The second reason is that the differences in resolution. A small sub-gridsized storm are represented as
-a single activity within a {\resolution{36}} grid whereas it may only generated precipitation within one {\resolution{4}} grid
-in the NWS data set.
+%There are several reasons why measures such as skill scores and threat scores, both common and appropriate methods for
+%model precipitation evaluations, are not used here. The primary reason is that the requirement of this study is not to predict
+%the exact locations of storms, but rather to predict an overall area-integrated convective strength consistent with that
+%observed. The second reason is that the differences in resolution. A small sub-gridsized storm are represented as
+%a single activity within a {\resolution{36}} grid whereas it may only generated precipitation within one {\resolution{4}} grid
+%in the NWS data set.
 
 \subsubsection{Lightning}
 
@@ -213,12 +238,6 @@ Even though Chapter~\ref{ch:lightning} evaluated the lightning parameterization 
 statistics with respect to nudging parameter and convective fraction demands a separate validation since
 the statistics of cloud top/level of neutral buoyancy is expected to behave differently as well.
 
-% scratch/Dissertation/ltngcheck.pro
-\figuremacroN{ltng_dist}{NLDN and WRF CG daily flash count and distribution}{\label{fig:2006/ltngdist}
-\textbf{(a)} NLDN CG daily flash count ($\times10^4$) within the analysis region, with WRF-simulated
-total daily flash count $\times1/4$ to account for CG fraction and $\times0.1$ to account for systematic bias.
-\textbf{(b)} Daily grid flash count frequency distributions from NLDN and WRF with scaling factors.\vspace{-.2in}}
-
 Vaisala\footnote{Vaisala acquired NLDN from GeoMat between 2002 and 2003.}U.S. National Lightning Detection Network
 \citep[NLDN;][]{Cummins:2009aa} provides continuous multiyear CONUS coverage of $>90\%$ of all CG flashes with ongoing
 network-wide upgrades since 1984 \citep{Orville:2002uq,Orville:2010uq}. It is also part of the North American Lightning
@@ -228,15 +247,15 @@ the ``Improved Accuracy through Combined Technology'' (IMPACT) algorithm, which 
 and time-of-arrival (TOA) information from lightning position and tracking system (LPATS) sensors and IMPACT sensors.
 The frequency range at which the sensors operate at allows detection of primarily CG flashes and a small number of IC
 flashes. Low peak current strokes $<$~15~\unit{kA} are eliminated from the data set due to potentials of misclassification. The
-median location accuracy is 250\,\unit{m}, which is well within the model grid size used in this study and thus may be considered negligible. Multiple strokes are
-aggregated into a single flash if they are within 1 second and no more than 10\,\unit{km} apart.
+median location accuracy is 250\,\unit{m}, which is well within the model grid size used in this study and thus may be considered
+negligible. Multiple strokes are aggregated into a single flash if they are within 1 second and no more than 10\,\unit{km} apart.
 
 Since NLDN detects only CG flashes and WRF-Chem produces total flash counts\footnote{The version used in this study is 3.4.1,
 which produces an aggreated IC+CG flash count. Estimation of IC:CG ratio is implemented into 3.5, described in
 Appendix~\ref{apdx:lnox-doc}.}, flash count outputs from WRF is scaled by $1/4$, or an IC:CG ratio of $3:1$, to account
 for a rough estimate of the CG fraction in the area according to \citet{Boccippio:2001ys} and consistent with IC:CG ratio from ENTLN
 shown in Figure~\ref{fig08_iccgmap}. Despite precipitation being underestimated, the simulated CG flash count is approximately
-10 times higher than observed by NLDN, which is inconsistent with the result from Chapter~\ref{ch:lightning}.
+10 times higher than observed by NLDN, which is within the order-of-magnitude variance according to Chapter~\ref{ch:lightning}.
 
 Figure~\ref{fig:2006/ltngdist}a shows the comparison of the daily flash count from NLDN and WRF-Chem after scaling for the
 systematic bias. However, even though scaling by $\alpha=0.1$ allows the integrated flash count to be consistent with observation,
@@ -244,17 +263,10 @@ the distribution truncates prematurely at $\sim200$\,\unit{flashes/grid/day} and
 below 100\,\unit{flashes/grid/day} (Fig.~\ref{fig:2006/ltngdist}b). Due to the nonlinear response of ozone chemistry to {\lnox}, such adjustment is
 expected to have unrealistic impacts on the ozone production. Sensitivity tests designed to address these uncertainties are described in
 Section~\ref{sec:2006/sens}. For the base case scenario, the default setup ($\alpha=1.0$) is used even though excess {\lnox}
-is expected. This decision is made because there are no clear evidences to support that the suggested alternatives can
-produce significantly better results until sensitivity tests are performed.
+is expected. This decision is made because there is no clear evidence to support that the suggested alternatives can
+produce significantly better results until sensitivity tests are performed for Section\,\ref{ssec:2006/sens/lnox}.
 
 \subsection{Ozone}\label{ssec:2006/gen/ozone}
-
-Given the result from the previous section (Sec.~\ref{ssec:2006/gen/met}), we can expect to see excess tropospheric ozone provided
-\chem{NO_x}-titration does not precede ozone production. Since the ozone enhancement occurs primarily above the southern
-United States, it is useful to define a region of focus different from that used in Section~\ref{ssec:2006/gen/met}. Consider the
-August mean geopotential height ($\bar{Z}_{300}$) at 300\,\unit{hPa} simulated by the model, we define the ``anticyclone region'' as
-columns with $\bar{Z}_{300}>9730\,\unit{m}$. While the anticyclonic circulation is not stationary, using the mean circulation maximizes
-the duration during which characteristics of the ozone enhancement can be captured.
 
 	\begin{wrapfigure}{o}{0.5\textwidth}
 		\centering
@@ -264,10 +276,18 @@ the duration during which characteristics of the ozone enhancement can be captur
 		\includegraphics[width=0.48\textwidth]{o3/o3_colorbar}
 		\caption[Simulated August ozone at 300\,\unit{hPa}]{{\small\textbf{Simulated upper tropospheric ozone} --- Simulated ozone
 		(\unit{ppbv}) and geopotential height (\unit{m}) at 300\,\unit{hPa} during August 2006. The blue 9730\,\unit{m} geopotential
-		height contour indicates the ``anticylone region'' that is used throughout Chapter~\ref{ch:2006}.}}
+		height contour indicates the ``anticylone region'' that is used throughout Chapter~\ref{ch:2006}. This figure can be compared
+		to those in \citet{Cooper:2007cr}.}}
 		\label{fig:2006/o3_300}
 		\end{singlespacing}
 	\end{wrapfigure}
+
+Given the result from the previous section (Sec.~\ref{ssec:2006/gen/met}), we can expect to see excess tropospheric ozone provided
+\chem{NO_x}-titration does not precede ozone production. Since the ozone enhancement occurs primarily above the southern
+United States, it is useful to define a region of focus different from that used in Section~\ref{ssec:2006/gen/met}. Consider the
+August mean geopotential height ($\bar{Z}_{300}$) at 300\,\unit{hPa} simulated by the model, we define the ``anticyclone region'' as
+columns with $\bar{Z}_{300}>9730\,\unit{m}$. While the anticyclonic circulation is not stationary, using the mean circulation maximizes
+the duration during which characteristics of the ozone enhancement can be captured.
 
 Both the August mean 300\,\unit{hPa} ozone and geopotential heights are shown in Figure~\ref{fig:2006/o3_300}.
 The location of ozone enhancement is consistent with that observed by \citet{Cooper:2007cr}. The ability to position the enhancement
@@ -276,8 +296,9 @@ GFS inputs. North of the jet stream, stratospheric ozone appears as consistent h
 the jet stream in the outflow region (northeast corner of model domain) and circulates into the anticyclone. The finger-shaped low-ozone
 structure over California separating the ozone enhancement core and northern stratospheric ozone is formed by repeated low-ozone transport from
 the equatorial Pacific via the southwest corner boundary condition provided by MOZART GCM. Nonetheless, compared to the other studies,
-the magnitude of the simulated ozone enhancement is higher and slightly more widespread especially over the Gulf of Mexico. This is likely
-due to the order of magnitude over-prediction of lightning flash rate and thus {\lnox} (see Sect.~\ref{ssec:2006/gen/met}).
+the magnitude of the simulated ozone enhancement is higher by about 20\,\unit{ppbv}and slightly more widespread especially over the
+Gulf of Mexico. This can be attributed to the order of magnitude over-prediction of lightning flash rate and thus {\lnox}
+(see Sect.~\ref{ssec:2006/gen/met}).
 
 	\begin{sidewaysfigure}[htbp]
 		\begin{center}% yellowstone:/glade/scratch/johnwong/Dissertation
@@ -303,6 +324,11 @@ due to the order of magnitude over-prediction of lightning flash rate and thus {
 
 \subsubsection{Validation against TES}
 
+	% yellowstone:/glade/scratch/johnwong/Dissertation
+	\figuremacroN{o3/o3_teswrfhist_ftuv}{WRF-Chem and TES ozone frequency distributions}{\label{fig:2006/o3tesdistr}
+	Normalized frequency distributions (\unit{\%/ppmv}) of TES and WRF-Chem ozone mixing ratios between {\bf (a)}
+	150--300~\unit{hPa} and {\bf (b)} 300--450~\unit{hPa}. Only columns between 25--40$^\circ$N are used.}
+
 To quantify the bias in the simulated ozone, retrievals from the satellite-borne Tropospheric Emission Spectrometer (TES) are used
 to provide spatial snapshots along selected transects. TES is a high resolution infrared Fourier-transform spectrometer with a spectral
 resolution of 0.06\,\unit{cm^{-1}} \citep{Beer:2006fk}. The data products used are of V004, all of which are special observations in
@@ -311,11 +337,6 @@ with ozonesondes, a validation with V002 showed that TES ozone had a 3--10\,\uni
 able to pick up the general variability \citep{Nassar:2008mw}. TES products have been used in numerous studies on tropospheric
 chemistry \citep[e.g.][]{Hegarty:2010vn,Voulgarakis:2011fk}, studies on convection and water budget \citep[e.g.][]{Brown:2008zr,Risi:2010ys},
 and air quality studies \citep[e.g.][]{Mcmillan:2010kx, Wang:2011uq}.
-
-	% yellowstone:/glade/scratch/johnwong/Dissertation
-	\figuremacroN{o3/o3_teswrfhist_ftuv}{WRF-Chem and TES ozone frequency distributions}{\label{fig:2006/o3tesdistr}
-	Normalized frequency distributions (\unit{\%/ppmv}) of TES and WRF-Chem ozone mixing ratios between {\bf (a)}
-	150--300~\unit{hPa} and {\bf (b)} 300--450~\unit{hPa}. Only columns between 25--40$^\circ$N are used.}
 
 Using TES, we first compare the ozone curtain profiles. Between July 15 and August 23, 10 TES transects are selected and compared to
 the WRF-Chem output of the corresponding date at 18\,UTC or 21\,UTC, whichever is closer to the 30$^\circ$N-crossing time (Fig.~\ref{fig:2006/o3tes}).
@@ -330,8 +351,8 @@ as follow:
 	\end{equation}
 where $\mathbf{x_a}$ is the {\it a priori} constraint, $\mathbf{A}$ is the averaging kernel, and $\mathbf{x}_{\mathrm{WRF}}^{\mathrm{TES}}$
 is how TES would observe the WRF-Chem ozone column. Furthermore, columns with potential problems are filtered out using the master quality
-assurance flag, the C-curve flag, and the criteria\footnote{$trace(\mathbf{A})$ is sometimes known as the degrees of freedom for signal.}that
-$trace(\mathbf{A})>4.0$.
+assurance flag, the C-curve flag\footnote{The C-curve flag filters out retrievals with anomalously high surface ozone \citep{Zhang:2010fk}}, and
+the criteria\footnote{$trace(\mathbf{A})$ is sometimes known as the degrees of freedom for signal.}that $trace(\mathbf{A})>4.0$.
 	
 Figure~\ref{fig:2006/o3tes} shows the WRF-TES comparison along TES transects. Qualitatively, the height of the 100\,\unit{ppbv} ozone
 isopleth is well simulated north of 30$^\circ$N. South of 30$^\circ$N, upper tropospheric ozone is often over-predicted. These over-predictions
@@ -464,16 +485,16 @@ the primary contribution being smoothing errors and dependency on the a priori. 
 coefficients between in-situ measurements and TES retrievals are between 0.61 and 0.92. Therefore, while retrieval values may be biased, the relative variabilities
 of  \chem{CO} are expected to be realistic.
 
+	% yellowstone:/glade/scratch/johnwong/Dissertation
+	\figuremacroN{co/co_teswrfhist_ftuv}{WRF-Chem and TES \chem{CO} frequency distributions}{\label{fig:2006/cotesdistr}
+	Same as Figure~\ref{fig:2006/o3tesdistr} except for carbon monoxide.}
+
 The TES \chem{CO} product is often utilized in tandem with the TES \chem{O_3} product. \citet{Logan:2008uq} used these two products to investigate the impact
 of El Ni\~no on tropospheric composition. Similarly, \citet{Voulgarakis:2011fk} used them to investigate the global \chem{O_3}-\chem{CO} correlation. Attempts
 have also been made using the two TES products to characterize urban pollution outflow but was criticized for low sensitivity near the boundary layer as indicated
 through its averaging kernel \citep{Shim:2007kx}. In the following validation exercise, we are only going to compare WRF-Chem's output to the TES \chem{CO}
 product using the procedure outlined in Equation~\ref{eqn:TES-AK} to mirror the comparison done with ozone in Section~\ref{ssec:2006/gen/ozone}.  Further
 analysis pertaining to \chem{O_3}-\chem{CO} correlations will be revisited in Section~\ref{sec:2006/discussion}.
-
-	% yellowstone:/glade/scratch/johnwong/Dissertation
-	\figuremacroN{co/co_teswrfhist_ftuv}{WRF-Chem and TES \chem{CO} frequency distributions}{\label{fig:2006/cotesdistr}
-	Same as Figure~\ref{fig:2006/o3tesdistr} except for carbon monoxide.}
 	
 Figure~\ref{fig:2006/cotes} shows the transect-by-transect comparison of WRF-Chem \chem{CO} mapped onto TES transects against TES \chem{CO}
 products. WRF-Chem is obviously biased high in the mid-to-upper troposphere. There are two possible causes for a high bias in \chem{CO}. The first being an
@@ -564,6 +585,20 @@ is emitted by plants, thus \chem{HCHO} has been used as a proxy for constraining
 In addition, \chem{HCHO} may also be emitted through industrial combustion and construction processes. Additional description of anthropogenic and biogenic VOCs are given
 in Section~\ref{ssec:intro/ozone/voc}.
 
+	% yellowstone:/glade/scratch/johnwong/Dissertation
+	\begin{wrapfigure}{o}{0.5\textwidth}
+		\centering
+		\vspace{-.3in}
+		\begin{singlespacing}
+		\includegraphics[width=0.48\textwidth]{scia_ch2o_compare_0818}
+		\caption[SCIAMACHY and WRF-Chem formaldehyde on 8/18]{{\small\textbf{SCIAMACHY and WRF-Chem formaldehyde on 8/18} --- \textbf{(a)} SCIAMACHY and
+		\textbf{(b)} WRF-Chem \chem{HCHO} tropospheric VCDs in $10^{15}\,$\unit{molecules\,cm^{-2}} for August 18. \textbf{(c)} Both VCDs plotted against each other.
+		Red data points represent anthropogenic sources on the surface. Green data points represent biogenic sources. Blue lines are $y=x$, best-fit, and $y=0$.}}
+		\label{fig:2006/scia_hcho_0818}
+		\end{singlespacing}
+		\vspace{-.2in}
+	\end{wrapfigure}
+
 Formaldehyde can be monitored from space using the Scanning Imaging Absorption Spectrometer for Atmospheric Chartography (SCIAMACHY) instrument, an imaging
 spectrometer on board of the Environmental Satellite (ENVISAT) with an emphasis of monitoring regions with intense biomass burning or anthropogenic pollution
 \citep{Burrows:1995fk,Bovensmann:1999uq}. It measures scattered and reflected sunlight in the thermal IR spectral range, providing sensitivity to trace gases in the
@@ -584,20 +619,6 @@ To calculate the simulated retrieval error in the VCD, the following equation is
 where $\sigma_{N_s,r}$ and $\sigma_{N_s,s}$ are the random and systematic slant column errors, $M$ is the air mass factor, $N_v$ and $N_s$ are the VCD and slant column
 density (SCD), $n$ is the number of satellite pixels used, and $\sigma_{CTM}$ is the error in the reference background from using a CTM during retrieval.
 
-	% yellowstone:/glade/scratch/johnwong/Dissertation
-	\begin{wrapfigure}{o}{0.5\textwidth}
-		\centering
-		\vspace{-.3in}
-		\begin{singlespacing}
-		\includegraphics[width=0.48\textwidth]{scia_ch2o_compare_0818}
-		\caption[SCIAMACHY and WRF-Chem formaldehyde on 8/18]{{\small\textbf{SCIAMACHY and WRF-Chem formaldehyde on 8/18} --- \textbf{(a)} SCIAMACHY and
-		\textbf{(b)} WRF-Chem \chem{HCHO} tropospheric VCDs in $10^{15}\,$\unit{molecules\,cm^{-2}} for August 18. \textbf{(c)} Both VCDs plotted against each other.
-		Red data points represent anthropogenic sources on the surface. Green data points represent biogenic sources. Blue lines are $y=x$, best-fit, and $y=0$.}}
-		\label{fig:2006/scia_hcho_0818}
-		\end{singlespacing}
-		\vspace{-.2in}
-	\end{wrapfigure}
-
 Figure \ref{fig:2006/scia_hcho_0818} shows the pixel-by-pixel comparison of the SCIAMACHY \chem{HCHO} tropospheric VCDs and the WRF-Chem \chem{HCHO} VCDs
 weighting using the SCIAMACHY averaging kernels. All model data points captured by each pixel's bounding polygon are selected and the SCIAMACHY averaging kernel is applied to the geometric mean. Data
 points are highlighted as green if the corresponding model grid-box has a MEGAN isoprene emission factor $>75\,\unit{mol/km^2/h}$, i.e. substantial biogenic emission. Those
@@ -606,6 +627,13 @@ Sect.~\ref{ssec:intro/ozone/voc} and Sect.~\ref{ssec:2006/method/chem} for more 
 mutually exclusive. In cases where both criterias are satisfied, the data point is colored green because of the higher molar emission rate. It should be noted that such categorization of data points
 is not absolute. Due to transport, non-anthropogenic grids can also see heavy anthropogenic influences. On the other hand, due to the high altitude of SCIAMACHY's maximal
 sensitivity, pixels expecting high sources of surface emission may not display high VCD when the model is not simulating sufficient lofting.
+
+Similar to the results from the \chem{CO} validation in Section~\ref{ssec:2006/gen/co}, WRF-Chem also over-predicts \chem{HCHO}. However, due to $\sigma_{N_v}$ being large
+for most data points, 391/550 (71\%) of the pixels\footnote{Error bars for these data points are removed from Fig.~\ref{fig:2006/scia_hcho_0818} to avoid overcrowding the figure.}
+shown in Figure~\ref{fig:2006/scia_hcho_0818} satisfied $|N_{v,WRF}-N_{v,SCIA}|<\sigma_{N_v}$. The minimized-$\chi^2$ fit to the data set gives a slope of 0.297, which loosely
+implies WRF-Chem predicting three times more \chem{HCHO} in the atmosphere than observed by SCIAMACHY. Despite the over-estimation, this snapshot sample shows
+a background value of $10^{16}$\,\unit{molecules\,cm^{-2}} and a mean of $2.06\times10^{16}$\,\unit{molecules\,cm^{-2}}, which are consistent with OMI and GEOS-Chem
+\citep{Millet:2008oq}.
 
 	% yellowstone:/glade/scratch/johnwong/Dissertation
 	\begin{wrapfigure}{o}{0.5\textwidth}
@@ -619,13 +647,6 @@ sensitivity, pixels expecting high sources of surface emission may not display h
 		\end{singlespacing}
 		\vspace{-.3in}
 	\end{wrapfigure}
-
-Similar to the results from the \chem{CO} validation in Section~\ref{ssec:2006/gen/co}, WRF-Chem also over-predicts \chem{HCHO}. However, due to $\sigma_{N_v}$ being large
-for most data points, 391/550 (71\%) of the pixels\footnote{Error bars for these data points are removed from Fig.~\ref{fig:2006/scia_hcho_0818} to avoid overcrowding the figure.}
-shown in Figure~\ref{fig:2006/scia_hcho_0818} satisfied $|N_{v,WRF}-N_{v,SCIA}|<\sigma_{N_v}$. The minimized-$\chi^2$ fit to the data set gives a slope of 0.297, which loosely
-implies WRF-Chem predicting three times more \chem{HCHO} in the atmosphere than observed by SCIAMACHY. Despite the over-estimation, this snapshot sample shows
-a background value of $10^{16}$\,\unit{molecules\,cm^{-2}} and a mean of $2.06\times10^{16}$\,\unit{molecules\,cm^{-2}}, which are consistent with OMI and GEOS-Chem
-\citep{Millet:2008oq}.
 
 More specific features can also be extracted. For instance, a \chem{HCHO} local VCD high corresponding to Memphis, Tennessee can be found in the model output but not in the
 SCIAMACHY retrieval. On the contrary, two single-pixel maxima in the SCIAMACHY retrievals associated with Little Rock, Arkansas and Springfield, Missouri cannot be identified
@@ -722,8 +743,8 @@ Finally, the above model-observation comparison should be interpreted with cauti
 interpretations. One most obvious factor is the frequency distribution of VCDs. While the model shows a lognormal-like distribution,
 SCIAMACHY's retrieval introduces a negative tail. Since negative values in tropospheric VCD is meaningful and represents a crucial
 property of the retrieval process, they cannot be filtered out and must be included in the overall statistics. However, the of exact
-interpretation of these non-realistic negative VCDs remain ambiguous. Another factor worth elaborating is that since the comparison
-is only performed on \chem{NO_2}, this result is not readily extensible to the atmospheric \chem{NO_x} content especially if the
+interpretation of these non-physical negative VCDs remain ambiguous. Also, since the comparison
+is only performed on \chem{NO_2}, this result cannot be generalized to the atmospheric \chem{NO_x} content especially if the
 equilibrium $\chem{NO}:\chem{NO_2}$ ratio differs significantly from the true state.
 
 \figuremacroW{scia_no2}{WRF-Chem and SCIAMACHY \chem{NO_2} VCDs}{\label{fig:2006/no2vcd}
