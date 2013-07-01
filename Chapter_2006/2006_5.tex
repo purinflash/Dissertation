@@ -25,12 +25,13 @@ Here we correlated the August average model ozone and \chem{CO} from the surface
 Data points are first separated by within and outside of the anticyclone, defined by the boundary $\bar{Z}_{300}$ as previously
 defined in Section~\ref{ssec:2006/gen/ozone}. Then, each panel is further classified by pressure level split at 300 and 700\,\unit{hPa}
 to represent the lower, middle, and upper troposphere. To account for model biases, ozone VMRs between 100--300\,\unit{hPa}
-is adjusted by the biases in mean and variance computed in Section~\ref{ssec:2006/gen/ozone}. No adjustment is performed at
-the other pressure levels due to insignificant bias compared to observations. While the value shifted, the shape and features of the
-joint-distribution remain consistent before and after the adjustment. Several features annotated in the figure are discussed below:
+have been adjusted by the differences in mean and variance against TES computed in Section~\ref{ssec:2006/gen/ozone}. No
+adjustment is performed at the other pressure levels due to insignificant bias compared to observations. While the value shifted,
+the shape and features of the joint-distribution remain consistent before and after the adjustment. The labeled features annotated
+in the figure are discussed below.
 
 Feature A indicates a type of air mass exist only outside the anticyclone. This unique feature corresponds to subtropical Atlantic
-influx from the southern boundary. It has slightly higher \chem{CO} but the ozone VMRs at 300\,\unit{hPa} from lower latitudes are
+influx from the southern boundary. Typically, it has higher \chem{CO} but the ozone VMRs at 300\,\unit{hPa} from lower latitudes are
 lower in general. These air masses intermittently contribute to the anticyclone, similar to the air masses mixed across the jet stream
 from the north (see Sect.~\ref{ssec:2006/gen/ozone} \& \ref{ssec:2006/gen/co}). Feature B indicates the upper tropospheric branch
 of the \chem{O_3}-\chem{CO} correlation. It is evident from the labels, which are placed at the same locations in both panels, that
@@ -39,7 +40,46 @@ line (feature C). Similar to the alphabetic labels, the baseline is also identic
 \chem{O_3}-\chem{CO} correlations are consistent both inside and outside the anticyclone. Finally, feature D denotes the mid-to-lower
 tropospheric branch, which includes the boundary layer. Similar to B, D is chemically different across the anticyclone. Since circulation
 is not a factor at low altitudes, the other plausible explanation is the abundant sources of anthropogenic and biogenic emissions of both
-VOCs and \chem{NO_x}, which subsequently enhance in-situ ozone production within this layer and transported upwards.
+VOCs and \chem{NO_x}, which subsequently enhance in-situ ozone production within this layer and transported upwards. Finally,
+The low-\chem{CO}, low-\chem{O_3}  value at the interface of lower and middle tropospheres is about 10\,\unit{ppbv} higher within
+the anticyclone compared to the $\sim38$\,\unit{ppbv} value outside of the region despite negligible differences in their corresponding
+\chem{CO} level.
+
+The analysis above shows that the condition within the anticyclone enables higher ozone values throughout the entire troposphere at
+a wide range of VMRs for \chem{CO} (features B and C). Since emission dominates transport in the lower
+troposphere, the appropriate hypothesis for the enhancement at C is the elevated level of \chem{NO_x} from either co-located
+emissions or subsidence of {\lnox} within the region. However, more information is required to properly diagnose feature B, which
+can be either an indication of enhanced \chem{O_3} chemical production at the 80\,\unit{ppbv} \chem{CO} or enhanced \chem{CO}
+at levels with \chem{O_3} through convective detrainments.
+
+\figuremacroW{tracer/tracer_maps}{Passive tracers}{\label{fig:2006/tracers}
+First row ({\bf a,b}) shows the August average of lateral boundary decaying tracer at 300\,\unit{hPa} on the left and along
+33$^\circ$N on the right. Values are given in percentage. Second row ({\bf c,d}) shows the surface layer deacying tracer.
+Third row ({\bf e,f}) shows the stratospheric decaying tracer.
+Last row ({\bf g,h}) shows the lightning decaying tracer given in \unit{ppbv}.}{0.9}
+
+Figure~\ref{fig:2006/tracers} shows four of the tracers released from the lateral boundaries, the boundary layer, the stratosphere, and
+lightning sources. All tracers shown are the decaying type with a lifetime of 1 day (1-d). The impact of the NAM circulation is clearly shown
+in the spatial distribution of the lateral boundary tracer (Fig.~\ref{fig:2006/tracers}{\bf a}). Within the anticyclone region ($\bar{Z}_{300}
+>9730\,\unit{m}$), air mass retains no more than an average of 3\% of the characteristics from any of the boundaries. Since these
+tracers are dynamically-driven, it can be asserted that the impact of boundary condition on the principle results will be minor.
+
+Similarly, lightning tracer also shows substantial localized enhancement within the anticyclone region (Fig.~\ref{fig:2006/tracers}{\bf g}).
+The observed eastward shift from the 9730\,\unit{m} contour can be explained by the overall higher lightning flash rate in the southeastern 
+United States. Accounting for the one order of magnitude deviation from observed CG flash rate, the maximum accumulated lightning
+1-d tracer is 0.5\,\unit{ppbv}. Despite a fixed maximum emission altitude of 6--8\,\unit{km} ($\sim400\,\unit{hPa}$) according to
+\citet{Ott:2010lo}, vertical distribution along the 33$^\circ$N cross-section shows that the tracer has values $>3\,\unit{ppbv}$ (0.3
+after account for overprediction in flash rate) within a wide range of pressure levels between 120--500\,\unit{hPa}
+(Fig.~\ref{fig:2006/tracers}{\bf h}). Finally, the abundance of lightning tracers in the stratosphere is likely the direct result of using a
+fixed altitude-dependent emission profile, which includes more than 10\% (35\,\unit{moles\,flash^{-1}}) above 12\,\unit{km} for
+subtropical latitudes.
+
+However, the spatial distribution of tropospheric tracer shows little correlation with the shape or positioning of the anticyclone. At
+300\,\unit{hPa}, the features of the tracer is dominated by orographic influence of the Rocky Mountains (Fig.~\ref{fig:2006/tracers}{\bf c}).
+Similarly, stratospheric tracer also shows very minimal impact from the NAM circulation except for the influx of stratospheric air mixing
+across the jet stream in the outflow region along the eastern seaboard.
+
+
 
 \section{Sensitivity study}\label{sec:2006/sens}
 \subsection{Anthropogenic emission}\label{ssec:2006/sens/anthrop}
