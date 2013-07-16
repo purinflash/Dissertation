@@ -103,17 +103,87 @@ outside the anticyclone than within the anticyclone between 700 and slightly abo
 the geographic diversity outside the anticyclone, primarily the presence of marine surfaces. Finally, both regions show very little
 differences close to the tropopause, where ST$\sim1$.
 
-The result in this section partially contradicts that of \citep{Li:2005ss,Cooper:2007cr}, in particular, the conjecture that the anticyclone enables
-higher ozone production through recirculation and entrapment of detrained BL air rich in ozone chemical precursors. The result here shows
-that the vertical colocation of geographical homogeneity as well as meteorological factors (e.g. high lightning intensity) are the key factors
+The result in this section partially contradicts that of \citet{Li:2005ss} and \citet{Cooper:2007cr}, in particular, the conjecture that the anticyclone
+enables higher ozone production through recirculation and entrapment of detrained BL air rich in ozone chemical precursors. The result here
+shows that the vertical colocation of geographical homogeneity as well as meteorological factors (e.g. high lightning intensity) are the key factors
 driving the ozone enhancement. On the other hand, the lack of model lateral boundary influence, as indicative of the BC tracer low within the
 anticyclone, points to low externality as a secondary factor as opposed to internal conditioning. The only\footnote{Despite the lack of aircraft
 emission in the simulation used in this study, it can be argued that the influence of aircraft emission on upper tropospheric ozone production
 may also be enhanced by the transport pattern due to the emission altitude and $x$-$y$ spatial distribution.}exception to the irrelevance of
-internal condition is the influence from lightning emissions, which demonstrate a certain degree of influence from the transport pattern of
-the anticyclone.
+internal condition is the influence from lightning emissions, which shows correlation with the transport pattern of the anticyclone.
 
+\subsection{Tendency diagnostics}\label{ssec:2006/discuss/tendency}
 
+The changes of the mixing ratio of a chemical species at a specific time and location, or tendency, can be expressed as
+the sum of following components: chemistry, convection, vertical mixing, horizontal advection, vertical advection, emission,
+and other loss rates (Eq.~\ref{eqn:tendency}). In the upper troposphere, except for \chem{NO}, both emissions and other
+uncharacterized loss rates should be zero, and thus the total tendency can be expressed as the first five processes. It is thus
+possible to infer changes in both chemical and dynamical properties and relations by examining these tendency components.
+Tendency diagnostics of these 5 components are available for \chem{O_3}, \chem{CO}, \chem{NO}, \chem{NO_2}, \chem{HO},
+\chem{HO_2}, \chem{TOL}, and \chem{HC5}.\footnote{TOL$=$Toluene; HC5$=$Bulk species for alkane with moderate \chem{HO}
+rate constants. These replace isoprene and \chem{HNO_3} in the default implementation.}
+
+\figuremacroW{tendency/timeseries.png}{Time series for upper tropospheric tendency diagnostics}{\label{fig:2006/tendency_timeseries}
+Time series at ({\bf a}) Trinidata Head, ({\bf b}) Houston, and ({\bf c}) Beltsville showing the min-mean-max ozone time series (black)
+between 270--330\,\unit{hPa} overlaid with IONS-06 ozonesonde measurements represented as red vertical lines for the range and solid
+$\diamondsuit$ for the mean value. Lightning \chem{NO_x} 1-d tracer (cyan) and ozone chemical (red), convective (blue), and vertical
+mixing (purple) tendency components are given according to the blue axis labels on the right in units of \unit{ppbv}. Boundary layer (BL, blue)
+and stratospheric (ST, red) are also given in \unit{\%}.}{0.9}
+
+To characterize the air mass of the continental inflow, the anticyclone, and the continental outflow, three locations are selected to be
+examined further: Trinidad Head, California (40.80$^\circ$N, 124.15$^\circ$W), Houston, Texas (29.72$^\circ$N, 95.30$^\circ$W),
+and Beltsville, Maryland (39.04$^\circ$N,76.52$^\circ$W). Figure~\ref{fig:2006/tendency_timeseries} shows the time series of the
+ozone VMRs at these locations as well as the associated chemical, convective, and mixing tendencies. Values shown are mean for
+all data points between 270--330\,\unit{hPa}, with min/max also indicated for ozone VMR. After accounting for the three tendency
+included in the figure, the remaining variability in the total VMR can be explained fully by horizontal and advective tendencies.
+To indicate model bias, IONS-06 ozonesonde measurements, described in Section~\ref{ssec:2006/gen/ozone}, are also included.
+Boundary layer (BL), stratospheric (ST) and lightning (\lnox) decaying tracers, described in Section~\ref{ssec:2006/discuss/tracer}
+are included to provide context of the sources for dynamical and chemical variabilities.
+
+The primary source for temporal variabilities at all three locations are advection. In particular, Trinidad Head periodically receives
+stratospheric ozone from the jet stream, which is responsible for the sharp spatiotemporal gradients high VMRs simulated for particular
+days (e.g. August 2 and August 7). The largest chemical tendency for ozone is observed at Beltsville with a total of 110 \,\unit{ppbv}
+over the entire August, followed by Houston with 69\,\unit{ppbv}. Despite a higher total chemical tendency in the upper troposphere above
+Beltsville, as formalized by Equation~\ref{eqn:tendency-accul}, Figure~\ref{fig:2006/tendency_timeseries} shows that the upper air
+in the southern United States is more chemically active, with a min/max 3-hourly ozone chemical tendencies of -12.8/17.1\,\unit{ppbv},
+compared to -2.94/3.90\,\unit{ppbv} at Beltsville.\footnote{One might observe that the ratios at both locations are identical despite the
+difference in magnitude. This may be attributed to the fact that Beltsville, being located in the outflow region, inherited a similar chemical
+composition as that within the anticyclone.} On the contrary, the inflow region, represented by Trinidad Head, observed $\pm0.37$\,\unit{ppbv}
+between all 3-hourly outputs.
+
+%31 sondes found for trinidad
+%Reading WRF files
+%      192.169      51.4095
+%chem     0.352303
+%conv     -1.95329
+%vmix      8.09430
+%abs chem      12.8248
+%min/max chem    -0.335217     0.370461
+%19 sondes found for houston
+%Reading WRF files
+%      116.633      66.5038
+%chem      68.9099
+%conv     -13.4116
+%vmix      3.62007
+%abs chem      414.107
+%min/max chem     -12.7622      17.0969
+%10 sondes found for beltsville
+%Reading WRF files
+%      98.1389      102.416
+%chem      110.840
+%conv     -5.09015
+%vmix      3.52898
+%abs chem      175.398
+%min/max chem     -2.93698      3.89780
+On the other hand, Trinidad Head observed less than 0.4\,\unit{ppbv} over the same period. This is likely due to the lack of precursors,
+both VOCs and \chem{NO_x}, within the mid-latitude inflow despite the high ozone. On the contrary, both convective and mixing tendency
+components are negligible with -13.4\,\unit{ppbv} convective and 3.6\,\unit{ppbv} mixing at Houston, -5.1\,\unit{ppbv} convective and
+3.5\,\unit{mixing} at Beltsville, and -2.0\,\unit{ppbv} convective and 8.1\,\unit{ppbv} mixing at Trinidad Head. The low negative value can
+be attributed to infrequent convective activity (e.g. Trinidad Head) or a small gradient between the entrainment level and $\sim300\,\unit{hPa}$
+at Houston where convective activity is frequent. Vertical mixing tendency is also similarly dependent on vertical gradient as well as
+transport efficiency, which is eddy transport and dry deposition in this case. At Trinidad head, where the tropopause is frequently
+lowered due to the jet stream, the model more than twice the vertical mixing tendency compared to the other locations as a result of
+the sharpened ozone VMR gradient closer to the tropopause.
 
 \section{Sensitivity study}\label{sec:2006/sens}
 \subsection{Anthropogenic emission}\label{ssec:2006/sens/anthrop}
