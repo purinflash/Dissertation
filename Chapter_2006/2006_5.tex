@@ -127,7 +127,7 @@ rate constants. These replace isoprene and \chem{HNO_3} in the default implement
 Time series at ({\bf a}) Trinidata Head, ({\bf b}) Houston, and ({\bf c}) Beltsville showing the min-mean-max ozone time series (black)
 between 270--330\,\unit{hPa} overlaid with IONS-06 ozonesonde measurements represented as red vertical lines for the range and solid
 $\diamondsuit$ for the mean value. Lightning \chem{NO_x} 1-d tracer (cyan) and ozone chemical (red), convective (blue), and vertical
-mixing (purple) tendency components are given according to the blue axis labels on the right in units of \unit{ppbv}. Boundary layer (BL, blue)
+mixing (purple) tendency components are given according to the blue axis labels on the right in units of \unit{ppbv/3\,hr}. Boundary layer (BL, blue)
 and stratospheric (ST, red) are also given in \unit{\%}.}{0.9}
 
 To characterize the air mass of the continental inflow, the anticyclone, and the continental outflow, three locations are selected to be
@@ -146,44 +146,58 @@ days (e.g. August 2 and August 7). The largest chemical tendency for ozone is ob
 over the entire August, followed by Houston with 69\,\unit{ppbv}. Despite a higher total chemical tendency in the upper troposphere above
 Beltsville, as formalized by Equation~\ref{eqn:tendency-accul}, Figure~\ref{fig:2006/tendency_timeseries} shows that the upper air
 in the southern United States is more chemically active, with a min/max 3-hourly ozone chemical tendencies of -12.8/17.1\,\unit{ppbv},
-compared to -2.94/3.90\,\unit{ppbv} at Beltsville.\footnote{One might observe that the ratios at both locations are identical despite the
-difference in magnitude. This may be attributed to the fact that Beltsville, being located in the outflow region, inherited a similar chemical
-composition as that within the anticyclone.} On the contrary, the inflow region, represented by Trinidad Head, observed $\pm0.37$\,\unit{ppbv}
-between all 3-hourly outputs.
+compared to -2.94/3.90\,\unit{ppbv} at Beltsville. On the contrary, the inflow region, represented by Trinidad Head, observed $\pm0.37$\,\unit{ppbv}
+between all 3-hourly outputs. This is likely due to the lack of precursors --- both VOCs and \chem{NO_x} --- within the mid-latitude inflow
+region despite the high stratospheric ozone concentration. Such differences between the three stations can be explained by the BL tracer
+and {\lnox} tracers, of which significant amounts are recorded at Houston especially after August 21st but not at the other locations. However,
+due to the negative (loss) phase of the chemical cycles at Houston, Beltsville records a higher net production of ozone (110\,\unit{ppbv})
+during August compared to Houston (71\,\unit{ppbv}).
 
-%31 sondes found for trinidad
-%Reading WRF files
-%      192.169      51.4095
-%chem     0.352303
-%conv     -1.95329
-%vmix      8.09430
-%abs chem      12.8248
-%min/max chem    -0.335217     0.370461
-%19 sondes found for houston
-%Reading WRF files
-%      116.633      66.5038
-%chem      68.9099
-%conv     -13.4116
-%vmix      3.62007
-%abs chem      414.107
-%min/max chem     -12.7622      17.0969
-%10 sondes found for beltsville
-%Reading WRF files
-%      98.1389      102.416
-%chem      110.840
-%conv     -5.09015
-%vmix      3.52898
-%abs chem      175.398
-%min/max chem     -2.93698      3.89780
-On the other hand, Trinidad Head observed less than 0.4\,\unit{ppbv} over the same period. This is likely due to the lack of precursors,
-both VOCs and \chem{NO_x}, within the mid-latitude inflow despite the high ozone. On the contrary, both convective and mixing tendency
-components are negligible with -13.4\,\unit{ppbv} convective and 3.6\,\unit{ppbv} mixing at Houston, -5.1\,\unit{ppbv} convective and
-3.5\,\unit{mixing} at Beltsville, and -2.0\,\unit{ppbv} convective and 8.1\,\unit{ppbv} mixing at Trinidad Head. The low negative value can
-be attributed to infrequent convective activity (e.g. Trinidad Head) or a small gradient between the entrainment level and $\sim300\,\unit{hPa}$
-at Houston where convective activity is frequent. Vertical mixing tendency is also similarly dependent on vertical gradient as well as
-transport efficiency, which is eddy transport and dry deposition in this case. At Trinidad head, where the tropopause is frequently
-lowered due to the jet stream, the model more than twice the vertical mixing tendency compared to the other locations as a result of
-the sharpened ozone VMR gradient closer to the tropopause.
+Unlike advective or chemical tendencies, both convective and mixing tendency components are negligible with -13.4\,\unit{ppbv} convective
+and 3.6\,\unit{ppbv} mixing at Houston, -5.1\,\unit{ppbv} convective and 3.5\,\unit{mixing} at Beltsville, and -2.0\,\unit{ppbv} convective and
+8.1\,\unit{ppbv} mixing at Trinidad Head. The small negative values can be attributed to infrequent convective activity (e.g. Trinidad Head)
+or a small gradient between the entrainment level and $\sim300\,\unit{hPa}$ at Houston where convective activity is frequent.
+Vertical mixing tendency is also similarly dependent on vertical gradient as well as transport efficiency, which is eddy transport and
+dry deposition in this case. At Trinidad Head, where the tropopause is frequently lowered due to the jet stream, the model more than twice
+the vertical mixing tendency compared to the other locations as a result of the sharpened ozone VMR gradient closer to the tropopause.
+
+	\begin{figure}[t!]
+		\centering
+		\includegraphics[width=1.0\textwidth]{tendency/vertical.png}
+		\caption[Vertical profiles of decaying tracers and tendency diagnostics]{\textbf{Vertical profiles of decaying tracers
+		and tendency diagnostics} --- \label{fig:2006/tendency_vertical} August vertical profiles at ({\bf a}) Trinidata Head, ({\bf b}) Houston,
+		and ({\bf c}) Beltsville. Dashed lines are the mean 1-d decaying tracers for BL (blue, \unit{\%}), ST (red, \unit{\%}), and {\lnox} (cyan,
+		\unit{ppbv}) according to the values of the top axis. Solid lines are the accumulated chemical tendency diagnostic (red), convective
+		tendency diagnostic (blue), and mean ozone profiles in \unit{ppbv} according to the values of the bottom axis. Closest $11\times11$
+		grids to the IONS-06 site are selected to compute these profiles.}\vspace{-.3in}
+	\end{figure}
+
+Figure~\ref{fig:2006/tendency_vertical} shows the mean decaying tracers and accumulated tendencies within 5 grids ($11\times11$) surrounding the
+IONS-06 site from August 1st 00\,\unit{UTC} to August 31 00\,\unit{UTC}. The differences between the three locations are again apparent. The inflow
+region severely lacks both BL air and {\lnox} in the upper troposphere. Despite comparable ozone level, the accumulated tendency in the upper
+troposphere remains low with a maximum of $19.4\pm2.5\,\unit{ppbv}$. This location receives air mass from the Pacific and contributes to the low ozone
+``trough'' separating the observed ozone enhancement and the jet stream. Thus, despite occasionally receiving high ozones, the lack of in-situ chemical
+production limits the ozone level between each high-ozone episode and allows the air to remain relatively ``clean'' until reaching Minnesota
+(Fig.~\ref{fig:2006/o3_300}). This influx of low-ozone, chemically-``slow'' air mass between each jet stream is responsible to generating the oval-shaped
+ozone enhancement in the seasonal average.
+
+At Houston, at the center of the mean-state anticyclone, both the ozone chemical and convective tendencies are substantially higher than Trinidad Head.
+At 200\,\unit{hPa}, where Trinidad Head records the peak net upper tropospheric ozone production, Houston records $55.8\pm18.6\,\unit{ppbv}$, about
+2.9 times higher. However, this number, as discussed earlier, has been suppressed due to large negative phases of the diurnal cycle. This is due to the
+large amount of BL precursor and {\lnox} as indicated by the tracers. Substantial amount of BL precursor is transported into the upper troposphere through
+convection, with a mean maximum detrainment height of 145\,\unit{hPa} and a net tendency of $-170\,\unit{ppbv}$ \chem{O_3}, though this may be in part
+caused by  a nearby outlier with $-1170\,\unit{ppbv}$\footnote{Such substantial convective tendency is an indication for stationary features such as sea
+breeze and orographically triggered convections.} during August. However, the chemical maximum (ignoring BL) occurs in the mid-troposphere at
+$437\pm2\,\unit{hPa}$ with a net production of $178\pm51\,\unit{ppbv}$. The position of this peak can be explained by the coincidence of the maximum
+level for the prescribed {\lnox} emission based on \citet{Ott:2010lo} and the availability of BL air. As a consequence of production at this level, the mean
+ozone VMR exceeds 100\,\unit{ppbv} at 437\,\unit{hPa}. In contrast, without {\lnox}, ozone loss via chemistry is expected at this level as
+demonstrated at Trinidad Head.
+
+In the outflow region, though having lower ozone VMRs in the mid-to-upper troposphere compared to Houston, there is a higher net in-situ production of
+ozone in the upper troposphere. This can be attributed to having less frequent negative phases that destroy ozone at night. Despite the smaller net
+convective tendency, BL tracer is higher than or comparable to the Houston column, thus this points to precursors advected from elsewhere that
+contributes to the simulated ozone production. An in-depth analysis of he ozone budget and variability at this location and New England has been
+performed by \citet{Thompson:2007gd,Thompson:2007ov} using IONS-04.
 
 \section{Sensitivity study}\label{sec:2006/sens}
 \subsection{Anthropogenic emission}\label{ssec:2006/sens/anthrop}
