@@ -187,7 +187,7 @@ At 200\,\unit{hPa}, where Trinidad Head records the peak net upper tropospheric 
 large amount of BL precursor and {\lnox} as indicated by the tracers. Substantial amount of BL precursor is transported into the upper troposphere through
 convection, with a mean maximum detrainment height of 145\,\unit{hPa} and a net tendency of $-170\,\unit{ppbv}$ \chem{O_3}, though this may be in part
 caused by  a nearby outlier with $-1170\,\unit{ppbv}$\footnote{Such substantial convective tendency is an indication for stationary features such as sea
-breeze and orographically triggered convections.} during August. However, the chemical maximum (ignoring BL) occurs in the mid-troposphere at
+breeze or orographically triggered convections.} during August. However, the chemical maximum (ignoring BL) occurs in the mid-troposphere at
 $437\pm2\,\unit{hPa}$ with a net production of $178\pm51\,\unit{ppbv}$. The position of this peak can be explained by the coincidence of the maximum
 level for the prescribed {\lnox} emission based on \citet{Ott:2010lo} and the availability of BL air. As a consequence of production at this level, the mean
 ozone VMR exceeds 100\,\unit{ppbv} at 437\,\unit{hPa}. In contrast, without {\lnox}, ozone loss via chemistry is expected at this level as
@@ -198,6 +198,66 @@ ozone in the upper troposphere. This can be attributed to having less frequent n
 convective tendency, BL tracer is higher than or comparable to the Houston column, thus this points to precursors advected from elsewhere that
 contributes to the simulated ozone production. An in-depth analysis of he ozone budget and variability at this location and New England has been
 performed by \citet{Thompson:2007gd,Thompson:2007ov} using IONS-04.
+
+\subsubsection{Chemical pathways}
+
+A challenge in the above analysis is to attribute chemical tendency to the appropriate reaction pathway. Considering the nonlinear dependency of ozone
+production/loss on the atmospheric composition, higher-ordered relation needs to be examined. For urban pollution, the Empirical Kinetic Modeling
+Approach (EKMA) has been used describe the ozone isopleths in relation to VOC and \chem{NO_x} ratio \citep{Dimitriades:1977fk}. However, this model
+suffers several deficiencies, including the lack of dependency on temperature, solar radiance, and transport, all of which can substantially impact the
+rates of relevant reactions. By incorporating simple trajectories and taking into account location and time information, EPA's OZIPR\footnote{Research-oriented
+Ozone Isopleth Plotting Package (OZIPP)}model can compute ``city-specific'' EKMA, which is used by planners to achieve National Ambient Air Quality
+Standards (NAAQS) compliance and developers to construct research models.
+
+\figuremacroN{tendency/chem_EKMA}{Ozone chemical tendency in relation to \chem{NO_x}}{\label{fig:2006/nox_EKMA}
+Ozone chemical tendency in relation to \chem{NO} and \chem{NO_2} chemical tendencies between 15 and 21\,\unit{UTC} in August near Houston, TX
+at 200--600\,\unit{hPa} \vspace{-.2in}}
+
+Similar to EKMA, but instead of relating ozone VMR to species VMRs, here we relate the ozone to relevant species within the anticyclone using the respective
+chemical tendencies. Figure~\ref{fig:2006/nox_EKMA} shows the net ozone production between each 3-hourly output given \chem{NO} and \chem{NO_x}
+chemical tendency during daytime (15--21\,\unit{UTC}) and within 5 model grids from the IONS-06 Houston launch site at heights with August mean pressure
+200--600\,\unit{hPa}. The \chem{NO}+\chem{NO_2} chemical tendency is generally negative, thus indicating that non-\chem{NO_x} nitrogen species are being
+produced, e.g. \chem{NO_3}, \chem{HNO_4}, \chem{HONO}. However, this does not guarantee a negative overall \chem{NO_x} tendency due to {\lnox} emission.
+Ozone production is generally small when the \chem{NO_x} tendency is small (close to the steady state line), and ozone production occurs when 
+$\Delta_{chem}\chem{NO}$ is negative while $\Delta_{chem}\chem{NO_2}$ is small.
+
+Since the chemical tendency is fundamentally tied to the chemical mechanism, i.e. the available chemistry set, it is possible to generalize this distribution to other
+locations at the same local time\footnote{This requirement guarantees similar photolysis rates ignoring the presence of shadows from deep convective clouds.}
+using only a subset of chemical tendency diagnostics. Let $\mathbf{x}$ be a feature vector of length 8, where $x_0=1$ and $x_1\ldots x_5$ be the chemical
+tendencies for \chem{CO}, \chem{NO_x}, and \chem{HO_x} in \unit{ppbv/hr}. Chemical tendency for ozone which is designated as $y$. Using a least-square
+regression with $L^2$-regularization parameter $\lambda=1$, we fit the following function to the Houston daytime data:
+\begin{equation}\label{eqn:chem_ekma}
+	y = \mathbf{x}^T\mathbf{A}\mathbf{x}
+\end{equation}
+where $\mathbf{A}=\{a_{ij}\}_{i,j}$ is a $6\times6$ upper triangular matrix, $\mathbf{x}=(x_0,x_1,\ldots x_5)^T$. Table~\ref{table:2006/ekma_regress} shows the
+coefficients of $\mathbf{A}$ from a 100 bootstrap iterations trained on 40.8k (50\%) and tested on 40.8k (50\%) of the data points. Coefficients of the regression are
+listed in Table~\ref{table:2006/ekma_regress}. The RMS errors for the fitted ozone chemical tendencies from the bootstraps are $0.2954\pm0.0008\,\unit{ppbv/hr}$.
+Applying the same fitted model to Beltsville gives RMS errors of $0.2651\pm0.0003$\,\unit{ppbv/hr}.
+
+	\begin{table}[htp!]
+	\caption[Quadratic regression on chemical tendencies]{Mean and standard deviations of coefficients for Equation~\ref{eqn:chem_ekma}. Insignificant
+	terms where $M_{ij}=\max|\overline{a_{ij}}x_ix_j|<10^{-3}\,\unit{ppbv/hr}$ are shown as $\sim0$.}
+	\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+					& 1	& \chem{CO}			& \chem{NO}			&\chem{NO_2}		& \chem{HO}		&\chem{HO_2}			\\ \hline
+		1			& 0	& $-0.676\pm0.008$		& $-4.45\pm0.019$		&$-5.83\pm0.030$	& $0.484\pm0.031$	& $-9.33\pm0.147$		\\ \hline
+		\chem{CO}	& -	& $-23.2\pm0.265$		& $0.549\pm0.014$		&$-0.206\pm0.048$	& $-1.10\pm0.086$	& $\sim0$				\\ \hline
+		\chem{NO}	& -	& -					& $1.17\pm0.13$		&$2.87\pm0.22$	& $-2.40\pm0.06$	& $-2.57\pm0.16$		\\ \hline
+		\chem{NO_2} 	& -	& -					& -					&$\sim0$			& $0.668\pm0.075$	& $9.50\pm0.13$		\\ \hline
+		\chem{HO}	& -	& -					& -					& -				& $-2.92\pm0.13$	&$\sim0$				\\ \hline
+		\chem{HO_2}	& -	& -					& -					& -				& -				& $-1.60\pm0.05$		\\ \hline
+	\end{tabular} \label{table:2006/ekma_regress}
+	\end{center}
+	\end{table}
+
+The model represented by Table~\ref{table:2006/ekma_regress} should be applicable for chemical compositions within or near the domain encompassed by
+the data from Houston. Let $M_{ij}=\max_{ij}|\overline{a_{ij}}x_ix_j|$ be the maximum tendency contribution to the net ozone tendency. At Houston, the
+largest components are \chem{NO} and \chem{NO_2}, with $\log M_{ij}=0.689$ and 0.666 respectively. Due to the compositions, $M_{ij}$'s may have different
+upper bounds at different locations. Applying the same model to Beltsville, $\log M_{ij}=0.833$ and 1.041 respectively. The largest differences, however, are in
+the components $\langle\chem{HO},\chem{HO}\rangle$, $\langle\chem{NO},\chem{HO}\rangle$ and $\langle\chem{NO},\chem{HO_2}\rangle$, of which the $\log
+M_{ij}$'s evaluate to 0.267, 0.460, 0.351 at Houston but 1.016, 0.748, 0.869 at Beltsville, representing a combined $3.3\times$ maximum contribution to the
+variability of ozone production by the interactions between \chem{HO_x} and \chem{NO}.
+
 
 \section{Sensitivity study}\label{sec:2006/sens}
 \subsection{Anthropogenic emission}\label{ssec:2006/sens/anthrop}
