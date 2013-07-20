@@ -64,7 +64,7 @@ in the spatial distribution of the lateral boundary (BC) tracer (Fig.~\ref{fig:2
 >9730\,\unit{m}$), air mass retains no more than an average of 3\% of the characteristics from any of the boundaries. Since these
 tracers are dynamically-driven, it can be asserted that the impact of boundary condition on the principle results will be minor.
 
-Similarly, lightning LT) tracer also shows substantial localized enhancement within the anticyclone region (Fig.~\ref{fig:2006/tracers}{\bf g}).
+Similarly, lightning (LT) tracer also shows substantial localized enhancement within the anticyclone region (Fig.~\ref{fig:2006/tracers}{\bf g}).
 The observed eastward shift from the 9730\,\unit{m} contour can be explained by the overall higher lightning flash rate in the southeastern 
 United States. Accounting for the one order of magnitude deviation from observed CG flash rate, the maximum accumulated lightning
 1-d tracer is 0.5\,\unit{ppbv}. Despite a fixed maximum emission altitude of 6--8\,\unit{km} ($\sim400\,\unit{hPa}$) according to
@@ -107,10 +107,10 @@ The result in this section partially contradicts that of \citet{Li:2005ss} and \
 enables higher ozone production through recirculation and entrapment of detrained BL air rich in ozone chemical precursors. The result here
 shows that the vertical colocation of geographical homogeneity as well as meteorological factors (e.g. high lightning intensity) are the key factors
 driving the ozone enhancement. On the other hand, the lack of model lateral boundary influence, as indicative of the BC tracer low within the
-anticyclone, points to low externality as a secondary factor as opposed to internal conditioning. The only\footnote{Despite the lack of aircraft
-emission in the simulation used in this study, it can be argued that the influence of aircraft emission on upper tropospheric ozone production
-may also be enhanced by the transport pattern due to the emission altitude and $x$-$y$ spatial distribution.}exception to the irrelevance of
-internal condition is the influence from lightning emissions, which shows correlation with the transport pattern of the anticyclone.
+anticyclone, points to low externality as a secondary factor as opposed to internal conditioning. The only\footnote{Even though the simulation used
+in this study does not have aircraft emissions, it can be conjectured that the influence of aircraft emission on upper tropospheric ozone production
+may also be enhanced by the transport pattern due to the emission altitude and $x$-$y$ spatial distribution being similar to {\lnox}.}exception to
+the irrelevance of internal condition is the influence from lightning emissions, which shows correlation with the transport pattern of the anticyclone.
 
 \subsection{Tendency diagnostics}\label{ssec:2006/discuss/tendency}
 
@@ -123,6 +123,17 @@ Tendency diagnostics of these 5 components are available for \chem{O_3}, \chem{C
 \chem{HO_2}, \chem{TOL}, and \chem{HC5}.\footnote{TOL$=$Toluene; HC5$=$Bulk species for alkane with moderate \chem{HO}
 rate constants. These replace isoprene and \chem{HNO_3} in the default implementation.}
 
+	\begin{wrapfigure}{o}{0.5\textwidth}
+		\centering
+		\begin{singlespacing}
+		\vspace{-.2in}
+		\label{fig:2006/tend_residual}
+		\includegraphics[width=0.48\textwidth]{tendency/residual}
+		\caption[Ozone advective tendency]{{\small\textbf{Ozone advective tendency} --- Ozone tendencies and ({\bf a}) advective tendencies
+		and ({\bf b}) residual tendencies after removing advections between 200--600\,\unit{hPa}. \vspace{-.2in}}}
+		\end{singlespacing}
+	\end{wrapfigure}
+
 \figuremacroW{tendency/timeseries.png}{Time series for upper tropospheric tendency diagnostics}{\label{fig:2006/tendency_timeseries}
 Time series at ({\bf a}) Trinidata Head, ({\bf b}) Houston, and ({\bf c}) Beltsville showing the min-mean-max ozone time series (black)
 between 270--330\,\unit{hPa} overlaid with IONS-06 ozonesonde measurements represented as red vertical lines for the range and solid
@@ -130,7 +141,16 @@ $\diamondsuit$ for the mean value. Lightning \chem{NO_x} 1-d tracer (cyan) and o
 mixing (purple) tendency components are given according to the blue axis labels on the right in units of \unit{ppbv/3\,hr}. Boundary layer (BL, blue)
 and stratospheric (ST, red) are also given in \unit{\%}.}{0.9}
 
-To characterize the air mass of the continental inflow, the anticyclone, and the continental outflow, three locations are selected to be
+
+The primary source for temporal variabilities at all three locations are advections. Figure~\ref{fig:2006/tend_residual} shows
+the advective tendencies for ozone compared to the total ozone tendency at sampled near Houston between 200--600\,\unit{hPa}.
+Both the horizontal and vertical tendencies are often often on the same magnitude as the total tendency. However, the resulting
+advective tendency is frequently much smaller because the two components are often anti-correlated with opposite signs. The residual
+tendency, i.e. the total ozone tendency without the two advective components, can be accounted for by chemical, convective, and
+vertical mixing tendencies. The residual is not necessarily smaller than the total tendency due to the ability for advective tendencies
+to ``cancel'' out the effect of the remaining three components, e.g. after August 23.
+
+To characterize the residual tendency of the continental inflow, the anticyclone, and the continental outflow, three locations are selected to be
 examined further: Trinidad Head, California (40.80$^\circ$N, 124.15$^\circ$W), Houston, Texas (29.72$^\circ$N, 95.30$^\circ$W),
 and Beltsville, Maryland (39.04$^\circ$N,76.52$^\circ$W). Figure~\ref{fig:2006/tendency_timeseries} shows the time series of the
 ozone VMRs at these locations as well as the associated chemical, convective, and mixing tendencies. Values shown are mean for
@@ -140,32 +160,27 @@ To indicate model bias, IONS-06 ozonesonde measurements, described in Section~\r
 Boundary layer (BL), stratospheric (ST) and lightning (\lnox) decaying tracers, described in Section~\ref{ssec:2006/discuss/tracer}
 are included to provide context of the sources for dynamical and chemical variabilities.
 
-The primary source for temporal variabilities at all three locations are advection. In particular, Trinidad Head periodically receives
-stratospheric ozone from the jet stream, which is responsible for the sharp spatiotemporal gradients high VMRs simulated for particular
-days (e.g. August 2 and August 7). The largest chemical tendency for ozone is observed at Beltsville with a total of 110 \,\unit{ppbv}
-over the entire August, followed by Houston with 69\,\unit{ppbv}. Despite a higher total chemical tendency in the upper troposphere above
-Beltsville, as formalized by Equation~\ref{eqn:tendency-accul}, Figure~\ref{fig:2006/tendency_timeseries} shows that the upper air
-in the southern United States is more chemically active, with a min/max 3-hourly ozone chemical tendencies of -12.8/17.1\,\unit{ppbv},
-compared to -2.94/3.90\,\unit{ppbv} at Beltsville. On the contrary, the inflow region, represented by Trinidad Head, observed $\pm0.37$\,\unit{ppbv}
-between all 3-hourly outputs. This is likely due to the lack of precursors --- both VOCs and \chem{NO_x} --- within the mid-latitude inflow
-region despite the high stratospheric ozone concentration. Such differences between the three stations can be explained by the BL tracer
-and {\lnox} tracers, of which significant amounts are recorded at Houston especially after August 21st but not at the other locations. However,
-due to the negative (loss) phase of the chemical cycles at Houston, Beltsville records a higher net production of ozone (110\,\unit{ppbv})
-during August compared to Houston (71\,\unit{ppbv}).
+Trinidad Head periodically receives stratospheric ozone from the jet stream, which is responsible for the sharp spatiotemporal gradients
+high VMRs simulated for particular days (e.g. August 2 and August 7). The largest 3-hourly chemical tendency for Trinidad Head is
+$0.37\,\unit{ppbv/3 hr}$. Similarly, convective and vertical mixing tendencies are also negligible, and thus advective tendencies dominate
+the ozone variability. On the other hand, ozone has the highest chemical tendencies at Houston, with a min/max 3-hourly values of
+$-12.8/17.1\,\unit{ppbv/3 hr}$. The corresponding min/max at Beltsville are $-2.94/3.90\,\unit{ppbv/3 hr}$. However, due to less frequent
+negative/loss phases, the August accumulated chemical tendency at Beltsville is higher than that at Houston, with a value of $110\,\unit{ppbv}$
+compared to $69\,\unit{ppbv}$. 
 
-Unlike advective or chemical tendencies, both convective and mixing tendency components are negligible with -13.4\,\unit{ppbv} convective
-and 3.6\,\unit{ppbv} mixing at Houston, -5.1\,\unit{ppbv} convective and 3.5\,\unit{mixing} at Beltsville, and -2.0\,\unit{ppbv} convective and
-8.1\,\unit{ppbv} mixing at Trinidad Head. The small negative values can be attributed to infrequent convective activity (e.g. Trinidad Head)
-or a small gradient between the entrainment level and $\sim300\,\unit{hPa}$ at Houston where convective activity is frequent.
-Vertical mixing tendency is also similarly dependent on vertical gradient as well as transport efficiency, which is eddy transport and
-dry deposition in this case. At Trinidad Head, where the tropopause is frequently lowered due to the jet stream, the model more than twice
-the vertical mixing tendency compared to the other locations as a result of the sharpened ozone VMR gradient closer to the tropopause.
+Both convective and mixing tendency components are small at all three locations, with accumuluated values of $-13.4\,\unit{ppbv}$ convective
+and 3.6\,\unit{ppbv} mixing at Houston, -5.1\,\unit{ppbv} convective and 3.5\,\unit{ppbv} mixing at Beltsville, and -2.0\,\unit{ppbv} convective and
+8.1\,\unit{ppbv} mixing at Trinidad Head. Transport efficiency and gradient between the evaluated level (270--330\,\unit{hPa}) are the controlling
+factors for the rates of these two components. For instance, the relatively larger value of vertical mixing tendency at Trinidad Head can be
+attributed to the jet stream, which provides large vertical gradient in ozone VMR. On the other hand, convective detrainment of ozone-poor BL
+air causes ozone to be diluted and thus the negative tendencies.
 
 	\begin{figure}[t!]
 		\centering
+		 \label{fig:2006/tendency_vertical} 
 		\includegraphics[width=1.0\textwidth]{tendency/vertical.png}
 		\caption[Vertical profiles of decaying tracers and tendency diagnostics]{\textbf{Vertical profiles of decaying tracers
-		and tendency diagnostics} --- \label{fig:2006/tendency_vertical} August vertical profiles at ({\bf a}) Trinidata Head, ({\bf b}) Houston,
+		and tendency diagnostics} --- August vertical profiles at ({\bf a}) Trinidata Head, ({\bf b}) Houston,
 		and ({\bf c}) Beltsville. Dashed lines are the mean 1-d decaying tracers for BL (blue, \unit{\%}), ST (red, \unit{\%}), and {\lnox} (cyan,
 		\unit{ppbv}) according to the values of the top axis. Solid lines are the accumulated chemical tendency diagnostic (red), convective
 		tendency diagnostic (blue), and mean ozone profiles in \unit{ppbv} according to the values of the bottom axis. Closest $11\times11$
@@ -236,16 +251,22 @@ Applying the same fitted model to Beltsville gives RMS errors of $0.2651\pm0.000
 
 	\begin{table}[htp!]
 	\caption[Quadratic regression on chemical tendencies]{Mean and standard deviations of coefficients for Equation~\ref{eqn:chem_ekma}. Insignificant
-	terms where $M_{ij}=\max|\overline{a_{ij}}x_ix_j|<10^{-3}\,\unit{ppbv/hr}$ are shown as $\sim0$.}
+	terms where $M_{ij}=\max|\overline{a_{ij}}x_ix_j|<10^{-3}\,\unit{ppbv/hr}$ at Houston are shown as $\sim0$, otherwise $\log M_{ij}$ are included in parentheses.}
 	\begin{center}
 	\begin{tabular}{|c|c|c|c|c|c|c|}\hline
 					& 1	& \chem{CO}			& \chem{NO}			&\chem{NO_2}		& \chem{HO}		&\chem{HO_2}			\\ \hline
-		1			& 0	& $-0.676\pm0.008$		& $-4.45\pm0.019$		&$-5.83\pm0.030$	& $0.484\pm0.031$	& $-9.33\pm0.147$		\\ \hline
-		\chem{CO}	& -	& $-23.2\pm0.265$		& $0.549\pm0.014$		&$-0.206\pm0.048$	& $-1.10\pm0.086$	& $\sim0$				\\ \hline
-		\chem{NO}	& -	& -					& $1.17\pm0.13$		&$2.87\pm0.22$	& $-2.40\pm0.06$	& $-2.57\pm0.16$		\\ \hline
-		\chem{NO_2} 	& -	& -					& -					&$\sim0$			& $0.668\pm0.075$	& $9.50\pm0.13$		\\ \hline
-		\chem{HO}	& -	& -					& -					& -				& $-2.92\pm0.13$	&$\sim0$				\\ \hline
-		\chem{HO_2}	& -	& -					& -					& -				& -				& $-1.60\pm0.05$		\\ \hline
+		1			& 0	& $-0.676\pm0.008$		& $-4.45\pm0.019$		&$-5.83\pm0.030$	& $0.484\pm0.031$	& $-9.33\pm0.147$		\\
+					&	& $(0.273)$			& $(0.689)$			& $(0.666)$		& $(-2.86)	$		& $(-0.543)$			\\ \hline
+		\chem{CO}	& -	& $-23.2\pm0.265$		& $0.549\pm0.014$		&$-0.206\pm0.048$	& $-1.10\pm0.086$	& $\sim0$				\\
+					& 	& $(-0.274)$			& $(0.625)$			& $(-0.398)$		& $(-0.080)$		& $(-3.02)$			\\ \hline
+		\chem{NO}	& -	& -					& $1.17\pm0.13$		&$2.87\pm0.22$	& $-2.40\pm0.06$	& $-2.57\pm0.16$		\\
+					&	&					& $(-1.32)$			& $(-1.01)$		& $(0.460)$		& $(0.351)$			\\ \hline
+		\chem{NO_2} 	& -	& -					& -					&$\sim0$			& $0.668\pm0.075$	& $9.50\pm0.13$		\\
+					&	&					&					&				& $(-1.94)$		& $-0.827$			\\ \hline
+		\chem{HO}	& -	& -					& -					& -				& $-2.92\pm0.13$	&$\sim0$				\\
+					&	&					&					&				& $(0.267)$		&					\\ \hline
+		\chem{HO_2}	& -	& -					& -					& -				& -				& $-1.60\pm0.05$		\\
+					&	&					&					&				&				& $-1.60$				\\ \hline
 	\end{tabular} \label{table:2006/ekma_regress}
 	\end{center}
 	\end{table}
@@ -256,12 +277,12 @@ largest components are \chem{NO} and \chem{NO_2}, with $\log M_{ij}=0.689$ and 0
 upper bounds at different locations. Applying the same model to Beltsville, $\log M_{ij}=0.833$ and 1.041 respectively. The largest differences, however, are in
 the components $\langle\chem{HO},\chem{HO}\rangle$, $\langle\chem{NO},\chem{HO}\rangle$ and $\langle\chem{NO},\chem{HO_2}\rangle$, of which the $\log
 M_{ij}$'s evaluate to 0.267, 0.460, 0.351 at Houston but 1.016, 0.748, 0.869 at Beltsville, representing a combined $3.3\times$ maximum contribution to the
-variability of ozone production by the interactions between \chem{HO_x} and \chem{NO}.
-
+variability of ozone production by the interactions between \chem{HO_x} and \chem{NO}. The reason for this difference is not due to changes in chemistry, but
+the difference is the domain spanned by $\mathbf{x}$, which selects a subset of the mapped ozone tendency values.
 
 \section{Sensitivity study}\label{sec:2006/sens}
+\subsection{Lightning emission}\label{ssec:2006/sens/lnox}
 \subsection{Anthropogenic emission}\label{ssec:2006/sens/anthrop}
 \subsection{Biogenic emission}\label{ssec:2006/sens/bio}
-\subsection{Lightning emission}\label{ssec:2006/sens/lnox}
 
 \section{Conclusions}\label{sec:2006/conslusion}
