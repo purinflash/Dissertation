@@ -89,8 +89,8 @@ The range of age for BC tracer within the anticyclone is 2.6--6.8 days while the
 9730\,\unit{m} is 1.5--4.8 days. On the contrary, LT tracer age ranges from 10.9--21.8\,\unit{hrs} within the anticyclone and 13.1--22.5\,\unit{hrs}
 just outside. The primary contribution to the LT distribution is that the anticyclone encompasses areas with high lightning flash frequencies,
 and thus younger tracers are expected only on the eastern $\sim2/3$ of the anticyclone as well as towards the outflow region along
-the East Coast. On the west end of the cross-section (Fig.~\ref{fig:2006/tracer_age}{\bf h}), the presence of high altitude LT tracer
-(Fig.~\ref{fig:2006/tracer}{\bf h}) is shown to be disconnected from the high LT tracer core within the anticyclone
+the East Coast. On the west end of the cross-section (Fig.~\ref{fig:2006/tracer_age}{\bf h}), the upper tropospheric presence of LT tracer
+(Fig.~\ref{fig:2006/tracers}{\bf h}) is shown to be disconnected from the high LT tracer core within the anticyclone.
 
 \figuremacroN{tracer/passive_correlations}{BL-ST tracer correlation}{\label{fig:2006/blst}
 Same as Fig.~\ref{fig:2006/o3co} but for BL and ST decaying tracers. \vspace{-.2in}}
@@ -114,13 +114,13 @@ the irrelevance of internal condition is the influence from lightning emissions,
 
 \subsection{Tendency diagnostics}\label{ssec:2006/discuss/tendency}
 
-The changes of the mixing ratio of a chemical species at a specific time and location, or tendency, can be expressed as
+The changes in the mixing ratio of a chemical species at a specific time and location, or tendency, can be expressed as
 the sum of following components: chemistry, convection, vertical mixing, horizontal advection, vertical advection, emission,
 and other loss rates (Eq.~\ref{eqn:tendency}). In the upper troposphere, except for \chem{NO}, both emissions and other
-uncharacterized loss rates should be zero, and thus the total tendency can be expressed as the first five processes. It is thus
-possible to infer changes in both chemical and dynamical properties and relations by examining these tendency components.
-Tendency diagnostics of these 5 components are available for \chem{O_3}, \chem{CO}, \chem{NO}, \chem{NO_2}, \chem{HO},
-\chem{HO_2}, \chem{TOL}, and \chem{HC5}.\footnote{TOL$=$Toluene; HC5$=$Bulk species for alkane with moderate \chem{HO}
+uncharacterized loss rates should be zero, and thus the total tendency can be expressed solely by the first five processes.
+Consequently, inference of chemical and dynamical structures of the ozone budget is possible using these diagnostics.
+Tendency diagnostics of these 5 components are available for \chem{O_3}, \chem{CO}, \chem{NO}, \chem{NO_2}, \chem{HO}
+\chem{HO_2}, \chem{TOL}, and \chem{HC5} in WRF-Chem.\footnote{TOL$=$Toluene; HC5$=$Bulk species for alkane with moderate \chem{HO}
 rate constants. These replace isoprene and \chem{HNO_3} in the default implementation.}
 
 	\begin{wrapfigure}{o}{0.5\textwidth}
@@ -141,39 +141,37 @@ $\diamondsuit$ for the mean value. Lightning \chem{NO_x} 1-d tracer (cyan) and o
 mixing (purple) tendency components are given according to the blue axis labels on the right in units of \unit{ppbv/3\,hr}. Boundary layer (BL, blue)
 and stratospheric (ST, red) are also given in \unit{\%}.}{0.9}
 
-
-The primary source for temporal variabilities at all three locations are advections. Figure~\ref{fig:2006/tend_residual} shows
-the advective tendencies for ozone compared to the total ozone tendency at sampled near Houston between 200--600\,\unit{hPa}.
-Both the horizontal and vertical tendencies are often often on the same magnitude as the total tendency. However, the resulting
+The primary sources for local temporal variabilities are horizontal and vertical advections. Figure~\ref{fig:2006/tend_residual} shows
+the advective tendencies for ozone compared to the total ozone tendency sampled near Houston between 200--600\,\unit{hPa}.
+Both the horizontal and vertical components are often on the same magnitude as the total tendency. However, the combined
 advective tendency is frequently much smaller because the two components are often anti-correlated with opposite signs. The residual
 tendency, i.e. the total ozone tendency without the two advective components, can be accounted for by chemical, convective, and
-vertical mixing tendencies. The residual is not necessarily smaller than the total tendency due to the ability for advective tendencies
-to ``cancel'' out the effect of the remaining three components, e.g. after August 23.
+vertical mixing tendencies. It is useful to note that the residual is not guaranteed to be smaller than the total tendency due to the ability for advective tendencies
+to ``cancel'' out the effect of the remaining three components, as seen after August 23.
 
 To characterize the residual tendency of the continental inflow, the anticyclone, and the continental outflow, three locations are selected to be
 examined further: Trinidad Head, California (40.80$^\circ$N, 124.15$^\circ$W), Houston, Texas (29.72$^\circ$N, 95.30$^\circ$W),
 and Beltsville, Maryland (39.04$^\circ$N,76.52$^\circ$W). Figure~\ref{fig:2006/tendency_timeseries} shows the time series of the
-ozone VMRs at these locations as well as the associated chemical, convective, and mixing tendencies. Values shown are mean for
-all data points between 270--330\,\unit{hPa}, with min/max also indicated for ozone VMR. After accounting for the three tendency
-included in the figure, the remaining variability in the total VMR can be explained fully by horizontal and advective tendencies.
-To indicate model bias, IONS-06 ozonesonde measurements, described in Section~\ref{ssec:2006/gen/ozone}, are also included.
+ozone VMRs at these locations as well as the associated chemical, convective, and mixing tendencies. Values shown are the mean values for
+all data points between 270--330\,\unit{hPa}, with min/max also indicated for ozone VMR.
+To account for the model bias, IONS-06 ozonesonde measurements, described in Section~\ref{ssec:2006/gen/ozone}, are also included.
 Boundary layer (BL), stratospheric (ST) and lightning (\lnox) decaying tracers, described in Section~\ref{ssec:2006/discuss/tracer}
 are included to provide context of the sources for dynamical and chemical variabilities.
 
 Trinidad Head periodically receives stratospheric ozone from the jet stream, which is responsible for the sharp spatiotemporal gradients
 high VMRs simulated for particular days (e.g. August 2 and August 7). The largest 3-hourly chemical tendency for Trinidad Head is
 $0.37\,\unit{ppbv/3 hr}$. Similarly, convective and vertical mixing tendencies are also negligible, and thus advective tendencies dominate
-the ozone variability. On the other hand, ozone has the highest chemical tendencies at Houston, with a min/max 3-hourly values of
+the ozone variability in this region. On the other hand, ozone has the highest chemical tendencies at Houston, with a min/max 3-hourly values of
 $-12.8/17.1\,\unit{ppbv/3 hr}$. The corresponding min/max at Beltsville are $-2.94/3.90\,\unit{ppbv/3 hr}$. However, due to less frequent
 negative/loss phases, the August accumulated chemical tendency at Beltsville is higher than that at Houston, with a value of $110\,\unit{ppbv}$
 compared to $69\,\unit{ppbv}$. 
 
-Both convective and mixing tendency components are small at all three locations, with accumuluated values of $-13.4\,\unit{ppbv}$ convective
+Both convective and mixing tendency components are small at all three locations, with accumulated values of $-13.4\,\unit{ppbv}$ convective
 and 3.6\,\unit{ppbv} mixing at Houston, -5.1\,\unit{ppbv} convective and 3.5\,\unit{ppbv} mixing at Beltsville, and -2.0\,\unit{ppbv} convective and
 8.1\,\unit{ppbv} mixing at Trinidad Head. Transport efficiency and gradient between the evaluated level (270--330\,\unit{hPa}) are the controlling
 factors for the rates of these two components. For instance, the relatively larger value of vertical mixing tendency at Trinidad Head can be
-attributed to the jet stream, which provides large vertical gradient in ozone VMR. On the other hand, convective detrainment of ozone-poor BL
-air causes ozone to be diluted and thus the negative tendencies.
+attributed to the jet stream, which provides large vertical gradient in ozone VMR. For convection, detrainment of ozone-poor BL
+air causes ozone to be diluted and thus the convective component is predominately negative.
 
 	\begin{figure}[t!]
 		\centering
@@ -187,14 +185,14 @@ air causes ozone to be diluted and thus the negative tendencies.
 		grids to the IONS-06 site are selected to compute these profiles.}\vspace{-.3in}
 	\end{figure}
 
-Figure~\ref{fig:2006/tendency_vertical} shows the mean decaying tracers and accumulated tendencies within 5 grids ($11\times11$) surrounding the
-IONS-06 site from August 1st 00\,\unit{UTC} to August 31 00\,\unit{UTC}. The differences between the three locations are again apparent. The inflow
-region severely lacks both BL air and {\lnox} in the upper troposphere. Despite comparable ozone level, the accumulated tendency in the upper
-troposphere remains low with a maximum of $19.4\pm2.5\,\unit{ppbv}$. This location receives air mass from the Pacific and contributes to the low ozone
-``trough'' separating the observed ozone enhancement and the jet stream. Thus, despite occasionally receiving high ozones, the lack of in-situ chemical
-production limits the ozone level between each high-ozone episode and allows the air to remain relatively ``clean'' until reaching Minnesota
-(Fig.~\ref{fig:2006/o3_300}). This influx of low-ozone, chemically-``slow'' air mass between each jet stream is responsible to generating the oval-shaped
-ozone enhancement in the seasonal average.
+Figure~\ref{fig:2006/tendency_vertical} shows the vertical profile of the mean decaying tracers and accumulated
+tendencies within 5 grids ($11\times11$) surrounding the
+IONS-06 site from August 1st 00\,\unit{UTC} to August 31 00\,\unit{UTC}. The differences between the three locations are again evident. The inflow
+region lacks both BL air and {\lnox} in the upper troposphere. Despite comparable ozone level, the accumulated tendency in the upper
+troposphere remains low with a maximum of $19.4\pm2.5\,\unit{ppbv}$. Because of the lack of in-situ chemical production, the ozone level remains
+low between stratospheric intrusion episodes, allowing the air to remain relatively ``clean'' until reaching Minnesota (Fig.~\ref{fig:2006/o3_300}).
+This influx of low-ozone, chemically-``slow'' air mass between each jet stream is therefore responsible in generating the oval-shaped
+ozone enhancement that trace the mean circulation in the seasonal average.
 
 At Houston, at the center of the mean-state anticyclone, both the ozone chemical and convective tendencies are substantially higher than Trinidad Head.
 At 200\,\unit{hPa}, where Trinidad Head records the peak net upper tropospheric ozone production, Houston records $55.8\pm18.6\,\unit{ppbv}$, about
@@ -210,31 +208,33 @@ demonstrated at Trinidad Head.
 
 In the outflow region, though having lower ozone VMRs in the mid-to-upper troposphere compared to Houston, there is a higher net in-situ production of
 ozone in the upper troposphere. This can be attributed to having less frequent negative phases that destroy ozone at night. Despite the smaller net
-convective tendency, BL tracer is higher than or comparable to the Houston column, thus this points to precursors advected from elsewhere that
-contributes to the simulated ozone production. An in-depth analysis of he ozone budget and variability at this location and New England has been
-performed by \citet{Thompson:2007gd,Thompson:2007ov} using IONS-04.
+convective tendency, BL tracer is higher than or comparable to the Houston column, indicating that the precursors are advected from elsewhere. An
+in-depth analysis of he ozone budget and variability at this location and New England can be found in \citet{Thompson:2007gd,Thompson:2007ov}, which 
+utilizes IONS-04, the predecessor of IONS-06.
 
 \subsubsection{Chemical pathways}
 
-A challenge in the above analysis is to attribute chemical tendency to the appropriate reaction pathway. Considering the nonlinear dependency of ozone
+The approach above cannot be used to attribute the simulated chemical tendency to the appropriate chemical pathway. Considering the nonlinear
+dependency of ozone
 production/loss on the atmospheric composition, higher-ordered relation needs to be examined. For urban pollution, the Empirical Kinetic Modeling
-Approach (EKMA) has been used describe the ozone isopleths in relation to VOC and \chem{NO_x} ratio \citep{Dimitriades:1977fk}. However, this model
+Approach (EKMA) has been used to estimate the ozone isopleths in relation to VOC and \chem{NO_x} ratio \citep{Dimitriades:1977fk}. However, this model
 suffers several deficiencies, including the lack of dependency on temperature, solar radiance, and transport, all of which can substantially impact the
-rates of relevant reactions. By incorporating simple trajectories and taking into account location and time information, EPA's OZIPR\footnote{Research-oriented
-Ozone Isopleth Plotting Package (OZIPP)}model can compute ``city-specific'' EKMA, which is used by planners to achieve National Ambient Air Quality
-Standards (NAAQS) compliance and developers to construct research models.
+rates of the presumed ozone steady state. By incorporating simple trajectories and taking into account location and time information, EPA's
+OZIPR\footnote{Research-oriented Ozone Isopleth Plotting Package (OZIPP)}model can compute ``city-specific'' EKMA, which is used by
+planners to achieve National Ambient Air Quality Standards (NAAQS) compliance and developers to construct research models.
 
 \figuremacroN{tendency/chem_EKMA}{Ozone chemical tendency in relation to \chem{NO_x}}{\label{fig:2006/nox_EKMA}
 Ozone chemical tendency in relation to \chem{NO} and \chem{NO_2} chemical tendencies between 15 and 21\,\unit{UTC} in August near Houston, TX
 at 200--600\,\unit{hPa} \vspace{-.2in}}
 
-Similar to EKMA, but instead of relating ozone VMR to species VMRs, here we relate the ozone to relevant species within the anticyclone using the respective
-chemical tendencies. Figure~\ref{fig:2006/nox_EKMA} shows the net ozone production between each 3-hourly output given \chem{NO} and \chem{NO_x}
-chemical tendency during daytime (15--21\,\unit{UTC}) and within 5 model grids from the IONS-06 Houston launch site at heights with August mean pressure
-200--600\,\unit{hPa}. The \chem{NO}+\chem{NO_2} chemical tendency is generally negative, thus indicating that non-\chem{NO_x} nitrogen species are being
-produced, e.g. \chem{NO_3}, \chem{HNO_4}, \chem{HONO}. However, this does not guarantee a negative overall \chem{NO_x} tendency due to {\lnox} emission.
-Ozone production is generally small when the \chem{NO_x} tendency is small (close to the steady state line), and ozone production occurs when 
-$\Delta_{chem}\chem{NO}$ is negative while $\Delta_{chem}\chem{NO_2}$ is small.
+Similar to EKMA, but instead of relating ozone VMR to species VMRs, here we relate ozone to relevant species within the anticyclone
+using their chemical tendencies. Figure~\ref{fig:2006/nox_EKMA} shows the net ozone production between each 3-hourly output given
+\chem{NO} and \chem{NO_x} chemical tendency during daytime (15--21\,\unit{UTC}) and within 5 model grids from the IONS-06 Houston
+launch site at heights with August mean pressure 200--600\,\unit{hPa}. The \chem{NO}+\chem{NO_2} chemical tendency is generally
+negative, thus indicating that non-\chem{NO_x} nitrogen species are being produced, e.g. \chem{NO_3}, \chem{HNO_4}, \chem{HONO},
+which can explain the strong nocturnal loss phase in ozone. However, this does not guarantee a negative overall \chem{NO_x} tendency
+due to \chem{NO} emission from lightning. Finally, ozone production is generally small when the \chem{NO_x} tendency is small (close to the
+steady state line), and ozone production occurs when  $\Delta_{chem}\chem{NO}$ is negative while $\Delta_{chem}\chem{NO_2}$ is small.
 
 Since the chemical tendency is fundamentally tied to the chemical mechanism, i.e. the available chemistry set, it is possible to generalize this distribution to other
 locations at the same local time\footnote{This requirement guarantees similar photolysis rates ignoring the presence of shadows from deep convective clouds.}
@@ -242,16 +242,17 @@ using only a subset of chemical tendency diagnostics. Let $\mathbf{x}$ be a feat
 tendencies for \chem{CO}, \chem{NO_x}, and \chem{HO_x} in \unit{ppbv/hr}. Chemical tendency for ozone which is designated as $y$. Using a least-square
 regression with $L^2$-regularization parameter $\lambda=1$, we fit the following function to the Houston daytime data:
 \begin{equation}\label{eqn:chem_ekma}
-	y = \mathbf{x}^T\mathbf{A}\mathbf{x}
+	y = \mathbf{x}\mathbf{A}\mathbf{x}^T
 \end{equation}
-where $\mathbf{A}=\{a_{ij}\}_{i,j}$ is a $6\times6$ upper triangular matrix, $\mathbf{x}=(x_0,x_1,\ldots x_5)^T$. Table~\ref{table:2006/ekma_regress} shows the
-coefficients of $\mathbf{A}$ from a 100 bootstrap iterations trained on 40.8k (50\%) and tested on 40.8k (50\%) of the data points. Coefficients of the regression are
-listed in Table~\ref{table:2006/ekma_regress}. The RMS errors for the fitted ozone chemical tendencies from the bootstraps are $0.2954\pm0.0008\,\unit{ppbv/hr}$.
-Applying the same fitted model to Beltsville gives RMS errors of $0.2651\pm0.0003$\,\unit{ppbv/hr}.
+where $\mathbf{A}=\{a_{ij}\}_{i,j}$ is a $6\times6$ upper triangular matrix, $\mathbf{x}=(x_0,x_1,\ldots x_5)^T$. Table~\ref{table:2006/ekma_regress}
+shows the coefficients of $\mathbf{A}$ from a 100 bootstrap iterations trained on 40.8k (50\%) and tested on 40.8k (50\%) of the data points. The
+RMS errors for the regressions from the bootstraps are $0.2954\pm0.0008\,\unit{ppbv/hr}$. Applying the same fitted model to Beltsville gives RMS
+errors of $0.2651\pm0.0003$\,\unit{ppbv/hr}.
 
 	\begin{table}[htp!]
-	\caption[Quadratic regression on chemical tendencies]{Mean and standard deviations of coefficients for Equation~\ref{eqn:chem_ekma}. Insignificant
-	terms where $M_{ij}=\max|\overline{a_{ij}}x_ix_j|<10^{-3}\,\unit{ppbv/hr}$ at Houston are shown as $\sim0$, otherwise $\log M_{ij}$ are included in parentheses.}
+	\caption[Quadratic regression on chemical tendencies]{Mean and standard deviations of the coefficient matrix $\mathbf{A}$ in
+	Equation~\ref{eqn:chem_ekma}. Insignificant terms where $M_{ij}=\max|\overline{a_{ij}}x_ix_j|<10^{-3}\,\unit{ppbv/hr}$ at Houston
+	are shown as $\sim0$, otherwise $\log M_{ij}$ are included in parentheses.}
 	\begin{center}
 	\begin{tabular}{|c|c|c|c|c|c|c|}\hline
 					& 1	& \chem{CO}			& \chem{NO}			&\chem{NO_2}		& \chem{HO}		&\chem{HO_2}			\\ \hline
@@ -278,10 +279,95 @@ upper bounds at different locations. Applying the same model to Beltsville, $\lo
 the components $\langle\chem{HO},\chem{HO}\rangle$, $\langle\chem{NO},\chem{HO}\rangle$ and $\langle\chem{NO},\chem{HO_2}\rangle$, of which the $\log
 M_{ij}$'s evaluate to 0.267, 0.460, 0.351 at Houston but 1.016, 0.748, 0.869 at Beltsville, representing a combined $3.3\times$ maximum contribution to the
 variability of ozone production by the interactions between \chem{HO_x} and \chem{NO}. The reason for this difference is not due to changes in chemistry, but
-the difference is the domain spanned by $\mathbf{x}$, which selects a subset of the mapped ozone tendency values.
+the differences in the domain spanned by $\mathbf{x}$, which effectively selects a subset of the mapped ozone tendency values.
 
 \section{Sensitivity study}\label{sec:2006/sens}
+
+There are numerous variables in the base case simulations that can contribute to the model biases as evaluated in Section~\ref{sec:2006/general}. In
+particular, the emission and distribution of lightning-generated \chem{NO_x} {\lnox} has been shown to be a significant component in determining the
+atmospheric composition in the free troposphere as represented by CTMs \citep{Labrador:2005uq,Cooper:2009nx,Ott:2010lo}. Thus it is useful to perform
+sensitivity simulations to determine the range of variabilities caused by the uncertainties in lightning parameterization.
+
+Other than lightning emission, anthropogenic and biogenic emissions are also crucial in determining the atmospheric composition. While having a lesser
+degree of uncertainty and sensitivity compared to {\lnox}, urban developments and policy changes can have substantial impacts on the emission inventory
+(Sect.~\ref{ssec:intro/ozone/nox}). As such, sensitivity studies on anthropogenic and biogenic emissions are valuable in determining the calibration
+requirements for hypothetical scenarios that correspond to potential changes.
+
 \subsection{Lightning emission}\label{ssec:2006/sens/lnox}
+
+Comparison to NLDN flash counts shows that the current lightning parameterization is producing an order of magnitude higher overall flash rates
+(Sect.~\ref{ssec:2006/gen/met}). Two simulations are performed to account for the effect of overpredicting lightning flash rate, as well as to evaluate
+the sensitivity of the ozone enhancement to the {\lnox}. These two simulations are identical to the base case simulation in Section~\ref{sec:2006/general}
+except with lightning tuning parameter set to $0\times$ and $0.1\times$ to represent a control (no lightning) scenario and tuned-lightning scenario. The
+resulting spatial distributions of several species at 300\,\unit{hPa} are shown in Figure~\ref{fig:2006/ltngsens_map}.
+
+\figuremacroW{sens/ltngsens.png}{Upper tropospheric sensitivity to lightning}{\label{fig:2006/ltngsens_map}
+Model simulated mean {\bf(a)} \chem{O_3}, {\bf(b)} \chem{CO}, {\bf(c)} \chem{NO_x}, and {\bf(d)} \chem{HO_x} for $0\times$, $0.1\times$, and $1\times$
+lightning flash rate at 300\,\unit{hPa} for August. Note that \chem{NO_x} is contoured in the $\log$-scale.}{0.9}
+
+% NOx
+\chem{NO_x} is substantially increased above background values ($31.6\pm4.5\,\unit{pptv}$) to $135\pm35\,\unit{pptv}$ with $0.1\times$ lightning and
+$1680\pm540\,\unit{pptv}$ with $1\times$ lightning. Modeling the contribution of total \chem{NO_x} VMR by {lnox} as follow:
+\begin{equation}\label{eqn:nox+lnox}
+	\Delta[\chem{NO_x}] = [\chem{NO_x}]-[\chem{NO_x}]_0 = (1-p)[\chem{LNO_x}]
+\end{equation}
+where $p$ is the percentage loss of {\lnox} in the atmosphere and $[\chem{NO_x}]_0$ is the no-lightning \chem{NO_x} VMR. For small changes in the
+atmospheric composition, $p$ should be constant and thus the addition of \lnox should linearly increase $[\chem{NO_x}]$. Falsely extrapolating this
+to $1\times$ flash rate, the expected $[\chem{NO_x}]$ would have been $1070\,\unit{pptv}$. However, because of the decrease in \chem{HO_x}, the
+primary reagent converting \chem{NO_x} into reservoir species, in response to {\lnox}, $\partial p/\partial [\chem{NO_x}] < 0$, and thus giving us the
+simulated $1680\,\unit{pptv}$, higher than the linearly extrapolated value.
+
+% HO_x
+Unlike \chem{NO_x}, \chem{HO_x} is substantially decreased with increasing {\lnox} emission. The initial August mean VMR at 300\,\unit{hPa} without
+lightning is $6.94\pm0.38\,\unit{pptv}$. This is above the $\sim$4--5\,\unit{pptv} in the Pacific Northwest and inflow regions. It is slightly decreased
+to $6.27\pm0.37\,\unit{pptv}$ with $0.1\times$ lightning, or a 10\% decrease from the $0\times$ scenario. At $1\times$ {\lnox} emission, \chem{HO_x}
+is further decreased to $1.80\pm0.59\,\unit{pptv}$, far below the value to the northwest, representing a 71\% drop relative to the $0.1\times$ scenario,
+which is larger than that would have been obtained if one ($\sim61\%$) were to extrapolate the initial 10\% decrease with an exponential model.
+The lowering \chem{HO_x} with increasing \chem{NO_x} is the results of its interactions with \chem{O_3}, \chem{NO_x}, and \chem{CO} after production
+from the \chem{O(^1D)+H_2O}, which is presumably proportionally increasing with the increased level of \chem{O_3}. However, because the VMRs
+of all species have been perturbed as the result of {\lnox} emission, it is challenging to describe the new mean \chem{HO_x} with {\lnox} relative to
+the control state with $0\times$ lightning.
+
+% CO
+Even though \chem{CO+OH\rightarrow CO_2+HO_2} is the only chemical loss pathway for \chem{CO} specified in RADM2 and that \chem{HO_x} is
+substantially decreased by a factor of 3.8 from $0\times$ to $1\times$ lightning, \chem{CO} decreases with increasing lightning. Without lightning, the
+August mean anticyclone VMR for \chem{CO} is $92.3\pm2.8\,\unit{ppbv}$. This is reduced to $89.8\pm.2.4\,\unit{ppbv}$ with $0.1\times$ lightning
+and $85.5\pm2.4\,\unit{ppbv}$ with $1\times$ lightning. The anti-correlation of \chem{CO} with {\lnox} can be described by the dominating effect of
+reduced in-situ production of \chem{CO} from \chem{(HCHO,GLY,MGLY)+OH} over increased production from \chem{(OL2,OLT,OLI,ISO)+O_3}.
+\footnote{\chem{OL2}=ethene; \chem{OLT}=terminal alkenes; \chem{OLI}=internal alkenes.}
+
+% O3
+Finally, \chem{O_3} is increased with increasing {\lnox}, consistent with prior studies on this subject. Perhaps more surprisingly, there is barely
+any signs of \chem{NO_x}-titration, which is expected to occur at exceedingly high level of \chem{NO_x}-VOC ratios as observed in polluted urban
+environments. The only indication that the model is approaching \chem{NO_x}-titration is the lowering \chem{HO_x}. The \chem{O_3} VMR
+is increased from $74.5\pm5.3\,\unit{ppbv}$ to $86.4\pm6.7\,\unit{ppbv}$ ($+16\%$) by adding $0.1\times$ {\lnox}. At $1\times$ lightning, it
+is further increased to $101.1\pm6.8\,\unit{ppbv}$, a $26.6\,\unit{ppbv}$ or $36\%$ increase relative to $0\times$ lightning. The reduced sensitivity
+to {\lnox} at higher flash rate parameter is consistent with that of \chem{CO}.
+
+There is also a difference in the spin-up time for species in responding to {\lnox} emission due to the lifetime of their respective lifetime in
+the atmosphere While the differences in \chem{NO_x} between simulations become apparent within the first day, \chem{HO_x} requires 
+two days, which is delayed by a separate spin-up from exchanging between \chem{HO_x} and reservoir species. On the other hand,
+\chem{O_3} and \chem{CO} begin to diverge after the fifth day of the simulation when the $Z_{300}$ exceeded 9730\,\unit{m} for the first
+time.  However, even after sufficient ``spin-up,'' the differences between simulations can shrink again when air mass with minimal lightning
+influence is transported into the region.
+
+
+
+%o3:       74.4501      5.28160
+%co:       94.2718      2.77095
+%NOx:       31.5665      4.48547
+%HOx:       6.93762     0.378603
+
+%o3:       86.4036      6.68674			(+11.9) +16%
+%co:       89.8467      2.38789			(-4.5)
+%NOx:       135.365      34.9208			(+103.4)
+%HOx:       6.27117     0.368946		(-0.666)
+
+%o3:       101.067      6.79265			(+14.6)
+%co:       85.4519      2.37563			(-4.3)
+%NOx:       1678.35      535.866			(+1543)
+%HOx:       1.79844     0.585140		(-4.473)
+
 \subsection{Anthropogenic emission}\label{ssec:2006/sens/anthrop}
 \subsection{Biogenic emission}\label{ssec:2006/sens/bio}
 
