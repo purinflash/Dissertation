@@ -351,8 +351,6 @@ two days, which is delayed by a separate spin-up from exchanging between \chem{H
 time.  However, even after sufficient ``spin-up,'' the differences between simulations can shrink again when air mass with minimal lightning
 influence is transported into the region.
 
-
-
 %o3:       74.4501      5.28160
 %co:       94.2718      2.77095
 %NOx:       31.5665      4.48547
@@ -367,6 +365,82 @@ influence is transported into the region.
 %co:       85.4519      2.37563			(-4.3)
 %NOx:       1678.35      535.866			(+1543)
 %HOx:       1.79844     0.585140		(-4.473)
+
+	\begin{figure}[t!]
+		\centering
+		\label{fig:2006/ltngsens_vertical} 
+		\includegraphics[width=1.0\textwidth]{sens/ltngsens_vert.png}
+		\caption[Vertical sensitivity profiles of \chem{O_3}, \chem{CO}, \& \chem{NO_x} to lightning]{\textbf{Vertical
+		sensitivity profiles of \chem{O_3}, \chem{CO}, \& \chem{NO_x} to lightning} --- August mean VMRs and
+		accumulated tendencies for {\bf(a)} \chem{O_3}, {\bf(b)} \chem{CO}, {\bf(c)} \chem{NO_x} within the anticyclone
+		region for lightning emission factors $0\times$ (green), $0.1\times$ (blue), and $1\times$ (red). Means are
+		computed on model levels, and then gridded by the mean pressure.}\vspace{-.3in}
+	\end{figure}
+
+Vertical structures are also affected. Figure~\ref{fig:2006/ltngsens_vertical} shows the vertical sensitivity profiles of ozone,
+\chem{CO}, and \chem{NO_x}. With the exception of \chem{O_3} and \chem{NO_x} in the $1\times$ lightning setting, the
+shapes of species VMR vertical profiles are consistent across simulations.Peak of ozone enhancement from
+$0\times$ to $1\times$ lightning occurs between 300--500\,\unit{hPa}, with a maximum mean \chem{O_3} enhancement
+of 33.3\,\unit{ppbv} ($\Delta_{chem}\chem{O_3}=187\,\unit{ppbv}$) above the control state of 61.7\,\unit{ppbv}
+($\Delta_{chem}\chem{O_3}=-29\,\unit{ppbv}$) at 445\,\unit{hPa}. Despite emission peak in the mid-troposphere,
+\chem{NO_x} is enhanced most prominently at 169\,\unit{hPa} from 84\,\unit{pptv} to 3.09\,\unit{ppbv}. A more detailed
+discussion of this peak and its spin-up has been discussed in Section~\ref{ssec:2006/gen/nox}.
+
+On the other hand, \chem{O_3} and \chem{CO} chemical tendencies show highly nonlinear response to lightning emission
+despite monotonic increases in the magnitude of \chem{NO_x} chemical losses. Due to the increase in ozone production
+from \lnox in the mid-troposphere, altitude at which positive net \chem{O_3} attended within the anticyclone is gradually
+decreased from the initial $\sim340\,\unit{hPa} $ in the control simulation to $\sim470\,\unit{hPa}$ with $0.1\times$ {\lnox}
+and finally $\sim630\,\unit{hPa}$ in the $1\times$ scenario. This is the pressure level at which the ozone enhancement
+is expected to reach, but not necessarily indicating the maximum enhancement because of transport.
+
+In the upper troposphere, where \chem{NO_x} shows substantial superlinear increases due to {\lnox} between $0.1\times$
+and $1\times$ lightning. Consequently, such high presence of \chem{NO_x} induces reversal in the chemical production
+of \chem{O_3}. \chem{NO_x} titration has been suggested to be possible during intense thunderstorms \citep[e.g.][]{Cummings:2013vn}.
+However, persistent occurrence indicated in Figure~\ref{fig:2006/ltngsens_vertical} is likely due to overestimation of
+\chem{NO_x} as a result of the $10\times$ over-prediction in lightning flash rate. On the other hand, with the increased
+\chem{NO_x} VMR, large amount of \chem{HO_x} radicals are consumed for the reaction \chem{OH+NO_2\rightarrow HNO_3},
+thus negatively affecting the efficiency of \chem{NO}-to-\chem{NO_2} conversion.
+
+\figuremacroN{sens/ltngsens_diurnal}{Daytime and nighttime chemical tendencies}{\label{fig:2006/ltngsens_distr}
+Distributions (min-5pct-mean-95pct-max) of chemical tendencies mixing ratios for \chem{O_3}, \chem{O_x}, \chem{CO} and
+mixing ratio for \chem{HNO_3} between 150-300\,\unit{hPa} during August within the anticyclone. Nighttime tendencies are
+represented by dashed lines while daytime tendencies are represented by solid lines.}
+
+Figure~\ref{fig:2006/ltngsens_distr} isolates daytime production from nighttime loss from the overall accumulated tendency shown
+in Figure~\ref{fig:2006/ltngsens_vertical} between 150--300\,\unit{hPa} within the anticyclone. Daytime tendencies are computed
+from 15--21\,\unit{UTC} and nighttime tendencies are computed from 3--9\,\unit{UTC}. The daytime/nighttime differences for species
+VMR is minimal, and thus only daytime VMR distributions are shown. On top of the mean values, the min-max ranges as well as the
+5--95 percentiles are shown. Due to the interconversion between \chem{O_3} and \chem{NO_2}, we examine odd oxygen
+\chem{O_x\equiv O_3+NO_2} in the following analysis.
+
+While the differences between ozone VMRs between scenarios are monotonic and within the confines of 25\% between $0\times$
+and $1\times$, chemical tendencies between scenarios show staggering changes with the addition of {\lnox}. Without lightning,
+mean daytime chemical tendency is simulated to be 0.088\,\unit{ppbv/hr} and the 95-percentile is 0.259\,\unit{ppbv/hr}. With the
+addition of $0.1\times$ {\lnox}, the mean and 95-pct respectively increases to 0.353\,\unit{ppbv/hr} and 0.904\,\unit{ppbv/hr}. Due to
+the transient nature of {\lnox} influence, and the relatively short lifetime of \chem{NO_x}, the distributions of the tendencies are
+also less homogeneous. Increasing {\lnox} emission by 10-fold to the ``base'' case, daytime mean chemical tendency for \chem{O_3}
+is slightly increased to 0.403\,\unit{ppbv/hr}, unlike what is shown in the all-day accumulated profiles. On the other hand, ozone
+loss/reduced production are shown in the low-end of the distributions, where the 5-percentile is decreased from 0.042\,\unit{ppbv/hr}
+to 0.033\,\unit{ppbv/hr} and the minimum (largest potential loss) is s decreased from $-0.093$ to $-0.853\,\unit{ppbv/hr}$, thus 
+supporting the conjecture that daytime \chem{NO_x}-titration is indeed occurring albeit not as severe as indicated in
+Figure~\ref{fig:2006/ltngsens_vertical}. By inspecting the \chem{O_x} tendency, it is further shown that the additional ozone loss
+is due to conversion to \chem{NO_2}.
+
+The remainder of the reversal in the response of the \chem{O_3} chemical tendency to {\lnox} after considering the
+daytime production is evidently substantial. Due to the absence of photolysis, the nighttime maximum tendencies
+are all 0.00\,\unit{ppbv/hr}. Without production, we can define zero as the baseline and evaluate the sensitivities as
+relative changes. In the $0\times$ scenario, the ozone loss is 0.90\,\unit{pptv/hr} with the 5 percentile at 2.93\,\unit{pptv/hr}.
+The mean loss is increased to 5\,\unit{pptv/hr} ($5.6\times$) and the 5 percentile is increased to 25.8\,\unit{pptv/hr}
+($8.8\times$) with $0.1\times$ {\lnox}. Increasing {\lnox} to $1\times$, the mean is now 48.2\,\unit{pptv/hr}, a $9.5\times$
+increase from the low(tuned)-lightning scenario, i.e. slightly sublinear compared to the increase in emission. The
+negative-end of the distribution, on the other hand, shows linear responses at both 5-percentile ($-0.0258\rightarrow-0.259\,\unit{ppbv/hr}$)
+and minimum ($-0.179\rightarrow-1.78\,\unit{ppbv/hr}$) from $0.1\times$ to $1\times$ emissions. However, the response
+is not linear for the tendency for \chem{O_x} because of the potential for production (positive tendency) of \chem{NO_2}
+at nighttime, which is negligible with no lightning ($\max\Delta = 8\times10^{-2}\,\unit{pptv/hr}$), but increases to 79\,\unit{pptv/hr}
+with $1\times$ lightning, which is comparable to the mean tendency ($-51\,\unit{pptv/hr}$). Despite production, response
+to lightning emission has became superlinear relative to a baseline of zero, wherein the \chem{O_x} tendency between
+the two lightning scenarios are $-4.3$ and $-51\,\unit{pptv/hr}$. This points to loss of odd oxygens via both \chem{O_3} and
+\chem{NO_2} pathways at night.
 
 \subsection{Anthropogenic emission}\label{ssec:2006/sens/anthrop}
 \subsection{Biogenic emission}\label{ssec:2006/sens/bio}
