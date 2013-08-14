@@ -162,11 +162,8 @@
 	<string>Network for the Detection of Stratospheric Change</string>
 	<key>DFS</key>
 	<string>degrees of freedom of signal</string>
-<<<<<<< HEAD
 	<key>OTD</key>
 	<string>Optical Transient Detector</string>
-=======
->>>>>>> Chapter-3
 	<key>VMR</key>
 	<string>volume mixing ratio</string>
 	<key>NAAQS</key>
