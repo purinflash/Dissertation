@@ -164,5 +164,7 @@
 	<string>degrees of freedom of signal</string>
 	<key>VMR</key>
 	<string>volume mixing ratio</string>
+	<key>NAAQS</key>
+	<string>National Ambient Air Quality Standards</string>
 </dict>
 </plist>
