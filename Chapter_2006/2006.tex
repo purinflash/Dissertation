@@ -139,7 +139,15 @@ template for the base case simulation is provided in Appendix \ref{apdx:namelist
 		\sum_{p\in\mathcal{P}}T_{p}^{(t)} \equiv S^{(t)}-S^{(0)}
 	\end{equation}
 	
+<<<<<<< HEAD
 	Currently, the default implementation includes 5 processes: chemistry, convective transport, vertical mixing, horizontal advection, and vertical advection. $T_{p}^{(t)}$ for 8 species are computed for this study: \chem{O_3}, \chem{CO}, \chem{NO}, \chem{NO_2}, \chem{HO}, \chem{HO_2}, \chem{HC5}\footnote{Bulk species for alkane with moderate \chem{HO} rate constants.}, and \chem{MGLY}\footnote{Methyl glyoxal.}. These diagnostic outputs are used extensively throughout this study.
+=======
+<<<<<<< HEAD
+	Currently, the default implementation includes 5 processes: chemistry, convective transport, vertical mixing, horizontal advection, and vertical advection. $T_{p}^{(t)}$ for 8 species are computed for this study: \chem{O_3}, \chem{CO}, \chem{NO}, \chem{NO_2}, \chem{HO}, \chem{HO_2}, \chem{HC5}\footnote{Bulk species for alkane with moderate \chem{HO} rate constants.}, and \chem{MGLY}\footnote{Methyl glyoxal.}. These diagnostic outputs are used extensively throughout this study.
+=======
+	The default implementation includes 5 processes: chemistry, convection, vertical mixing, horizontal advection, and vertical advection. $T_{p}^{(t)}$ for 8 species are computed for this study: \chem{O_3}, \chem{CO}, \chem{NO}, \chem{NO_2}, \chem{HO}, \chem{HO_2}, \chem{HNO_3}, and isoprene. These diagnostic outputs are used extensively throughout this study.
+>>>>>>> Chapter-3.5
+>>>>>>> Chapter-3
 	
 	Another subject of frequent interest is the source and age of an air mass. It is often achieved by including online point-sourced tracers or computing Lagrangian trajectories offline with tools such as FLEXPART \citep{Stohl:2005vn}. Of interest in this study are air masses from the boundary layer, stratosphere, lateral domain boundaries, and those affected by {\lnox} emission. Values of the lateral boundaries, boundary layer, and stratospheric tracers are held at 1.0 at their sources and allowed to be freely transported through advection, convective transport\footnote{By sharing the convective transport subroutine with chemical species, an implementation error was introduced. See \mbox{Appendix}~\ref{a-sec:bug/ctrans} for more details.}, and vertical mixing. Similarly, lightning tracers are also emitted at the same rate and locations as those determined by the {\lnox} parameterization described in Chapter \ref{ch:lightning}, in both passive and decaying form. All decaying twins of these tracers decay with an $e$-folding time of one day. An equivalent mean tracer age within a volume $V$ may be defined as
 	\begin{equation}\label{eqn:tracer-age}
@@ -766,4 +774,12 @@ formaldehyde (Sect.~\ref{ssec:2006/gen/form}), and \chem{NO_2} (Sect.~\ref{ssec:
 indeed shown that both VOCs and \chem{NO_x} are definitively over-estimated, though due to intricacy of the validation methods, the
 numerical results from the comparisons may not be construed with absolute certainty. Nonetheless,  by accounting for these biases, the
 analyses done in Section~\ref{sec:2006/discussion} will proceed with caution and will frequently reference individual result from this
+<<<<<<< HEAD
 section when appropriate.
+=======
+<<<<<<< HEAD
+section when appropriate.
+=======
+section when appropriate.
+>>>>>>> Chapter-3.5
+>>>>>>> Chapter-3
