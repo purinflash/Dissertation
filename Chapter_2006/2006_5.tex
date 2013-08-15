@@ -422,20 +422,20 @@ However, the persistent occurrence indicated in Figure~\ref{fig:2006/ltngsens_ve
 \chem{NO_x} VMR, a substantial amount of  \chem{HO_x} radicals are consumed by the reaction \chem{OH+NO_2\rightarrow HNO_3},
 thus negatively affecting the efficiency of \chem{NO}-to-\chem{NO_2} conversion.
 
+\figuremacroN{sens/ltngsens_diurnal}{Daytime and nighttime chemical tendencies}{\label{fig:2006/ltngsens_distr}
+Distributions (min-5pct-mean-95pct-max) of chemical tendencies mixing ratios for \chem{O_3}, \chem{O_x}, \chem{CO} and
+mixing ratio for \chem{HNO_3} between 150-300\,\unit{hPa} during August within the anticyclone. Nighttime (3--9\,\unit{UTC}) tendencies are
+represented by dashed lines while daytime (15--21\,\unit{UTC}) tendencies are represented by solid lines.}
+
 Recall that the Houston time series shows significant nighttime negative tendencies (Fig.~\ref{fig:2006/tendency_timeseries}{\bf b}),
 which partially negated the daytime accumulated production. To determine the response of ozone chemistry to lightning, it is thus
 necessary to take into account daytime versus nighttime chemistry. To do so,
-figure~\ref{fig:2006/ltngsens_distr} isolates daytime ozone chemical productions from its nighttime losses
+Figure~\ref{fig:2006/ltngsens_distr} isolates daytime ozone chemical productions from its nighttime losses
 between 150--300\,\unit{hPa} within the anticyclone. The daytime tendencies are computed
 from 15--21\,\unit{UTC} and nighttime tendencies are computed from 3--9\,\unit{UTC}. The daytime/nighttime differences for species
 mixing ratios are negligible, and thus only daytime VMR distributions are shown. In conjunction with the mean values, the min-max ranges as well as the
 5--95 percentiles are shown. Due to the interconversion between \chem{O_3} and \chem{NO_2}, we examine odd oxygen
 \chem{O_x\equiv O_3+NO_2} instead of \chem{NO_2} in the following analysis.
-
-\figuremacroN{sens/ltngsens_diurnal}{Daytime and nighttime chemical tendencies}{\label{fig:2006/ltngsens_distr}
-Distributions (min-5pct-mean-95pct-max) of chemical tendencies mixing ratios for \chem{O_3}, \chem{O_x}, \chem{CO} and
-mixing ratio for \chem{HNO_3} between 150-300\,\unit{hPa} during August within the anticyclone. Nighttime (3--9\,\unit{UTC}) tendencies are
-represented by dashed lines while daytime (15--21\,\unit{UTC}) tendencies are represented by solid lines.}
 
 %%%% Rewrite this paragraph
 Changes in the ozone chemical tendencies between lightning emission scenarios are substantial. WIthout lightning, the
@@ -487,7 +487,6 @@ the two lightning scenarios are $-4.3$ and $-51\,\unit{pptv/hr}$. This points to
 	\begin{figure}[t!]
 		\centering
 		\includegraphics[width=1.0\textwidth]{sens/rxn}
-		
 		\caption[\chem{HO_x} radical termination]{\label{fig:2006/ltngsens_rxn}\textbf{\chem{HO_x} radical termination}
 		--- Daytime reaction rates ($\log_{10}\,\unit{molecules\,cm^{-3}\,s^{-1}}$) for \chem{NO_2+OH} and ($2\times$)
 		\chem{HO_2+HO_2} at 150--250\,\unit{hPa} ({\bf a--c}) and 350--450\,\unit{hPa} ({\bf d--f}) without lightning ({\bf a,d}),
@@ -530,9 +529,17 @@ to $[\chem{NO}]$ is negative, the percentages decrease to 90.05\% and 46.01\%. T
 explain the reversal in response observed in the upper troposphere (majority $L_N/Q>2/3$), and seemingly high
 at the bottom of the enhancement (majority $L_N/Q<2/3$).
 
-\figuremacroN{sens/ltngsens_o3conv}{Ozone convective tendency}{\label{fig:2006/ltngsens_o3conv}
-Vertical profiles of accumulated ozone convective tendency during August for the three lightning sensitivity simulations
-within the anticyclone column.}
+	\begin{wrapfigure}{o}{0.5\textwidth}
+		\centering
+		\vspace{-.3in}
+		\begin{singlespacing}
+		\includegraphics[width=0.48\textwidth]{sens/ltngsens_o3conv}
+		\caption[\chem{CO}-\chem{O_3} model correlation]{{\label{fig:2006/ltngsens_o3conv}
+		\small\textbf{Ozone convective tendency} --- Vertical profiles of accumulated ozone convective
+		tendency during August for the three lightning sensitivity simulations within the anticyclone column.
+		\vspace{-.3in}}}
+		\end{singlespacing}
+	\end{wrapfigure}
 
 Finally, due to changes in the vertical profile, and thus vertical gradients, convective tendencies are also affected by
 lightning emissions (Fig.~\ref{fig:2006/ltngsens_o3conv}). While it still holds true that convection dilutes upper
@@ -639,7 +646,9 @@ events while properly predicting the mode of the distribution.
 Tracer-tracer correlation using \chem{O_3} and \chem{CO} shows that the conditions within and outside of the
 anticyclone are similar but differs in specific features. Using passive tracers, it is shown that the anticyclone region
 distinguish itself by lateral boundary tracers and lightning tracers, and that boundary layer and stratospheric tracers
-are dominated by orographic features instead of upper air circulation as suggested by previous studies. The
+are dominated by orographic features instead of upper air circulation as suggested by previous studies. This result
+differs from those of \citet{Cooper:2007cr} and \citet{Barth:2012qf}, who showed enhanced residence time and presence
+of boundary layer air/tracers within the anticyclone. Instead, we conclude that the
 lack of externality, i.e. lack of influence of air mixing in from ``clean'' regions, and presence of both surface and lightning
 emissions are thus concluded to be the key ingredients for the observed enhancement.
 
@@ -647,7 +656,7 @@ Other than enhanced ozone production, chemical and convective tendency within th
 show different structures compared to the continental inflow (Trinidad Head, CA) and outflow (Beltsville, MD)
 regions. In particular, while mid-tropospheric net chemical loss (or minimal production) is observed outside
 the anticyclone, maximum ozone production is simulated for this level, which subsequently lowers the level
-at which in-situ ozone production is dominating transport and thus enhancing ozone VMR.
+at which in-situ ozone production is dominating transport and thus enhancing ozone mixing ratio.
 
 To quantify the impact of the uncertainties and biases of {\lnox} emission on the observed atmospheric composition
 within the anticyclone, sensitivity simulations are performed by disabling emission ($0\times$) and tuning emission
@@ -663,3 +672,7 @@ to the ozone enhancement relative to the base case ($1\times$) scenario. While a
 VOC-controlled changes, biogenic emission leads to major changes in upper tropospheric \chem{NO_x}. Since the
 upper tropospheric chemistry is experiencing \chem{NO_x}-titration, the reduction of \chem{NO_x} (as a result of
 biogenic emission) leads to a 70\,\unit{ppbv} increase in the August accumulated tendency at the detrainment level.
+Comparing the three emission sources, lightning is the highest contributing factor to the ozone enhancement, followed by
+biogenic emission, and finally anthropogenic emission. However, because of the over-prediction of lightning-generated
+\chem{NO_x} in the base case scenario, our result does not necessarily contradict with \citet{Li:2005ss}, who
+showed that anthropogenic (\chem{NO_x}) emission is the dominant source of the ozone enhancement.

@@ -70,15 +70,29 @@ The contribution to the ozone enhancement from anthropogenic and biogenic emissi
 through sensitivity experiments, wherein the respective emission sources are suppressed. In the
 experiment pertaining anthropogenic emission, VOC, with \chem{CO} as the proxy, is observed
 to be the controlling factor in the sensitivity. Due to \chem{NO_x}-titration, upper tropospheric
-ozone production responds negatively to the increase in \chem{CO}. On the other hand, biogenic
+ozone production responds negatively to the increase in anthropogenic emssion. On the other hand, biogenic
 emission is responsible for \chem{NO_x}-losses in the upper troposphere (within the
 \chem{NO_x}-titration regime), which subsequently allows higher net ozone production (again,
 within the \chem{NO_x}-titration regime). It should be noted that this result is partially a consequence
 of excessive {\lnox} within the model, which pushes the upper tropospheric chemistry into the \chem{NO_x}-titration
-regime. A similar experiment is conducted by \citet{Li:2005ss} and found in \chem{CO} as a result of
+regime. A similar experiment is conducted by \citet{Li:2005ss} and found that enhancements in \chem{CO} as a result of
 these emissions are the primary pathway of how these chemical sources contribute to the ozone enhancement.
 
 In conclusion, and directly responding to the questions raised in Chapter~\ref{ch:introduction}:
+\begin{enumerate}
+	\item WRF-Chem is able to simulate the occurrence of the ozone enhancement despite an
+	order of magnitude bias in \chem{NO_x} as the result of parameterizing lightning based on
+	parameterized convection;
+	\item In situ chemical production is the dominating tendency for the long term variability of
+	the ozone enhancement after filtering out the advective component. However, contrary to
+	results from previous studies \citep[e.g.][]{Li:2005ss,Cooper:2007cr,Barth:2012qf}, the
+	anticyclone did not create a distinctive region wherein boundary layer air is aged above
+	levels of the surrounding area.
+	\item Lightning-generated \chem{NO_x} emission is responsible for 16\% increase in upper
+	tropospheric ozone at $0.1\times$ lightning and 36\% at $1\times$ lightning at 300\,\unit{hPa}.
+	On the other hand, anthropogenic emission is responsible for $\sim6\%$ and biogenic
+	emission is responsible for $\sim13\%$ with $1\times$ {\lnox} emission.
+\end{enumerate}
 
 \section{Perspectives and outlook}
 
@@ -91,3 +105,5 @@ convective transport and examine its link to the ozone enhancement. Furthermore,
 super-linear sensitivity to lightning-generated \chem{NO_x} also demands a finely tuned lightning
 parameterization or one that is less sensitive to biases in the convective parameterization, which
 is further complicated by the feedbacks between chemistry and convective transport.
+
+(2--3 more paragraphs follow mostly saying what else can be done)
