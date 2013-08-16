@@ -499,35 +499,36 @@ Since \chem{CO} precursors are generally scarce in the upper troposphere, and th
 neither production nor loss occur at appreciable rates. The nighttime \chem{CO} chemical tendency ranges from
 -6.3\,\unit{pptv/hr} ($0.1\times$) to 2.7\unit{pptv/hr} ($1\times$). On the contrary, daytime \chem{CO} chemical tendency
 shows a substantial range relative to its mean values. The middle 90\% spans $-109$--$80\,\unit{pptv/hr}$ without lightning,
-with a mean of $-46\,\unit{pptv/hr}$. This indicates that a sufficient \chem{CO} precursors are present in the upper
-troposphere to counter the loss due to reaction with \chem{OH} radical. The addition of $0.1\times$ lightning \chem{NO_x}
-moves this range to $-281$--$3\,\unit{pptv/hr}$, thus doubling the net loss on the low end and essentially erased any
-production. This is likely caused by loss of VOCs due to oxidation at lower levels, thus leaving less for in-situ \chem{CO}
+with a mean of $-46\,\unit{pptv/hr}$. This indicates that sufficient \chem{CO} precursors are present in the upper
+troposphere to counter the loss due to reaction with \chem{OH} radicals. The addition of $0.1\times$ {\lnox}
+moves this range to $-281$--$3\,\unit{pptv/hr}$, thus doubling the net loss on the low end and essentially erasing any
+production. This is likely caused by losses of VOCs due to oxidation at lower levels, thus leaving less precursors available for in situ \chem{CO}
 production in the upper troposphere after transport. At $1\times$ {\lnox}, however, the lower-end tendency trend is
 reversed and the net loss at 5-percentile is now $-255\,\unit{pptv/hr}$. These data points correspond to high-{\lnox} air
 masses, in which \chem{OH} radicals are competitively consumed by \chem{NO_2} in the production of \chem{HNO_3}.
-At 95-percentile, the trend continues to decrease, and it is now a net 3-hourly loss of $-25\,\unit{pptv/hr}$.
+At 95-percentile, the trend continues to decrease to a net 3-hourly loss of $-25\,\unit{pptv/hr}$ with $1\times$ lightning emission,
+compared to the initial $+80\,\unit{pptv/hr}$ without lightning.
 
-The response of ozone production to the available \chem{NO} can be quantified as follow \citep{Kleinman:2001fk}:
+To understand the source of the ozone chemical production reversal seen in the model results for high \chem{NO_x}
+conditions, a steady-state analysis on ozone production and loss terms can be done following \citet{Kleinman:1997vn}.
+In a photostationary steady-state, the radical production rate $Q$ is equal to the loss rates, characterized by radical-radical
+reactions $L_R$ (e.g. \chem{HO_2+HO_2}) and radical-\chem{NO_x} reactions $L_N$ (e.g. \chem{NO_2+OH}).
+That is, $Q=L_R+L_N$. The response of ozone production to the available \chem{NO} can then be quantified
+as follow \citep{Kleinman:1997vn}:
 \begin{equation}\label{eqn:k01NO}
 	\frac{d\ln P(\chem{O_3})}{d\ln[\chem{NO}]} = \frac{(1-3/2\,L_N/Q)}{(1-1/2\,L_N/Q)}
 \end{equation}
-where $L_N/Q$ is the fraction of \chem{HO_x} radicals, principle intermediates for ozone production, removed by
-\chem{NO_x} as opposed to radical-radical reactions. In the upper troposphere, $L_N$ and $L_R=Q-L_N$ can be
-approximated by the reaction rate of \chem{NO_2+OH} and twice the rate of \chem{HO_2+HO_2}. For consistency,
+where $L_N/Q$ is the fraction of free radicals removed by \chem{NO_x}. In the upper troposphere, $L_N$ and $L_R$ can be
+approximated by the reaction rate of \chem{NO_2+OH} and twice the rate of \chem{HO_2+HO_2}, respectively. We conduct
 offline computations are performed using the rate equations and parameters from RADM2
 \citep[][and references therein]{Stockwell:1990ez}. Using August data points at 15, 18, and 21\,\unit{UTC} within
 the anticyclone column between 150--250\,\unit{hPa} and 350--450\,\unit{hPa}, the reaction rates
 $L_N=k\chem{[NO_2][OH]}$ and $L_R=2k'\chem{[HO_2][HO_2]}$ are plotted in Figure~~\ref{fig:2006/ltngsens_rxn}.
-The percentage of data points where $L_N>L_R$, or $L_N/Q > 0.5$, and $L_N/Q>2/3$ are computed at both
-levels for all 3 lightning sensitivity simulations. This threshold indicates transition from \chem{NO_x}-limited to
-VOC-limited regime. Suppressing lightning, almost all data points lies within $L_N/Q<0.5$. With $0.1\times$
-lightning, about 12\% in the upper level exceeded this threshold, but almost all \chem{HO_x} below 350\,\unit{hPa}
-continues to be terminated by radical-radical reactions. At $1\times$ lightning, 91.78\% and 56.98\% of the data
-points are within the VOC-limited regime for the two pressure levels. If considering only those where the expected response of $P(\chem{O_3})$
-to $[\chem{NO}]$ is negative, the percentages decrease to 90.05\% and 46.01\%. These numbers satisfactorily
-explain the reversal in response observed in the upper troposphere (majority $L_N/Q>2/3$), and seemingly high
-at the bottom of the enhancement (majority $L_N/Q<2/3$).
+\citet{Kleinman:2001fk} show that conditions above $L_N/Q>0.5$ represent a VOC-sensitive regime, compared
+to the \chem{NO_x}-sensitive regime below this threshold. Further, $L_N/Q>2/3$ represent \chem{NO_x}-titration,
+i.e. more ozone is expected to be destroyed as a result of increasing \chem{NO_x}, as demonstrated by Equation~\ref{eqn:k01NO}.
+Thus, if the majority of air mass lies above the $2/3$ threshold, \chem{NO_x}-titration is expected to occur as
+ozone loss caused by \chem{NO_x}-titration compensated ozone production by the air mass of which $L_N/Q<2/3$.
 
 	\begin{wrapfigure}{o}{0.5\textwidth}
 		\centering
@@ -541,15 +542,36 @@ at the bottom of the enhancement (majority $L_N/Q<2/3$).
 		\end{singlespacing}
 	\end{wrapfigure}
 
-Finally, due to changes in the vertical profile, and thus vertical gradients, convective tendencies are also affected by
+The percentage of data points where $L_N>L_R$, or $L_N/Q > 0.5$, and $L_N/Q>2/3$ are computed at both
+levels for all 3 lightning sensitivity simulations. By suppressing lightning, almost all data points lie within $L_N/Q<0.5$,
+which means that the atmosphere is \chem{NO_x}-sensitive. With $0.1\times$
+lightning, about 12\% in the upper level exceeded this threshold, but almost all \chem{HO_x} below 350\,\unit{hPa}
+continues to be terminated by radical-radical reactions. At $1\times$ lightning, 92\% and 57\% of the data
+points are within the VOC-limited regime ($L_N/Q>0.5$) for the two pressure levels. The fraction of data points
+where the expected response of $P(\chem{O_3})$ to $[\chem{NO}]$ is negative ($L_N/Q>2/3$) are 90\% for
+150--250\,\unit{hPa} and 46\% for 350--450\,\unit{hPa}. The observation that the majority of the data points
+are within the \chem{NO_x}-titration regime, reversal in the ozone production trend is also expected as computed
+from the model.
+
+Finally, due to changes in the vertical profiles of mixing ratios, and thus vertical gradients, convective tendencies are also affected by
 lightning emissions (Fig.~\ref{fig:2006/ltngsens_o3conv}). While it still holds true that convection dilutes upper
-tropospheric ozone by detraining air from the lower levels, changes in ozone due to convection exhibit are very different
-below the maximum detrainment level between emission scenarios. In particular, due to the deeper enhancement (high
-ozone at lower altitude), net negative convective tendency is observed above 440\,\unit{hPa} with $1\times$ lightning.
-Lightning emission also impacts surface air quality through mid-to-upper tropospheric ozone enhancement, as observed
+tropospheric ozone by detraining ozone-poor air from the lower levels, changes in ozone due to convection
+are very different below the maximum detrainment level between emission scenarios. In particular, due to the deeper enhancement (high
+ozone at lower altitude), a net negative convective tendency is observed above 440\,\unit{hPa} with $1\times$ lightning.
+Lightning emission also impacts surface air quality via the mid-to-upper tropospheric ozone enhancement, as observed
 by the increasingly positive tendencies below 600\,\unit{hPa}. The accumulated ozone enhancement in the lower
-troposphere is increased by 40--60\,\unit{ppbv} from $0\times$ to $1\times$ lightning despite relatively minimal local
-chemical production (Fig.~\ref{fig:2006/ltngsens_vertical}{\bf a}).
+troposphere is increased by 40--60\,\unit{ppbv} from $0\times$ to $1\times$ lightning despite a much smaller in situ
+chemical production within the BL (Fig.~\ref{fig:2006/ltngsens_vertical}{\bf a}).
+
+In conclusion, the results of the lightning sensitivity experiment can be summarized as follow:
+\begin{enumerate}
+\item Lightning-generated \chem{NO_x} is partially but primarily responsible for the ozone enhancement observed by
+instruments and simulated by the model. This is consistent with all previous studies \citep[e.g.][]{Li:2005ss,Cooper:2007cr,Barth:2012qf};
+\item By increasing from the tuned-lightning scenario ($0.1\times$) to the untuned scenario ($1\times$), upper tropospheric
+\chem{NO_x} experiences super-linear increases.
+\item Excessive \chem{NO_x} in the upper troposphere causes \chem{NO_x}-titration, which causes ozone loss in both
+the $0.1\times$ and $1\times$ lightning emission scenarios.
+\end{enumerate}
 
 \subsection{Anthropogenic emission}\label{ssec:2006/sens/anthrop}
 
@@ -581,24 +603,28 @@ but reverses at 150\,\unit{hPa}. Response of \chem{NO_x} at 150\,\unit{ppbv} is 
 to $-19\pm9\,\unit{pptv}$ at 300\,\unit{hPa} but decreases in magnitude to $-1.3\pm6.7\,\unit{pptv}$, which is negligible
 compared to the 1--3\,\unit{ppbv} VMR at these levels (for the $1\times$ lightning scenario).
 
-At 150\,\unit{hPa}, all three species shown in Figure~\ref{fig:2006/anthsens} show maximum responses over Huntsville,
+At 150\,\unit{hPa}, all three species shown in Figure~\ref{fig:2006/anthsens} show maximum responses over northern Huntsville and neighboring areas,
 Alabama. This changes at 300\,\unit{hPa}, where two distinct maxima are shown for \chem{O_3} and \chem{CO},
-corresponding to the maxima of \chem{CO} at northeast corner of Texas and along Blue Ridge Mountain as shown in
+corresponding to the maxima of \chem{CO} over the northeast corner of Texas and along Blue Ridge Mountain as shown in
 Figure~\ref{fig:2006/co_300}. On the other hand, \chem{NO_x} responses neutrally ($-2.3\pm8.0\,\unit{pptv}$) at
 these locations relative to the surrounding area where negative responses are prevalent (Fig.~\ref{fig:2006/anthsens}{\bf h}).
+Even though $\Delta[\chem{NO_x}]$ is negligible, ozone is still sensitive to changes in $[\chem{CO}]$ and thus enhancement
+is still possible as further discussed below.
 
 Significant responses of chemical tendency to anthropogenic emission stops at $\sim700\,\unit{hPa}$ in the anticyclone
-column mean (Fig.~\ref{fig:2006/anthsens_vert}). This sensitivity is then propagated into the upper troposphere through
-convective transport, but the changes in BL air composition also allows moderate changes in the upper tropospheric
-ozone production. As shown in Figure~\ref{fig:2006/anthsens_vert}{\bf c}, both \chem{NO_x} and \chem{NO_x} chemistry
-are negligibly sensitive to anthropogenic emission with the prescribed level of {\lnox}, thus the changes in ozone chemical
+column mean (Fig.~\ref{fig:2006/anthsens_vert}). Changes in BL air composition allows moderate changes in the upper
+tropospheric ozone production through convective transport.
+As shown in Figure~\ref{fig:2006/anthsens_vert}{\bf c}, both \chem{NO_x} mixing ratios and \chem{NO_x} chemistry
+are negligibly sensitive to the anthropogenic emission with the prescribed level of {\lnox}, thus the changes in ozone chemical
 tendency in Figure~\ref{fig:2006/anthsens_vert}{\bf a} is controlled by changes in \chem{CO} (or VOC) and its chemistry
 (Fig.~\ref{fig:2006/anthsens_vert}{\bf b}).
 
 \subsection{Biogenic emission}\label{ssec:2006/sens/bio}
 
-Biogenic emission contributes significantly to tropospheric ozone production (see Sect.~\ref{ssec:intro/ozone/voc}).
-Similar to anthropogenic emission, biogenic emission primary modifies the chemistry throughout the entire tropospheric
+Biogenic emission contributes significantly to tropospheric ozone production, emitting over $7\times$ the VOC from
+transportation within CONUS and dominating the budget in rural areas (Sect.~\ref{ssec:intro/ozone/voc}). \citet{Li:2005ss}
+also estimated $\sim5\,\unit{ppbv}$ contribution to the ozone enhancement by biogenic emission alone for July 2000.
+Similar to anthropogenic emission, biogenic emission can modify the chemical composition throughout the entire tropospheric
 column through convective transport and chemistry.
 
 	\begin{figure}[t!]
@@ -610,11 +636,13 @@ column through convective transport and chemistry.
 	\end{figure}
 
 To quantify the impact of biogenic emission on the upper tropospheric ozone and related chemistry within the anticyclone,
-we subtract species VMR and chemical tendencies without biogenic emission from that with biogenic emission at
-200\,\unit{hPa}, where ozone chemistry shows significant sensitivity to the absence of biogenic emission. At this level,
-biogenic emissions enhances ozone by $13.4\pm3.2\,\unit{ppbv}$ as a result of $+69.6\pm37.5\,\unit{ppbv}$ accumulated
-ozone chemical tendency over August. \chem{CO} has a similar change in VMR ($+11.2\pm2.6\,\unit{ppbv}$) from the
-addition of biogenic emissions, but the enhancement is not in situ ($\Delta_{chem}=-2.3\pm4.6\,\unit{ppbv}$). On the other
+we conduct a sensitivity simulation that excludes biogenic emissions. Ozone chemical tendency at 200\,\unit{hPa}
+show significant sensitivity to the absence/presence of biogenic emissions. At this level, the
+biogenic emissions enhance ozone by $13\pm3\,\unit{ppbv}$ as a result of $+70\pm38\,\unit{ppbv}$ accumulated
+ozone chemical tendency over August. \chem{CO} has a similar change in VMR ($+11\pm3\,\unit{ppbv}$) from the
+addition of biogenic emissions, but the enhancement is not due to local chemical production ($\Delta_{chem}=-2\pm5\,\unit{ppbv}$).
+Rather, most of the enhancement in \chem{CO} in the upper troposphere is due to convective transport of enhanced \chem{CO}
+from the lower troposphere. On the other
 hand, \chem{NO_x} experiences a decrease of $0.60\pm0.17\,\unit{ppbv}$ due to an increased accumulated loss of
 $6.2\pm4.0\,\unit{ppbv}$. These values can be compared to results by \citet{Li:2005ss}, who showed $>30\,\unit{ppbv}$
 \chem{CO} and $\sim5\,\unit{ppbv}$ \chem{O_3} enhancement due to biogenic emission.
@@ -626,53 +654,53 @@ turned off. As opposed to being driven by VOCs as it is for anthropogenic emissi
 \chem{NO_x} in the absence of biogenic emission (Fig.~\ref{fig:2006/biosens_vert}). In other words, the emission of
 biogenic species such as isoprene and formaldehyde causes ozone to increase in the upper troposphere by decreasing
 \chem{NO_x} within the \chem{NO_x}-titration regime (see Sect.~\ref{ssec:2006/sens/lnox}).
-
+% Figure for this section?
 
 \newpage\section{Conclusions}\label{sec:2006/conslusion}
 
 WRF-Chem simulations are performed with the goals of understanding the structure and chemical pathways of
 the 2006 upper tropospheric ozone enhancement during the North American Monsoon. Using an untuned ($1\times$)
-lightning based on a modified PR92 lightning flash rate parameterization, the predicted flash rate is about an order
-of magnitude compared to the scaled NLDN history. This overestimation is shown to cause overly strong ozone
+lightning flash rate parameterization based on a modified \citet{Price:1992wb} lightning flash rate parameterization, the predicted flash rate is about an order
+of magnitude higher compared to the scaled NLDN history. This overestimation is shown to cause overly strong ozone
 enhancement compared to TES and IONS-06 observation. On the other hand, \chem{CO} is shown to be either
-biased high (against TES) or biased low (against MOPITT). However, it is shared in both validation exercises that
+biased high (against TES) or biased low (against MOPITT). However, both validation exercises show that
 the simulated \chem{CO} distribution is more homogeneous than observed by either instruments.
 
-Under the base case condition, the simulated \chem{NO_x} VMR is seen rapidly increasing within the first 5
-days of the simulation by almost a factor of 10. As a consequence of the overprediction in {\lnox}, validation
-against SCIAMACHY \chem{NO_2} retrieval shows that the model is simulating too much high \chem{NO_x}
-events while properly predicting the mode of the distribution.
+Under the base case condition, the simulated \chem{NO_x} mixing ratio is seen rapidly increasing during the first 5
+days of the simulation by almost a factor of 10. Validation against SCIAMACHY \chem{NO_2} retrieval shows that
+the model is simulating too much high \chem{NO_x} events while properly predicting the mode of the distribution.
 
 Tracer-tracer correlation using \chem{O_3} and \chem{CO} shows that the conditions within and outside of the
-anticyclone are similar but differs in specific features. Using passive tracers, it is shown that the anticyclone region
-distinguish itself by lateral boundary tracers and lightning tracers, and that boundary layer and stratospheric tracers
-are dominated by orographic features instead of upper air circulation as suggested by previous studies. This result
+anticyclone are similar but differ in specific features. Using passive tracers, it is shown that the anticyclone region
+distinguishes itself by lateral boundary tracers and lightning tracers, and that boundary layer and stratospheric tracers
+are dominated by orographic features instead of the upper air circulation. This result
 differs from those of \citet{Cooper:2007cr} and \citet{Barth:2012qf}, who showed enhanced residence time and presence
 of boundary layer air/tracers within the anticyclone. Instead, we conclude that the
 lack of externality, i.e. lack of influence of air mixing in from ``clean'' regions, and presence of both surface and lightning
-emissions are thus concluded to be the key ingredients for the observed enhancement.
+emissions are the key ingredients for the observed enhancement.
 
-Other than enhanced ozone production, chemical and convective tendency within the anticyclone region also
+Other than the enhanced ozone mixing ratio, chemical and convective tendencies within the anticyclone region also
 show different structures compared to the continental inflow (Trinidad Head, CA) and outflow (Beltsville, MD)
-regions. In particular, while mid-tropospheric net chemical loss (or minimal production) is observed outside
-the anticyclone, maximum ozone production is simulated for this level, which subsequently lowers the level
-at which in-situ ozone production is dominating transport and thus enhancing ozone mixing ratio.
+regions. In particular, while a mid-tropospheric net chemical loss (or minimal production) is observed outside
+the anticyclone, a maximum ozone production is simulated for this level, which subsequently lowers the level
+at which the net in situ ozone production is positive and thus enhancing ozone mixing ratio.
 
 To quantify the impact of the uncertainties and biases of {\lnox} emission on the observed atmospheric composition
-within the anticyclone, sensitivity simulations are performed by disabling emission ($0\times$) and tuning emission
-($0.1\times$). Using the three simulations, it is concluded that the reduction of \chem{HO_x} radicals as a result of
-increasing \chem{NO_x} causes the response of \chem{NO_x} to be superlinear to {\lnox}. By evaluating the
-radical-termination pathways, it is also concluded that \chem{NO_x}-titration is indeed occurring at the level of
-maximum \chem{NO_x} enhancement and thus reducing the potential ozone enhancement as a result of increasing
-{\lnox}. Moreover, as a consequence of the modified vertical distribution responding to the changing {\lnox} emission,
-convective tendencies are also modified.
+within the anticyclone, sensitivity simulations are performed by disabling ($0\times$) and tuning
+($0.1\times$) the emission factor. Using the three simulations, it is concluded that the decreases in \chem{HO_x} radicals as a result of
+increasing \chem{NO_x} cause the response of \chem{NO_x} to be superlinear to {\lnox}. By evaluating the
+radical termination pathways, it is also concluded that \chem{NO_x}-titration is indeed occurring at the level of
+maximum \chem{NO_x} enhancement and thus reducing the potential ozone enhancement with increasing
+{\lnox}. Moreover, the modified vertical distribution responding to the changing {\lnox} emission,
+convective tendencies are also affected.
 
-Finally, control simulations for anthropogenic and biogenic emissions are performed to evaluate their contributions
-to the ozone enhancement relative to the base case ($1\times$) scenario. While anthropogenic emission leads to
-VOC-controlled changes, biogenic emission leads to major changes in upper tropospheric \chem{NO_x}. Since the
+Finally, control simulations for anthropogenic and biogenic emissions are performed to evaluate the contributions
+to the ozone enhancement by boundary layer emissions relative to the base case ($1\times$) scenario. While anthropogenic emission leads to
+VOC-controlled changes, biogenic emission leads to major changes via perturbation of upper tropospheric \chem{NO_x}. Since the
 upper tropospheric chemistry is experiencing \chem{NO_x}-titration, the reduction of \chem{NO_x} (as a result of
-biogenic emission) leads to a 70\,\unit{ppbv} increase in the August accumulated tendency at the detrainment level.
+biogenic emission) leads to a 70\,\unit{ppbv} increase in the August accumulated chemical tendency at the detrainment level.
 Comparing the three emission sources, lightning is the highest contributing factor to the ozone enhancement, followed by
 biogenic emission, and finally anthropogenic emission. However, because of the over-prediction of lightning-generated
 \chem{NO_x} in the base case scenario, our result does not necessarily contradict with \citet{Li:2005ss}, who
-showed that anthropogenic (\chem{NO_x}) emission is the dominant source of the ozone enhancement.
+showed that anthropogenic (\chem{NO_x}) emission is the dominant source of the ozone enhancement under a {\lnox}
+emission scenario perhaps comparable to our $0.1\times$ lightning scenario.
