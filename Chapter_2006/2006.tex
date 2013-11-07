@@ -1,4 +1,4 @@
-\chapter{2006 North American Monsoon Case Study} \label{ch:2006}
+\chapter{2006 North American Monsoon Case Study --- Part I} \label{ch:2006}
 
 \ifpdf
     \graphicspath{{Chapter_2006/figures/PNG/}{Chapter_2006/figures/PDF/}{Chapter_2006/}}
@@ -33,6 +33,13 @@ show the contribution of boundary layer air (BL), stratospheric air (ST), and ai
 domain (boundary condition, BC) to the O$_3$ enhancement.
 
 \section{Model Description}\label{sect:setup}
+
+% Model domain
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/domain.eps} % png available
+ \caption{WRF-Chem model domain (red). Marked inner region (blue) is used for various analysis.}
+ \label{fig:domain}
+ \end{figure}
 
 The case study simulation is performed using the Weather Research and Forecasting model
 \citep{Skamarock:2008xx} with Chemistry \citep[WRF-Chem;][]{Grell:2005fv} version 3.4.1
@@ -141,6 +148,15 @@ Hydrological Prediction Service (AHPS) allows continuous evaluation of the model
 prediction. The data product used here is the daily precipitation product from NWS AHPS,
 a national mosaic product using the combined data from 12 River Forecast Centers (RFCs).
 
+ % Precipitation validation (map)
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/precip_sd.png}
+ \caption{(a) WRF-simulated total precipitation, (b) WRF-simulated convective precipitation, and
+(c) total NWS AHPS precipitation in mm/day. (d) Parameterized fraction (\%) of model simulated
+precipitation.}
+ \label{fig:precip_sd}
+ \end{figure}
+
 A comparison of the simulated precipitation amount by WRF and
 the observed precipitation from NWS AHPS during July and August of 2006 is shown in Figure~\ref{fig:precip_sd}.
 WRF is producing a comparable spatial distribution to NWS but with a high bias at the
@@ -151,6 +167,15 @@ near Houston, TX. The simulated bulk convective fraction is relatively
 high, with more than 90\% of the precipitation coming from convective parameterization
 over the majority of CONUS.
 
+% Precipitation validation (time series)
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/precip_ts.eps} % png available
+ \caption{(a) WRF and NWS daily area mean precipitation within the inner analysis region shown
+in Figure~\ref{fig:domain} during August 2006. (b) Frequency distribution within the analysis region
+with bin size 0.2~mm/day.}
+ \label{fig:precip_ts}
+ \end{figure}
+
 The WRF-predicted area mean precipitation amount of 71~mm during August for the analysis
 region shown in Figure~\ref{fig:domain} is 14\% less than the 82~mm reported by the NWS
 (Figure~\ref{fig:precip_ts}). This
@@ -160,6 +185,16 @@ are over-predicted, thus reducing the availability of moisture and latent heat f
 events.
 
 \subsubsection{Lightning}
+
+% Lightning validation
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/ltng_dist.eps} % png available
+ \caption{(a) NLDN CG daily flash count ($\times10^4$) within the analysis region, with
+WRF-simulated total flash count $\times1/4$ to account for CG fraction and $\times0.1$
+to account for systematic bias. (b) Daily grid flash count frequency distributions from
+NLDN and WRF with different scaling factors.}
+ \label{fig:lightning}
+ \end{figure}
 
 Although the lightning flash rate was extensively evaluated by \citet{Wong:2013vn}, it
 must be compared with observations for this case study because the precipitation distribution
@@ -196,6 +231,18 @@ We define the ``anticyclone region'' based on the August mean geopotential heigh
 by columns with $\overline Z_{300}>9730$~m. While the anticyclonic circulation is not stationary, using
 the mean circulation maximizes the duration during which characteristics of the ozone
 enhancement can be captured.
+
+% Ozone map
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/o3/tes08_o3.png}
+ \caption{(a) Simulated ozone (ppbv) and geopotential height (m) at 300~hPa averaged for August
+2006. The 9730~m geopotential height contour indicates the ``anticyclone region'' used for
+various analyses. (b) Ozone 3-hourly outputs sampled to all TES transects during August, and gridded
+to $2^\circ\times2^\circ$ regular grids. (c) Previous panel with the TES averaging kernel applied.
+(d) Gridded average of all August TES transects.}
+ \label{fig:o3_map}
+ \end{figure}
+
 
 Both the August mean 300~hPa ozone and geopotential heights are shown in
 Figure~\ref{fig:o3_map}a. The
@@ -243,6 +290,16 @@ domain. The subsampling and application of the averaging kernel introduced noise
 that prevents clear identification of the ozone enhancement. Though a high bias
 can still be discerned while the general spatial distribution is consistent with TES observations.
 
+% TES-WRF ozone transect comparisons
+ \begin{sidewaysfigure}
+ \includegraphics[width=50pc]{figures/o3/transect_mosaic.pdf}
+ \caption{First row for each panel is the WRF-Chem ozone profiles in ppbv mapped onto the TES
+pressure coordinates after applying Eqn.~\ref{eqn:TES-AK}. Second row is the TES profile. Horizontal
+dashed line indicates the 300~hPa level. Third row shows the TES transect and the 9730~m
+geopotential contour at 300~hPa from WRF. Time indicated is the 30$^\circ$N-crossing time in UTC.}
+ \label{fig:o3_transect}
+ \end{sidewaysfigure}
+
 We then compare the ozone curtain profiles. Between July 15 and August 23, ten TES
 transects are selected and compared to the WRF-Chem output of the corresponding
 date at 18~UTC or 21~UTC, whichever is closer to the 30$^\circ$N-crossing
@@ -278,6 +335,14 @@ ozone isopleth reaching 300~hPa while TES observed only 70--90~ppbv up to 150~hP
 Similar high biases are also seen for transects 4837 (Aug 15, Fig~\ref{fig:o3_transect}d)
 and 4900 (Aug 21, Figure~\ref{fig:o3_transect}i).
 
+% TES-WRF ozone freuency distribution comparisons
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/o3/o3_teswrfhist.eps} % png available
+ \caption{Normalized frequency distributions (\%/ppbv) of TES and WRF-Chem ozone mixing ratios
+between (a) 150--300~hPa and (b) 300--450~hPa between 25--40$^\circ$N.}
+ \label{fig:o3_distr}
+ \end{figure}
+
 WRF-Chem simulates higher ozone than observed by
 TES in the upper troposphere (150--300~hPa) between 25--40$^\circ$N (Figure~\ref{fig:o3_distr}). TES observed a mean ozone
 mixing ratio of 100~ppbv with a standard deviation of 22~ppbv. In contrast, WRF-Chem
@@ -292,9 +357,17 @@ troposphere, the existence of the ozone enhancement and its location are well-si
 Some drawbacks of using TES are the results' dependencies on a priori constraints and sparse
 temporal resolution.
 
-
-
 \subsubsection{Evaluation against IONS-06}
+
+% IONS-06 comparison
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/o3/ions_huntsville.png} \\
+ \noindent\includegraphics[width=20pc]{figures/o3/o3_colorbar.png}
+ \caption{WRF-Chem ozone vertical profiles in ppbv during August IONS-06 ozonesonde launches at
+Huntsville, Alabama and the relative bias against the measured ozone mixing ratios. Horizontal
+dashed lines indicate the 300~hPa levels in each panel.}
+ \label{fig:huntsville}
+ \end{figure}
 
 To complement the evaluation against TES, we use ozonesonde
 profiles taken during the INTEX-B Ozonesonde Network Study of 2006
@@ -340,6 +413,13 @@ biomass burning. It is also produced chemically through OH oxidation of a wide r
 of VOCs. Furthermore, its 2--3 month lifetime in the troposphere allows CO to be an
 effective long-range tracer.
 
+% Carbon Monoxide map
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/co/tes08_co.png}
+ \caption{Same as Figure~\ref{fig:o3_map}, except for carbon monoxide.}
+ \label{fig:co_map}
+ \end{figure}
+
 Figure~\ref{fig:co_map}a shows the August mean CO mixing ratio at 300~hPa. At the
 center of the NAM circulation is a distinct CO maximum over northeastern Texas. This
 feature may be the result of a combination of CO accumulating via the NAM circulation
@@ -380,6 +460,21 @@ minimum degrees of freedom of 0.8 and without the C-curve flag.
 Similar to ozone, the August model output has been subsampled and transformed
 in Figure~\ref{fig:co_map} to compare with the gridded TES monthly average. The mixing
 ratio value is seen substantially overestimated though spatial variability is captured.
+
+% TES-WRF CO transect comparisons
+ \begin{sidewaysfigure}
+ \includegraphics[width=50pc]{figures/co/transect_mosaic.pdf}
+ \caption{Same as Figure~\ref{fig:o3_transect}, except for carbon monoxide.}
+ \label{fig:co_transect}
+ \end{sidewaysfigure}
+
+% TES-WRF CO freuency distribution comparisons
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/co/co_teswrfhist.eps} % png available
+ \caption{Same as Figure~\ref{fig:o3_distr}, except for carbon monoxide and TES-adjusted
+MOZART distributions are also provided for reference.}
+ \label{fig:co_distr}
+ \end{figure}
 
 Figure~\ref{fig:co_transect} shows the WRF-Chem
 CO mapped onto Tthe ES transects along with TES CO products. WRF-Chem is
@@ -434,6 +529,18 @@ $3.5\times10^{15}$~molec~cm$^{-2}$. The differences between retrievals have been
 attributed mostly to the tropospheric air mass factor \citep{vanderA:2010aa}, which has
 a sensitivity to cloud fractions of up to 20\% \citep{Boersma:2004uq}.
 
+% SCIAMACHY NO2 validation
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/scia_no2.png}
+ \caption{(a) Frequency distributions of WRF-Chem and SCIAMACHY NO$_2$ tropospheric
+VCDs in $10^{15}$~molec~cm$^{-2}$ during July and August 2006. A log-log plot of the
+tropospheric VCDs and the corresponding minimized $\chi^2$ linear fit and correlation
+coefficient $r^2$. (c) Mean WRF-Chem tropospheric VCDs in $10^{15}$~molec~cm$^{-2}$
+with pixel density indicating the number of samples used (up to $n=15$ but saturates at
+10) at each grid point. (d) Same as c, but for SCIAMACHY.}
+ \label{fig:scia_no2}
+ \end{figure}
+
 For the comparison, each SCIAMACHY tropospheric VCD data point is associated with
 a single WRF-Chem column determined by rounding the time of measurement to the
 nearest model output time (3-hourly). Due to ENVISAT's orbit, all measurements are
@@ -485,6 +592,17 @@ correlations and passive tracer diagnostics, as described in Section~\ref{sect:s
 
 \subsection{O$_3$-CO relation}\label{sect:diag/tracer}
 
+% Tracer map
+ \begin{figure}
+	\noindent\includegraphics[width=20pc]{figures/o3co.eps} % png available
+	\caption{O$_3$-CO joint-distributions (a) inside ($\overline{Z}_{300}>9730$~m)
+	and (b) outside (9710~m$<\overline{Z}_{300}<$9730~m) the anticyclone region for
+	the upper troposphere (100--300~hPa), lower troposphere ($>700$~hPa), and mid-troposphere (300--700~hPa).
+	Contours are calculated in log-scale with 10 levels between $10^{-3}$ to $10^{-1}$~\%~ppbv$^{-2}$.
+	Features ``X'' and ``+'' are used for discussions in Sect.~\ref{sect:diag}.}
+ 	\label{fig:o3co}
+ \end{figure}
+
 The relationship between ozone and carbon monoxide ({CO}) has been
 used to study the tropospheric-stratospheric transition in chemical regimes
 \citep[e.g.][and references therein]{Pan:2007sw,Hegglin:2009fk}. Similarly,
@@ -534,6 +652,14 @@ enhancement within the anticyclone (Figure~\ref{fig:tracer}g). The observed east
 shift from the 9730~m contour can be explained by the overall higher lightning
 flash rate in the southeastern United States. The maximum accumulated passive
 LT tracer is 3~ppbv within the anticyclone.
+
+% Tracer map
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/tracer_maps.png}
+ \caption{Passive tracer values (left column) and ages (right column) at 300~hPa averaged for August.
+9710~m and 9730~m geopotential heights are also shown.}
+ \label{fig:tracer}
+ \end{figure}
 
 On the other hand, the boundary layer (BL) tracer shows little correlation with
 the shape or positioning of the anticyclone. Instead, the features of the tracer
@@ -634,130 +760,3 @@ of simply due to dynamics.
 In the next chapter, we shall examine further the dynamical and chemical
 structure associated with the enhancement as well as the associated sensitivities
 to lightning NO$_{\mathrm{x}}$ emission.
-
-% Model domain
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/domain.eps} % png available
- \caption{WRF-Chem model domain (red). Marked inner region (blue) is used for various analysis.}
- \label{fig:domain}
- \end{figure}
-
- % Precipitation validation (map)
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/precip_sd.png}
- \caption{(a) WRF-simulated total precipitation, (b) WRF-simulated convective precipitation, and
-(c) total NWS AHPS precipitation in mm/day. (d) Parameterized fraction (\%) of model simulated
-precipitation.}
- \label{fig:precip_sd}
- \end{figure}
-
-% Precipitation validation (time series)
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/precip_ts.eps} % png available
- \caption{(a) WRF and NWS daily area mean precipitation within the inner analysis region shown
-in Figure~\ref{fig:domain} during August 2006. (b) Frequency distribution within the analysis region
-with bin size 0.2~mm/day.}
- \label{fig:precip_ts}
- \end{figure}
-
-% Lightning validation
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/ltng_dist.eps} % png available
- \caption{(a) NLDN CG daily flash count ($\times10^4$) within the analysis region, with
-WRF-simulated total flash count $\times1/4$ to account for CG fraction and $\times0.1$
-to account for systematic bias. (b) Daily grid flash count frequency distributions from
-NLDN and WRF with different scaling factors.}
- \label{fig:lightning}
- \end{figure}
-
-% Ozone map
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/o3/tes08_o3.png}
- \caption{(a) Simulated ozone (ppbv) and geopotential height (m) at 300~hPa averaged for August
-2006. The 9730~m geopotential height contour indicates the ``anticyclone region'' used for
-various analyses. (b) Ozone 3-hourly outputs sampled to all TES transects during August, and gridded
-to $2^\circ\times2^\circ$ regular grids. (c) Previous panel with the TES averaging kernel applied.
-(d) Gridded average of all August TES transects.}
- \label{fig:o3_map}
- \end{figure}
-
-% TES-WRF ozone transect comparisons
- \begin{sidewaysfigure}
- \includegraphics[width=50pc]{figures/o3/transect_mosaic.pdf}
- \caption{First row for each panel is the WRF-Chem ozone profiles in ppbv mapped onto the TES
-pressure coordinates after applying Eqn.~\ref{eqn:TES-AK}. Second row is the TES profile. Horizontal
-dashed line indicates the 300~hPa level. Third row shows the TES transect and the 9730~m
-geopotential contour at 300~hPa from WRF. Time indicated is the 30$^\circ$N-crossing time in UTC.}
- \label{fig:o3_transect}
- \end{sidewaysfigure}
-
-% TES-WRF ozone freuency distribution comparisons
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/o3/o3_teswrfhist.eps} % png available
- \caption{Normalized frequency distributions (\%/ppbv) of TES and WRF-Chem ozone mixing ratios
-between (a) 150--300~hPa and (b) 300--450~hPa between 25--40$^\circ$N.}
- \label{fig:o3_distr}
- \end{figure}
-
-% IONS-06 comparison
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/o3/ions_huntsville.png} \\
- \noindent\includegraphics[width=20pc]{figures/o3/o3_colorbar.png}
- \caption{WRF-Chem ozone vertical profiles in ppbv during August IONS-06 ozonesonde launches at
-Huntsville, Alabama and the relative bias against the measured ozone mixing ratios. Horizontal
-dashed lines indicate the 300~hPa levels in each panel.}
- \label{fig:huntsville}
- \end{figure}
-
-% Carbon Monoxide map
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/co/tes08_co.png}
- \caption{Same as Figure~\ref{fig:o3_map}, except for carbon monoxide.}
- \label{fig:co_map}
- \end{figure}
-
-% TES-WRF CO transect comparisons
- \begin{sidewaysfigure}
- \includegraphics[width=50pc]{figures/co/transect_mosaic.pdf}
- \caption{Same as Figure~\ref{fig:o3_transect}, except for carbon monoxide.}
- \label{fig:co_transect}
- \end{sidewaysfigure}
-
-% TES-WRF CO freuency distribution comparisons
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/co/co_teswrfhist.eps} % png available
- \caption{Same as Figure~\ref{fig:o3_distr}, except for carbon monoxide and TES-adjusted
-MOZART distributions are also provided for reference.}
- \label{fig:co_distr}
- \end{figure}
-
-% SCIAMACHY NO2 validation
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/scia_no2.png}
- \caption{(a) Frequency distributions of WRF-Chem and SCIAMACHY NO$_2$ tropospheric
-VCDs in $10^{15}$~molec~cm$^{-2}$ during July and August 2006. A log-log plot of the
-tropospheric VCDs and the corresponding minimized $\chi^2$ linear fit and correlation
-coefficient $r^2$. (c) Mean WRF-Chem tropospheric VCDs in $10^{15}$~molec~cm$^{-2}$
-with pixel density indicating the number of samples used (up to $n=15$ but saturates at
-10) at each grid point. (d) Same as c, but for SCIAMACHY.}
- \label{fig:scia_no2}
- \end{figure}
-
-% Tracer map
- \begin{figure}
-	\noindent\includegraphics[width=20pc]{figures/o3co.eps} % png available
-	\caption{O$_3$-CO joint-distributions (a) inside ($\overline{Z}_{300}>9730$~m)
-	and (b) outside (9710~m$<\overline{Z}_{300}<$9730~m) the anticyclone region for
-	the upper troposphere (100--300~hPa), lower troposphere ($>700$~hPa), and mid-troposphere (300--700~hPa).
-	Contours are calculated in log-scale with 10 levels between $10^{-3}$ to $10^{-1}$~\%~ppbv$^{-2}$.
-	Features ``X'' and ``+'' are used for discussions in Sect.~\ref{sect:diag}.}
- 	\label{fig:o3co}
- \end{figure}
-
-% Tracer map
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/tracer_maps.png}
- \caption{Passive tracer values (left column) and ages (right column) at 300~hPa averaged for August.
-9710~m and 9730~m geopotential heights are also shown.}
- \label{fig:tracer}
- \end{figure}

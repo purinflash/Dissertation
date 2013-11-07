@@ -73,7 +73,15 @@ enhancement to the lightning emission parameter.
 
 \subsection{Model setup}
 
-Figure~\ref{fig:o3_map} shows the model domain for the WRF-Chem simulation performed
+% Ozone map
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/o3_map.png}
+ \caption{Simulated ozone (ppbv) and geopotential height (m) at 300~hPa averaged for August
+2006.}
+ \label{fig:2006_5/o3_map}
+ \end{figure}
+
+Figure~\ref{fig:2006_5/o3_map} shows the model domain for the WRF-Chem simulation performed
 for the 2006 North American Monsoon case study at 36~km horizontal grid size. Meteorology
 is initialized and nudged by the NCEP GFS reanalysis data.The Grell-3 convective
 parameterization scheme, a modified version of the \citet{Grell:2002bs} scheme, is used.
@@ -90,7 +98,7 @@ global chemistry model \citep{Emmons:2010fk}.
 
 Additional model physics and chemistry options, as well as evaluation against
 multiple in-situ or remote sensing observations are described in
-\citet[][manuscript in preparation]{Wong:2014xx}. %Figure~\ref{fig:o3_map} shows the
+\citet[][manuscript in preparation]{Wong:2014xx}. %Figure~\ref{fig:2006_5/o3_map} shows the
 %August mean ozone at 300~hPa within the model domain at the base-case setting.
 
 \subsection{Diagnostic Outputs}
@@ -145,14 +153,24 @@ The first location,  Trinidad Head, California (40.80$^\circ$N, 124.15$^\circ$W)
 continental inflow region, which is largely unaffected by conditions and air masses from within the
 anticyclone or contiguous United States (CONUS) in general. The modeled August average O$_3$ and geopotential heights
 show that Trinidad Head can have high O$_3$ due to stratospheric air just to the north
-(Figure~\ref{fig:o3_map}) and remains outside of the anticyclone region.
+(Figure~\ref{fig:2006_5/o3_map}) and remains outside of the anticyclone region.
 The second location is Houston, Texas (29.72$^\circ$N,
 95.40$^\circ$W), representing the anticyclone region, which is the primary subject for this study.
 The third location, Beltsville, Maryland (39.04$^\circ$N, 76.52$^\circ$W), represents
 the continental outflow region, which periodically receives air from the jet and
-the anticyclone (Figure~\ref{fig:o3_map}).
+the anticyclone (Figure~\ref{fig:2006_5/o3_map}).
 
 \subsection{Temporal variability}
+
+
+% Tendency residuals
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/tendency_res.eps}
+ \caption{Ozone total tendencies (black lines) between 200--600~hPa, (a)
+horizontal (red) and vertical (blue) advective tendencies and (b)
+residual tendencies (red line) after removing advective components.}
+ \label{fig:tend_res}
+ \end{figure}
 
 The primary sources for local temporal variability are horizontal advection and vertical advection.
 Figure~\ref{fig:tend_res} shows the advective tendencies for ozone between 200--600~hPa during
@@ -165,6 +183,20 @@ It is useful to note that, because the components are not restricted to be eithe
 removing a tendency due to a specific process from the total tendency does not guarantee a smaller
 residual. In addition, while the time series shown is from Houston, the same results are applicable
 to the advective tendencies at other locations.
+
+% Tendency timeseries
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/tendency_ts.eps}
+ \caption{Time series at (a) Trinidad Head, (b) Houston, and (c) Beltsville
+showing the min-mean-max ozone time series (black) between
+270--330~hPa overlaid with IONS-06 ozonesonde measurements
+represented as red vertical lines for the range and solid $\diamondsuit$
+for the mean value. Ozone chemical (red) and convective (blue) tendency
+components are given according to the right axis labels in units
+of ppbv accumulated for every 3-hourly output interval. Boundary layer (BL, blue), stratospheric (ST, red) are
+given in \%. LNO$_{\mathrm{x}}$ tracer (green) is given in ppbv.}
+ \label{fig:tend_ts}
+ \end{figure}
 
 To characterize the residual tendency, we examine the remaining
 components of the tendency accumulation equation (Eqn.~\ref{eqn:fulltendency}) at the three
@@ -222,6 +254,20 @@ analysis, we examine the August mean vertical structures of the chemical and con
 tendency components (Figure~\ref{fig:tend_v}). As in the previous section, the ozone
 mixing ratios and passive tracer values are also provided to provide context.
 
+% Tendency vertical profiles
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/tendency_v.eps}
+ \caption{August average vertical profiles at (a) Trinidad Head, (b) Houston, and (c)
+Beltsville. Dashed lines are the mean 1-day decaying tracers for BL (blue, \%),
+ST (red, \%), and LNO$_{\mathrm{x}}$ (green, ppbv) according to the
+values on the top axis. Solid lines are the accumulated chemical
+tendency (red), convective tendency (blue), and the mean ozone profile
+(black) in ppbv according to the values of the bottom axis. The closest
+$11\times11$ grid points to each IONS-06 site are averaged to compute
+these profiles.}
+ \label{fig:tend_v}
+ \end{figure}
+
 The continental inflow region (Trinidad Head) lacks both BL and LNO$_{\mathrm{x}}$
 tracers in the upper troposphere. Despite having higher ozone mixing ratios than the
 other two locations, the accumulated chemical tendency remains low with a maximum of
@@ -229,7 +275,7 @@ $19.4\pm2.4$~ppbv at 205~hPa, which is above the level of maximum
 convective outflow (300~hPa) at Trinidad Head. Because of the lack of
 LNO$_{\mathrm{x}}$ emission and  in-situ chemical production,
 the ozone mixing ratio remains low between stratospheric intrusion or jet episodes, allowing
-the air to remain relatively ``clean'' until reaching Minnesota (Figure~\ref{fig:o3_map}). This influx of low-ozone, 
+the air to remain relatively ``clean'' until reaching Minnesota (Figure~\ref{fig:2006_5/o3_map}). This influx of low-ozone, 
 chemically-``slow'' air mass is responsible in generating the oval-shaped ozone
 enhancement that trace the northwestern edge of the mean NAM circulation.
 
@@ -268,6 +314,17 @@ the present study for Beltsville are largely consistent.
 \section{Sensitivity to lightning}\label{sect:sensitivity}
 
 \subsection{Spatial distribution}
+
+% Lightning sensitivity -- maps
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/ltngsens_map.png}
+ \caption{Model simulated mean (a) NO$_{\mathrm{x}}$, (b) HO$_{\mathrm{x}}$,
+(c) CO, and (d) O$_3$ for no-lightning ($\times0$, left column), control ($\times0.1$, center
+column), and high-LNO$_{\mathrm{x}}$ ($\times1$, right column) scenarios at 300~hPa
+during August. Note that NO$_{\mathrm{x}}$ is contoured on a log scale
+while the rest are contoured on linear scales.}
+ \label{fig:ltng_map}
+ \end{figure}
 
 \citet{Cooper:2007cr} attributed much of the enhanced upper tropospheric ozone in the
 anticyclone to $\mathrm{NO_x}$ produced by lightning. To understand the how LNO$_{\mathrm{x}}$
@@ -371,6 +428,18 @@ NO$_\mathrm{x}$ is enhanced most prominently at the $\sim170$~hPa level from
 84~pptv to $\sim3$~ppbv. This increase, together with the reversal in ozone chemical
 tendency at this level, indicates potential NO$_\mathrm{x}$-titration.
 
+% Lightning sensitivity -- vertical profiles
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/ltngsens_vert.eps}
+ \caption{August mean mixing ratios and accumulated chemical tendencies
+for (a) O$_3$, (b) CO, and (c) NO$_{\mathrm{x}}$ within the anticyclone
+region for the no-lightning(green), control (blue),
+and high-LNO$_{\mathrm{x}}$ (red) scenarios. Means are computed on model levels, and then
+gridded by the mean pressure.}
+ \label{fig:ltng_vert}
+ \end{figure}
+
+
 In all simulations, the August mean ozone chemical tendencies within the anticyclone
 are positive in the boundary layer (PBL) due to surface emissions, become negative just above
 the PBL, then become positive again in the mid-troposphere, and remain
@@ -412,6 +481,18 @@ are shown. Due to interconversion between O$_3$ and NO$_2$, we also examine
 odd oxygen $\mathrm{O_x\equiv O_3+NO_2}$ instead of NO$_2$ in the following
 analysis.
 
+% Lightning sensitivity -- diurnal
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/ltngsens_diurnal.eps}
+ \caption{Distributions (min-5pct-mean-95pct-max) of chemical tendencies
+and mixing ratios for O$_3$, O$_{\mathrm{x}}$, CO, and the mixing ratio
+for HNO$_3$ between 150--300~hPa during August within the
+anticyclone. Nighttime (3--9~UTC) tendencies are represented by dashed
+lines while daytime (15--21~UTC) tendencies are represented by solid
+lines.}
+ \label{fig:ltng_di}
+ \end{figure}
+
 Without lightning, the mean daytime O$_3$ chemical tendency is $0.088$~ppbv/hr and the
 95th-percentile is $0.259$~ppbv/hr. For the control case, the mean
 and 95-pct are respectively increased to $0.353$~ppbv/hr and $0.904$~ppbv/hr.
@@ -443,6 +524,19 @@ left tail of the distribution increases linearly at both the 5th-percentile
 ($25.8\rightarrow259$~pptv/hr) and minimum ($0.179\rightarrow1.78$~ppbv/hr).
 
 \subsection{NO$_\mathrm{x}$-titration}
+
+% Lightning sensitivity -- Leighton
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{figures/rxn.png}
+ \caption{Daytime reaction rates ($\log_{10}$~molec.~cm$^{-3}$~s$^{-1}$
+for NO$_2+$OH and ($2\times$) HO$_2+$HO$_2$ at 150--250~hPa (a--c)
+and 350--450~hPa (d--f) without lightning (a,d), control simulation (b,e),
+and high LNO$_{\mathrm{x}}$ scenario (c,f). The left percentage (if present) is the fraction
+of data points where $L_N/Q>2/3$. The right, or the only one, percentage (if present) is that
+of $L_N/Q>1/2$.}
+ \label{fig:ltng_rxn}
+ \end{figure}
+
 
 While it is evident that the high-LNO$_\mathrm{x}$ scenario produces unrealistic
 concentrations of NO$_\mathrm{x}$ in the troposphere, up to 3~ppbv of
@@ -491,6 +585,15 @@ is negative ($L_N/Q>2/3$) are 90\% for 150--250~hPa and 46\% for
 350--460~hPa.
 
 \subsection{Convective transport}
+
+% Lightning sensitivity -- convective structure
+ \begin{figure}
+ \noindent\includegraphics[width=20pc]{figures/ltngsens_o3conv.eps}
+ \caption{Vertical profiles of accumulated ozone convective tendency
+during August for the three lightning sensitivity simulations within the
+anticyclone column.}
+ \label{fig:ltng_conv}
+ \end{figure}
 
 Due to changes in the vertical profiles of mixing ratios, and thus
 vertical gradients, convective tendencies are also affected by lightning
@@ -571,104 +674,3 @@ fraction of the observed ozone \citep{Li:2005ss}. Therefore, additional
 sensitivity studies investigating these two emissions sources would
 be valuable in revealing further details of this phenomenon and
 thus constraining the tropospheric chemical and radiative budgets.
-
-% Ozone map
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/o3_map.png}
- \caption{Simulated ozone (ppbv) and geopotential height (m) at 300~hPa averaged for August
-2006.}
- \label{fig:o3_map}
- \end{figure}
-
-
-% Tendency residuals
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/tendency_res.eps}
- \caption{Ozone total tendencies (black lines) between 200--600~hPa, (a)
-horizontal (red) and vertical (blue) advective tendencies and (b)
-residual tendencies (red line) after removing advective components.}
- \label{fig:tend_res}
- \end{figure}
-
-% Tendency timeseries
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/tendency_ts.eps}
- \caption{Time series at (a) Trinidad Head, (b) Houston, and (c) Beltsville
-showing the min-mean-max ozone time series (black) between
-270--330~hPa overlaid with IONS-06 ozonesonde measurements
-represented as red vertical lines for the range and solid $\diamondsuit$
-for the mean value. Ozone chemical (red) and convective (blue) tendency
-components are given according to the right axis labels in units
-of ppbv accumulated for every 3-hourly output interval. Boundary layer (BL, blue), stratospheric (ST, red) are
-given in \%. LNO$_{\mathrm{x}}$ tracer (green) is given in ppbv.}
- \label{fig:tend_ts}
- \end{figure}
-
-% Tendency vertical profiles
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/tendency_v.eps}
- \caption{August average vertical profiles at (a) Trinidad Head, (b) Houston, and (c)
-Beltsville. Dashed lines are the mean 1-day decaying tracers for BL (blue, \%),
-ST (red, \%), and LNO$_{\mathrm{x}}$ (green, ppbv) according to the
-values on the top axis. Solid lines are the accumulated chemical
-tendency (red), convective tendency (blue), and the mean ozone profile
-(black) in ppbv according to the values of the bottom axis. The closest
-$11\times11$ grid points to each IONS-06 site are averaged to compute
-these profiles.}
- \label{fig:tend_v}
- \end{figure}
-
-% Lightning sensitivity -- maps
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/ltngsens_map.png}
- \caption{Model simulated mean (a) NO$_{\mathrm{x}}$, (b) HO$_{\mathrm{x}}$,
-(c) CO, and (d) O$_3$ for no-lightning ($\times0$, left column), control ($\times0.1$, center
-column), and high-LNO$_{\mathrm{x}}$ ($\times1$, right column) scenarios at 300~hPa
-during August. Note that NO$_{\mathrm{x}}$ is contoured on a log scale
-while the rest are contoured on linear scales.}
- \label{fig:ltng_map}
- \end{figure}
-
-% Lightning sensitivity -- vertical profiles
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/ltngsens_vert.eps}
- \caption{August mean mixing ratios and accumulated chemical tendencies
-for (a) O$_3$, (b) CO, and (c) NO$_{\mathrm{x}}$ within the anticyclone
-region for the no-lightning(green), control (blue),
-and high-LNO$_{\mathrm{x}}$ (red) scenarios. Means are computed on model levels, and then
-gridded by the mean pressure.}
- \label{fig:ltng_vert}
- \end{figure}
-
-% Lightning sensitivity -- diurnal
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/ltngsens_diurnal.eps}
- \caption{Distributions (min-5pct-mean-95pct-max) of chemical tendencies
-and mixing ratios for O$_3$, O$_{\mathrm{x}}$, CO, and the mixing ratio
-for HNO$_3$ between 150--300~hPa during August within the
-anticyclone. Nighttime (3--9~UTC) tendencies are represented by dashed
-lines while daytime (15--21~UTC) tendencies are represented by solid
-lines.}
- \label{fig:ltng_di}
- \end{figure}
-
-% Lightning sensitivity -- Leighton
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/rxn.png}
- \caption{Daytime reaction rates ($\log_{10}$~molec.~cm$^{-3}$~s$^{-1}$
-for NO$_2+$OH and ($2\times$) HO$_2+$HO$_2$ at 150--250~hPa (a--c)
-and 350--450~hPa (d--f) without lightning (a,d), control simulation (b,e),
-and high LNO$_{\mathrm{x}}$ scenario (c,f). The left percentage (if present) is the fraction
-of data points where $L_N/Q>2/3$. The right, or the only one, percentage (if present) is that
-of $L_N/Q>1/2$.}
- \label{fig:ltng_rxn}
- \end{figure}
-
-% Lightning sensitivity -- convective structure
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/ltngsens_o3conv.eps}
- \caption{Vertical profiles of accumulated ozone convective tendency
-during August for the three lightning sensitivity simulations within the
-anticyclone column.}
- \label{fig:ltng_conv}
- \end{figure}
