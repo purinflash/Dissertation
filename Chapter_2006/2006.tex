@@ -14,64 +14,81 @@ burning, and lightning sources \citep[][and references therein]{Lamarque:2005gb}
 radiative forcing resulting from this increase depends strongly on the vertical distribution and
 is the most sensitive near the tropopause \citep{Lacis:1990fk}.
 
-Previous studies have identified ozone enhancements, associated with monsoons, above North America
+Previous studies have identified upper tropospheric (UT) ozone enhancements, associated with monsoons, above North America
 \citep[][and references therein]{Li:2005ss,Cooper:2009nx}, Asia \citep{Park:2007bh,Worden:2009ve},
-and equatorial Africa \citep{Bouarar:2011ly} during summers in the upper troposphere (UT).
+and equatorial Africa \citep{Bouarar:2011ly} during summers.
 \citet{Cooper:2007cr} calculated an ozone enhancement of 29--52~ppbv between 10--11~km
 above Huntsville, Alabama. This observed upper tropospheric ozone enhancement has
 been linked to the North American Monsoon anticyclonic circulation, which traps ozone
-precursors that subsequently enhance ozone production \citep{Li:2005ss}. \citet{Cooper:2009nx}
-suggested that more than 80\% of the upper tropospheric NO$_\mathrm{x}$ within the enhancement
+precursors that subsequently enhance ozone production. \citet{Li:2005ss} pointed out the importance
+of boundary layer ozone precursors to the UT ozone enhancement using a global chemistry transport model.
+Their model sensitivity simulations showed that the ozone enhancement is mostly of anthropogenic origin,
+but lightning-generated nitrogen oxides within the anticyclone and $\mathrm{HO_x}$ precursors from
+formaldehyde, which is produced from biogenic emissions over the southeast US, both contributed to the
+O$_3$ production in the UT. \citet{Cooper:2009nx} stressed the importance of lightning-generated nitrogen
+oxides, suggesting that more than 80\% of the upper tropospheric NO$_\mathrm{x}$ within the enhancement
 is due to lightning, and that it is responsible for 25--30~ppbv ozone at 250~hPa. Furthermore,
 it has been estimated that the ozone enhancement generates a positive radiative forcing of about
 0.50~W\,m$^{-2}$ \citep{Cooper:2007cr,Choi:2009bh}.
 
-The primary goal of this study is to understand the causes of the summertime UT ozone enhancement by
-using model diagnostics. To do this, regional-scale model simulations are performed to represent
-the 2006 North American Monsoon. The control simulation is evaluated with multiple data sources to
-show the contribution of boundary layer air (BL), stratospheric air (ST), and air from outside the model
-domain (boundary condition, BC) to the O$_3$ enhancement.
+These previous studies suggested the convective transport of boundary layer air, especially in the
+Gulf Coast region \citep{Li:2005ss}, and lightning-generated $\mathrm{NO_x}$ from the western US and Mexico
+are the primary regions contributing to the O$_3$ enhancement in the UT. Here, we use a regional-scale
+model depicting chemistry and passive tracer transport to differentiate further the source regions of the O$_3$ enhancement
+for the 2006 North American Monsoon.
+
+The control simulation is evaluated with both meteorological and chemical composition data to show the
+model's ability in representing dynamics and chemistry. Then,
+the contribution of boundary layer air (BL), stratospheric air (ST), and air from outside the model domain
+(boundary condition, BC), to the O$_3$ enhancement is represented. Correlations between ozone and carbon
+monoxide are investigated to show the chemical regime of the upper tropospheric ozone enhancement region
+in comparison to the air just outside this region.
 
 \section{Model Description}\label{sect:setup}
 
 % Model domain
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/domain.eps} % png available
- \caption{WRF-Chem model domain (red). Marked inner region (blue) is used for various analysis.}
- \label{fig:domain}
- \end{figure}
+\begin{wrapfigure}{o}{0.5\textwidth}
+	\centering
+	\vspace{-.4in}
+	\begin{singlespacing}
+	\includegraphics[width=0.48\textwidth]{Figures/domain.eps}
+	\caption[Model domain]{{\small\textbf{Model domain} --- WRF-Chem model domain (red). The marked inner region (blue)
+	is used for the meteorlogical analysis.}}
+	\label{fig:domain}
+	\end{singlespacing}
+\end{wrapfigure}
 
 The case study simulation is performed using the Weather Research and Forecasting model
 \citep{Skamarock:2008xx} with Chemistry \citep[WRF-Chem;][]{Grell:2005fv} version 3.4.1
 over July and August of 2006. The model is configured with a horizontal grid spacing of 36~km
 on a Lambert conformal projection centered over the contiguous United Status (CONUS) as
 shown in Figure~\ref{fig:domain}. Vertical levels are discretized into 51 levels of variable thicknesses
-up to 10~hPa.
+(with $<100$~m grid spacing near the surface and 600--800~m grid spacing near the troposphere) up to 10~hPa.
 
 The meteorology is initialized and assimilated with data from the National Center for Environmental
 Prediction (NCEP) Global Forecasting System (GFS) final (FNL) gridded analysis at 6-hr intervals
 (00, 06, 12, 18~UTC). Nudging is performed for temperature and water vapor above the planetary
-boundary layer (PBL). Nudging for horizontal winds is performed above model level 10 where the
+boundary layer (BL). Nudging for horizontal winds is performed above model level 10 where the
 pressure is $843\pm55$~hPa. Advection for moisture, chemicals, and passive tracer
-variables are performed with positive-definite and monotonic limiters described in
-\citet{Skamarock:2006wm, Wang:2009fk}.
+variables are performed with positive-definite and monotonic limiters
+\citep{Skamarock:2006wm, Wang:2009fk}.
 
 To represent sub-grid scale convection, the Grell-3 (G3) convective parameterization, a modified version of the
 \citet{Grell:2002bs} ensemble scheme, is used. The G3 scheme has 144 ($=3\times3\times16$) dynamic control and
-static control/feedback closures with varying parameters. Though, subsidence over neighboring grid has been
-disabled due to grid size of the current simulation. In addition, shallow convection is
+static control/feedback closures with varying parameters. The G3 scheme includes subsidence over neighboring grid
+cells, but for the 36~km grid size used here, subsidence only occurs within the same column. In addition, shallow convection is
 enabled to permit ventilation of BL air by weak convection.
 Cloud microphysics is represented by the \citet{Thompson:2008vn}
 scheme. Shortwave
 radiative transfer is represented with the Goddard two-stream method \citep{Chou:1998kx}.
 Longwave radiative transfer uses the
-Rapid Radiative Transfer Model (RRTM) \citep{Mlawer:1997vn}. The planetary boundary layer (PBL)
+Rapid Radiative Transfer Model \citep[RRTM;][]{Mlawer:1997vn}. The boundary layer (BL)
 processes are parameterized with the NOAH land surface model \citep{Chen:2001ys} and the
 Yonsei University (YSU) scheme \citep{Hong:2006fk}.
 
 The chemical mechanism used in this study is the Regional Acid Deposition Model version 2
-(RADM2) \citep{Stockwell:1990ez} compiled with a ``WRF-conformed'' version of the Kinetic
-Preprocessor (KPP) \citep{Sandu:2006jl}. No aerosol is included in the simulation. Photolysis
+\citep[RADM2;][]{Stockwell:1990ez} compiled with a ``WRF-conformed'' version of the Kinetic
+Preprocessor \citep[KPP;][]{Sandu:2006jl}. No aerosol is included in the simulation. Photolysis
 rates are calculated using the fast Tropospheric Ultraviolet-Visible (FTUV) scheme \citep{Tie:2003ve}.
 Chemical initial and boundary conditions are obtained from the Model for OZone and Related
 chemical Tracers (MOZART-4) global chemistry model \citep{Emmons:2010fk}.
@@ -80,61 +97,42 @@ Anthropogenic emissions are prescribed using the 2005 National Emission Inventor
 Environmental Protection Agency (EPA) and is reset everyday at 06~UTC, or 11:00 pm to 2:00 am
 local time, to allow switching between weekdays (Monday -- Friday), Saturday, and Sunday
 emissions. Biogenic emissions are parameterized using the Model for Emissions of Gases and Aerosols
-from Nature (MEGAN2) \citep{Guenther:2006kl}. MEGAN2 uses a combination of climatological leaf area
+from Nature \citep[MEGAN2;][]{Guenther:2006kl}. MEGAN2 uses a combination of climatological leaf area
 index~(LAI), vegetation speciation, predicted model temperature, and predicted model solar radiation
 to compute the biogenic VOC emissions consistent with the model meteorological state.
 
 Lightning-generated NO$_\mathrm{x}$ emission is parameterized using a modified \citet{Price:1992wb}
 method based on cloud-top height, which is determined from the G3 convective scheme's level of neutral buoyancy 
-(LNB) adjusted by $-2$~km \citep{Wong:2013vn}, and scaled down by a factor of 10 ($\times0.1$) to match the observed total
+(LNB) adjusted by $-2$~km \citep{Wong:2013vn}, and scaled down by a factor of 10 to match the observed total
 flash count estimated from the cloud-to-ground (CG) records of the National Lightning Detection
-Network (NLDN) \citep{Cummins:2009aa} and a crude estimate of the CG-fraction from the
+Network \citep[NLDN;][]{Cummins:2009aa} and a crude estimate of the CG-fraction from the
 \citet{Boccippio:2001ys} climatology. The NO emission is set to 350~moles per flash, consistent
 with \citet{Barth:2012qf}, and is placed vertically following the \citet{Ott:2010lo} distributions.
 
-Three passive tracers are released from the lateral boundary (BC), planetary boundary layer (PBL), and
+Three passive tracers are released from the lateral boundary (BC), boundary layer (BL), and
 the stratosphere (ST). The magnitudes of the tracers are reset to $1.0$ at their respective sources for every
-time step. However, due to overlapping of the lateral boundaries and either PBL or ST, it is possible that
-a grid may simultaneously contains BC tracer value of $1.0$ and PBL or ST value of $1.0$. Thus, the
-summation of the three tracer values is not constrained to one. Consequently, the absolute values of
+time step. Note that the sum of the three tracers can be greater than $1.0$ because the BL or ST tracers
+overlap with the lateral boundary (BC) tracer. Further, because the BL and ST tracers are continually
+being replenished throughout their respective source region, we cannot estimate the percent contribution
+of each region to a specific grid cell.
 A lightning NO$_\mathrm{x}$ (LNO$_\mathrm{x}$) tracer is also emitted with
-LNO$_\mathrm{x}$ emission. All four tracers also have a decaying twin with a lifetime of 24~hours.
+LNO$_\mathrm{x}$ emission. All four tracers have a decaying twin with a lifetime of 24~hours.
 Each decaying twin is reduced at each time step by $q/\tau$ where $q$ denotes the tracer mixing ratio
-and $\tau$ is the loss rate. The effective age of air is then computed as $-\tau\ln\overline{Q}^{V,t}/\overline{Q'}^{V,t}$,
-where $\overline{Q}^{V,t}$ is the passive tracer value and $\overline{Q'}^{V,t}$ is the decaying tracer value
-integrated over space and time, to allow simple estimates of the time since the trace has left its source region.
-These tracers are then allowed to be transported by advection, convective transport, and mixing 
+and $\tau$ is the loss rate. The effective age of air is then computed as $-\tau\ln\overline{Q}^{t}/\overline{Q'}^{t}$,
+where $\overline{Q}^{t}$ is the passive tracer value and $\overline{Q'}^{t}$ is the decaying tracer value
+integrated over space and time, to allow simple estimates of the time since the tracer has left its source region.
+These tracers are then allowed to be transported by advection, convective transport, and mixing.
 
-%Conceptualize the tendency calculation of a scalar $S$ from time step $t$ to $t+1$ as follow:
-%\begin{equation}\label{eqn:fulltendency}
-%S^{(t+1)}-S^{(t)} = (\Delta_{chem}+\Delta_{conv}+\Delta_{vmix}+
-%\mathbf{v}\cdot\nabla+w\delta_z)S^{(t)}\delta t + E_S^{(t)}+LS^{(t)}
-%\end{equation}
-%where the $\Delta$'s are the time-stepping operators for chemistry, convective transport, and vertical
-%mixing, $\mathbf{v}$ is the horizontal wind vector, and $w$ is the vertical wind. $E_S^{(t)}$ and
-%$LS^{(t)}$ are the emission and loss terms. Then, we may accumulate at every single time step for
-%a specific process $p$ to obtain the total tendency $T$ for a scalar $S$ due to the said process up
-%to time $t$ from initialization:
-%\begin{equation}\label{eqn:tendency}
-%T_p^{(t)}=\sum_{\tau=0}^{t-1}\Delta_pS^{(\tau)}\delta\tau
-%\end{equation}
-%All individual processes include nonlinear terms associated with the respective solver, and thus
-%no information is loss during the accumulation process. Therefore, if
-%$\langle E_S^{(\tau)}+LS^{(\tau)}\rangle_{\tau<t}=0$,
-%we may expect $\sum_{p\in\mathcal{P}}T_p^{(t)}\equiv S^{(t)}-S^{(0)}$ to hold in the upper troposphere
-%for the first five processes $\mathcal{P}$ in Equation~\ref{eqn:fulltendency} with the exception
-%of NO, for which $E_S^{(t)}$ may not be zero.
-
-\section{General results and Evaluations}\label{sect:results}
+\section{General results and Model Evaluations}\label{sect:results}
 
 \subsection{Meteorology}\label{sect:val/met}
 
-The influence of meteorology on chemistry is of significant importance for the formation of
+The influence of meteorology on chemistry is important for the formation of
 the North American Monsoon ozone enhancement \citep{Li:2005ss,Cooper:2007cr,Barth:2012qf}.
-In particular, convection has been shown to detrain boundary layer (BL) air, which has relatively low
+In particular, convection has been shown to detrain boundary layer air, which has relatively low
 ozone mixing ratios (compared to the upper tropospheric background values) yet is rich in ozone
 precursors, into the upper troposphere, thus perturbing UT ozone distributions
-\citep{Dickerson:1987hc,Kar:2004jl,Weinstock:2007yj}. Moreover, thunderstorms generate
+\citep{Dickerson:1987hc,Kar:2004jl,Li:2005ss,Weinstock:2007yj}. Moreover, thunderstorms generate
 NO$_\mathrm{x}$ from lightning, providing the means to accelerate the ozone production
 in the convective outflow by supplementing to the NO$_\mathrm{x}$-poor BL air.
 Because of the importance of convection on upper tropospheric ozone, we evaluate the
@@ -150,8 +148,8 @@ a national mosaic product using the combined data from 12 River Forecast Centers
 
  % Precipitation validation (map)
  \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/precip_sd.png}
- \caption{(a) WRF-simulated total precipitation, (b) WRF-simulated convective precipitation, and
+ \noindent\includegraphics[width=40pc]{Figures/precip_sd.png}
+ \caption[Model simulated precipitation vs. NWS observation]{(a) WRF-simulated total precipitation, (b) WRF-simulated convective precipitation, and
 (c) total NWS AHPS precipitation in mm/day. (d) Parameterized fraction (\%) of model simulated
 precipitation.}
  \label{fig:precip_sd}
@@ -164,17 +162,20 @@ Arkansas/Texas border and a low bias over Tennessee and Kentucky. Another low bi
 is located in North Carolina east of the Blue Ridge Mountains. The simulated coastal
 rainfall north of the Gulf of Mexico is also generally lower than observed except for regions
 near Houston, TX. The simulated bulk convective fraction is relatively
-high, with more than 90\% of the precipitation coming from convective parameterization
+high, with more than 90\% of the precipitation coming from the convective parameterization
 over the majority of CONUS.
 
 % Precipitation validation (time series)
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/precip_ts.eps} % png available
- \caption{(a) WRF and NWS daily area mean precipitation within the inner analysis region shown
-in Figure~\ref{fig:domain} during August 2006. (b) Frequency distribution within the analysis region
-with bin size 0.2~mm/day.}
- \label{fig:precip_ts}
- \end{figure}
+\begin{wrapfigure}{o}{0.5\textwidth}
+	\centering
+	\begin{singlespacing}
+	\includegraphics[width=0.48\textwidth]{Figures/precip_ts.eps}
+	\caption[Time series of simulated and observed precipitation]{{\small\textbf{Time series of simulated and observed precipitation} ---
+	(a) WRF and NWS daily area mean precipitation within the inner analysis region shown in Figure~\ref{fig:domain} during August
+	2006. (b) Frequency distribution within the analysis region with bin size 0.2~mm/day.}}
+	\label{fig:precip_ts}
+	\end{singlespacing}
+\end{wrapfigure}
 
 The WRF-predicted area mean precipitation amount of 71~mm during August for the analysis
 region shown in Figure~\ref{fig:domain} is 14\% less than the 82~mm reported by the NWS
@@ -186,38 +187,40 @@ events.
 
 \subsubsection{Lightning}
 
-% Lightning validation
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/ltng_dist.eps} % png available
- \caption{(a) NLDN CG daily flash count ($\times10^4$) within the analysis region, with
-WRF-simulated total flash count $\times1/4$ to account for CG fraction and $\times0.1$
-to account for systematic bias. (b) Daily grid flash count frequency distributions from
-NLDN and WRF with different scaling factors.}
- \label{fig:lightning}
- \end{figure}
-
-Although the lightning flash rate was extensively evaluated by \citet{Wong:2013vn}, it
-must be compared with observations for this case study because the precipitation distribution
-differs from the model results reported by \citet{Wong:2013vn}.
+As lightning is tied to $\mathrm{NO_x}$ production, an important O$_3$ precursor,
+modeled lightning flash rate is also evaluated.
 We use Vaisala U.S. NLDN data for our evaluation of lightning flash
 rates. The network provides continuous multiyear CONUS coverage of $>90\%$ of all CG
 flashes with ongoing network-wide upgrades since 1984 \citep{Orville:2002uq,Orville:2010uq}.
 The frequency range at which the sensors operate allows detection of primarily CG flashes
 and a small number of IC flashes. Low peak current strokes $<15$~kA are eliminated from
 the data set due to potential misclassification. The median location accuracy is 250~m, which
-is well within the model grid size used in this study and thus may be considered negligible.
+is well within the model grid size used in this study.
 Multiple strokes are aggregated into a single flash if they are within 1~second and no more
 than 10~km apart.
+
+% Lightning validation
+\begin{wrapfigure}{o}{0.5\textwidth}
+	\centering
+	\begin{singlespacing}
+	\includegraphics[width=0.48\textwidth]{Figures/ltng_dist.eps}
+	\caption[Simulated and observed flash counts]{{\small\textbf{Simulated and observed flash counts} ---
+	(a) NLDN CG daily flash count ($\times10^4$) within the analysis region, with WRF-simulated total flash count $\times1/4$ to
+	account for CG fraction and $\times0.1$ to account for systematic bias. (b) Daily grid flash count frequency distributions from
+	NLDN and WRF with different scaling factors.}}
+	\label{fig:lightning}
+	\end{singlespacing}
+\end{wrapfigure}
 
 Since NLDN reliably detects only CG flashes in 2006 and the current implementation of
 WRF-Chem produces total flash counts without IC\,:\,CG partitioning, flash count outputs
 from WRF are scaled by $1/4$, or an IC\,:\,CG ratio of 3-to-1, to account for a crude average
-of the CG fraction in southeastern United States according to \citet{Boccippio:2001ys}.
-Without tuning, the CG flash count estimation is over-predicted by an order of magnitude, and
-After the scaling, model flash count, summed over the analysis region for the two months simulated,
-is 7\% higher than that observed by NLDN.
+of the CG fraction in the southeastern United States according to \citet{Boccippio:2001ys}.
+The \citet{Price:1992wb} CG flash count estimation is over-predicting by about an order of magnitude.
+After scaling the flash rate by 0.1, the predicted flash count, summed over the analysis region for the two months
+simulated, is 7\% higher than that observed by NLDN (Figure~\ref{fig:lightning}).
 While the magnitude of the integrated flash count is similar to the NLDN observations,
-its distribution truncates prematurely at $\sim200$~flashes/grid/day (Figure 4b) and compensates 
+its distribution truncates prematurely at $\sim200$~flashes/grid/day (Figure~\ref{fig:lightning}b) and compensates 
 the deficit with an overestimation of flashes below
 100~flashes/grid/day. This early truncation is consistent with the findings discussed by
 \citet{Wong:2013vn}.
@@ -234,8 +237,8 @@ enhancement can be captured.
 
 % Ozone map
  \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/o3/tes08_o3.png}
- \caption{(a) Simulated ozone (ppbv) and geopotential height (m) at 300~hPa averaged for August
+ \noindent\includegraphics[width=40pc]{Figures/o3/tes08_o3.png}
+ \caption[August mean ozone at 300~hPa]{(a) Simulated ozone (ppbv) and geopotential height (m) at 300~hPa averaged for August
 2006. The 9730~m geopotential height contour indicates the ``anticyclone region'' used for
 various analyses. (b) Ozone 3-hourly outputs sampled to all TES transects during August, and gridded
 to $2^\circ\times2^\circ$ regular grids. (c) Previous panel with the TES averaging kernel applied.
@@ -243,9 +246,7 @@ to $2^\circ\times2^\circ$ regular grids. (c) Previous panel with the TES averagi
  \label{fig:o3_map}
  \end{figure}
 
-
-Both the August mean 300~hPa ozone and geopotential heights are shown in
-Figure~\ref{fig:o3_map}a. The
+The August mean 300~hPa ozone and geopotential heights are shown in Figure~\ref{fig:o3_map}a. The
 location of the ozone enhancement is consistent with that observed and simulated by
 \citet{Cooper:2007cr}. The ability to position the enhancement only requires the correct
 large-scale dynamical features, which are constrained by nudging to NCEP GFS reanalysis.
@@ -264,13 +265,11 @@ partially forms the shape of the ozone enhancement.
 
 \subsubsection{Evaluation against TES retrievals}\label{sect:val/o3/tes}
 
-% n = 4699, max grid = 16
-
 To evaluate the simulated ozone, retrievals from the satellite-borne
 Tropospheric Emission Spectrometer (TES) are used to provide spatial snapshots
 along selected transects. TES is a high resolution infrared Fourier-transform
 spectrometer with a spectral resolution of 0.06~cm$^{-1}$ \citep{Beer:2006fk}.
-The data products used are of V004, all of which are special observations in
+The data products used for the transect-by-transect comparisons below are from version 4 (V004), all of which are special observations in
 step-and-stare mode with footprints of 5.3~km$\times$8.3~km and 35~km gaps
 between stares. Through comparisons with ozonesondes, an evaluation with
 V002 showed that TES ozone had a 3--10~ppbv high bias in the troposphere,
@@ -280,32 +279,16 @@ products have been used in numerous studies on tropospheric chemistry
 \citep[e.g.][]{Brown:2008zr,Risi:2010ys}, and air quality
 \citep[e.g.][]{McMillan:2010kx,Wang:2011uq}.
 
-We first compare the ozone mean profile (Figure~\ref{fig:o3_map}) against TES. To
-do so, WRF-Chem 3-hourly output column vectors are selected for each TES retrieval
-pixel during August (Figure~\ref{fig:o3_map}b), then the averaging kernel, as will be
-described below, is applied (Figure~\ref{fig:o3_map}c). This can be compared to the
-monthly average TES product at 300~hPa, gridded onto $2^\circ\times2^\circ$ grids (Figure~\ref{fig:o3_map}d)
-each of which receives 0--16 pixels for a total of 4699 pixels within the simulation
-domain. The subsampling and application of the averaging kernel introduced noises
-that prevents clear identification of the ozone enhancement. Though a high bias
-can still be discerned while the general spatial distribution is consistent with TES observations.
-
 % TES-WRF ozone transect comparisons
  \begin{sidewaysfigure}
- \includegraphics[width=50pc]{figures/o3/transect_mosaic.pdf}
- \caption{First row for each panel is the WRF-Chem ozone profiles in ppbv mapped onto the TES
+ \includegraphics[width=50pc]{Figures/o3/transect_mosaic.pdf}
+ \caption[Transect-by-transect comparison against TES $\mathrm{O_3}$]{First row for each panel is the WRF-Chem ozone profiles in ppbv mapped onto the TES
 pressure coordinates after applying Eqn.~\ref{eqn:TES-AK}. Second row is the TES profile. Horizontal
 dashed line indicates the 300~hPa level. Third row shows the TES transect and the 9730~m
 geopotential contour at 300~hPa from WRF. Time indicated is the 30$^\circ$N-crossing time in UTC.}
  \label{fig:o3_transect}
  \end{sidewaysfigure}
 
-We then compare the ozone curtain profiles. Between July 15 and August 23, ten TES
-transects are selected and compared to the WRF-Chem output of the corresponding
-date at 18~UTC or 21~UTC, whichever is closer to the 30$^\circ$N-crossing
-time~(Figure~\ref{fig:o3_transect}). These transects are selected because they either show
-signs of upper tropospheric ozone enhancement, or intersect regions with 300~hPa
-geopotential height greater than 9730~m  while passing over the United States.
 To compare model O$_3$ to TES profiles, the model profiles are transformed in
 the same way as the satellite data. Let $\mathbf{x}_{\mathrm{WRF}}$ be the log of the ozone column
 vector extracted from WRF-Chem and interpolated onto TES pressure levels, then the
@@ -321,6 +304,35 @@ out using the master quality assurance flag, the C-curve flag to remove retrieva
 anomalously high surface ozone \citep{Zhang:2010fk}, and the criteria that
 $trace(\mathbf{A})>4.0$ to ensure sufficient degrees of freedom.
 
+We first compare the ozone mean profile (Figure~\ref{fig:o3_map}) against TES. To
+do so, WRF-Chem 3-hourly output column vectors are selected for each TES retrieval
+pixel during August (Figure~\ref{fig:o3_map}b), then the averaging kernel
+is applied (Figure~\ref{fig:o3_map}c). This can be compared to the
+monthly average TES product at 300~hPa, gridded onto $2^\circ\times2^\circ$ grids (Figure~\ref{fig:o3_map}d)
+each of which receives 0--16 pixels for a total of 4699 pixels within the simulation
+domain. The temporal subsampling of the WRF-Chem output introduce noise
+that prevents clear identification of the ozone enhancement, although a high bias
+can still be discerned. Nonetheless, the general spatial distribution is consistent with TES observations.
+
+We next compare the ozone curtain profiles. Between July 15 and August 23, ten TES
+transects are selected and compared to the WRF-Chem output of the corresponding
+date at 18~UTC or 21~UTC, whichever is closer to the 30$^\circ$N-crossing
+time~(Figure~\ref{fig:o3_transect}). These transects are selected because they either show
+signs of upper tropospheric ozone enhancement, or intersect regions with 300~hPa
+geopotential height greater than 9730~m  while passing over the United States.
+
+% TES-WRF ozone freuency distribution comparisons
+\begin{wrapfigure}{o}{0.5\textwidth}
+	\centering
+	\begin{singlespacing}
+	\includegraphics[width=0.48\textwidth]{Figures/o3/o3_teswrfhist.eps}
+	\caption[WRF-Chem and TES ozone frequency distributions]{{\small\textbf{WRF-Chem and TES ozone frequency distributions} ---
+	Normalized frequency distributions (\%/ppbv) of TES and WRF-Chem ozone mixing ratios between (a) 150--300~hPa and (b)
+	300--450~hPa between 25--40$^\circ$N.}}
+	\label{fig:o3_distr}
+	\end{singlespacing}
+\end{wrapfigure}
+
 Figure~\ref{fig:o3_transect} shows the comparisons of model outputs and satellite retrievals along TES transects.
 Qualitatively, the heights of the 100~ppbv ozone isopleths are well simulated north of
 30$^\circ$N. South of 30$^\circ$N, upper tropospheric ozone is often over predicted.
@@ -335,39 +347,23 @@ ozone isopleth reaching 300~hPa while TES observed only 70--90~ppbv up to 150~hP
 Similar high biases are also seen for transects 4837 (Aug 15, Fig~\ref{fig:o3_transect}d)
 and 4900 (Aug 21, Figure~\ref{fig:o3_transect}i).
 
-% TES-WRF ozone freuency distribution comparisons
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/o3/o3_teswrfhist.eps} % png available
- \caption{Normalized frequency distributions (\%/ppbv) of TES and WRF-Chem ozone mixing ratios
-between (a) 150--300~hPa and (b) 300--450~hPa between 25--40$^\circ$N.}
- \label{fig:o3_distr}
- \end{figure}
-
-WRF-Chem simulates higher ozone than observed by
+By compiling frequency distributions of the upper tropospheric and mid-tropospheric ozone
+during the simulation period, we find that WRF-Chem simulates higher ozone than observed by
 TES in the upper troposphere (150--300~hPa) between 25--40$^\circ$N (Figure~\ref{fig:o3_distr}). TES observed a mean ozone
 mixing ratio of 100~ppbv with a standard deviation of 22~ppbv. In contrast, WRF-Chem
 simulated $120\pm31$~ppbv. The larger standard deviation from WRF-Chem indicates that
 the predicted upper tropospheric ozone is less well-mixed than observations suggest.
 The mid-troposphere (300--450~hPa) frequency distributions are much more similar in both mean
-and width, with $78\pm17$~ppbv and $82\pm19$~ppbv for WRF-Chem and TES
-respectively.
+and width, with $78\pm17$~ppbv and $82\pm19$~ppbv for WRF-Chem and TES, respectively.
 
-The above evaluations against TES retrievals show that while ozone is overestimated in the upper
+The comparison against TES retrievals shows that while ozone is overestimated in the upper
 troposphere, the existence of the ozone enhancement and its location are well-simulated.
 Some drawbacks of using TES are the results' dependencies on a priori constraints and sparse
 temporal resolution.
 
-\subsubsection{Evaluation against IONS-06}
 
-% IONS-06 comparison
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/o3/ions_huntsville.png} \\
- \noindent\includegraphics[width=20pc]{figures/o3/o3_colorbar.png}
- \caption{WRF-Chem ozone vertical profiles in ppbv during August IONS-06 ozonesonde launches at
-Huntsville, Alabama and the relative bias against the measured ozone mixing ratios. Horizontal
-dashed lines indicate the 300~hPa levels in each panel.}
- \label{fig:huntsville}
- \end{figure}
+
+\subsubsection{Evaluation against IONS-06}
 
 To complement the evaluation against TES, we use ozonesonde
 profiles taken during the INTEX-B Ozonesonde Network Study of 2006
@@ -383,6 +379,19 @@ distributions \citep[e.g.][]{Cooper:2007cr}, inferring local ozone sources
 \citep[e.g.][]{Thompson:2008rp}, and evaluations of air quality models
 \citep[e.g.][]{Tarasick:2007dq} and satellite retrievals \citep[e.g.][]{Nassar:2008mw}.
 
+% IONS-06 comparison
+\begin{wrapfigure}{o}{0.5\textwidth}
+	\centering
+	\begin{singlespacing}
+ \noindent\includegraphics[width=0.48\textwidth]{Figures/o3/ions_huntsville.png} \\
+ \noindent\includegraphics[width=0.48\textwidth]{Figures/o3/o3_colorbar.png}
+	\caption[Comparison against Huntsville ozonesonde]{{\small\textbf{Comparison against Huntsville ozonesonde} ---
+	WRF-Chem ozone vertical profiles in ppbv during August IONS-06 ozonesonde launches at Huntsville, Alabama and
+	the relative bias against the measured ozone mixing ratios. Horizontal dashed lines indicate the 300~hPa levels in each panel.}}
+	\label{fig:huntsville}
+	\end{singlespacing}
+\end{wrapfigure}
+
 Ozonesondes launched during August 2006 within the model domain are compared
 to WRF-Chem ozone vertical profiles. As an example, comparison at Huntsville, Alabama
 is shown in Figure~\ref{fig:huntsville}. Despite the prevalent over-prediction of ozone
@@ -390,15 +399,15 @@ concentration in the upper troposphere, the timing of the occurrences of upper
 tropospheric ozone enhancement episodes corresponds well with ozonesonde
 measurements. Specifically, termination of the first enhancement on August~11
 followed by a drop in ozone throughout the entire column is seen in both WRF-Chem
-results and the ozonesonde profiles. Similarly, the termination of the second
+results and the ozonesonde profiles. Similarly, the onset and termination of the second
 enhancement on August~23/24  is also simulated. These events are likely caused by
 the synoptic movements of the enhancement controlled by dynamical features. Over
 all North American sites within the model domain, we find that the simulated ozone
-mixing ratios above 200~hPa is a factor of 2--3 higher, for which the reason will
-be explained in the second part of this manuscript.
+mixing ratios above 200~hPa is a factor of 2--3 higher because convective detrainment
+is occurring at these high altitudes, which will be discussed in more details in the the next chapter.
 
 In conclusion, WRF-Chem is able to simulate an upper tropospheric ozone enhancement
-that coincides with the ``anticyclone region'' defined earlier, but the ozone mixing ratios
+that coincides with the ``anticyclone region,'' but the ozone mixing ratios
 are overestimated primarily in the upper troposphere. Despite the high bias,
 spatiotemporal variabilities controlled by large-scale dynamics are observed at individual
 locations affected by the ozone enhancement.
@@ -411,30 +420,37 @@ monoxide (CO) is widely used for tracking boundary layer air and pollutants
 combustion, CO  is an excellent indicator for anthropogenic emission sources and
 biomass burning. It is also produced chemically through OH oxidation of a wide range
 of VOCs. Furthermore, its 2--3 month lifetime in the troposphere allows CO to be an
-effective long-range tracer.
+effective tracer for long-range transport.
 
 % Carbon Monoxide map
  \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/co/tes08_co.png}
- \caption{Same as Figure~\ref{fig:o3_map}, except for carbon monoxide.}
+ \noindent\includegraphics[width=40pc]{Figures/co/tes08_co.png}
+ \caption[August mean CO at 300~hPa]{Same as Figure~\ref{fig:o3_map}, except for carbon monoxide.}
  \label{fig:co_map}
  \end{figure}
 
 Figure~\ref{fig:co_map}a shows the August mean CO mixing ratio at 300~hPa. At the
-center of the NAM circulation is a distinct CO maximum over northeastern Texas. This
+center of the anticyclone circulation is a distinct CO maximum over northeastern Texas. This
 feature may be the result of a combination of CO accumulating via the NAM circulation
 and local convective detrainment of boundary layer air. Considering the Texas/Arkansas region
-shows a high bias in convective activities (Sect.~\ref{sect:val/met}), this feature
+shows a high bias in convective precipitation (Sect.~\ref{sect:val/met}), this feature
 should be weaker than shown. On the other hand, the high CO simulated over
 Georgia and neighboring states may have been underestimated because of the
 under-prediction in convection along the Blue Ridge Mountains. North of the
-jet stream, anomalously high CO found near the tropopause is a result of transported from the
+jet stream, anomalously high CO found near the tropopause is a result of CO being transported from the
 western domain boundary. This influx of CO can be linked to intercontinental transport
 of widespread wild fires across the Siberian plateau during July. Between these two regions
 of high CO is an air mass with low CO and low ozone transported from the
-subtropical Pacific into the inner CONUS between the 9600 and 9700 isohypses.
+subtropical Pacific into the inner CONUS between the 9600 and 9700~m isohypses.
 
 \subsubsection{Evaluation against TES retrievals}
+
+% TES-WRF CO transect comparisons
+ \begin{sidewaysfigure}
+ \includegraphics[width=50pc]{Figures/co/transect_mosaic.pdf}
+ \caption[Transect-by-transect comparison against TES CO]{Same as Figure~\ref{fig:o3_transect}, except for carbon monoxide.}
+ \label{fig:co_transect}
+ \end{sidewaysfigure}
 
 To evaluate the predicted CO, we compare WRF-Chem results
 against TES CO products. The instrument characteristics of TES are already described
@@ -443,7 +459,7 @@ Measurements of Pollution in the Troposphere (MOPITT) satellite
 retrievals~\citep{Luo:2007ly,Ho:2009lh} and aircraft
 measurements~\citep{Luo:2007vn,Lopez:2008ys}. These studies found that TES CO products
 show slightly lower column CO values compared to MOPITT and a $\pm10\%$ bias
-relative to in-situ measurements. The primary contributions being smoothing errors
+relative to in-situ measurements. The primary contributions to the bias are smoothing errors
 and the dependency on the a priori constraint used for TES retrieval. Except for instances
 of poor spatiotemporal coincidences, correlation coefficients between in-situ measurements
 and TES retrievals are between 0.61 and 0.92. Therefore, while retrieval values may
@@ -456,28 +472,12 @@ investigate the global O$_3$-CO correlation. We compare WRF-Chem CO
 to the TES CO product using the procedure outlined in Equation~\ref{eqn:TES-AK},
 similar to the comparison done with ozone in the  previous section except for a
 minimum degrees of freedom of 0.8 and without the C-curve flag.
-
 Similar to ozone, the August model output has been subsampled and transformed
-in Figure~\ref{fig:co_map} to compare with the gridded TES monthly average. The mixing
-ratio value is seen substantially overestimated though spatial variability is captured.
-
-% TES-WRF CO transect comparisons
- \begin{sidewaysfigure}
- \includegraphics[width=50pc]{figures/co/transect_mosaic.pdf}
- \caption{Same as Figure~\ref{fig:o3_transect}, except for carbon monoxide.}
- \label{fig:co_transect}
- \end{sidewaysfigure}
-
-% TES-WRF CO freuency distribution comparisons
- \begin{figure}
- \noindent\includegraphics[width=20pc]{figures/co/co_teswrfhist.eps} % png available
- \caption{Same as Figure~\ref{fig:o3_distr}, except for carbon monoxide and TES-adjusted
-MOZART distributions are also provided for reference.}
- \label{fig:co_distr}
- \end{figure}
+in Figure~\ref{fig:co_map} to compare with the gridded TES monthly average. The predicted mixing
+ratio value is seen substantially overestimated although the spatial variability is represented well.
 
 Figure~\ref{fig:co_transect} shows the WRF-Chem
-CO mapped onto Tthe ES transects along with TES CO products. WRF-Chem is
+CO mapped onto the TES transects along with TES CO products. Again, WRF-Chem is
 biased high in the mid-to-upper troposphere. There are three possible causes for a high
 bias in CO. The first being an underestimation of the CO loss rate, governed by dry deposition
 and chemical losses via CO + OH, which may be subsequently attributed to photolysis
@@ -486,8 +486,20 @@ possible cause is an overestimation of boundary layer air detrainment. Even thou
 precipitation has been under-predicted overall (Sect.~\ref{sect:val/met}), there is
 substantial over-prediction in the frequencies of light precipitation events
 $<15$~mm/day~(Figure~\ref{fig:precip_ts}b). Finally, the high bias may be due to the
-application of the TES averaging kernel as the MOZART distribution, though not utilized within
-the interior of the WRF-Chem simulation, also shows a high bias (Figure~\ref{fig:co_distr}).
+application of the TES averaging kernel and a priori constraint. Though not utilized
+within the interior of the WRF-Chem simulation, the MOZART model output also
+shows a high bias when compared to TES (Figure~\ref{fig:co_distr}).
+
+% TES-WRF CO freuency distribution comparisons
+\begin{wrapfigure}{o}{0.5\textwidth}
+	\centering
+	\begin{singlespacing}
+	\includegraphics[width=0.48\textwidth]{Figures/co/co_teswrfhist.eps}
+	\caption[WRF-Chem and TES CO frequency distributions]{{\small\textbf{WRF-Chem and TES CO frequency distributions} ---
+	Same as Figure~\ref{fig:o3_distr}, except for carbon monoxide and TES-adjusted MOZART distributions are also provided for reference.}}
+	\label{fig:co_distr}
+	\end{singlespacing}
+\end{wrapfigure}
 
 While there is a high bias in the upper troposphere connected to convective transport
 or loss rate, there is a low bias at northern latitudes within the lower-to-mid troposphere.
@@ -506,17 +518,28 @@ The CO frequency distributions from the WRF-Chem results and TES CO retrievals f
 between 25--40$^\circ$ are shown in Figure~\ref{fig:co_distr}. The computed
 mean values for the upper tropospheric distributions are 85~ppbv and 68~ppbv for
 WRF-Chem and TES respectively, and thus WRF-Chem is 26\% too high.
-In the mid-troposphere, the mean mixing ratios are 100~ppbv and 81~ppbv , thus
+In the mid-troposphere, the mean mixing ratios are 100~ppbv and 81~ppbv, thus
 WRF-Chem is 22\% higher.
 
 \subsection{Nitrogen Oxides}\label{sect:val/nox}
+
+% SCIAMACHY NO2 validation
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{Figures/scia_no2.png}
+ \caption[Model vs. observed \chem{NO_2} tropospheric columns]{(a) Frequency distributions of WRF-Chem and SCIAMACHY NO$_2$ tropospheric
+VCDs in $10^{15}$~molec~cm$^{-2}$ during July and August 2006.
+(b) Mean WRF-Chem tropospheric VCDs in $10^{15}$~molec~cm$^{-2}$
+with pixel density indicating the number of samples used (up to $n=15$ but saturates at
+10) at each grid point. (c) Same as c, but for SCIAMACHY.}
+ \label{fig:scia_no2}
+ \end{figure}
 
 To evaluate the model's output of NO$_{\mathrm{x}}$, we compare tropospheric NO$_2$
 vertical column densities (VCDs) to retrievals from the Scanning Imaging Absorption
 Spectrometer for Atmospheric Chartography (SCIAMACHY) instrument on board of the
 Environmental Satellite (ENVISAT) \citep{Burrows:1995fk,Bovensmann:1999uq}. The
 instrument measures scattered and reflected sunlight in the thermal IR spectral range,
-providing sensitivity to trace gases in the troposphere such as NO$_2$ and HCHO. The
+providing sensitivity to trace gases in the troposphere such as NO$_2$ and formaldehyde (HCHO). The
 retrieval used in this study is developed at the Royal Netherlands Meteorological
 Institute~(KNMI) and obtained via the Tropospheric Emission Monitoring Internet
 Service~(TEMIS) project (http://www.temis.nl). The retrieval algorithm uses the Differential
@@ -529,26 +552,14 @@ $3.5\times10^{15}$~molec~cm$^{-2}$. The differences between retrievals have been
 attributed mostly to the tropospheric air mass factor \citep{vanderA:2010aa}, which has
 a sensitivity to cloud fractions of up to 20\% \citep{Boersma:2004uq}.
 
-% SCIAMACHY NO2 validation
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/scia_no2.png}
- \caption{(a) Frequency distributions of WRF-Chem and SCIAMACHY NO$_2$ tropospheric
-VCDs in $10^{15}$~molec~cm$^{-2}$ during July and August 2006. A log-log plot of the
-tropospheric VCDs and the corresponding minimized $\chi^2$ linear fit and correlation
-coefficient $r^2$. (c) Mean WRF-Chem tropospheric VCDs in $10^{15}$~molec~cm$^{-2}$
-with pixel density indicating the number of samples used (up to $n=15$ but saturates at
-10) at each grid point. (d) Same as c, but for SCIAMACHY.}
- \label{fig:scia_no2}
- \end{figure}
-
 For the comparison, each SCIAMACHY tropospheric VCD data point is associated with
 a single WRF-Chem column determined by rounding the time of measurement to the
 nearest model output time (3-hourly). Due to ENVISAT's orbit, all measurements are
-taken between 15--21~UTC. Matched WRF-Chem NO$_2$ partial columns are then
+taken between 15--21~UTC. Matched WRF-Chem NO$_2$ tropospheric columns are then
 accumulated using the tropospheric VCD averaging kernel for levels below the
 tropopause index computed using the WMO tropopause definition and provided with the satellite product. Over 61 days,
 $5.2\times10^5$ pixels were selected. An individual model grid receives anywhere between 0
-to 15 pixels, which is less than 20 ($\approx$61 days/3 days per global survey) due
+to 15 pixels, which is less than 20 pixels ($\approx$61 days/3 days per global survey) due
 to rejected measurements.
 
 Using this procedure, the frequency distributions of WRF-Chem and SCIAMACHY
@@ -560,7 +571,7 @@ in tropospheric column retrievals are permitted because of the retrieval process
 which involves estimating and subtracting the stratospheric NO$_2$ partial column.
 Despite the differences in the distributions, the modes for both distributions are
 $\sim0.5\times10^{15}$~molec~cm$^{-2}$, consisting mostly of data points from
-the Pacific marine columns, Idaho/Montana, and Canada. Spatial distributions of
+the Pacific marine columns, Idaho/Montana, and Canada. Spatial distributions (Figure~\ref{fig:scia_no2}b,c) of
 most regions are well-simulated with a high bias in regions with high flash
 rates of $\sim2\times10^{15}$~molec~cm$^{-2}$, over a background of 0.5--1$\times 10^{15}$~molec~cm$^{-2}$,
 which is within the potential range of retrieval biases.
@@ -568,17 +579,17 @@ which is within the potential range of retrieval biases.
 \subsection{Evaluation summary}\label{sect:val/summary}
 
 A case study simulation is performed using WRF-Chem with specific physics and
-chemistry options described in Section~\ref{sect:setup} for the 2006 North American
+RADM2 chemistry options described in Section~\ref{sect:setup} for the 2006 North American
 Monsoon. We found that the model produces the following results compared to
 various in situ or remote sensing observations:
 \begin{enumerate}
-\item Convective strength, proxied by precipitation, is generally distributed similar to observations, but
+\item Convective strength, proxied by precipitation, is generally distributed similarly to observations, but
 with an overall underestimation in integrated rainfall while overestimating at certain locations;
 \item Lightning flash rate is estimated to be within the range of variability of the NLDN CG flash counts when using
 a scaling factor of $0.1$ and an approximated bulk IC\,:\,CG ratio of 3\,:\,1;
 \item Ozone is over-predicted by $\sim20\%$ in the upper troposphere but largely consistent
 with TES retrievals in the mid-to-upper troposphere in terms of spatiotemporal and frequency distributions;
-\item Carbon monoxide (CO) is also over-predicted compared to TES retrievals in the upper troposphere;
+\item Carbon monoxide (CO) is over-predicted by $\sim26\%$ compared to TES retrievals in the upper troposphere;
 \item NO$_2$ VCDs are simulated within the range of retrieval uncertainties.
 \end{enumerate}
 
@@ -586,24 +597,13 @@ with TES retrievals in the mid-to-upper troposphere in terms of spatiotemporal a
 
 While the ozone enhancement occurs in the upper troposphere largely within the ``anticyclone
 region,'' as previously defined as the columns with an August mean geopotential height of 9730~m
-or greater, the air the comprises of the enhancement volume originates from various regions and
-sources. Thus to reconcile the composition and air mass sourcing, we examine tracer-tracer
+or greater, the air that comprises the enhancement volume originates from various regions and
+sources. Thus, to connect the composition and air mass sourcing, we examine tracer-tracer
 correlations and passive tracer diagnostics, as described in Section~\ref{sect:setup}.
 
 \subsection{O$_3$-CO relation}\label{sect:diag/tracer}
 
-% Tracer map
- \begin{figure}
-	\noindent\includegraphics[width=20pc]{figures/o3co.eps} % png available
-	\caption{O$_3$-CO joint-distributions (a) inside ($\overline{Z}_{300}>9730$~m)
-	and (b) outside (9710~m$<\overline{Z}_{300}<$9730~m) the anticyclone region for
-	the upper troposphere (100--300~hPa), lower troposphere ($>700$~hPa), and mid-troposphere (300--700~hPa).
-	Contours are calculated in log-scale with 10 levels between $10^{-3}$ to $10^{-1}$~\%~ppbv$^{-2}$.
-	Features ``X'' and ``+'' are used for discussions in Sect.~\ref{sect:diag}.}
- 	\label{fig:o3co}
- \end{figure}
-
-The relationship between ozone and carbon monoxide ({CO}) has been
+The relationship between ozone and carbon monoxide has been
 used to study the tropospheric-stratospheric transition in chemical regimes
 \citep[e.g.][and references therein]{Pan:2007sw,Hegglin:2009fk}. Similarly,
 such analysis may be applied to tropospheric data alone to identify contributions
@@ -614,38 +614,62 @@ has high values near the tropopause because of transport from the stratosphere.
 Together, the {O$_3$-CO} anti-correlation over a sufficiently expansive column
 can expect to form an ``L''-shaped joint distribution.
 
+% Tracer joint distribution
+\begin{wrapfigure}{o}{0.5\textwidth}
+	\centering
+	\begin{singlespacing}
+	\includegraphics[width=0.48\textwidth]{Figures/o3co.eps}
+	\caption[O$_3$-CO joint-distributions]{{\small
+	O$_3$-CO joint-distributions (a) inside ($\overline{Z}_{300}>9730$~m)
+	and (b) outside (9710~m$<\overline{Z}_{300}<$9730~m) the anticyclone region for
+	the upper troposphere (100--300~hPa), lower troposphere ($>700$~hPa), and mid-troposphere (300--700~hPa).
+	Contours are calculated in log-scale with 10 levels between $10^{-3}$ to $10^{-1}$~\%~ppbv$^{-2}$.
+	Features ``X'' and ``+'' are used for discussion in Sect.~\ref{sect:diag}.}}
+	\label{fig:o3co}
+	\end{singlespacing}
+\end{wrapfigure}
+
 Figure~\ref{fig:o3co} shows the joint-distributions at three separate pressure ranges
 computed both inside ($\overline Z_{300}>9730$) and immediately
 outside ($9710<\overline Z_{300}<9730$) the anticyclone north of 25$^\circ$N for
 August between 15--21~UTC. Both distributions exhibit the expected ``L''-shaped
-structure. The most frequency mixing ratios (modes) are near 55~ppbv~CO/70~ppbv~O$_3$ and 55~ppbv~CO/50~ppbv~O$_3$ for
-upper troposphere and mid-troposphere, respectively, in both within and just outside the anticyclone.
+structure. The most frequent mixing ratios (modes) are near 55~ppbv~CO/70~ppbv~O$_3$ and 55~ppbv~CO/50~ppbv~O$_3$ for
+upper troposphere and mid-troposphere, respectively, for both within and just outside the anticyclone.
 However, the mode inside the anticyclone is 68~ppbv~CO/30~ppbv~O$_3$ while that
 just outside of the anticyclone is 52~ppbv~CO/17~ppbv~O$_3$ for levels below 700~hPa
 because of the large number of remote data points.
-In addition, data points with both high CO and high O$_3$ (feature ``X'' in Figure~\ref{fig:o3co})
+
+While there are many similarities between inside and just outside the anticyclone seen in the O$_3$-CO correlation,
+there are differences. The regime wherein both CO and O$_3$ are high indicates photochemical production is active.
+The data points with both high CO and high O$_3$ (feature ``X'' in Figure~\ref{fig:o3co})
 are more commonly found within the anticyclone in the upper troposphere and only
-found within the mid-troposphere within the anticyclone, indicating that chemical
-production in the mid-to-upper troposphere is indeed enhanced. Finally, there is
-a relatively larger fraction of data points within the mid-troposphere with both low CO
+found within the mid-troposphere within the anticyclone. Thus, chemical
+production in the mid-to-upper troposphere is indeed enhanced within the anticyclone region compared to outside the anticyclone.
+There is also a relatively larger fraction of data points within the mid-troposphere with both low CO
 and low O$_3$ outside the anticyclone (feature ``+'' in Figure~\ref{fig:o3co}), which
-is comprised largely of air diluted by clean sources from the Pacific.
+is comprised largely of clean air from the Pacific.
 
 \subsection{Air mass tracers}\label{sect:diag/passive}
 
-Air mass passive, i.e. non-reactive, tracers can be used to diagnose the contribution of different tropospheric
+% Tracer map
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{Figures/tracer_maps.png}
+ \caption[August mean passive tracer at 300~hPa]{Passive tracer values (left column) and ages (right column) at 300~hPa averaged for August. The
+9710~m and 9730~m geopotential heights are also shown.}
+ \label{fig:tracer}
+ \end{figure}
+
+Air mass passive (non-reactive) tracers can be used to diagnose the contribution of different tropospheric
 regions to the upper tropospheric anticyclone. Tracers released from the lateral
 boundaries (BC), the boundary layer (BL), the stratosphere (ST), and with lightning
-NO$_{\mathrm{x}}$ are shown in Figure~\ref{fig:tracer}. The impact of the NAM circulation is
+NO$_{\mathrm{x}}$ are shown in Figure~\ref{fig:tracer}. The impacts of the NAM circulation
+and its associated anticyclone region are
 clearly shown in the spatial distribution of the lateral boundary (BC) tracer
 (Figure~\ref{fig:tracer}a). Within the anticyclone region ($\overline Z_{300}>$9730~m),
-the air mass a mean of $97.6\pm0.3\%$ of BC tracer over August, but normalizes
-to $86\pm2\%$ as a fraction of the total ($\equiv$BC+BL+ST). Taking into account
-loss of characteristics over time, BC tracer value within the anticyclone may be substantially
-reduced to no more than $1.2\pm1.8\%$ with the 1-day decaying tracer, compared to
-$8.2\pm9.5\%$ immediately outside the anticyclone between 9710 and 9730~m.
-Thus, the impact of air from the boundary
-condition, e.g. clean subtropical Pacific air, on the ozone enhancement is minimal.
+the air mass has a grid-temporal-mean of $97.6\pm0.3\%$ ($\sigma^2$ computed from
+spatial variance) of BC tracer over August. A strong
+gradient is simulated as air is unable to mix across the western boundary of the anticyclone,
+resulting in little to no dilution of the anticyclone air with the clean, low O$_3$ from the subtropical Pacific.
 
 The lightning NO$_{\mathrm{x}}$ tracer (LT) also shows substantial localized
 enhancement within the anticyclone (Figure~\ref{fig:tracer}g). The observed eastward
@@ -653,110 +677,74 @@ shift from the 9730~m contour can be explained by the overall higher lightning
 flash rate in the southeastern United States. The maximum accumulated passive
 LT tracer is 3~ppbv within the anticyclone.
 
-% Tracer map
- \begin{figure}
- \noindent\includegraphics[width=40pc]{figures/tracer_maps.png}
- \caption{Passive tracer values (left column) and ages (right column) at 300~hPa averaged for August.
-9710~m and 9730~m geopotential heights are also shown.}
- \label{fig:tracer}
- \end{figure}
+On the other hand, the boundary layer (BL) tracer has only a small correlation with the shape or positioning of the anticyclone.
+The lack of a distinct region of BL air within the region marked by the average 9730~m geopotential height could be
+due to the movement of the anticyclone during the month of August. The location of the 9730~m geopotential height on
+specific days during the month (Figure~\ref{fig:o3_transect} or \ref{fig:co_transect}) is often offset from the average location
+(Figure~\ref{fig:tracer}). Thus, depending on the location of the daily anticyclone, the BL air may be circulated to regions
+outside the average location of the anticyclone once it is lofted via convection. Furthermore, spatial distribution of
+convective precipitation (Figure~\ref{fig:precip_sd}) is not distributed according to the circulation, thus BL air is detrained
+across CONUS inside and outside the anticyclone region. The stratospheric (ST) tracer has a similar
+curvature as the anticyclonic circulation on the western portion of the anticyclone, but does not show a gradient across
+the eastern boundary of the anticyclone because of the influx of high ozone air associated with mesoscale eddies in the region
+of strong wind shear near the jet in the continental outflow region along the eastern seaboard \citep[see][]{Konopka:2010fk}.
 
-On the other hand, the boundary layer (BL) tracer shows little correlation with
-the shape or positioning of the anticyclone. Instead, the features of the tracer
-at 300~hPa are dominated by the orographic influence from the Rocky Mountains
-near 115$^\circ$W (Figure~\ref{fig:tracer}c). Similarly, the stratospheric (ST) tracer
-shows negligible influence from the anticyclonic circulation except for the influx
-of air with high ozone associated with mesoscale eddies in the region of strong
-wind shear near the jet in the continental outflow region along the eastern seaboard.
-
-The ``equivalent'' age of the tracer can be estimated based on the procedure described in Section~\ref{sect:setup}
-Due to mixing by processes such as injection of fresh BL air by convective outflow,
-the age values may not be interpreted literally. Alternatively, one may interpret
-an air mass of a certain age as having the same expected characteristics as a
-purely aging parcel of the same age. Both BC and LT ages show clear distinctions
+The ``equivalent'' age of the tracer can be estimated based on the logarithmic ratio of the passive to decaying tracers (Section~\ref{sect:setup}).
+Due to mixing by processes such as injection of fresh BL air by convective outflow into aged BL air,
+the age values should not be interpreted literally, but it gives us an idea of the general characteristics of the air mass.
+Both BC and LT ages show clear distinctions
 across the anticyclone region boundary. The range of ages for the BC tracer within
-the anticyclone is $4.7\pm0.8$~days, while the range immediately outside the anticyclone
-between 9710~m and 9730~m is $3.0\pm1.0$~days. LT tracer age ranges from 10.9--21.8~hrs
+the anticyclone is 3.9--5.5~days, while the range immediately outside the anticyclone
+between 9710~m and 9730~m is 2--5~days. LT tracer age ranges from 10.9--21.8~hrs
 within the anticyclone and 13.1--22.5~hrs just outside. Since the LT distribution is
 heavily influenced by areas with high lightning flash frequency, young LT tracers
 are expected and found  only within the eastern $\sim2/3$ of the anticyclone as
 well as towards the outflow region. Similar to tracer values, neither BL nor ST tracer ages show
 any differences across the anticyclone region boundary. BL and ST ages inside
 the anticyclone are $3.8\pm0.6$~days and $5.3\pm1.1$~days respectively, while
-the ages just outside the anticyclone are $4.1\pm0.7$~days for BL and $5.5\pm1.4$~days for ST.
+the ages just outside the anticyclone are $4.1\pm0.7$~days for BL and $5.5\pm1.4$~days for ST tracers.
 
-\section{Discussion}\label{sect:disscusion}
-
-The North American Monsoon upper tropospheric ozone enhancement has
-been studied previously by \citet{Li:2005ss},
-\citet{Cooper:2006dq,Cooper:2007cr,Cooper:2009nx}, and \citet{Barth:2012qf}.
-Among these studies, \citet{Cooper:2007cr} and \citet{Barth:2012qf} also focused
-on the 2006 North American Monsoon due to the stronger anticyclone
-and availability of additional measurements from IONS-06. However, despite
-being ``stronger,'' the circulation is often offset from the mean state and its center is
-occasionally seen over California \citep{Barth:2012qf}. Therefore, despite the
-ozone mean showing enhanced concentration over the southern United States, coinciding
-with the mean monsoonal circulation, the instantaneous positions of the anticyclone are
-often not correlated with the mean ozone enhancement seen in the Figure~\ref{fig:o3_map}.
-Nonetheless, enhanced mean upper tropospheric ozone over the southern United States
-has real consequence on the radiative budget \citep{Cooper:2007cr}.
-
-Despite overestimation of ozone concentration, the positioning of the mean ozone
-enhancement is largely consistent with \citet{Cooper:2007cr}, which only
-requires the simulated synoptic dynamics to be similar. Furthermore, both our simulations
-show low ozone coming in from the Pacific, producing the sharp gradient that forms
-the western edge of the mean ozone enhancement. Finally, enhanced lightning
-NO$_{\mathrm{x}}$ is also found within the NAM circulation in both studies.
-
-We found that boundary layer and stratospheric tracers concentrations
-and ages in the upper troposphere within the anticyclone is not substantially different from
-those outside the circulation. On the other hand, tracer diagnostics show that the mean lateral
-boundary tracer age is about a day older inside the anticyclone. Thus, we hypothesize
-that a driver for the apparent ozone enhancement is not that of internal accumulation of
-convectively-detrained boundary layer ozone precursors, but rather the lack of
-external factors such as dilution by clean air masses from the Pacific.
-
-Moreover, despite LNO$_{\mathrm{x}}$ tracer being higher within the anticyclone, the
-lower concentration on the western 1/3 over the Rocky Mountain indicate that the
-primary driver for the tracer enhancement may not be the circulation, but rather the
-coincidence of high flash rate regions, VOC emission sources \citep{Barth:2012qf}, and the lack of external
-influence.
-
-\section{Summary}\label{sect:summary}
+\section{Discussion and Summary}\label{sect:summary}
 
 Using the Weather Research and Forecasting model with Chemistry (WRF-Chem),
 we have simulated the upper tropospheric ozone enhancement during the North
 American Monsoon in 2006 and evaluated its sources of variability using tracer
 diagnostics computed within the model. Despite overestimation of upper tropospheric
 ozone and carbon monoxide, evaluated against TES satellite retrievals, we found that the positioning
-of the mean ozone enhancement is consistent with that found by \citet{Cooper:2007cr}.
+of the mean ozone enhancement is consistent with that found by \citet{Cooper:2007cr} and seen in the TES retrievals.
 Furthermore, with a tuned lightning parameterization, we found that our 
-NO$_2$ vertical column density is also within retrieval bias of the SCIAMACHY
+NO$_2$ vertical column density is within retrieval bias of the SCIAMACHY
 product used.
 
 By examining the O$_3$-CO relation, not only did we find enhanced chemical production
 within the anticyclone, but heightened presence of air with both low O$_3$ and low CO
 immediately outside the anticyclone at the mid-to-upper troposphere levels, indicating the existence of a
-source for dilution outside. Conversely, clean air from the southwestern model
+source for dilution outside the anticyclone. Conversely, clean air from the southwestern model
 boundary is steered away from the mean circulation region, thus the absence of
 dilution adjacent to diluted region partially contributed to the observed ``enhancement''
 gradients.
 
-Passive tracers computed along with the model simulation reveal that
+Passive tracers, computed along with the model simulation, reveal that
 contrary to previous studies \citep[e.g.][]{Li:2005ss,Cooper:2007cr,Barth:2012qf},
-boundary layer sourced tracer and stratospheric sourced tracer are not simulated
-to be accumulating within the North American Monsoon circulation. On the other
-hand, it is shown that the air within the anticyclone lacks lateral boundary tracer,
+boundary layer sourced tracer and stratospheric sourced tracer are simulated
+to have about the same value both within the North American Monsoon circulation and
+outside the anticyclone. On the other
+hand, it is shown that the air within the anticyclone has lower values of lateral boundary tracer,
 which includes clean air from locations such as the Pacific that can cause significant
 dilution outside. Thus, we hypothesize that the appearance of the ozone
-enhancement is not due to accumulation of boundary layer precursors as
-stated by \citet{Li:2005ss}. Instead, the lack of dilution is the primary cause. Finally,
+enhancement is not solely due to accumulation of boundary layer precursors as
+stated by \citet{Li:2005ss}, but also due to the lack of dilution relative to the Pacific Northwest. Finally,
 consistent with \citet{Cooper:2007cr}, lightning NO$_{\mathrm{x}}$ tracer shows enhanced values
 within the eastern-$2/3$ of the anticyclone, which subsequently enhances
 chemical production. However, the occurrence of this tracer enhancement
 can also be attributed to coincidence of regions with high flash rates instead
 of simply due to dynamics.
 
-In the next chapter, we shall examine further the dynamical and chemical
-structure associated with the enhancement as well as the associated sensitivities
+Finally, while $\mathrm{LNO_x}$ tracer shows an enhanced mean within the anticyclone region,
+the lower concentration on the western $1/3$ over the Rocky Mountains indicate that
+the primary driver may not be the circulation, but rather the coincidence of high flash rate
+regions with the mean 9730~m geopotential height. To understand how lightning
+contributes to the observed ozone enhancement and its spatiotemporal variability,
+in the next chapter, we examine further the dynamical and chemical
+structure associated with the enhancement as well as the sensitivity of O$_3$ within the anticyclone
 to lightning NO$_{\mathrm{x}}$ emission.
