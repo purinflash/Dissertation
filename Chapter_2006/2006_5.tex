@@ -5,6 +5,23 @@
     \graphicspath{{Chapter_2006/figures/EPS/}{Chapter_2006/}}
 \fi
 
+Previous studies have identified upper tropospheric enhancements of ozone associated with the monsoons above North America,
+\citep[][and references therein]{Li:2005ss,Cooper:2009nx}, Asia \citep{Park:2007bh,Worden:2009ve},
+and equatorial Africa \citep{Bouarar:2011ly} during summers.
+\citet{Cooper:2007cr} calculated an ozone enhancement of 29--52~ppbv between 10--11~km
+above Huntsville, Alabama. The observed upper tropospheric ozone enhancement has
+been linked to the North American Monsoon (NAM) anticyclonic circulation, which traps ozone
+precursors that subsequently enhance ozone production \citep{Li:2005ss}. \citet{Cooper:2009nx}
+showed that more than 80\% of the upper tropospheric NO$_\mathrm{x}$
+($\equiv\mathrm{NO}+\mathrm{NO_2}$) within the enhancement
+is due to lightning, and that it is responsible for 25--30~ppbv ozone at 250~hPa. Furthermore,
+it has been estimated that the ozone enhancement generates a positive radiative forcing of about
+0.50~W\,m$^{-2}$ \citep{Cooper:2007cr,Choi:2009bh}. While these studies presented an overarching
+picture to explain the formation of the enhanced ozone and quantify its consequences, the details
+of the underlying physical and chemical processes remain unexplored. These previous studies also
+did not examine the nonlinearity
+of the sensitivity of ozone to the lightning-generated $\mathrm{NO_x}$ ($\mathrm{LNO_x}$) tested.
+
 This chapter examines the upper tropospheric ozone enhancement's spatial and
 temporal structures to quantify the advective, chemical, convective transport, and vertical
 mixing tendencies of upper tropospheric ozone during the North American Monsoon.
@@ -14,7 +31,7 @@ on analyses pertaining to the potential effects of $\mathrm{LNO_x}$
 on the ozone enhancement and addresses the following questions:
 \begin{enumerate}
 \item What is the vertical structure of the ozone chemical tendency? In order words,
-at which levels is the net chemical production positive?
+at which levels are ozone being produced?
 \item How does ozone chemistry respond to changes in $\mathrm{LNO_x}$ emission?
 \item What are the secondary effects of the response of ozone chemistry on $\mathrm{LNO_x}$ emission?
 \end{enumerate}
@@ -22,6 +39,19 @@ at which levels is the net chemical production positive?
 \section{Model and methods}\label{sect:model}
 
 \subsection{Model setup}
+
+% Ozone map
+\begin{wrapfigure}{o}{0.5\textwidth}
+	\centering
+	\begin{singlespacing}
+	\vspace{-.4in}
+	\includegraphics[width=0.48\textwidth]{Figures/o3_map.png}
+	\caption[Simulated August mean ozone and geopotential heights at 300~hPa]{{\small
+	Simulated ozone (ppbv) and geopotential height (m) at 300~hPa averaged for August 2006. The three locations indicated on the map
+	are used for the tendency analysis in Section~\ref{sect:tendency}.}}
+	\label{fig:o3_map2}
+	\end{singlespacing}
+\end{wrapfigure}
 
 Figure~\ref{fig:o3_map2} shows the model domain for the WRF-Chem simulation performed
 for the 2006 North American Monsoon case study at 36~km horizontal grid size. Meteorology
@@ -33,25 +63,13 @@ as the cloud top height input for the
 \citet{Price:1992wb} lightning parameterization and scale the resulting flash rate down by a factor of 10 to obtain flash rates within $\sim7\%$ of
 the National Lightning Detection Network \citep[NLDN;][]{Cummins:2009aa} observations.
 
-The Regional Acid Deposition Model (RADM2) \citep{Stockwell:1990ez} is used for
-the chemical mechanism with the fast Tropospheric Ultraviolet-Visible (FTUV)
-\citep{Tie:2003ve} photolysis scheme. Boundary and initial chemical conditions are defined
+The Regional Acid Deposition Model \citep[RADM2;][]{Stockwell:1990ez} is used for
+the chemical mechanism with the fast Tropospheric Ultraviolet-Visible
+\citep[FTUV;][]{Tie:2003ve} photolysis scheme. Boundary and initial chemical conditions are defined
 by outputs from the Model for OZone and Related chemical Tracers (MOZART-4)
 global chemistry model \citep{Emmons:2010fk}.
 Additional model physics and chemistry options, as well as evaluation against
 in-situ and remote sensing observations are described in the previous chapter.
-
-% Ozone map
-\begin{wrapfigure}{o}{0.5\textwidth}
-	\centering
-	\begin{singlespacing}
-	\includegraphics[width=0.48\textwidth]{Figures/o3_map.png}
-	\caption[Simulated August mean ozone and geopotential heights at 300~hPa]{{\small
-	Simulated ozone (ppbv) and geopotential height (m) at 300~hPa averaged for August 2006. The three locations indicated on the map
-	are used for the tendency analysis in Section~\ref{sect:tendency}.}}
-	\label{fig:o3_map2}
-	\end{singlespacing}
-\end{wrapfigure}
 
 \subsection{Diagnostic Outputs}
 
@@ -112,12 +130,13 @@ The third location, Beltsville, Maryland (39.04$^\circ$N, 76.52$^\circ$W), repre
 the continental outflow region, which periodically receives air from the jet and
 the anticyclone (Figure~\ref{fig:o3_map2}).
 
-\subsection{Temporal variability}
+\newpage\subsection{Temporal variability}
 
 % Tendency residuals
 \begin{wrapfigure}{o}{0.5\textwidth}
 	\centering
 	\begin{singlespacing}
+	\vspace{-.3in}
 	\includegraphics[width=0.48\textwidth]{Figures/tendency_res.eps}
 	\caption[Ozone total, advective, and residual tendencies]{{\small
 	Ozone total tendencies (black lines) between 200--600~hPa, (a) horizontal (red) and vertical (blue) advective tendencies and (b)
@@ -205,15 +224,6 @@ Beltsville also shares some characteristics with Trinidad Head, both of which pe
 receive high stratospheric ozone (e.g. August 8--13).
 
 \subsection{Vertical structure}
-
-While the time series analysis above, focusing at the pressure level (270--330~hPa) investigated by \citet{Li:2005ss}
-(300~hPa) and near that by \citet{Cooper:2007cr} (250~hPa), shows interesting variabilities,
-the vertical structure is not represented. Due to convective entrainment/detrainment, selected
-pressure levels can experience drastically different chemical properties. In the following
-analysis, we examine the August mean vertical structures of the chemical and convective
-tendency components (Figure~\ref{fig:tend_v}). As in the previous section, the ozone
-mixing ratios and passive tracer values are also provided to give context.
-
 % Tendency vertical profiles
  \begin{figure}
  \noindent\includegraphics[width=40pc]{Figures/tendency_v.eps}
@@ -228,6 +238,14 @@ $11\times11$ grid points to each IONS-06 site are averaged to compute
 these profiles.}
  \label{fig:tend_v}
  \end{figure}
+
+While the time series analysis above, focusing at the pressure level (270--330~hPa) investigated by \citet{Li:2005ss}
+(300~hPa) and near that by \citet{Cooper:2007cr} (250~hPa), shows interesting variabilities,
+the vertical structure is not represented. Due to convective entrainment/detrainment, selected
+pressure levels can experience drastically different chemical properties. In the following
+analysis, we examine the August mean vertical structures of the chemical and convective
+tendency components (Figure~\ref{fig:tend_v}). As in the previous section, the ozone
+mixing ratios and passive tracer values are also provided to give context.
 
 The continental inflow region (Trinidad Head) lacks both BL and LNO$_{\mathrm{x}}$
 tracers in the upper troposphere. Despite having higher ozone mixing ratios than the
@@ -295,7 +313,9 @@ affects the ozone enhancement, we compare results from the control simulation, i
 the simulation used in the previous section, to two additional sensitivity simulations.
 The first sensitivity simulation is a no-lightning case, where the lightning $\mathrm{NO_x}$ emission is suppressed entirely.
 The second sensitivity simulation is a high-$\mathrm{LNO_x}$ case, where lightning flash rate is 10 times greater
-than the control case. The resulting mean spatial
+than the control case. This scenario tests the case wherein model may substantially underestimate $\mathrm{LNO_x}$
+with the potential of $\mathrm{NO_x}$-titration, which has been measured within convective outflows of large
+storms \citep[e.g.][]{Stith:1999fk,Ridley:2004oa,Ott:2007hs,Cummings:2013vn}. The resulting mean spatial
 distributions of NO$_{\mathrm{x}}$, HO$_{\mathrm{x}}$, CO, and O$_3$ at 300~hPa
 during August are shown in Figure~\ref{fig:ltng_map}.
 
@@ -491,20 +511,7 @@ ozone production to the available NO can then be quantified as follow
 \frac{d\ln P(\mathrm{O_3})}{d\ln[\mathrm{NO}]} =
 \frac{1-3/2\,L_N/Q}{1-1/2\,L_N/Q}
 \end{equation}
-
-% Lightning sensitivity -- Leighton
- \begin{figure}
- \noindent\includegraphics[width=40pc]{Figures/rxn.png}
- \caption[Daytime reaction rates]{Daytime reaction rates ($\log_{10}$~molec.~cm$^{-3}$~s$^{-1}$
-for NO$_2+$OH and ($2\times$) HO$_2+$HO$_2$ at 150--250~hPa (a--c)
-and 350--450~hPa (d--f) without lightning (a,d), control simulation (b,e),
-and high LNO$_{\mathrm{x}}$ scenario (c,f). The left percentage (if present) is the fraction
-of data points where $L_N/Q>2/3$. The right, or the only one, percentage (if present) is that
-of $L_N/Q>1/2$.}
- \label{fig:ltng_rxn}
- \end{figure}
-
-\noindent where $L_N/Q$ is the fraction of free radicals removed by NO$_\mathrm{x}$.
+where $L_N/Q$ is the fraction of free radicals removed by NO$_\mathrm{x}$.
 In the upper troposphere, $L_N$ and $L_R$ can be approximated by the
 reaction rate of $\mathrm{NO_2+OH}$ and twice the rate of
 $\mathrm{HO_2+HO_2}$, respectively. For consistency with the simulated chemistry,
@@ -520,6 +527,18 @@ i.e. production of ozone is expected to decrease with further increases in
 NO$_\mathrm{x}$, as demonstrated by Equation~\ref{eqn:kleinman}. Thus,
 if the majority of air masses lies above the $2/3$ threshold, an overall decrease
 in ozone production or even net loss can be expected to occur.
+
+% Lightning sensitivity -- Leighton
+ \begin{figure}
+ \noindent\includegraphics[width=40pc]{Figures/rxn.png}
+ \caption[Daytime reaction rates]{Daytime reaction rates ($\log_{10}$~molec.~cm$^{-3}$~s$^{-1}$
+for NO$_2+$OH and ($2\times$) HO$_2+$HO$_2$ at 150--250~hPa (a--c)
+and 350--450~hPa (d--f) without lightning (a,d), control simulation (b,e),
+and high LNO$_{\mathrm{x}}$ scenario (c,f). The left percentage (if present) is the fraction
+of data points where $L_N/Q>2/3$. The right, or the only one, percentage (if present) is that
+of $L_N/Q>1/2$.}
+ \label{fig:ltng_rxn}
+ \end{figure}
 
 The percentage of data points where $L_N>L_R$, or $L_N/Q>1/2$, and
 $L_N/Q>2/3$ are computed at both levels for all three sensitivity simulations. When
@@ -606,7 +625,7 @@ The spatial structures and chemical pathways are highly non-uniform and
 its responses to perturbations in lightning emission scenarios are not
 monotonic. The super-linear sensitivity of NO$_\mathrm{x}$ to lightning flash rate
 also causes $\mathrm{NO_x}$-titration to occur more frequently than if the sensitivity is linear.
-To constraint lightning flash rate, thus constraining ozone chemistry,
+To constrain lightning flash rate, thus constraining ozone chemistry,
 one may utilize lightning observations, e.g. \citet{Cooper:2009nx} used the observed CG
 flash rate from NLDN. As more expansive data from total lightning (IC+CG)
 monitoring instruments and networks are being made available, it is possible to
